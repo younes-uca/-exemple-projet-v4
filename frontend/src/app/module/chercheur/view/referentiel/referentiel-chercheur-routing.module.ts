@@ -7,18 +7,6 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { DisciplineScientifiqueErcChercheurComponent } from './discipline-scientifique-erc-chercheur/discipline-scientifique-erc-chercheur.component';
-
-
-
-    import { SemanticRelationshipChercheurComponent } from './semantic-relationship-chercheur/semantic-relationship-chercheur.component';
-
-
-
-    import { KeyWordDisciplineScientifiqueErcChercheurComponent } from './key-word-discipline-scientifique-erc-chercheur/key-word-discipline-scientifique-erc-chercheur.component';
-
-
-
     import { DisciplineScientifiqueParentChercheurComponent } from './discipline-scientifique-parent-chercheur/discipline-scientifique-parent-chercheur.component';
 
 
@@ -27,15 +15,15 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { KeyWordChercheurComponent } from './key-word-chercheur/key-word-chercheur.component';
+    import { KeyWordDisciplineScientifiqueErcChercheurComponent } from './key-word-discipline-scientifique-erc-chercheur/key-word-discipline-scientifique-erc-chercheur.component';
 
 
 
-    import { EnjeuxIrdChercheurComponent } from './enjeux-ird-chercheur/enjeux-ird-chercheur.component';
+    import { DisciplineScientifiqueErcAssociationChercheurComponent } from './discipline-scientifique-erc-association-chercheur/discipline-scientifique-erc-association-chercheur.component';
 
 
 
-    import { DisciplineScientifiqueChercheurComponent } from './discipline-scientifique-chercheur/discipline-scientifique-chercheur.component';
+    import { DisciplineScientifiqueErcChercheurComponent } from './discipline-scientifique-erc-chercheur/discipline-scientifique-erc-chercheur.component';
 
 
 
@@ -43,7 +31,19 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { DisciplineScientifiqueErcAssociationChercheurComponent } from './discipline-scientifique-erc-association-chercheur/discipline-scientifique-erc-association-chercheur.component';
+    import { EnjeuxIrdChercheurComponent } from './enjeux-ird-chercheur/enjeux-ird-chercheur.component';
+
+
+
+    import { SemanticRelationshipChercheurComponent } from './semantic-relationship-chercheur/semantic-relationship-chercheur.component';
+
+
+
+    import { DisciplineScientifiqueChercheurComponent } from './discipline-scientifique-chercheur/discipline-scientifique-chercheur.component';
+
+
+
+    import { KeyWordChercheurComponent } from './key-word-chercheur/key-word-chercheur.component';
 
 
 @NgModule({
@@ -54,42 +54,6 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
                     path: '',
                     children: [
 
-
-                        {
-
-                            path: 'discipline-scientifique-erc',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: DisciplineScientifiqueErcChercheurComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
-                        {
-
-                            path: 'semantic-relationship',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: SemanticRelationshipChercheurComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
-                        {
-
-                            path: 'key-word-discipline-scientifique-erc',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: KeyWordDisciplineScientifiqueErcChercheurComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
 
                         {
 
@@ -117,11 +81,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'key-word',
+                            path: 'key-word-discipline-scientifique-erc',
                             children: [
                                 {
                                     path: 'list',
-                                    component: KeyWordChercheurComponent ,
+                                    component: KeyWordDisciplineScientifiqueErcChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -129,11 +93,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'enjeux-ird',
+                            path: 'discipline-scientifique-erc-association',
                             children: [
                                 {
                                     path: 'list',
-                                    component: EnjeuxIrdChercheurComponent ,
+                                    component: DisciplineScientifiqueErcAssociationChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -141,11 +105,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'discipline-scientifique',
+                            path: 'discipline-scientifique-erc',
                             children: [
                                 {
                                     path: 'list',
-                                    component: DisciplineScientifiqueChercheurComponent ,
+                                    component: DisciplineScientifiqueErcChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -165,11 +129,47 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'discipline-scientifique-erc-association',
+                            path: 'enjeux-ird',
                             children: [
                                 {
                                     path: 'list',
-                                    component: DisciplineScientifiqueErcAssociationChercheurComponent ,
+                                    component: EnjeuxIrdChercheurComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
+                            path: 'semantic-relationship',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: SemanticRelationshipChercheurComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
+                            path: 'discipline-scientifique',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: DisciplineScientifiqueChercheurComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
+                            path: 'key-word',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: KeyWordChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]

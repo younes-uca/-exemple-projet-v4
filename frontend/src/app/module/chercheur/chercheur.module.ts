@@ -19,9 +19,13 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {BadgeModule} from 'primeng/badge';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DistinctionChercheurModule } from './view/distinction/distinction-chercheur.module';
+import { DistinctionChercheurRoutingModule } from './view/distinction/distinction-chercheur-routing.module';
 import { ReferentielChercheurModule } from './view/referentiel/referentiel-chercheur.module';
+import { ReferentielChercheurRoutingModule } from './view/referentiel/referentiel-chercheur-routing.module';
 import { CampagneChercheurModule } from './view/campagne/campagne-chercheur.module';
+import { CampagneChercheurRoutingModule } from './view/campagne/campagne-chercheur-routing.module';
 import { ChercheurChercheurModule } from './view/chercheur/chercheur-chercheur.module';
+import { ChercheurChercheurRoutingModule } from './view/chercheur/chercheur-chercheur-routing.module';
 
 
 import { PasswordModule } from 'primeng/password';
@@ -38,10 +42,6 @@ import {MessagesModule} from 'primeng/messages';
   declarations: [
    LoginChercheurComponent,
    RegisterChercheurComponent,
-    DistinctionChercheurModule,
-    ReferentielChercheurModule,
-    CampagneChercheurModule,
-    ChercheurChercheurModule,
   ],
   imports: [
     CommonModule,
@@ -68,7 +68,15 @@ import {MessagesModule} from 'primeng/messages';
     MessagesModule,
     InputNumberModule,
     BadgeModule,
-    MultiSelectModule
+    MultiSelectModule,
+  DistinctionChercheurModule,
+  DistinctionChercheurRoutingModule,
+  ReferentielChercheurModule,
+  ReferentielChercheurRoutingModule,
+  CampagneChercheurModule,
+  CampagneChercheurRoutingModule,
+  ChercheurChercheurModule,
+  ChercheurChercheurRoutingModule,
   ],
   exports: [
   LoginChercheurComponent,

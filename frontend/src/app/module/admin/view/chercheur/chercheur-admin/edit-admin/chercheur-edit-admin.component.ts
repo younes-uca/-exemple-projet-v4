@@ -1,22 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {ChercheurService} from '../../../../../controller/service/Chercheur.service';
-import {ChercheurVo} from '../../../../../controller/model/Chercheur.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
-import {DateUtils} from '../../../../../utils/DateUtils';
+import {DateUtils} from '../../../../../../utils/DateUtils';
 import {DatePipe} from '@angular/common';
 
-import {IdentifiantAuteurExpertVo} from '../../../../../controller/model/IdentifiantAuteurExpert.model';
-import {IdentifiantAuteurExpertService} from '../../../../../controller/service/IdentifiantAuteurExpert.service';
-import {EnjeuxIrdVo} from '../../../../../controller/model/EnjeuxIrd.model';
-import {EnjeuxIrdService} from '../../../../../controller/service/EnjeuxIrd.service';
-import {EnjeuxIrdChercheurVo} from '../../../../../controller/model/EnjeuxIrdChercheur.model';
-import {EnjeuxIrdChercheurService} from '../../../../../controller/service/EnjeuxIrdChercheur.service';
-import {IdentifiantRechercheVo} from '../../../../../controller/model/IdentifiantRecherche.model';
-import {IdentifiantRechercheService} from '../../../../../controller/service/IdentifiantRecherche.service';
+import {IdentifiantAuteurExpertVo} from '../../../../../../controller/model/IdentifiantAuteurExpert.model';
+import {IdentifiantAuteurExpertService} from '../../../../../../controller/service/IdentifiantAuteurExpert.service';
+import {EnjeuxIrdVo} from '../../../../../../controller/model/EnjeuxIrd.model';
+import {EnjeuxIrdService} from '../../../../../../controller/service/EnjeuxIrd.service';
+import {EnjeuxIrdChercheurVo} from '../../../../../../controller/model/EnjeuxIrdChercheur.model';
+import {EnjeuxIrdChercheurService} from '../../../../../../controller/service/EnjeuxIrdChercheur.service';
+import {IdentifiantRechercheVo} from '../../../../../../controller/model/IdentifiantRecherche.model';
+import {IdentifiantRechercheService} from '../../../../../../controller/service/IdentifiantRecherche.service';
 
 @Component({
   selector: 'app-chercheur-edit-admin',

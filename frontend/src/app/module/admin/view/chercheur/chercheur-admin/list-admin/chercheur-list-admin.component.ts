@@ -1,21 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {ChercheurService} from '../../../../../controller/service/Chercheur.service';
-import {ChercheurVo} from '../../../../../controller/model/Chercheur.model';
+import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import jsPDF from 'jspdf';
 import autoTable, { RowInput } from 'jspdf-autotable';
 import { saveAs } from 'file-saver';
-import { RoleService } from '../../../../../controller/service/role.service';
+import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
 
-import {IdentifiantAuteurExpertVo} from '../../../../../controller/model/IdentifiantAuteurExpert.model';
-import {EnjeuxIrdChercheurVo} from '../../../../../controller/model/EnjeuxIrdChercheur.model';
+import {IdentifiantAuteurExpertVo} from '../../../../../../controller/model/IdentifiantAuteurExpert.model';
+import {EnjeuxIrdChercheurVo} from '../../../../../../controller/model/EnjeuxIrdChercheur.model';
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
-import {AuthService} from '../../../../../controller/service/Auth.service';
-import { ExportService } from '../../../../../controller/service/Export.service';
+import {AuthService} from '../../../../../../controller/service/Auth.service';
+import { ExportService } from '../../../../../../controller/service/Export.service';
 
 @Component({
   selector: 'app-chercheur-list-admin',

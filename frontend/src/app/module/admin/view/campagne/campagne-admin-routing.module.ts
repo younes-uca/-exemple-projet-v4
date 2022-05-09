@@ -7,11 +7,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { EtatEtapeCampagneAdminComponent } from './etat-etape-campagne-admin/etat-etape-campagne-admin.component';
-
-
-
     import { CampagneAdminComponent } from './campagne-admin/campagne-admin.component';
+
+
+
+    import { EtatEtapeCampagneAdminComponent } from './etat-etape-campagne-admin/etat-etape-campagne-admin.component';
 
 
 @NgModule({
@@ -25,11 +25,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'etat-etape-campagne',
+                            path: 'campagne',
                             children: [
                                 {
                                     path: 'list',
-                                    component: EtatEtapeCampagneAdminComponent ,
+                                    component: CampagneAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -37,11 +37,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'campagne',
+                            path: 'etat-etape-campagne',
                             children: [
                                 {
                                     path: 'list',
-                                    component: CampagneAdminComponent ,
+                                    component: EtatEtapeCampagneAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]

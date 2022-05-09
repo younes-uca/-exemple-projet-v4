@@ -7,7 +7,7 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { EnjeuxIrdChercheurAdminComponent } from './enjeux-ird-chercheur-admin/enjeux-ird-chercheur-admin.component';
+    import { IdentifiantAuteurExpertAdminComponent } from './identifiant-auteur-expert-admin/identifiant-auteur-expert-admin.component';
 
 
 
@@ -15,7 +15,7 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { IdentifiantAuteurExpertAdminComponent } from './identifiant-auteur-expert-admin/identifiant-auteur-expert-admin.component';
+    import { EnjeuxIrdChercheurAdminComponent } from './enjeux-ird-chercheur-admin/enjeux-ird-chercheur-admin.component';
 
 
 
@@ -33,11 +33,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'enjeux-ird-chercheur',
+                            path: 'identifiant-auteur-expert',
                             children: [
                                 {
                                     path: 'list',
-                                    component: EnjeuxIrdChercheurAdminComponent ,
+                                    component: IdentifiantAuteurExpertAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -57,11 +57,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'identifiant-auteur-expert',
+                            path: 'enjeux-ird-chercheur',
                             children: [
                                 {
                                     path: 'list',
-                                    component: IdentifiantAuteurExpertAdminComponent ,
+                                    component: EnjeuxIrdChercheurAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]

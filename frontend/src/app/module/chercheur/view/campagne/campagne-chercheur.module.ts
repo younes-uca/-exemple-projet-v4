@@ -17,16 +17,16 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {BadgeModule} from 'primeng/badge';
 import { MultiSelectModule } from 'primeng/multiselect';
 
-import { EtatEtapeCampagneCreateChercheurComponent } from './etat-etape-campagne-chercheur/create-chercheur/etat-etape-campagne-create-chercheur.component';
-import { EtatEtapeCampagneEditChercheurComponent } from './etat-etape-campagne-chercheur/edit-chercheur/etat-etape-campagne-edit-chercheur.component';
-import { EtatEtapeCampagneViewChercheurComponent } from './etat-etape-campagne-chercheur-chercheur/etat-etape-campagne-view-chercheur.component';
-import { EtatEtapeCampagneListChercheurComponent } from './etat-etape-campagne-chercheur/list-chercheur/etat-etape-campagne-list-chercheur.component';
-import { EtatEtapeCampagneChercheurComponent } from './etat-etape-campagne-chercheur/etat-etape-campagne-chercheur.component';
 import { CampagneCreateChercheurComponent } from './campagne-chercheur/create-chercheur/campagne-create-chercheur.component';
 import { CampagneEditChercheurComponent } from './campagne-chercheur/edit-chercheur/campagne-edit-chercheur.component';
-import { CampagneViewChercheurComponent } from './campagne-chercheur-chercheur/campagne-view-chercheur.component';
+import { CampagneViewChercheurComponent } from './campagne-chercheur/view-chercheur/campagne-view-chercheur.component';
 import { CampagneListChercheurComponent } from './campagne-chercheur/list-chercheur/campagne-list-chercheur.component';
 import { CampagneChercheurComponent } from './campagne-chercheur/campagne-chercheur.component';
+import { EtatEtapeCampagneCreateChercheurComponent } from './etat-etape-campagne-chercheur/create-chercheur/etat-etape-campagne-create-chercheur.component';
+import { EtatEtapeCampagneEditChercheurComponent } from './etat-etape-campagne-chercheur/edit-chercheur/etat-etape-campagne-edit-chercheur.component';
+import { EtatEtapeCampagneViewChercheurComponent } from './etat-etape-campagne-chercheur/view-chercheur/etat-etape-campagne-view-chercheur.component';
+import { EtatEtapeCampagneListChercheurComponent } from './etat-etape-campagne-chercheur/list-chercheur/etat-etape-campagne-list-chercheur.component';
+import { EtatEtapeCampagneChercheurComponent } from './etat-etape-campagne-chercheur/etat-etape-campagne-chercheur.component';
 
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
@@ -42,16 +42,16 @@ import {MessagesModule} from 'primeng/messages';
 @NgModule({
   declarations: [
 
-    EtatEtapeCampagneCreateChercheurComponent,
-    EtatEtapeCampagneListChercheurComponent,
-    EtatEtapeCampagneViewChercheurComponent,
-    EtatEtapeCampagneEditChercheurComponent,
-    EtatEtapeCampagneChercheurComponent,
     CampagneCreateChercheurComponent,
     CampagneListChercheurComponent,
     CampagneViewChercheurComponent,
     CampagneEditChercheurComponent,
     CampagneChercheurComponent,
+    EtatEtapeCampagneCreateChercheurComponent,
+    EtatEtapeCampagneListChercheurComponent,
+    EtatEtapeCampagneViewChercheurComponent,
+    EtatEtapeCampagneEditChercheurComponent,
+    EtatEtapeCampagneChercheurComponent,
   ],
   imports: [
     CommonModule,
@@ -81,16 +81,16 @@ import {MessagesModule} from 'primeng/messages';
     MultiSelectModule
   ],
   exports: [
-  EtatEtapeCampagneCreateChercheurComponent,
-  EtatEtapeCampagneListChercheurComponent,
-  EtatEtapeCampagneViewChercheurComponent,
-  EtatEtapeCampagneEditChercheurComponent,
-  EtatEtapeCampagneChercheurComponent,
   CampagneCreateChercheurComponent,
   CampagneListChercheurComponent,
   CampagneViewChercheurComponent,
   CampagneEditChercheurComponent,
   CampagneChercheurComponent,
+  EtatEtapeCampagneCreateChercheurComponent,
+  EtatEtapeCampagneListChercheurComponent,
+  EtatEtapeCampagneViewChercheurComponent,
+  EtatEtapeCampagneEditChercheurComponent,
+  EtatEtapeCampagneChercheurComponent,
   ],
   entryComponents: [],
 })

@@ -1,13 +1,13 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {DisciplineScientifiqueErcParentService} from '../../../../../controller/service/DisciplineScientifiqueErcParent.service';
-import {DisciplineScientifiqueErcParentVo} from '../../../../../controller/model/DisciplineScientifiqueErcParent.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {DisciplineScientifiqueErcParentService} from '../../../../../../controller/service/DisciplineScientifiqueErcParent.service';
+import {DisciplineScientifiqueErcParentVo} from '../../../../../../controller/model/DisciplineScientifiqueErcParent.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {StringUtilService} from '../../../../../controller/service/StringUtil.service';
+import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
 @Component({

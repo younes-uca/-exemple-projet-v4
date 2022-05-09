@@ -1,26 +1,26 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {DistinctionService} from '../../../../../controller/service/Distinction.service';
-import {DistinctionVo} from '../../../../../controller/model/Distinction.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {DistinctionService} from '../../../../../../controller/service/Distinction.service';
+import {DistinctionVo} from '../../../../../../controller/model/Distinction.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {StringUtilService} from '../../../../../controller/service/StringUtil.service';
+import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 import { TokenService } from 'src/app/controller/service/Token.service';
 
-import {ChercheurVo} from '../../../../../controller/model/Chercheur.model';
-import {ChercheurService} from '../../../../../controller/service/Chercheur.service';
-import {DistinctionDisciplineScientifiqueVo} from '../../../../../controller/model/DistinctionDisciplineScientifique.model';
-import {DistinctionDisciplineScientifiqueService} from '../../../../../controller/service/DistinctionDisciplineScientifique.service';
-import {EtatEtapeCampagneVo} from '../../../../../controller/model/EtatEtapeCampagne.model';
-import {EtatEtapeCampagneService} from '../../../../../controller/service/EtatEtapeCampagne.service';
-import {DisciplineScientifiqueVo} from '../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueService} from '../../../../../controller/service/DisciplineScientifique.service';
-import {CampagneVo} from '../../../../../controller/model/Campagne.model';
-import {CampagneService} from '../../../../../controller/service/Campagne.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {EtatEtapeCampagneVo} from '../../../../../../controller/model/EtatEtapeCampagne.model';
+import {EtatEtapeCampagneService} from '../../../../../../controller/service/EtatEtapeCampagne.service';
+import {CampagneVo} from '../../../../../../controller/model/Campagne.model';
+import {CampagneService} from '../../../../../../controller/service/Campagne.service';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
+import {DistinctionDisciplineScientifiqueVo} from '../../../../../../controller/model/DistinctionDisciplineScientifique.model';
+import {DistinctionDisciplineScientifiqueService} from '../../../../../../controller/service/DistinctionDisciplineScientifique.service';
 @Component({
   selector: 'app-distinction-create-chercheur',
   templateUrl: './distinction-create-chercheur.component.html',
@@ -53,11 +53,11 @@ constructor(private datePipe: DatePipe, private distinctionService: DistinctionS
  ,       private messageService: MessageService
  ,       private router: Router
   ,       private tokenService: TokenService
+,       private disciplineScientifiqueService :DisciplineScientifiqueService
+,       private etatEtapeCampagneService :EtatEtapeCampagneService
+,       private campagneService :CampagneService
 ,       private chercheurService :ChercheurService
 ,       private distinctionDisciplineScientifiqueService :DistinctionDisciplineScientifiqueService
-,       private etatEtapeCampagneService :EtatEtapeCampagneService
-,       private disciplineScientifiqueService :DisciplineScientifiqueService
-,       private campagneService :CampagneService
 ) {
 
 }

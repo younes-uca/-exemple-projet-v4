@@ -1,19 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {SemanticRelationshipService} from '../../../../../controller/service/SemanticRelationship.service';
-import {SemanticRelationshipVo} from '../../../../../controller/model/SemanticRelationship.model';
+import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
+import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import jsPDF from 'jspdf';
 import autoTable, { RowInput } from 'jspdf-autotable';
 import { saveAs } from 'file-saver';
-import { RoleService } from '../../../../../controller/service/role.service';
+import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
 
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
-import {AuthService} from '../../../../../controller/service/Auth.service';
-import { ExportService } from '../../../../../controller/service/Export.service';
+import {AuthService} from '../../../../../../controller/service/Auth.service';
+import { ExportService } from '../../../../../../controller/service/Export.service';
 
 @Component({
   selector: 'app-semantic-relationship-list-chercheur',

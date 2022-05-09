@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {SemanticRelationshipService} from '../../../../../controller/service/SemanticRelationship.service';
-import {SemanticRelationshipVo} from '../../../../../controller/model/SemanticRelationship.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
+import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
-import {DateUtils} from '../../../../../utils/DateUtils';
+import {DateUtils} from '../../../../../../utils/DateUtils';
 import {DatePipe} from '@angular/common';
 
 

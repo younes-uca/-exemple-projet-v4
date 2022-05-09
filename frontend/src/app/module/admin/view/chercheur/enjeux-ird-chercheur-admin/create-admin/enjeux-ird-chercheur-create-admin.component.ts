@@ -1,19 +1,19 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {EnjeuxIrdChercheurService} from '../../../../../controller/service/EnjeuxIrdChercheur.service';
-import {EnjeuxIrdChercheurVo} from '../../../../../controller/model/EnjeuxIrdChercheur.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {EnjeuxIrdChercheurService} from '../../../../../../controller/service/EnjeuxIrdChercheur.service';
+import {EnjeuxIrdChercheurVo} from '../../../../../../controller/model/EnjeuxIrdChercheur.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {StringUtilService} from '../../../../../controller/service/StringUtil.service';
+import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {ChercheurVo} from '../../../../../controller/model/Chercheur.model';
-import {ChercheurService} from '../../../../../controller/service/Chercheur.service';
-import {EnjeuxIrdVo} from '../../../../../controller/model/EnjeuxIrd.model';
-import {EnjeuxIrdService} from '../../../../../controller/service/EnjeuxIrd.service';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
+import {EnjeuxIrdVo} from '../../../../../../controller/model/EnjeuxIrd.model';
+import {EnjeuxIrdService} from '../../../../../../controller/service/EnjeuxIrd.service';
 @Component({
   selector: 'app-enjeux-ird-chercheur-create-admin',
   templateUrl: './enjeux-ird-chercheur-create-admin.component.html',

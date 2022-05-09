@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {DisciplineScientifiqueChercheurService} from '../../../../../controller/service/DisciplineScientifiqueChercheur.service';
-import {DisciplineScientifiqueChercheurVo} from '../../../../../controller/model/DisciplineScientifiqueChercheur.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {DisciplineScientifiqueChercheurService} from '../../../../../../controller/service/DisciplineScientifiqueChercheur.service';
+import {DisciplineScientifiqueChercheurVo} from '../../../../../../controller/model/DisciplineScientifiqueChercheur.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
-import {DateUtils} from '../../../../../utils/DateUtils';
+import {DateUtils} from '../../../../../../utils/DateUtils';
 import {DatePipe} from '@angular/common';
 
-import {DisciplineScientifiqueVo} from '../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueService} from '../../../../../controller/service/DisciplineScientifique.service';
-import {DisciplineScientifiqueErcVo} from '../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../controller/service/DisciplineScientifiqueErc.service';
-import {ChercheurVo} from '../../../../../controller/model/Chercheur.model';
-import {ChercheurService} from '../../../../../controller/service/Chercheur.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
 
 @Component({
   selector: 'app-discipline-scientifique-chercheur-edit-chercheur',

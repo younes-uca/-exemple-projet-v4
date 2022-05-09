@@ -1,23 +1,23 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ChercheurService} from '../../../../../controller/service/Chercheur.service';
-import {ChercheurVo} from '../../../../../controller/model/Chercheur.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {StringUtilService} from '../../../../../controller/service/StringUtil.service';
+import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {IdentifiantAuteurExpertVo} from '../../../../../controller/model/IdentifiantAuteurExpert.model';
-import {IdentifiantAuteurExpertService} from '../../../../../controller/service/IdentifiantAuteurExpert.service';
-import {EnjeuxIrdChercheurVo} from '../../../../../controller/model/EnjeuxIrdChercheur.model';
-import {EnjeuxIrdChercheurService} from '../../../../../controller/service/EnjeuxIrdChercheur.service';
-import {EnjeuxIrdVo} from '../../../../../controller/model/EnjeuxIrd.model';
-import {EnjeuxIrdService} from '../../../../../controller/service/EnjeuxIrd.service';
-import {IdentifiantRechercheVo} from '../../../../../controller/model/IdentifiantRecherche.model';
-import {IdentifiantRechercheService} from '../../../../../controller/service/IdentifiantRecherche.service';
+import {EnjeuxIrdChercheurVo} from '../../../../../../controller/model/EnjeuxIrdChercheur.model';
+import {EnjeuxIrdChercheurService} from '../../../../../../controller/service/EnjeuxIrdChercheur.service';
+import {IdentifiantRechercheVo} from '../../../../../../controller/model/IdentifiantRecherche.model';
+import {IdentifiantRechercheService} from '../../../../../../controller/service/IdentifiantRecherche.service';
+import {EnjeuxIrdVo} from '../../../../../../controller/model/EnjeuxIrd.model';
+import {EnjeuxIrdService} from '../../../../../../controller/service/EnjeuxIrd.service';
+import {IdentifiantAuteurExpertVo} from '../../../../../../controller/model/IdentifiantAuteurExpert.model';
+import {IdentifiantAuteurExpertService} from '../../../../../../controller/service/IdentifiantAuteurExpert.service';
 @Component({
   selector: 'app-chercheur-create-chercheur',
   templateUrl: './chercheur-create-chercheur.component.html',
@@ -41,10 +41,10 @@ constructor(private datePipe: DatePipe, private chercheurService: ChercheurServi
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private identifiantAuteurExpertService :IdentifiantAuteurExpertService
 ,       private enjeuxIrdChercheurService :EnjeuxIrdChercheurService
-,       private enjeuxIrdService :EnjeuxIrdService
 ,       private identifiantRechercheService :IdentifiantRechercheService
+,       private enjeuxIrdService :EnjeuxIrdService
+,       private identifiantAuteurExpertService :IdentifiantAuteurExpertService
 ) {
 
 }

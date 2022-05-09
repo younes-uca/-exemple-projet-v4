@@ -38,25 +38,25 @@ import { RegisterChercheurComponent } from './register-chercheur/register-cherch
                         {
 
                             path: 'distinction',
-                            loadChildren: './view/distinction/distinction-routing.module#DistinctionChercheurRoutingModule',
+                            loadChildren: './view/distinction/distinction-chercheur-routing.module#DistinctionChercheurRoutingModule',
                             canActivate: [AuthGuard],
                         },
                         {
 
                             path: 'referentiel',
-                            loadChildren: './view/referentiel/referentiel-routing.module#ReferentielChercheurRoutingModule',
+                            loadChildren: './view/referentiel/referentiel-chercheur-routing.module#ReferentielChercheurRoutingModule',
                             canActivate: [AuthGuard],
                         },
                         {
 
                             path: 'campagne',
-                            loadChildren: './view/campagne/campagne-routing.module#CampagneChercheurRoutingModule',
+                            loadChildren: './view/campagne/campagne-chercheur-routing.module#CampagneChercheurRoutingModule',
                             canActivate: [AuthGuard],
                         },
                         {
 
                             path: 'chercheur',
-                            loadChildren: './view/chercheur/chercheur-routing.module#ChercheurChercheurRoutingModule',
+                            loadChildren: './view/chercheur/chercheur-chercheur-routing.module#ChercheurChercheurRoutingModule',
                             canActivate: [AuthGuard],
                         },
                     ]

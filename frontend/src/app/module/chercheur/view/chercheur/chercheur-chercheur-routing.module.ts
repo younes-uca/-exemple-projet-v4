@@ -7,7 +7,7 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { EnjeuxIrdChercheurChercheurComponent } from './enjeux-ird-chercheur-chercheur/enjeux-ird-chercheur-chercheur.component';
+    import { IdentifiantAuteurExpertChercheurComponent } from './identifiant-auteur-expert-chercheur/identifiant-auteur-expert-chercheur.component';
 
 
 
@@ -15,7 +15,7 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { IdentifiantAuteurExpertChercheurComponent } from './identifiant-auteur-expert-chercheur/identifiant-auteur-expert-chercheur.component';
+    import { EnjeuxIrdChercheurChercheurComponent } from './enjeux-ird-chercheur-chercheur/enjeux-ird-chercheur-chercheur.component';
 
 
 
@@ -33,11 +33,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'enjeux-ird-chercheur',
+                            path: 'identifiant-auteur-expert',
                             children: [
                                 {
                                     path: 'list',
-                                    component: EnjeuxIrdChercheurChercheurComponent ,
+                                    component: IdentifiantAuteurExpertChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -57,11 +57,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'identifiant-auteur-expert',
+                            path: 'enjeux-ird-chercheur',
                             children: [
                                 {
                                     path: 'list',
-                                    component: IdentifiantAuteurExpertChercheurComponent ,
+                                    component: EnjeuxIrdChercheurChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]

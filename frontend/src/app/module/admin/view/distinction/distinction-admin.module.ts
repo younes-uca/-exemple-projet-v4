@@ -19,12 +19,12 @@ import { MultiSelectModule } from 'primeng/multiselect';
 
 import { DistinctionDisciplineScientifiqueCreateAdminComponent } from './distinction-discipline-scientifique-admin/create-admin/distinction-discipline-scientifique-create-admin.component';
 import { DistinctionDisciplineScientifiqueEditAdminComponent } from './distinction-discipline-scientifique-admin/edit-admin/distinction-discipline-scientifique-edit-admin.component';
-import { DistinctionDisciplineScientifiqueViewAdminComponent } from './distinction-discipline-scientifique-admin-admin/distinction-discipline-scientifique-view-admin.component';
+import { DistinctionDisciplineScientifiqueViewAdminComponent } from './distinction-discipline-scientifique-admin/view-admin/distinction-discipline-scientifique-view-admin.component';
 import { DistinctionDisciplineScientifiqueListAdminComponent } from './distinction-discipline-scientifique-admin/list-admin/distinction-discipline-scientifique-list-admin.component';
 import { DistinctionDisciplineScientifiqueAdminComponent } from './distinction-discipline-scientifique-admin/distinction-discipline-scientifique-admin.component';
 import { DistinctionCreateAdminComponent } from './distinction-admin/create-admin/distinction-create-admin.component';
 import { DistinctionEditAdminComponent } from './distinction-admin/edit-admin/distinction-edit-admin.component';
-import { DistinctionViewAdminComponent } from './distinction-admin-admin/distinction-view-admin.component';
+import { DistinctionViewAdminComponent } from './distinction-admin/view-admin/distinction-view-admin.component';
 import { DistinctionListAdminComponent } from './distinction-admin/list-admin/distinction-list-admin.component';
 import { DistinctionAdminComponent } from './distinction-admin/distinction-admin.component';
 

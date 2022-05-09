@@ -7,11 +7,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { EtatEtapeCampagneChercheurComponent } from './etat-etape-campagne-chercheur/etat-etape-campagne-chercheur.component';
-
-
-
     import { CampagneChercheurComponent } from './campagne-chercheur/campagne-chercheur.component';
+
+
+
+    import { EtatEtapeCampagneChercheurComponent } from './etat-etape-campagne-chercheur/etat-etape-campagne-chercheur.component';
 
 
 @NgModule({
@@ -25,11 +25,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'etat-etape-campagne',
+                            path: 'campagne',
                             children: [
                                 {
                                     path: 'list',
-                                    component: EtatEtapeCampagneChercheurComponent ,
+                                    component: CampagneChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -37,11 +37,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'campagne',
+                            path: 'etat-etape-campagne',
                             children: [
                                 {
                                     path: 'list',
-                                    component: CampagneChercheurComponent ,
+                                    component: EtatEtapeCampagneChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]

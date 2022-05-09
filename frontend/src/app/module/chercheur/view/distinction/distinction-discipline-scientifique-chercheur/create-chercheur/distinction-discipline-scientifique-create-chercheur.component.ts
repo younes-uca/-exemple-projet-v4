@@ -1,19 +1,19 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {DistinctionDisciplineScientifiqueService} from '../../../../../controller/service/DistinctionDisciplineScientifique.service';
-import {DistinctionDisciplineScientifiqueVo} from '../../../../../controller/model/DistinctionDisciplineScientifique.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {DistinctionDisciplineScientifiqueService} from '../../../../../../controller/service/DistinctionDisciplineScientifique.service';
+import {DistinctionDisciplineScientifiqueVo} from '../../../../../../controller/model/DistinctionDisciplineScientifique.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {StringUtilService} from '../../../../../controller/service/StringUtil.service';
+import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {DistinctionVo} from '../../../../../controller/model/Distinction.model';
-import {DistinctionService} from '../../../../../controller/service/Distinction.service';
-import {DisciplineScientifiqueVo} from '../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueService} from '../../../../../controller/service/DisciplineScientifique.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {DistinctionVo} from '../../../../../../controller/model/Distinction.model';
+import {DistinctionService} from '../../../../../../controller/service/Distinction.service';
 @Component({
   selector: 'app-distinction-discipline-scientifique-create-chercheur',
   templateUrl: './distinction-discipline-scientifique-create-chercheur.component.html',
@@ -37,8 +37,8 @@ constructor(private datePipe: DatePipe, private distinctionDisciplineScientifiqu
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private distinctionService :DistinctionService
 ,       private disciplineScientifiqueService :DisciplineScientifiqueService
+,       private distinctionService :DistinctionService
 ) {
 
 }

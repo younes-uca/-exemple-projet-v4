@@ -19,12 +19,12 @@ import { MultiSelectModule } from 'primeng/multiselect';
 
 import { DistinctionDisciplineScientifiqueCreateChercheurComponent } from './distinction-discipline-scientifique-chercheur/create-chercheur/distinction-discipline-scientifique-create-chercheur.component';
 import { DistinctionDisciplineScientifiqueEditChercheurComponent } from './distinction-discipline-scientifique-chercheur/edit-chercheur/distinction-discipline-scientifique-edit-chercheur.component';
-import { DistinctionDisciplineScientifiqueViewChercheurComponent } from './distinction-discipline-scientifique-chercheur-chercheur/distinction-discipline-scientifique-view-chercheur.component';
+import { DistinctionDisciplineScientifiqueViewChercheurComponent } from './distinction-discipline-scientifique-chercheur/view-chercheur/distinction-discipline-scientifique-view-chercheur.component';
 import { DistinctionDisciplineScientifiqueListChercheurComponent } from './distinction-discipline-scientifique-chercheur/list-chercheur/distinction-discipline-scientifique-list-chercheur.component';
 import { DistinctionDisciplineScientifiqueChercheurComponent } from './distinction-discipline-scientifique-chercheur/distinction-discipline-scientifique-chercheur.component';
 import { DistinctionCreateChercheurComponent } from './distinction-chercheur/create-chercheur/distinction-create-chercheur.component';
 import { DistinctionEditChercheurComponent } from './distinction-chercheur/edit-chercheur/distinction-edit-chercheur.component';
-import { DistinctionViewChercheurComponent } from './distinction-chercheur-chercheur/distinction-view-chercheur.component';
+import { DistinctionViewChercheurComponent } from './distinction-chercheur/view-chercheur/distinction-view-chercheur.component';
 import { DistinctionListChercheurComponent } from './distinction-chercheur/list-chercheur/distinction-list-chercheur.component';
 import { DistinctionChercheurComponent } from './distinction-chercheur/distinction-chercheur.component';
 

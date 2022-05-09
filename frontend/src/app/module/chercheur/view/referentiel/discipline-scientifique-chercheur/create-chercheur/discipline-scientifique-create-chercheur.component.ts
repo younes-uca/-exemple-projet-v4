@@ -1,23 +1,23 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {DisciplineScientifiqueService} from '../../../../../controller/service/DisciplineScientifique.service';
-import {DisciplineScientifiqueVo} from '../../../../../controller/model/DisciplineScientifique.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {StringUtilService} from '../../../../../controller/service/StringUtil.service';
+import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {DisciplineScientifiqueErcVo} from '../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../controller/service/DisciplineScientifiqueErc.service';
-import {SemanticRelationshipVo} from '../../../../../controller/model/SemanticRelationship.model';
-import {SemanticRelationshipService} from '../../../../../controller/service/SemanticRelationship.service';
-import {DisciplineScientifiqueParentVo} from '../../../../../controller/model/DisciplineScientifiqueParent.model';
-import {DisciplineScientifiqueParentService} from '../../../../../controller/service/DisciplineScientifiqueParent.service';
-import {DisciplineScientifiqueErcAssociationVo} from '../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
-import {DisciplineScientifiqueErcAssociationService} from '../../../../../controller/service/DisciplineScientifiqueErcAssociation.service';
+import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
+import {DisciplineScientifiqueErcAssociationVo} from '../../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
+import {DisciplineScientifiqueErcAssociationService} from '../../../../../../controller/service/DisciplineScientifiqueErcAssociation.service';
+import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
+import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
+import {DisciplineScientifiqueParentVo} from '../../../../../../controller/model/DisciplineScientifiqueParent.model';
+import {DisciplineScientifiqueParentService} from '../../../../../../controller/service/DisciplineScientifiqueParent.service';
 @Component({
   selector: 'app-discipline-scientifique-create-chercheur',
   templateUrl: './discipline-scientifique-create-chercheur.component.html',
@@ -46,9 +46,9 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueService: D
  ,       private router: Router
  
 ,       private disciplineScientifiqueErcService :DisciplineScientifiqueErcService
+,       private disciplineScientifiqueErcAssociationService :DisciplineScientifiqueErcAssociationService
 ,       private semanticRelationshipService :SemanticRelationshipService
 ,       private disciplineScientifiqueParentService :DisciplineScientifiqueParentService
-,       private disciplineScientifiqueErcAssociationService :DisciplineScientifiqueErcAssociationService
 ) {
 
 }

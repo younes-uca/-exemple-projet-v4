@@ -1,22 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {DisciplineScientifiqueService} from '../../../../../controller/service/DisciplineScientifique.service';
-import {DisciplineScientifiqueVo} from '../../../../../controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import jsPDF from 'jspdf';
 import autoTable, { RowInput } from 'jspdf-autotable';
 import { saveAs } from 'file-saver';
-import { RoleService } from '../../../../../controller/service/role.service';
+import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
-import { DisciplineScientifiqueParentService } from '../../../../../controller/service/DisciplineScientifiqueParent.service';
+import { DisciplineScientifiqueParentService } from '../../../../../../controller/service/DisciplineScientifiqueParent.service';
 
-import {DisciplineScientifiqueParentVo} from '../../../../../controller/model/DisciplineScientifiqueParent.model';
-import {DisciplineScientifiqueErcAssociationVo} from '../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
+import {DisciplineScientifiqueParentVo} from '../../../../../../controller/model/DisciplineScientifiqueParent.model';
+import {DisciplineScientifiqueErcAssociationVo} from '../../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
-import {AuthService} from '../../../../../controller/service/Auth.service';
-import { ExportService } from '../../../../../controller/service/Export.service';
+import {AuthService} from '../../../../../../controller/service/Auth.service';
+import { ExportService } from '../../../../../../controller/service/Export.service';
 
 @Component({
   selector: 'app-discipline-scientifique-list-chercheur',

@@ -1,19 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {DisciplineScientifiqueErcAssociationService} from '../../../../../controller/service/DisciplineScientifiqueErcAssociation.service';
-import {DisciplineScientifiqueErcAssociationVo} from '../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {DisciplineScientifiqueErcAssociationService} from '../../../../../../controller/service/DisciplineScientifiqueErcAssociation.service';
+import {DisciplineScientifiqueErcAssociationVo} from '../../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
 
-import {DisciplineScientifiqueVo} from '../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueService} from '../../../../../controller/service/DisciplineScientifique.service';
-import {SemanticRelationshipVo} from '../../../../../controller/model/SemanticRelationship.model';
-import {SemanticRelationshipService} from '../../../../../controller/service/SemanticRelationship.service';
-import {DisciplineScientifiqueErcVo} from '../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../controller/service/DisciplineScientifiqueErc.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
+import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
+import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 
 @Component({
   selector: 'app-discipline-scientifique-erc-association-view-admin',

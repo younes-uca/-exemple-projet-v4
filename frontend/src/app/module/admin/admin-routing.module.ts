@@ -38,25 +38,25 @@ import { RegisterAdminComponent } from './register-admin/register-admin.componen
                         {
 
                             path: 'distinction',
-                            loadChildren: './view/distinction/distinction-routing.module#DistinctionAdminRoutingModule',
+                            loadChildren: './view/distinction/distinction-admin-routing.module#DistinctionAdminRoutingModule',
                             canActivate: [AuthGuard],
                         },
                         {
 
                             path: 'referentiel',
-                            loadChildren: './view/referentiel/referentiel-routing.module#ReferentielAdminRoutingModule',
+                            loadChildren: './view/referentiel/referentiel-admin-routing.module#ReferentielAdminRoutingModule',
                             canActivate: [AuthGuard],
                         },
                         {
 
                             path: 'campagne',
-                            loadChildren: './view/campagne/campagne-routing.module#CampagneAdminRoutingModule',
+                            loadChildren: './view/campagne/campagne-admin-routing.module#CampagneAdminRoutingModule',
                             canActivate: [AuthGuard],
                         },
                         {
 
                             path: 'chercheur',
-                            loadChildren: './view/chercheur/chercheur-routing.module#ChercheurAdminRoutingModule',
+                            loadChildren: './view/chercheur/chercheur-admin-routing.module#ChercheurAdminRoutingModule',
                             canActivate: [AuthGuard],
                         },
                     ]

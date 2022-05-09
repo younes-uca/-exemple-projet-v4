@@ -17,24 +17,24 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {BadgeModule} from 'primeng/badge';
 import { MultiSelectModule } from 'primeng/multiselect';
 
-import { EnjeuxIrdChercheurCreateChercheurComponent } from './enjeux-ird-chercheur-chercheur/create-chercheur/enjeux-ird-chercheur-create-chercheur.component';
-import { EnjeuxIrdChercheurEditChercheurComponent } from './enjeux-ird-chercheur-chercheur/edit-chercheur/enjeux-ird-chercheur-edit-chercheur.component';
-import { EnjeuxIrdChercheurViewChercheurComponent } from './enjeux-ird-chercheur-chercheur-chercheur/enjeux-ird-chercheur-view-chercheur.component';
-import { EnjeuxIrdChercheurListChercheurComponent } from './enjeux-ird-chercheur-chercheur/list-chercheur/enjeux-ird-chercheur-list-chercheur.component';
-import { EnjeuxIrdChercheurChercheurComponent } from './enjeux-ird-chercheur-chercheur/enjeux-ird-chercheur-chercheur.component';
-import { ChercheurCreateChercheurComponent } from './chercheur-chercheur/create-chercheur/chercheur-create-chercheur.component';
-import { ChercheurEditChercheurComponent } from './chercheur-chercheur/edit-chercheur/chercheur-edit-chercheur.component';
-import { ChercheurViewChercheurComponent } from './chercheur-chercheur-chercheur/chercheur-view-chercheur.component';
-import { ChercheurListChercheurComponent } from './chercheur-chercheur/list-chercheur/chercheur-list-chercheur.component';
-import { ChercheurChercheurComponent } from './chercheur-chercheur/chercheur-chercheur.component';
 import { IdentifiantAuteurExpertCreateChercheurComponent } from './identifiant-auteur-expert-chercheur/create-chercheur/identifiant-auteur-expert-create-chercheur.component';
 import { IdentifiantAuteurExpertEditChercheurComponent } from './identifiant-auteur-expert-chercheur/edit-chercheur/identifiant-auteur-expert-edit-chercheur.component';
-import { IdentifiantAuteurExpertViewChercheurComponent } from './identifiant-auteur-expert-chercheur-chercheur/identifiant-auteur-expert-view-chercheur.component';
+import { IdentifiantAuteurExpertViewChercheurComponent } from './identifiant-auteur-expert-chercheur/view-chercheur/identifiant-auteur-expert-view-chercheur.component';
 import { IdentifiantAuteurExpertListChercheurComponent } from './identifiant-auteur-expert-chercheur/list-chercheur/identifiant-auteur-expert-list-chercheur.component';
 import { IdentifiantAuteurExpertChercheurComponent } from './identifiant-auteur-expert-chercheur/identifiant-auteur-expert-chercheur.component';
+import { ChercheurCreateChercheurComponent } from './chercheur-chercheur/create-chercheur/chercheur-create-chercheur.component';
+import { ChercheurEditChercheurComponent } from './chercheur-chercheur/edit-chercheur/chercheur-edit-chercheur.component';
+import { ChercheurViewChercheurComponent } from './chercheur-chercheur/view-chercheur/chercheur-view-chercheur.component';
+import { ChercheurListChercheurComponent } from './chercheur-chercheur/list-chercheur/chercheur-list-chercheur.component';
+import { ChercheurChercheurComponent } from './chercheur-chercheur/chercheur-chercheur.component';
+import { EnjeuxIrdChercheurCreateChercheurComponent } from './enjeux-ird-chercheur-chercheur/create-chercheur/enjeux-ird-chercheur-create-chercheur.component';
+import { EnjeuxIrdChercheurEditChercheurComponent } from './enjeux-ird-chercheur-chercheur/edit-chercheur/enjeux-ird-chercheur-edit-chercheur.component';
+import { EnjeuxIrdChercheurViewChercheurComponent } from './enjeux-ird-chercheur-chercheur/view-chercheur/enjeux-ird-chercheur-view-chercheur.component';
+import { EnjeuxIrdChercheurListChercheurComponent } from './enjeux-ird-chercheur-chercheur/list-chercheur/enjeux-ird-chercheur-list-chercheur.component';
+import { EnjeuxIrdChercheurChercheurComponent } from './enjeux-ird-chercheur-chercheur/enjeux-ird-chercheur-chercheur.component';
 import { DisciplineScientifiqueChercheurCreateChercheurComponent } from './discipline-scientifique-chercheur-chercheur/create-chercheur/discipline-scientifique-chercheur-create-chercheur.component';
 import { DisciplineScientifiqueChercheurEditChercheurComponent } from './discipline-scientifique-chercheur-chercheur/edit-chercheur/discipline-scientifique-chercheur-edit-chercheur.component';
-import { DisciplineScientifiqueChercheurViewChercheurComponent } from './discipline-scientifique-chercheur-chercheur-chercheur/discipline-scientifique-chercheur-view-chercheur.component';
+import { DisciplineScientifiqueChercheurViewChercheurComponent } from './discipline-scientifique-chercheur-chercheur/view-chercheur/discipline-scientifique-chercheur-view-chercheur.component';
 import { DisciplineScientifiqueChercheurListChercheurComponent } from './discipline-scientifique-chercheur-chercheur/list-chercheur/discipline-scientifique-chercheur-list-chercheur.component';
 import { DisciplineScientifiqueChercheurChercheurComponent } from './discipline-scientifique-chercheur-chercheur/discipline-scientifique-chercheur-chercheur.component';
 
@@ -52,21 +52,21 @@ import {MessagesModule} from 'primeng/messages';
 @NgModule({
   declarations: [
 
-    EnjeuxIrdChercheurCreateChercheurComponent,
-    EnjeuxIrdChercheurListChercheurComponent,
-    EnjeuxIrdChercheurViewChercheurComponent,
-    EnjeuxIrdChercheurEditChercheurComponent,
-    EnjeuxIrdChercheurChercheurComponent,
-    ChercheurCreateChercheurComponent,
-    ChercheurListChercheurComponent,
-    ChercheurViewChercheurComponent,
-    ChercheurEditChercheurComponent,
-    ChercheurChercheurComponent,
     IdentifiantAuteurExpertCreateChercheurComponent,
     IdentifiantAuteurExpertListChercheurComponent,
     IdentifiantAuteurExpertViewChercheurComponent,
     IdentifiantAuteurExpertEditChercheurComponent,
     IdentifiantAuteurExpertChercheurComponent,
+    ChercheurCreateChercheurComponent,
+    ChercheurListChercheurComponent,
+    ChercheurViewChercheurComponent,
+    ChercheurEditChercheurComponent,
+    ChercheurChercheurComponent,
+    EnjeuxIrdChercheurCreateChercheurComponent,
+    EnjeuxIrdChercheurListChercheurComponent,
+    EnjeuxIrdChercheurViewChercheurComponent,
+    EnjeuxIrdChercheurEditChercheurComponent,
+    EnjeuxIrdChercheurChercheurComponent,
     DisciplineScientifiqueChercheurCreateChercheurComponent,
     DisciplineScientifiqueChercheurListChercheurComponent,
     DisciplineScientifiqueChercheurViewChercheurComponent,
@@ -101,21 +101,21 @@ import {MessagesModule} from 'primeng/messages';
     MultiSelectModule
   ],
   exports: [
-  EnjeuxIrdChercheurCreateChercheurComponent,
-  EnjeuxIrdChercheurListChercheurComponent,
-  EnjeuxIrdChercheurViewChercheurComponent,
-  EnjeuxIrdChercheurEditChercheurComponent,
-  EnjeuxIrdChercheurChercheurComponent,
-  ChercheurCreateChercheurComponent,
-  ChercheurListChercheurComponent,
-  ChercheurViewChercheurComponent,
-  ChercheurEditChercheurComponent,
-  ChercheurChercheurComponent,
   IdentifiantAuteurExpertCreateChercheurComponent,
   IdentifiantAuteurExpertListChercheurComponent,
   IdentifiantAuteurExpertViewChercheurComponent,
   IdentifiantAuteurExpertEditChercheurComponent,
   IdentifiantAuteurExpertChercheurComponent,
+  ChercheurCreateChercheurComponent,
+  ChercheurListChercheurComponent,
+  ChercheurViewChercheurComponent,
+  ChercheurEditChercheurComponent,
+  ChercheurChercheurComponent,
+  EnjeuxIrdChercheurCreateChercheurComponent,
+  EnjeuxIrdChercheurListChercheurComponent,
+  EnjeuxIrdChercheurViewChercheurComponent,
+  EnjeuxIrdChercheurEditChercheurComponent,
+  EnjeuxIrdChercheurChercheurComponent,
   DisciplineScientifiqueChercheurCreateChercheurComponent,
   DisciplineScientifiqueChercheurListChercheurComponent,
   DisciplineScientifiqueChercheurViewChercheurComponent,

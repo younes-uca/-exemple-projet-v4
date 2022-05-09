@@ -1,19 +1,19 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {KeyWordDisciplineScientifiqueErcService} from '../../../../../controller/service/KeyWordDisciplineScientifiqueErc.service';
-import {KeyWordDisciplineScientifiqueErcVo} from '../../../../../controller/model/KeyWordDisciplineScientifiqueErc.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {KeyWordDisciplineScientifiqueErcService} from '../../../../../../controller/service/KeyWordDisciplineScientifiqueErc.service';
+import {KeyWordDisciplineScientifiqueErcVo} from '../../../../../../controller/model/KeyWordDisciplineScientifiqueErc.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {StringUtilService} from '../../../../../controller/service/StringUtil.service';
+import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {KeyWordVo} from '../../../../../controller/model/KeyWord.model';
-import {KeyWordService} from '../../../../../controller/service/KeyWord.service';
-import {DisciplineScientifiqueVo} from '../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueService} from '../../../../../controller/service/DisciplineScientifique.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {KeyWordVo} from '../../../../../../controller/model/KeyWord.model';
+import {KeyWordService} from '../../../../../../controller/service/KeyWord.service';
 @Component({
   selector: 'app-key-word-discipline-scientifique-erc-create-admin',
   templateUrl: './key-word-discipline-scientifique-erc-create-admin.component.html',
@@ -40,8 +40,8 @@ constructor(private datePipe: DatePipe, private keyWordDisciplineScientifiqueErc
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private keyWordService :KeyWordService
 ,       private disciplineScientifiqueService :DisciplineScientifiqueService
+,       private keyWordService :KeyWordService
 ) {
 
 }
