@@ -30,7 +30,7 @@ export class DisciplineScientifiqueService {
      private _viewDisciplineScientifiqueDialog: boolean;
      public editDisciplineScientifique$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchDisciplineScientifique:DisciplineScientifiqueVo ;
+     private _searchDisciplineScientifique: DisciplineScientifiqueVo ;
 
     // methods
     public archiver(disciplineScientifique: DisciplineScientifiqueVo): Observable<DisciplineScientifiqueVo> {

@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import com.ird.faa.service.admin.facade.SemanticRelationshipAdminService;
 import com.ird.faa.ws.rest.provided.vo.SemanticRelationshipVo;
 import com.ird.faa.service.util.*;
 
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -23,6 +24,8 @@ public class SemanticRelationshipAdminServiceImpl extends AbstractServiceImpl<Se
 @Autowired
 private SemanticRelationshipDao semanticRelationshipDao;
 
+    @Autowired
+    private ArchivableService<SemanticRelationship> archivableService;
 
 
 @Autowired
@@ -48,14 +51,14 @@ public List<SemanticRelationship> findAll(){
     }
     @Override
     public SemanticRelationship findByIdOrCode(SemanticRelationship semanticRelationship){
-        SemanticRelationship resultat=null;
-        if(semanticRelationship != null){
-            if(StringUtil.isNotEmpty(semanticRelationship.getId())){
-            resultat= semanticRelationshipDao.getOne(semanticRelationship.getId());
-            }else if(StringUtil.isNotEmpty(semanticRelationship.getCode())) {
-            resultat= semanticRelationshipDao.findByCode(semanticRelationship.getCode());
-            }
-        }
+    SemanticRelationship resultat=null;
+    if(semanticRelationship != null){
+    if(StringUtil.isNotEmpty(semanticRelationship.getId())){
+    resultat= semanticRelationshipDao.getOne(semanticRelationship.getId());
+    }else if(StringUtil.isNotEmpty(semanticRelationship.getCode())) {
+    resultat= semanticRelationshipDao.findByCode(semanticRelationship.getCode());
+    }
+    }
     return resultat;
     }
 
@@ -67,8 +70,32 @@ return semanticRelationshipDao.getOne(id);
 
 @Override
 public SemanticRelationship findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+    @Override
+    public SemanticRelationship archiver(SemanticRelationship semanticRelationship) {
+    if (semanticRelationship.getArchive() == null) {
+    semanticRelationship.setArchive(false);
+    }
+    semanticRelationship.setArchive(true);
+    semanticRelationship.setDateArchivage(new Date());
+    semanticRelationshipDao.save(semanticRelationship);
+    return semanticRelationship;
+
+    }
+
+    @Override
+    public SemanticRelationship desarchiver(SemanticRelationship semanticRelationship) {
+    if (semanticRelationship.getArchive() == null) {
+    semanticRelationship.setArchive(false);
+    }
+    semanticRelationship.setArchive(false);
+    semanticRelationship.setDateArchivage(null);
+    semanticRelationshipDao.save(semanticRelationship);
+    return semanticRelationship;
+    }
+
+
 
 
 @Transactional
@@ -87,25 +114,40 @@ public SemanticRelationship update(SemanticRelationship semanticRelationship){
 SemanticRelationship foundedSemanticRelationship = findById(semanticRelationship.getId());
 if(foundedSemanticRelationship==null) return null;
 else{
+    archivableService.prepare(semanticRelationship);
 return  semanticRelationshipDao.save(semanticRelationship);
 }
 }
+    private void prepareSave(SemanticRelationship semanticRelationship){
+        semanticRelationship.setDateCreation(new Date());
+                    if(semanticRelationship.getArchive() == null)
+                semanticRelationship.setArchive(false);
+                    if(semanticRelationship.getAdmin() == null)
+                semanticRelationship.setAdmin(false);
+                    if(semanticRelationship.getVisible() == null)
+                semanticRelationship.setVisible(false);
+
+
+
+    }
 
 @Override
 public SemanticRelationship save (SemanticRelationship semanticRelationship){
+    prepareSave(semanticRelationship);
 
-SemanticRelationship result =null;
+    SemanticRelationship result =null;
     SemanticRelationship foundedSemanticRelationship = findByCode(semanticRelationship.getCode());
-   if(foundedSemanticRelationship == null){
+    if(foundedSemanticRelationship == null){
 
 
 
-SemanticRelationship savedSemanticRelationship = semanticRelationshipDao.save(semanticRelationship);
 
-result = savedSemanticRelationship;
-   }
+    SemanticRelationship savedSemanticRelationship = semanticRelationshipDao.save(semanticRelationship);
 
-return result;
+    result = savedSemanticRelationship;
+    }
+
+    return result;
 }
 
 @Override
@@ -139,8 +181,16 @@ String query = "SELECT o FROM SemanticRelationship o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "libelle","LIKE",semanticRelationshipVo.getLibelle());
             query += SearchUtil.addConstraint( "o", "code","LIKE",semanticRelationshipVo.getCode());
             query += SearchUtil.addConstraint( "o", "niveauExactitude","=",semanticRelationshipVo.getNiveauExactitude());
+            query += SearchUtil.addConstraint( "o", "archive","=",semanticRelationshipVo.getArchive());
+        query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",semanticRelationshipVo.getDateArchivage());
+        query += SearchUtil.addConstraintDate( "o", "dateCreation","=",semanticRelationshipVo.getDateCreation());
+            query += SearchUtil.addConstraint( "o", "admin","=",semanticRelationshipVo.getAdmin());
+            query += SearchUtil.addConstraint( "o", "visible","=",semanticRelationshipVo.getVisible());
+            query += SearchUtil.addConstraint( "o", "username","LIKE",semanticRelationshipVo.getUsername());
             query += SearchUtil.addConstraintMinMax("o","niveauExactitude",semanticRelationshipVo.getNiveauExactitudeMin(),semanticRelationshipVo.getNiveauExactitudeMax());
-query+= " ORDER BY o.niveauExactitude";
+            query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",semanticRelationshipVo.getDateArchivageMin(),semanticRelationshipVo.getDateArchivageMax());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",semanticRelationshipVo.getDateCreationMin(),semanticRelationshipVo.getDateCreationMax());
+    query+= " ORDER BY o.niveauExactitude";
 return entityManager.createQuery(query).getResultList();
 }
 
@@ -148,9 +198,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<SemanticRelationship> semanticRelationships){
-        if(ListUtil.isNotEmpty(semanticRelationships)){
-        semanticRelationships.forEach(e->semanticRelationshipDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(semanticRelationships)){
+semanticRelationships.forEach(e->semanticRelationshipDao.delete(e));
+}
 }
 @Override
 public void update(List<SemanticRelationship> semanticRelationships){
@@ -161,4 +211,6 @@ semanticRelationships.forEach(e->semanticRelationshipDao.save(e));
 
 
 
-}
+
+
+    }

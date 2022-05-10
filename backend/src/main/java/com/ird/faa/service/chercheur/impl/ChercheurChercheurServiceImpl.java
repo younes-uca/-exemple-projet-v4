@@ -8,19 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.Chercheur;
-import com.ird.faa.bean.EnjeuxIrdChercheur;
-import com.ird.faa.bean.IdentifiantAuteurExpert;
+        import com.ird.faa.bean.EnjeuxIrdChercheur;
+        import com.ird.faa.bean.IdentifiantAuteurExpert;
 import com.ird.faa.dao.ChercheurDao;
 import com.ird.faa.service.chercheur.facade.ChercheurChercheurService;
-import com.ird.faa.service.chercheur.facade.IdentifiantAuteurExpertChercheurService;
-import com.ird.faa.service.chercheur.facade.EnjeuxIrdChercheurChercheurService;
+        import com.ird.faa.service.chercheur.facade.IdentifiantAuteurExpertChercheurService;
+        import com.ird.faa.service.chercheur.facade.EnjeuxIrdChercheurChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.ChercheurVo;
 import com.ird.faa.service.util.*;
-import com.ird.faa.bean.EnjeuxIrdChercheur;
-import com.ird.faa.service.chercheur.facade.EnjeuxIrdChercheurChercheurService;
-import com.ird.faa.bean.IdentifiantAuteurExpert;
-import com.ird.faa.service.chercheur.facade.IdentifiantAuteurExpertChercheurService;
+        import com.ird.faa.bean.EnjeuxIrdChercheur;
+        import com.ird.faa.service.chercheur.facade.EnjeuxIrdChercheurChercheurService;
+        import com.ird.faa.bean.IdentifiantAuteurExpert;
+        import com.ird.faa.service.chercheur.facade.IdentifiantAuteurExpertChercheurService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
@@ -40,7 +40,7 @@ private ChercheurDao chercheurDao;
 private EntityManager entityManager;
 
     @Override
-   public Chercheur findByUsername(String username){
+    public Chercheur findByUsername(String username){
     return chercheurDao.findByUsername(username);
     }
 
@@ -61,16 +61,16 @@ public List<Chercheur> findAll(){
     }
     @Override
     public Chercheur findByIdOrNumeroMatricule(Chercheur chercheur){
-        Chercheur resultat=null;
-        if(chercheur != null){
-            if(StringUtil.isNotEmpty(chercheur.getId())){
-            resultat= chercheurDao.getOne(chercheur.getId());
-            }else if(StringUtil.isNotEmpty(chercheur.getNumeroMatricule())) {
-            resultat= chercheurDao.findByNumeroMatricule(chercheur.getNumeroMatricule());
-            }else if(StringUtil.isNotEmpty(chercheur.getUsername())) {
-            resultat = chercheurDao.findByUsername(chercheur.getUsername());
-            }
-        }
+    Chercheur resultat=null;
+    if(chercheur != null){
+    if(StringUtil.isNotEmpty(chercheur.getId())){
+    resultat= chercheurDao.getOne(chercheur.getId());
+    }else if(StringUtil.isNotEmpty(chercheur.getNumeroMatricule())) {
+    resultat= chercheurDao.findByNumeroMatricule(chercheur.getNumeroMatricule());
+    }else if(StringUtil.isNotEmpty(chercheur.getUsername())) {
+    resultat = chercheurDao.findByUsername(chercheur.getUsername());
+    }
+    }
     return resultat;
     }
 
@@ -82,33 +82,36 @@ return chercheurDao.getOne(id);
 
 @Override
 public Chercheur findByIdWithAssociatedList(Long id){
-Chercheur chercheur  = findById(id);
-findAssociatedLists(chercheur);
-return chercheur;
+    Chercheur chercheur  = findById(id);
+    findAssociatedLists(chercheur);
+    return chercheur;
 }
-private void findAssociatedLists(Chercheur chercheur){
-if(chercheur!=null && chercheur.getId() != null) {
-        List<EnjeuxIrdChercheur> enjeuxIrdChercheurs = enjeuxIrdChercheurService.findByChercheurId(chercheur.getId());
-        chercheur.setEnjeuxIrdChercheurs(enjeuxIrdChercheurs);
-        List<IdentifiantAuteurExpert> identifiantAuteurExperts = identifiantAuteurExpertService.findByChercheurId(chercheur.getId());
-        chercheur.setIdentifiantAuteurExperts(identifiantAuteurExperts);
-}
-}
-private void deleteAssociatedLists(Long id){
-if(id != null ) {
-        enjeuxIrdChercheurService.deleteByChercheurId(id);
-        identifiantAuteurExpertService.deleteByChercheurId(id);
-}
-}
+
+    private void findAssociatedLists(Chercheur chercheur){
+    if(chercheur!=null && chercheur.getId() != null) {
+            List<EnjeuxIrdChercheur> enjeuxIrdChercheurs = enjeuxIrdChercheurService.findByChercheurId(chercheur.getId());
+            chercheur.setEnjeuxIrdChercheurs(enjeuxIrdChercheurs);
+            List<IdentifiantAuteurExpert> identifiantAuteurExperts = identifiantAuteurExpertService.findByChercheurId(chercheur.getId());
+            chercheur.setIdentifiantAuteurExperts(identifiantAuteurExperts);
+    }
+    }
+    private void deleteAssociatedLists(Long id){
+    if(id != null ) {
+            enjeuxIrdChercheurService.deleteByChercheurId(id);
+            identifiantAuteurExpertService.deleteByChercheurId(id);
+    }
+    }
 
     private void updateAssociatedLists(Chercheur chercheur){
     if(chercheur !=null && chercheur.getId() != null){
-            List<List<EnjeuxIrdChercheur>> resultEnjeuxIrdChercheurs= enjeuxIrdChercheurService.getToBeSavedAndToBeDeleted(enjeuxIrdChercheurService.findByChercheurId(chercheur.getId()),chercheur.getEnjeuxIrdChercheurs());
+            List
+            <List<EnjeuxIrdChercheur>> resultEnjeuxIrdChercheurs= enjeuxIrdChercheurService.getToBeSavedAndToBeDeleted(enjeuxIrdChercheurService.findByChercheurId(chercheur.getId()),chercheur.getEnjeuxIrdChercheurs());
             enjeuxIrdChercheurService.delete(resultEnjeuxIrdChercheurs.get(1));
             associateEnjeuxIrdChercheur(chercheur,resultEnjeuxIrdChercheurs.get(0));
             enjeuxIrdChercheurService.update(resultEnjeuxIrdChercheurs.get(0));
 
-            List<List<IdentifiantAuteurExpert>> resultIdentifiantAuteurExperts= identifiantAuteurExpertService.getToBeSavedAndToBeDeleted(identifiantAuteurExpertService.findByChercheurId(chercheur.getId()),chercheur.getIdentifiantAuteurExperts());
+            List
+            <List<IdentifiantAuteurExpert>> resultIdentifiantAuteurExperts= identifiantAuteurExpertService.getToBeSavedAndToBeDeleted(identifiantAuteurExpertService.findByChercheurId(chercheur.getId()),chercheur.getIdentifiantAuteurExperts());
             identifiantAuteurExpertService.delete(resultIdentifiantAuteurExperts.get(1));
             associateIdentifiantAuteurExpert(chercheur,resultIdentifiantAuteurExperts.get(0));
             identifiantAuteurExpertService.update(resultIdentifiantAuteurExperts.get(0));
@@ -120,7 +123,7 @@ if(id != null ) {
 public int deleteById(Long id){
 int res=0;
 if(chercheurDao.findById(id).isPresent())  {
-deleteAssociatedLists(id);
+    deleteAssociatedLists(id);
 chercheurDao.deleteById(id);
 res = 1;
 }
@@ -137,39 +140,41 @@ else{
 return  chercheurDao.save(chercheur);
 }
 }
-private void prepareSave(Chercheur chercheur){
-if(chercheur.getConsentementRgpd() == null)
-  chercheur.setConsentementRgpd(false);
-if(chercheur.getFormationEnManagement() == null)
-  chercheur.setFormationEnManagement(false);
-  chercheur.setCredentialsNonExpired(false);
-  chercheur.setEnabled(false);
-  chercheur.setAccountNonExpired(false);
-  chercheur.setAccountNonLocked(false);
-  chercheur.setPasswordChanged(false);
+    private void prepareSave(Chercheur chercheur){
+                    if(chercheur.getConsentementRgpd() == null)
+                chercheur.setConsentementRgpd(false);
+                    if(chercheur.getFormationEnManagement() == null)
+                chercheur.setFormationEnManagement(false);
+                chercheur.setCredentialsNonExpired(false);
+                chercheur.setEnabled(false);
+                chercheur.setAccountNonExpired(false);
+                chercheur.setAccountNonLocked(false);
+                chercheur.setPasswordChanged(false);
 
 
 
-}
+    }
 
 @Override
 public Chercheur save (Chercheur chercheur){
-prepareSave(chercheur);
+    prepareSave(chercheur);
 
-Chercheur result =null;
-    Chercheur foundedChercheur = findByNumeroMatricule(chercheur.getNumeroMatricule());
-   if(foundedChercheur == null){
+    Chercheur result =null;
+        Chercheur foundedChercheur = findByNumeroMatricule(chercheur.getNumeroMatricule());
+        Chercheur foundedChercheurByUsername = findByNumeroMatricule(chercheur.getNumeroMatricule());
+        if(foundedChercheur == null && foundedChercheurByUsername == null){
 
 
 
-Chercheur savedChercheur = chercheurDao.save(chercheur);
 
-       saveEnjeuxIrdChercheurs(savedChercheur,chercheur.getEnjeuxIrdChercheurs());
-       saveIdentifiantAuteurExperts(savedChercheur,chercheur.getIdentifiantAuteurExperts());
-result = savedChercheur;
-   }
+    Chercheur savedChercheur = chercheurDao.save(chercheur);
 
-return result;
+        saveEnjeuxIrdChercheurs(savedChercheur,chercheur.getEnjeuxIrdChercheurs());
+        saveIdentifiantAuteurExperts(savedChercheur,chercheur.getIdentifiantAuteurExperts());
+    result = savedChercheur;
+    }
+
+    return result;
 }
 
 @Override
@@ -262,9 +267,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<Chercheur> chercheurs){
-        if(ListUtil.isNotEmpty(chercheurs)){
-        chercheurs.forEach(e->chercheurDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(chercheurs)){
+chercheurs.forEach(e->chercheurDao.delete(e));
+}
 }
 @Override
 public void update(List<Chercheur> chercheurs){
@@ -273,16 +278,18 @@ chercheurs.forEach(e->chercheurDao.save(e));
 }
 }
 
-private void associateEnjeuxIrdChercheur(Chercheur chercheur, List<EnjeuxIrdChercheur> enjeuxIrdChercheur) {
-    if (ListUtil.isNotEmpty(enjeuxIrdChercheur)) {
+        private void associateEnjeuxIrdChercheur(Chercheur chercheur, List<EnjeuxIrdChercheur> enjeuxIrdChercheur) {
+        if (ListUtil.isNotEmpty(enjeuxIrdChercheur)) {
         enjeuxIrdChercheur.forEach(e -> e.setChercheur(chercheur));
-    }
-    }
-private void associateIdentifiantAuteurExpert(Chercheur chercheur, List<IdentifiantAuteurExpert> identifiantAuteurExpert) {
-    if (ListUtil.isNotEmpty(identifiantAuteurExpert)) {
+        }
+        }
+        private void associateIdentifiantAuteurExpert(Chercheur chercheur, List<IdentifiantAuteurExpert> identifiantAuteurExpert) {
+        if (ListUtil.isNotEmpty(identifiantAuteurExpert)) {
         identifiantAuteurExpert.forEach(e -> e.setChercheur(chercheur));
-    }
-    }
+        }
+        }
 
 
-}
+
+
+    }

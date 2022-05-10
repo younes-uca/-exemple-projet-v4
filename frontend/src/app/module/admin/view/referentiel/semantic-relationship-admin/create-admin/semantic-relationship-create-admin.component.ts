@@ -105,6 +105,12 @@ private validateSemanticRelationshipCode(){
 
 
 
+
+
+
+
+
+
 //openPopup
 // methods
 
@@ -122,7 +128,7 @@ set semanticRelationships(value: Array<SemanticRelationshipVo>) {
         this.semanticRelationshipService.semanticRelationships = value;
        }
 
- get selectedSemanticRelationship():SemanticRelationshipVo {
+ get selectedSemanticRelationship(): SemanticRelationshipVo {
            return this.semanticRelationshipService.selectedSemanticRelationship;
        }
     set selectedSemanticRelationship(value: SemanticRelationshipVo) {

@@ -116,6 +116,12 @@ private validateKeyWordCode(){
 
 
 
+
+
+
+
+
+
 //openPopup
 // methods
 
@@ -133,7 +139,7 @@ set keyWords(value: Array<KeyWordVo>) {
         this.keyWordService.keyWords = value;
        }
 
- get selectedKeyWord():KeyWordVo {
+ get selectedKeyWord(): KeyWordVo {
            return this.keyWordService.selectedKeyWord;
        }
     set selectedKeyWord(value: KeyWordVo) {

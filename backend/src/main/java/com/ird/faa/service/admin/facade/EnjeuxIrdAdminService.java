@@ -8,6 +8,7 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface EnjeuxIrdAdminService extends AbstractService<EnjeuxIrd,Long,EnjeuxIrdVo>{
 
 
+
     /**
     * find EnjeuxIrd from database by code (reference)
     * @param code - reference of EnjeuxIrd

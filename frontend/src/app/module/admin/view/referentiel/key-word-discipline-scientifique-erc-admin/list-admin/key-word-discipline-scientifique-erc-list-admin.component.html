@@ -37,6 +37,63 @@
                                         optionLabel="libelleEng">
                                 </p-dropdown>
                             </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="3" [options]="yesOrNoArchive" [(ngModel)]="searchKeyWordDisciplineScientifiqueErc.archive"
+                                            [filter]="false" [showClear]="true"  placeholder="Archive"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchKeyWordDisciplineScientifiqueErc.dateArchivageMin"
+                                    id="4-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="4-1">Date archivage Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchKeyWordDisciplineScientifiqueErc.dateArchivageMax"
+                                    id="4-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="4-2">Date archivage Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchKeyWordDisciplineScientifiqueErc.dateCreationMin"
+                                    id="5-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="5-1">Date creation Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchKeyWordDisciplineScientifiqueErc.dateCreationMax"
+                                    id="5-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="5-2">Date creation Max</label>
+                        </span>
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="6" [options]="yesOrNoAdmin" [(ngModel)]="searchKeyWordDisciplineScientifiqueErc.admin"
+                                            [filter]="false" [showClear]="true"  placeholder="Admin"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="7" [options]="yesOrNoVisible" [(ngModel)]="searchKeyWordDisciplineScientifiqueErc.visible"
+                                            [filter]="false" [showClear]="true"  placeholder="Visible"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="8"
+                                           type="text"  [(ngModel)]="searchKeyWordDisciplineScientifiqueErc.username">
+                                    <label for="8">Username</label>
+                                </span>
                 </div>
 
                 <div class="align-search-button">
@@ -47,7 +104,7 @@
 
 
             <p-table #dt [value]="keyWordDisciplineScientifiqueErcs" [columns]="cols" [rows]="4" [paginator]="true"
-                    [globalFilterFields]="['libelleEng', 'libelleEng']" [(selection)]="selectedKeyWordDisciplineScientifiqueErc"
+                    [globalFilterFields]="['libelleEng', 'libelleEng', 'archive', 'dateArchivage', 'dateCreation', 'admin', 'visible', 'username']" [(selection)]="selectedKeyWordDisciplineScientifiqueErc"
                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
                                       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [showCurrentPageReport]="true">
@@ -86,6 +143,66 @@
                                 
 
 
+                                
+                                <th pSortableColumn="archive">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Archive</span>
+                                        <p-sortIcon field="archive"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateArchivage">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date archivage</span>
+                                        <p-sortIcon field="dateArchivage"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateCreation">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date creation</span>
+                                        <p-sortIcon field="dateCreation"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="admin">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Admin</span>
+                                        <p-sortIcon field="admin"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="visible">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Visible</span>
+                                        <p-sortIcon field="visible"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="username">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Username</span>
+                                        <p-sortIcon field="username"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
                         <th>Actions</th>
                     </tr>
                 </ng-template>
@@ -102,6 +219,36 @@
                                 <td>{{keyWordDisciplineScientifiqueErc.disciplineScientifiqueVo?.libelleEng}}</td>
                             
 
+                            
+                                <td><i *ngIf="keyWordDisciplineScientifiqueErc.archive" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!keyWordDisciplineScientifiqueErc.archive" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td>{{keyWordDisciplineScientifiqueErc.dateArchivage | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td>{{keyWordDisciplineScientifiqueErc.dateCreation | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td><i *ngIf="keyWordDisciplineScientifiqueErc.admin" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!keyWordDisciplineScientifiqueErc.admin" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="keyWordDisciplineScientifiqueErc.visible" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!keyWordDisciplineScientifiqueErc.visible" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                 <td>{{keyWordDisciplineScientifiqueErc.username}}</td>
+                            
+
 
                         <td>
                             <button pButton pRipple icon="pi pi-pencil"
@@ -109,8 +256,11 @@
                                     (click)="editKeyWordDisciplineScientifiqueErc(keyWordDisciplineScientifiqueErc)"></button>
                             <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
                                     (click)="viewKeyWordDisciplineScientifiqueErc(keyWordDisciplineScientifiqueErc)"></button>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
-                                    (click)="deleteKeyWordDisciplineScientifiqueErc(keyWordDisciplineScientifiqueErc)"></button>
+                            <button *ngIf="!keyWordDisciplineScientifiqueErc.archive" pButton pRipple icon="pi pi-calendar-minus" class="p-button-rounded p-button-help p-mr-2"
+                                    (click)="archiverKeyWordDisciplineScientifiqueErc(keyWordDisciplineScientifiqueErc)"></button>
+
+                            <button *ngIf="keyWordDisciplineScientifiqueErc.archive" pButton pRipple icon="pi pi-calendar-plus" class="p-button-rounded p-button-secondary p-mr-2"
+                                    (click)="desarchiverKeyWordDisciplineScientifiqueErc(keyWordDisciplineScientifiqueErc)"></button>
 
                             <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
                                     (click)="duplicateKeyWordDisciplineScientifiqueErc(keyWordDisciplineScientifiqueErc)"></button>

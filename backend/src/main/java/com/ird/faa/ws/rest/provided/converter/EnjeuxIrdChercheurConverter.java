@@ -30,6 +30,18 @@ return null;
 EnjeuxIrdChercheur item = new EnjeuxIrdChercheur();
         if(StringUtil.isNotEmpty(vo.getId()))
         item.setId(NumberUtil.toLong(vo.getId()));
+            if(vo.getArchive() != null)
+            item.setArchive(vo.getArchive());
+        if(StringUtil.isNotEmpty(vo.getDateArchivage()))
+        item.setDateArchivage(DateUtil.parse(vo.getDateArchivage()));
+        if(StringUtil.isNotEmpty(vo.getDateCreation()))
+        item.setDateCreation(DateUtil.parse(vo.getDateCreation()));
+            if(vo.getAdmin() != null)
+            item.setAdmin(vo.getAdmin());
+            if(vo.getVisible() != null)
+            item.setVisible(vo.getVisible());
+        if(StringUtil.isNotEmpty(vo.getUsername()))
+        item.setUsername(vo.getUsername());
     if(vo.getEnjeuxIrdVo()!=null && this.enjeuxIrd)
         item.setEnjeuxIrd(enjeuxIrdConverter.toItem(vo.getEnjeuxIrdVo())) ;
     if(vo.getChercheurVo()!=null && this.chercheur)
@@ -48,6 +60,19 @@ return null;
 EnjeuxIrdChercheurVo vo = new EnjeuxIrdChercheurVo();
         if(item.getId()!=null)
         vo.setId(NumberUtil.toString(item.getId()));
+
+        if(item.getArchive()!=null)
+        vo.setArchive(item.getArchive());
+        if(item.getDateArchivage()!=null)
+        vo.setDateArchivage(DateUtil.formateDate(item.getDateArchivage()));
+        if(item.getDateCreation()!=null)
+        vo.setDateCreation(DateUtil.formateDate(item.getDateCreation()));
+        if(item.getAdmin()!=null)
+        vo.setAdmin(item.getAdmin());
+        if(item.getVisible()!=null)
+        vo.setVisible(item.getVisible());
+        if(StringUtil.isNotEmpty(item.getUsername()))
+        vo.setUsername(item.getUsername());
 
     if(item.getEnjeuxIrd()!=null && this.enjeuxIrd) {
         vo.setEnjeuxIrdVo(enjeuxIrdConverter.toVo(item.getEnjeuxIrd())) ;
@@ -91,6 +116,18 @@ public void init(Boolean value) {
     public void  setChercheur(boolean chercheur){
     this.chercheur = chercheur;
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

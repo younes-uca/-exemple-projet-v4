@@ -28,7 +28,7 @@ export class CampagneService {
      private _viewCampagneDialog: boolean;
      public editCampagne$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchCampagne:CampagneVo ;
+     private _searchCampagne: CampagneVo ;
 
     // methods
 	public findProgressCampagneByChercheurUsername(username: string): Observable<CampagneVo> {

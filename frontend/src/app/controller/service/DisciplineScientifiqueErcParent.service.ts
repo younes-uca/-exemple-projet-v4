@@ -28,7 +28,7 @@ export class DisciplineScientifiqueErcParentService {
      private _viewDisciplineScientifiqueErcParentDialog: boolean;
      public editDisciplineScientifiqueErcParent$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchDisciplineScientifiqueErcParent:DisciplineScientifiqueErcParentVo ;
+     private _searchDisciplineScientifiqueErcParent: DisciplineScientifiqueErcParentVo ;
 
     // methods
     public archiver(disciplineScientifiqueErcParent: DisciplineScientifiqueErcParentVo): Observable<DisciplineScientifiqueErcParentVo> {

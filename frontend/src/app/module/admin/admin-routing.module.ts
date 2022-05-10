@@ -37,26 +37,14 @@ import { RegisterAdminComponent } from './register-admin/register-admin.componen
                         },
                         {
 
-                            path: 'distinction',
-                            loadChildren: './view/distinction/distinction-admin-routing.module#DistinctionAdminRoutingModule',
-                            canActivate: [AuthGuard],
-                        },
-                        {
-
                             path: 'referentiel',
                             loadChildren: './view/referentiel/referentiel-admin-routing.module#ReferentielAdminRoutingModule',
                             canActivate: [AuthGuard],
                         },
                         {
 
-                            path: 'campagne',
-                            loadChildren: './view/campagne/campagne-admin-routing.module#CampagneAdminRoutingModule',
-                            canActivate: [AuthGuard],
-                        },
-                        {
-
-                            path: 'chercheur',
-                            loadChildren: './view/chercheur/chercheur-admin-routing.module#ChercheurAdminRoutingModule',
+                            path: 'formulaire',
+                            loadChildren: './view/formulaire/formulaire-admin-routing.module#FormulaireAdminRoutingModule',
                             canActivate: [AuthGuard],
                         },
                     ]

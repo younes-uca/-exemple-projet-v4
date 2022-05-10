@@ -28,7 +28,7 @@ export class IdentifiantRechercheService {
      private _viewIdentifiantRechercheDialog: boolean;
      public editIdentifiantRecherche$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchIdentifiantRecherche:IdentifiantRechercheVo ;
+     private _searchIdentifiantRecherche: IdentifiantRechercheVo ;
 
     // methods
     public archiver(identifiantRecherche: IdentifiantRechercheVo): Observable<IdentifiantRechercheVo> {

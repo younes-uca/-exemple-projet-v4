@@ -128,7 +128,7 @@ set enjeuxIrds(value: Array<EnjeuxIrdVo>) {
         this.enjeuxIrdService.enjeuxIrds = value;
        }
 
- get selectedEnjeuxIrd():EnjeuxIrdVo {
+ get selectedEnjeuxIrd(): EnjeuxIrdVo {
            return this.enjeuxIrdService.selectedEnjeuxIrd;
        }
     set selectedEnjeuxIrd(value: EnjeuxIrdVo) {

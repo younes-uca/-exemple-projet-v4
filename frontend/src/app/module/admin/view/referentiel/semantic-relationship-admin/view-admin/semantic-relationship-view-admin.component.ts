@@ -41,14 +41,14 @@ set semanticRelationships(value: Array<SemanticRelationshipVo>) {
         this.semanticRelationshipService.semanticRelationships = value;
        }
 
- get selectedSemanticRelationship():SemanticRelationshipVo {
+ get selectedSemanticRelationship(): SemanticRelationshipVo {
            return this.semanticRelationshipService.selectedSemanticRelationship;
        }
     set selectedSemanticRelationship(value: SemanticRelationshipVo) {
         this.semanticRelationshipService.selectedSemanticRelationship = value;
        }
 
-   get viewSemanticRelationshipDialog():boolean {
+   get viewSemanticRelationshipDialog(): boolean {
            return this.semanticRelationshipService.viewSemanticRelationshipDialog;
 
        }

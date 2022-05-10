@@ -28,7 +28,7 @@ export class EnjeuxIrdService {
      private _viewEnjeuxIrdDialog: boolean;
      public editEnjeuxIrd$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchEnjeuxIrd:EnjeuxIrdVo ;
+     private _searchEnjeuxIrd: EnjeuxIrdVo ;
 
     // methods
     public archiver(enjeuxIrd: EnjeuxIrdVo): Observable<EnjeuxIrdVo> {

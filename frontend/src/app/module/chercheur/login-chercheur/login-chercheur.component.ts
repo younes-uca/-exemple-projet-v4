@@ -25,6 +25,6 @@ export class LoginChercheurComponent implements OnInit {
 
   }
     register(){
-    this.router.navigate(['/Chercheur/register']);
+    this.router.navigate(['/chercheur/register']);
   }
 }

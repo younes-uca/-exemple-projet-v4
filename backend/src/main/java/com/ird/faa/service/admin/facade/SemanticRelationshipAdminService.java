@@ -8,6 +8,7 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface SemanticRelationshipAdminService extends AbstractService<SemanticRelationship,Long,SemanticRelationshipVo>{
 
 
+
     /**
     * find SemanticRelationship from database by code (reference)
     * @param code - reference of SemanticRelationship
@@ -47,5 +48,7 @@ public interface SemanticRelationshipAdminService extends AbstractService<Semant
 
 
 
+    SemanticRelationship archiver(SemanticRelationship semanticRelationship) ;
+    SemanticRelationship desarchiver(SemanticRelationship semanticRelationship);
 
 }

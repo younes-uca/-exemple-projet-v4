@@ -18,14 +18,10 @@ import {PanelModule} from 'primeng/panel';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {BadgeModule} from 'primeng/badge';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { DistinctionAdminModule } from './view/distinction/distinction-admin.module';
-import { DistinctionAdminRoutingModule } from './view/distinction/distinction-admin-routing.module';
 import { ReferentielAdminModule } from './view/referentiel/referentiel-admin.module';
 import { ReferentielAdminRoutingModule } from './view/referentiel/referentiel-admin-routing.module';
-import { CampagneAdminModule } from './view/campagne/campagne-admin.module';
-import { CampagneAdminRoutingModule } from './view/campagne/campagne-admin-routing.module';
-import { ChercheurAdminModule } from './view/chercheur/chercheur-admin.module';
-import { ChercheurAdminRoutingModule } from './view/chercheur/chercheur-admin-routing.module';
+import { FormulaireAdminModule } from './view/formulaire/formulaire-admin.module';
+import { FormulaireAdminRoutingModule } from './view/formulaire/formulaire-admin-routing.module';
 
 
 import { PasswordModule } from 'primeng/password';
@@ -71,23 +67,17 @@ import {SwitchChercheurAdminComponent} from './view/switch_chercheur/switch-cher
     InputNumberModule,
     BadgeModule,
     MultiSelectModule,
-  DistinctionAdminModule,
-  DistinctionAdminRoutingModule,
   ReferentielAdminModule,
   ReferentielAdminRoutingModule,
-  CampagneAdminModule,
-  CampagneAdminRoutingModule,
-  ChercheurAdminModule,
-  ChercheurAdminRoutingModule,
+  FormulaireAdminModule,
+  FormulaireAdminRoutingModule,
   ],
   exports: [
   LoginAdminComponent,
   RegisterAdminComponent,
     SwitchChercheurAdminComponent,
-    DistinctionAdminModule,
     ReferentielAdminModule,
-    CampagneAdminModule,
-    ChercheurAdminModule,
+    FormulaireAdminModule,
   ],
   entryComponents: [],
 })

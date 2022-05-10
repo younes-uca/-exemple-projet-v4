@@ -30,16 +30,22 @@ export class KeyWordDisciplineScientifiqueErcService {
      private _viewKeyWordDisciplineScientifiqueErcDialog: boolean;
      public editKeyWordDisciplineScientifiqueErc$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchKeyWordDisciplineScientifiqueErc:KeyWordDisciplineScientifiqueErcVo ;
+     private _searchKeyWordDisciplineScientifiqueErc: KeyWordDisciplineScientifiqueErcVo ;
 
     // methods
+    public archiver(keyWordDisciplineScientifiqueErc: KeyWordDisciplineScientifiqueErcVo): Observable<KeyWordDisciplineScientifiqueErcVo> {
+        return this.http.put<KeyWordDisciplineScientifiqueErcVo>(this.API + 'archiver/' ,keyWordDisciplineScientifiqueErc);
+    }
+    public desarchiver(keyWordDisciplineScientifiqueErc: KeyWordDisciplineScientifiqueErcVo): Observable<KeyWordDisciplineScientifiqueErcVo> {
+    return this.http.put<KeyWordDisciplineScientifiqueErcVo>(this.API + 'desarchiver/' ,keyWordDisciplineScientifiqueErc);
+    }
 
     public findAll(){
      return this.http.get<Array<KeyWordDisciplineScientifiqueErcVo>>(this.API);
     }
 
     public save(): Observable<KeyWordDisciplineScientifiqueErcVo> {
-         return this.http.post<KeyWordDisciplineScientifiqueErcVo>(this.API, this.selectedKeyWordDisciplineScientifiqueErc);
+           return this.http.post<KeyWordDisciplineScientifiqueErcVo>(this.API, {...this.selectedKeyWordDisciplineScientifiqueErc,dateCreation: moment(this.selectedKeyWordDisciplineScientifiqueErc.dateCreation).format("YYYY-MM-DD")});
     }
 
     delete(keyWordDisciplineScientifiqueErc: KeyWordDisciplineScientifiqueErcVo) {

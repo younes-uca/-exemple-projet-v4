@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface KeyWordDao extends JpaRepository<KeyWord,Long> {
 
 
+    public List<KeyWord> findByUsername(String username);
 
     @Query("SELECT item FROM KeyWord item ORDER BY item.code ASC")
     List<KeyWord> findAll();

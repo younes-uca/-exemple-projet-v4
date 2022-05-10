@@ -28,16 +28,21 @@ export class SemanticRelationshipListChercheurComponent implements OnInit {
     exportData: any[] = [];
     criteriaData: any[] = [];
     fileName = 'SemanticRelationship';
+     yesOrNoArchive :any[] =[];
+     yesOrNoAdmin :any[] =[];
+     yesOrNoVisible :any[] =[];
 
 
     constructor(private datePipe: DatePipe, private semanticRelationshipService: SemanticRelationshipService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-
 ) { }
 
-    ngOnInit(): void {
+    ngOnInit() : void {
       this.loadSemanticRelationships();
       this.initExport();
       this.initCol();
+    this.yesOrNoArchive =  [{label: 'Archive', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
+    this.yesOrNoAdmin =  [{label: 'Admin', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
+    this.yesOrNoVisible =  [{label: 'Visible', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
     }
     
     // methods
@@ -62,14 +67,22 @@ export class SemanticRelationshipListChercheurComponent implements OnInit {
                             {field: 'libelle', header: 'Libelle'},
                             {field: 'code', header: 'Code'},
                             {field: 'niveauExactitude', header: 'Niveau exactitude'},
+                            {field: 'archive', header: 'Archive'},
+                            {field: 'dateArchivage', header: 'Date archivage'},
+                            {field: 'dateCreation', header: 'Date creation'},
+                            {field: 'admin', header: 'Admin'},
+                            {field: 'visible', header: 'Visible'},
+                            {field: 'username', header: 'Username'},
         ];
     }
     
-    public async editSemanticRelationship(semanticRelationship:SemanticRelationshipVo){
+    public async editSemanticRelationship(semanticRelationship: SemanticRelationshipVo){
         const isPermistted = await this.roleService.isPermitted('SemanticRelationship', 'edit');
          if(isPermistted){
           this.semanticRelationshipService.findByIdWithAssociatedList(semanticRelationship).subscribe(res => {
            this.selectedSemanticRelationship = res;
+            this.selectedSemanticRelationship.dateArchivage = new Date(semanticRelationship.dateArchivage);
+            this.selectedSemanticRelationship.dateCreation = new Date(semanticRelationship.dateCreation);
             this.editSemanticRelationshipDialog = true;
           });
         }else{
@@ -82,11 +95,13 @@ export class SemanticRelationshipListChercheurComponent implements OnInit {
     
 
 
-   public async viewSemanticRelationship(semanticRelationship:SemanticRelationshipVo){
+   public async viewSemanticRelationship(semanticRelationship: SemanticRelationshipVo){
         const isPermistted = await this.roleService.isPermitted('SemanticRelationship', 'view');
         if(isPermistted){
            this.semanticRelationshipService.findByIdWithAssociatedList(semanticRelationship).subscribe(res => {
            this.selectedSemanticRelationship = res;
+            this.selectedSemanticRelationship.dateArchivage = new Date(semanticRelationship.dateArchivage);
+            this.selectedSemanticRelationship.dateCreation = new Date(semanticRelationship.dateCreation);
             this.viewSemanticRelationshipDialog = true;
           });
         }else{
@@ -111,7 +126,7 @@ export class SemanticRelationshipListChercheurComponent implements OnInit {
     }
 
 
-    public async deleteSemanticRelationship(semanticRelationship:SemanticRelationshipVo){
+    public async deleteSemanticRelationship(semanticRelationship: SemanticRelationshipVo){
        const isPermistted = await this.roleService.isPermitted('SemanticRelationship', 'delete');
         if(isPermistted){
                       this.confirmationService.confirm({
@@ -160,7 +175,7 @@ public async duplicateSemanticRelationship(semanticRelationship: SemanticRelatio
 
 	}
 
-  initExport(): void {
+  initExport() : void {
     this.excelPdfButons = [
       {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
       {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
@@ -169,12 +184,18 @@ public async duplicateSemanticRelationship(semanticRelationship: SemanticRelatio
   }
 
 
-    prepareColumnExport(): void {
+    prepareColumnExport() : void {
     this.exportData = this.semanticRelationships.map(e => {
     return {
                     'Libelle': e.libelle ,
                     'Code': e.code ,
                     'Niveau exactitude': e.niveauExactitude ,
+                    'Archive': e.archive? 'Vrai' : 'Faux' ,
+                    'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
+                    'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
+                    'Admin': e.admin? 'Vrai' : 'Faux' ,
+                    'Visible': e.visible? 'Vrai' : 'Faux' ,
+                    'Username': e.username ,
      }
       });
 
@@ -183,20 +204,28 @@ public async duplicateSemanticRelationship(semanticRelationship: SemanticRelatio
             'Code': this.searchSemanticRelationship.code ? this.searchSemanticRelationship.code : environment.emptyForExport ,
             'Niveau exactitude Min': this.searchSemanticRelationship.niveauExactitudeMin ? this.searchSemanticRelationship.niveauExactitudeMin : environment.emptyForExport ,
             'Niveau exactitude Max': this.searchSemanticRelationship.niveauExactitudeMax ? this.searchSemanticRelationship.niveauExactitudeMax : environment.emptyForExport ,
+            'Archive': this.searchSemanticRelationship.archive ? (this.searchSemanticRelationship.archive ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            'Date archivage Min': this.searchSemanticRelationship.dateArchivageMin ? this.datePipe.transform(this.searchSemanticRelationship.dateArchivageMin , this.dateFormat) : environment.emptyForExport ,
+            'Date archivage Max': this.searchSemanticRelationship.dateArchivageMax ? this.datePipe.transform(this.searchSemanticRelationship.dateArchivageMax , this.dateFormat) : environment.emptyForExport ,
+            'Date creation Min': this.searchSemanticRelationship.dateCreationMin ? this.datePipe.transform(this.searchSemanticRelationship.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
+            'Date creation Max': this.searchSemanticRelationship.dateCreationMax ? this.datePipe.transform(this.searchSemanticRelationship.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
+            'Admin': this.searchSemanticRelationship.admin ? (this.searchSemanticRelationship.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            'Visible': this.searchSemanticRelationship.visible ? (this.searchSemanticRelationship.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            'Username': this.searchSemanticRelationship.username ? this.searchSemanticRelationship.username : environment.emptyForExport ,
      }];
 
       }
 
     // getters and setters
 
-    get semanticRelationships(): Array<SemanticRelationshipVo> {
+    get semanticRelationships() : Array<SemanticRelationshipVo> {
            return this.semanticRelationshipService.semanticRelationships;
        }
     set semanticRelationships(value: Array<SemanticRelationshipVo>) {
         this.semanticRelationshipService.semanticRelationships = value;
        }
 
-    get semanticRelationshipSelections(): Array<SemanticRelationshipVo> {
+    get semanticRelationshipSelections() : Array<SemanticRelationshipVo> {
            return this.semanticRelationshipService.semanticRelationshipSelections;
        }
     set semanticRelationshipSelections(value: Array<SemanticRelationshipVo>) {
@@ -206,39 +235,40 @@ public async duplicateSemanticRelationship(semanticRelationship: SemanticRelatio
      
 
 
-    get selectedSemanticRelationship():SemanticRelationshipVo {
+    get selectedSemanticRelationship() : SemanticRelationshipVo {
            return this.semanticRelationshipService.selectedSemanticRelationship;
        }
     set selectedSemanticRelationship(value: SemanticRelationshipVo) {
         this.semanticRelationshipService.selectedSemanticRelationship = value;
        }
     
-    get createSemanticRelationshipDialog():boolean {
+    get createSemanticRelationshipDialog() :boolean {
            return this.semanticRelationshipService.createSemanticRelationshipDialog;
        }
     set createSemanticRelationshipDialog(value: boolean) {
         this.semanticRelationshipService.createSemanticRelationshipDialog= value;
        }
     
-    get editSemanticRelationshipDialog():boolean {
+    get editSemanticRelationshipDialog() :boolean {
            return this.semanticRelationshipService.editSemanticRelationshipDialog;
        }
     set editSemanticRelationshipDialog(value: boolean) {
         this.semanticRelationshipService.editSemanticRelationshipDialog= value;
        }
-    get viewSemanticRelationshipDialog():boolean {
+    get viewSemanticRelationshipDialog() :boolean {
            return this.semanticRelationshipService.viewSemanticRelationshipDialog;
        }
     set viewSemanticRelationshipDialog(value: boolean) {
         this.semanticRelationshipService.viewSemanticRelationshipDialog = value;
        }
        
-     get searchSemanticRelationship(): SemanticRelationshipVo {
+     get searchSemanticRelationship() : SemanticRelationshipVo {
         return this.semanticRelationshipService.searchSemanticRelationship;
        }
     set searchSemanticRelationship(value: SemanticRelationshipVo) {
         this.semanticRelationshipService.searchSemanticRelationship = value;
        }
+
 
     get dateFormat(){
             return environment.dateFormatList;

@@ -128,7 +128,7 @@ set identifiantRecherches(value: Array<IdentifiantRechercheVo>) {
         this.identifiantRechercheService.identifiantRecherches = value;
        }
 
- get selectedIdentifiantRecherche():IdentifiantRechercheVo {
+ get selectedIdentifiantRecherche(): IdentifiantRechercheVo {
            return this.identifiantRechercheService.selectedIdentifiantRecherche;
        }
     set selectedIdentifiantRecherche(value: IdentifiantRechercheVo) {

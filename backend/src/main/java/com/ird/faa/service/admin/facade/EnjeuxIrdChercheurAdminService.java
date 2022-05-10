@@ -10,6 +10,7 @@ public interface EnjeuxIrdChercheurAdminService extends AbstractService<EnjeuxIr
 
 
 
+
 /**
     * delete EnjeuxIrdChercheur from database
     * @param id - id of EnjeuxIrdChercheur to be deleted
@@ -38,5 +39,7 @@ public interface EnjeuxIrdChercheurAdminService extends AbstractService<EnjeuxIr
 
 
 
+    EnjeuxIrdChercheur archiver(EnjeuxIrdChercheur enjeuxIrdChercheur) ;
+    EnjeuxIrdChercheur desarchiver(EnjeuxIrdChercheur enjeuxIrdChercheur);
 
 }

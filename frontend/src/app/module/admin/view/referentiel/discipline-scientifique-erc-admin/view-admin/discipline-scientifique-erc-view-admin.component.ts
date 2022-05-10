@@ -23,7 +23,7 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueErcService
 ,private roleService:RoleService
 ,private messageService: MessageService
 , private router: Router
-    ,private disciplineScientifiqueErcParentService :DisciplineScientifiqueErcParentService
+    ,private disciplineScientifiqueErcParentService: DisciplineScientifiqueErcParentService
 ) {
 }
 
@@ -46,14 +46,14 @@ set disciplineScientifiqueErcs(value: Array<DisciplineScientifiqueErcVo>) {
         this.disciplineScientifiqueErcService.disciplineScientifiqueErcs = value;
        }
 
- get selectedDisciplineScientifiqueErc():DisciplineScientifiqueErcVo {
+ get selectedDisciplineScientifiqueErc(): DisciplineScientifiqueErcVo {
            return this.disciplineScientifiqueErcService.selectedDisciplineScientifiqueErc;
        }
     set selectedDisciplineScientifiqueErc(value: DisciplineScientifiqueErcVo) {
         this.disciplineScientifiqueErcService.selectedDisciplineScientifiqueErc = value;
        }
 
-   get viewDisciplineScientifiqueErcDialog():boolean {
+   get viewDisciplineScientifiqueErcDialog(): boolean {
            return this.disciplineScientifiqueErcService.viewDisciplineScientifiqueErcDialog;
 
        }
@@ -61,7 +61,7 @@ set disciplineScientifiqueErcs(value: Array<DisciplineScientifiqueErcVo>) {
         this.disciplineScientifiqueErcService.viewDisciplineScientifiqueErcDialog= value;
        }
 
-       get selectedDisciplineScientifiqueErcParent():DisciplineScientifiqueErcParentVo {
+       get selectedDisciplineScientifiqueErcParent(): DisciplineScientifiqueErcParentVo {
            return this.disciplineScientifiqueErcParentService.selectedDisciplineScientifiqueErcParent;
        }
       set selectedDisciplineScientifiqueErcParent(value: DisciplineScientifiqueErcParentVo) {
@@ -73,7 +73,7 @@ set disciplineScientifiqueErcs(value: Array<DisciplineScientifiqueErcVo>) {
        set disciplineScientifiqueErcParents(value: Array<DisciplineScientifiqueErcParentVo>) {
         this.disciplineScientifiqueErcParentService.disciplineScientifiqueErcParents = value;
        }
-       get editDisciplineScientifiqueErcParentDialog():boolean {
+       get editDisciplineScientifiqueErcParentDialog(): boolean {
            return this.disciplineScientifiqueErcParentService.editDisciplineScientifiqueErcParentDialog;
        }
       set editDisciplineScientifiqueErcParentDialog(value: boolean) {

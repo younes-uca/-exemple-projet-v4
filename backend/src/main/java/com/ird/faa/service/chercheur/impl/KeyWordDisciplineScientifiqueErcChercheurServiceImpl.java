@@ -1,23 +1,28 @@
 package com.ird.faa.service.chercheur.impl;
 
 import java.util.List;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+    import com.ird.faa.service.util.StringUtil;
+    import com.ird.faa.security.common.SecurityUtil;
+    import com.ird.faa.security.bean.User;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.KeyWordDisciplineScientifiqueErc;
-import com.ird.faa.bean.KeyWord;
-import com.ird.faa.bean.DisciplineScientifique;
+        import com.ird.faa.bean.KeyWord;
+        import com.ird.faa.bean.DisciplineScientifique;
 import com.ird.faa.dao.KeyWordDisciplineScientifiqueErcDao;
 import com.ird.faa.service.chercheur.facade.KeyWordDisciplineScientifiqueErcChercheurService;
-import com.ird.faa.service.chercheur.facade.KeyWordChercheurService;
-import com.ird.faa.service.chercheur.facade.DisciplineScientifiqueChercheurService;
+        import com.ird.faa.service.chercheur.facade.KeyWordChercheurService;
+        import com.ird.faa.service.chercheur.facade.DisciplineScientifiqueChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.KeyWordDisciplineScientifiqueErcVo;
 import com.ird.faa.service.util.*;
 
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -26,6 +31,8 @@ public class KeyWordDisciplineScientifiqueErcChercheurServiceImpl extends Abstra
 @Autowired
 private KeyWordDisciplineScientifiqueErcDao keyWordDisciplineScientifiqueErcDao;
 
+    @Autowired
+    private ArchivableService<KeyWordDisciplineScientifiqueErc> archivableService;
         @Autowired
         private KeyWordChercheurService keyWordService ;
         @Autowired
@@ -38,7 +45,10 @@ private EntityManager entityManager;
 
 @Override
 public List<KeyWordDisciplineScientifiqueErc> findAll(){
-        return keyWordDisciplineScientifiqueErcDao.findAll();
+    List<KeyWordDisciplineScientifiqueErc> resultat= new ArrayList();
+    resultat.addAll(findAllNonArchive());
+    resultat.addAll(findAllByOwner());
+    return result;
 }
 
         @Override
@@ -95,8 +105,9 @@ return keyWordDisciplineScientifiqueErcDao.getOne(id);
 
 @Override
 public KeyWordDisciplineScientifiqueErc findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+
 
 
 @Transactional
@@ -115,19 +126,39 @@ public KeyWordDisciplineScientifiqueErc update(KeyWordDisciplineScientifiqueErc 
 KeyWordDisciplineScientifiqueErc foundedKeyWordDisciplineScientifiqueErc = findById(keyWordDisciplineScientifiqueErc.getId());
 if(foundedKeyWordDisciplineScientifiqueErc==null) return null;
 else{
+    archivableService.prepare(keyWordDisciplineScientifiqueErc);
 return  keyWordDisciplineScientifiqueErcDao.save(keyWordDisciplineScientifiqueErc);
 }
 }
+    private void prepareSave(KeyWordDisciplineScientifiqueErc keyWordDisciplineScientifiqueErc){
+        keyWordDisciplineScientifiqueErc.setDateCreation(new Date());
+                    if(keyWordDisciplineScientifiqueErc.getArchive() == null)
+                keyWordDisciplineScientifiqueErc.setArchive(false);
+                    if(keyWordDisciplineScientifiqueErc.getAdmin() == null)
+                keyWordDisciplineScientifiqueErc.setAdmin(false);
+                    if(keyWordDisciplineScientifiqueErc.getVisible() == null)
+                keyWordDisciplineScientifiqueErc.setVisible(false);
+
+            keyWordDisciplineScientifiqueErc.setAdmin(false);
+            keyWordDisciplineScientifiqueErc.setVisible(false);
+            User currentUser = SecurityUtil.getCurrentUser();
+            if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
+            keyWordDisciplineScientifiqueErc.setUsername(currentUser.getUsername());
+            }
+
+
+    }
 
 @Override
 public KeyWordDisciplineScientifiqueErc save (KeyWordDisciplineScientifiqueErc keyWordDisciplineScientifiqueErc){
+    prepareSave(keyWordDisciplineScientifiqueErc);
 
 
 
     findKeyWord(keyWordDisciplineScientifiqueErc);
     findDisciplineScientifique(keyWordDisciplineScientifiqueErc);
 
-return keyWordDisciplineScientifiqueErcDao.save(keyWordDisciplineScientifiqueErc);
+    return keyWordDisciplineScientifiqueErcDao.save(keyWordDisciplineScientifiqueErc);
 
 
 }
@@ -159,6 +190,14 @@ public List<KeyWordDisciplineScientifiqueErc> findByCriteria(KeyWordDisciplineSc
 String query = "SELECT o FROM KeyWordDisciplineScientifiqueErc o where 1=1 ";
 
             query += SearchUtil.addConstraint( "o", "id","=",keyWordDisciplineScientifiqueErcVo.getId());
+            query += SearchUtil.addConstraint( "o", "archive","=",keyWordDisciplineScientifiqueErcVo.getArchive());
+        query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",keyWordDisciplineScientifiqueErcVo.getDateArchivage());
+        query += SearchUtil.addConstraintDate( "o", "dateCreation","=",keyWordDisciplineScientifiqueErcVo.getDateCreation());
+            query += SearchUtil.addConstraint( "o", "admin","=",keyWordDisciplineScientifiqueErcVo.getAdmin());
+            query += SearchUtil.addConstraint( "o", "visible","=",keyWordDisciplineScientifiqueErcVo.getVisible());
+            query += SearchUtil.addConstraint( "o", "username","LIKE",keyWordDisciplineScientifiqueErcVo.getUsername());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",keyWordDisciplineScientifiqueErcVo.getDateArchivageMin(),keyWordDisciplineScientifiqueErcVo.getDateArchivageMax());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",keyWordDisciplineScientifiqueErcVo.getDateCreationMin(),keyWordDisciplineScientifiqueErcVo.getDateCreationMax());
     if(keyWordDisciplineScientifiqueErcVo.getKeyWordVo()!=null){
         query += SearchUtil.addConstraint( "o", "keyWord.id","=",keyWordDisciplineScientifiqueErcVo.getKeyWordVo().getId());
             query += SearchUtil.addConstraint( "o", "keyWord.code","LIKE",keyWordDisciplineScientifiqueErcVo.getKeyWordVo().getCode());
@@ -176,7 +215,7 @@ return entityManager.createQuery(query).getResultList();
         KeyWord loadedKeyWord =keyWordService.findByIdOrCode(keyWordDisciplineScientifiqueErc.getKeyWord());
 
     if(loadedKeyWord==null ) {
-        return;
+    return;
     }
     keyWordDisciplineScientifiqueErc.setKeyWord(loadedKeyWord);
     }
@@ -184,7 +223,7 @@ return entityManager.createQuery(query).getResultList();
         DisciplineScientifique loadedDisciplineScientifique =disciplineScientifiqueService.findByIdOrCode(keyWordDisciplineScientifiqueErc.getDisciplineScientifique());
 
     if(loadedDisciplineScientifique==null ) {
-        return;
+    return;
     }
     keyWordDisciplineScientifiqueErc.setDisciplineScientifique(loadedDisciplineScientifique);
     }
@@ -192,9 +231,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<KeyWordDisciplineScientifiqueErc> keyWordDisciplineScientifiqueErcs){
-        if(ListUtil.isNotEmpty(keyWordDisciplineScientifiqueErcs)){
-        keyWordDisciplineScientifiqueErcs.forEach(e->keyWordDisciplineScientifiqueErcDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(keyWordDisciplineScientifiqueErcs)){
+keyWordDisciplineScientifiqueErcs.forEach(e->keyWordDisciplineScientifiqueErcDao.delete(e));
+}
 }
 @Override
 public void update(List<KeyWordDisciplineScientifiqueErc> keyWordDisciplineScientifiqueErcs){
@@ -205,4 +244,22 @@ keyWordDisciplineScientifiqueErcs.forEach(e->keyWordDisciplineScientifiqueErcDao
 
 
 
-}
+
+        public List<KeyWordDisciplineScientifiqueErc> findAllNonArchive(){
+        String query = "SELECT o FROM KeyWordDisciplineScientifiqueErc o  WHERE o.archive != true AND o.visible = true";
+        return entityManager.createQuery(query).getResultList();
+        }
+
+        public List<KeyWordDisciplineScientifiqueErc> findAllByOwner(){
+        List<KeyWordDisciplineScientifiqueErc> result= new ArrayList();
+        User currentUser = SecurityUtil.getCurrentUser();
+        if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
+        String query = "SELECT o FROM KeyWordDisciplineScientifiqueErc o  WHERE o.archive != true AND o.visible = false AND o.username = '"+ currentUser.getUsername()+"'";
+        result = entityManager.createQuery(query).getResultList();
+        }
+        return result;
+        }
+
+
+
+    }

@@ -123,12 +123,36 @@
                                             <tr>
                                                             <th>Discipline scientifique erc</th>
                                                             <th>Semantic relationship</th>
+                                                            <th>Archive</th>
+                                                            <th>Date archivage</th>
+                                                            <th>Date creation</th>
+                                                            <th>Admin</th>
+                                                            <th>Visible</th>
+                                                            <th>Username</th>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="body" let-p>
                                             <tr>
                                                         <td>{{p.disciplineScientifiqueErcVo?.libelleEng}}</td>
                                                         <td>{{p.semanticRelationshipVo?.libelle}}</td>
+                                                            <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                            </td>
+
+                                                            <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                            <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                            <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                            </td>
+
+                                                            <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                            </td>
+
+                                                            <td>{{p.username}}</td>
+
 
                                             </tr>
                                         </ng-template>

@@ -8,6 +8,7 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface DisciplineScientifiqueErcParentAdminService extends AbstractService<DisciplineScientifiqueErcParent,Long,DisciplineScientifiqueErcParentVo>{
 
 
+
     /**
     * find DisciplineScientifiqueErcParent from database by code (reference)
     * @param code - reference of DisciplineScientifiqueErcParent

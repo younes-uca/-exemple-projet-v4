@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import com.ird.faa.service.admin.facade.EnjeuxIrdAdminService;
 import com.ird.faa.ws.rest.provided.vo.EnjeuxIrdVo;
 import com.ird.faa.service.util.*;
 
-import com.ird.faa.service.core.facade.ArchivableService;
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -24,8 +24,8 @@ public class EnjeuxIrdAdminServiceImpl extends AbstractServiceImpl<EnjeuxIrd> im
 @Autowired
 private EnjeuxIrdDao enjeuxIrdDao;
 
-@Autowired
-private ArchivableService<EnjeuxIrd> archivableService;
+    @Autowired
+    private ArchivableService<EnjeuxIrd> archivableService;
 
 
 @Autowired
@@ -51,14 +51,14 @@ public List<EnjeuxIrd> findAll(){
     }
     @Override
     public EnjeuxIrd findByIdOrCode(EnjeuxIrd enjeuxIrd){
-        EnjeuxIrd resultat=null;
-        if(enjeuxIrd != null){
-            if(StringUtil.isNotEmpty(enjeuxIrd.getId())){
-            resultat= enjeuxIrdDao.getOne(enjeuxIrd.getId());
-            }else if(StringUtil.isNotEmpty(enjeuxIrd.getCode())) {
-            resultat= enjeuxIrdDao.findByCode(enjeuxIrd.getCode());
-            }
-        }
+    EnjeuxIrd resultat=null;
+    if(enjeuxIrd != null){
+    if(StringUtil.isNotEmpty(enjeuxIrd.getId())){
+    resultat= enjeuxIrdDao.getOne(enjeuxIrd.getId());
+    }else if(StringUtil.isNotEmpty(enjeuxIrd.getCode())) {
+    resultat= enjeuxIrdDao.findByCode(enjeuxIrd.getCode());
+    }
+    }
     return resultat;
     }
 
@@ -70,17 +70,17 @@ return enjeuxIrdDao.getOne(id);
 
 @Override
 public EnjeuxIrd findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
-     @Override
+    @Override
     public EnjeuxIrd archiver(EnjeuxIrd enjeuxIrd) {
-        if (enjeuxIrd.getArchive() == null) {
-        enjeuxIrd.setArchive(false);
-        }
-        enjeuxIrd.setArchive(true);
-        enjeuxIrd.setDateArchivage(new Date());
-        enjeuxIrdDao.save(enjeuxIrd);
-        return enjeuxIrd;
+    if (enjeuxIrd.getArchive() == null) {
+    enjeuxIrd.setArchive(false);
+    }
+    enjeuxIrd.setArchive(true);
+    enjeuxIrd.setDateArchivage(new Date());
+    enjeuxIrdDao.save(enjeuxIrd);
+    return enjeuxIrd;
 
     }
 
@@ -94,6 +94,7 @@ return findById(id);
     enjeuxIrdDao.save(enjeuxIrd);
     return enjeuxIrd;
     }
+
 
 
 
@@ -117,35 +118,36 @@ else{
 return  enjeuxIrdDao.save(enjeuxIrd);
 }
 }
-private void prepareSave(EnjeuxIrd enjeuxIrd){
-enjeuxIrd.setDateCreation(new Date());
-if(enjeuxIrd.getArchive() == null)
-  enjeuxIrd.setArchive(false);
-if(enjeuxIrd.getAdmin() == null)
-  enjeuxIrd.setAdmin(false);
-if(enjeuxIrd.getVisible() == null)
-  enjeuxIrd.setVisible(false);
+    private void prepareSave(EnjeuxIrd enjeuxIrd){
+        enjeuxIrd.setDateCreation(new Date());
+                    if(enjeuxIrd.getArchive() == null)
+                enjeuxIrd.setArchive(false);
+                    if(enjeuxIrd.getAdmin() == null)
+                enjeuxIrd.setAdmin(false);
+                    if(enjeuxIrd.getVisible() == null)
+                enjeuxIrd.setVisible(false);
 
 
 
-}
+    }
 
 @Override
 public EnjeuxIrd save (EnjeuxIrd enjeuxIrd){
-prepareSave(enjeuxIrd);
+    prepareSave(enjeuxIrd);
 
-EnjeuxIrd result =null;
+    EnjeuxIrd result =null;
     EnjeuxIrd foundedEnjeuxIrd = findByCode(enjeuxIrd.getCode());
-   if(foundedEnjeuxIrd == null){
+    if(foundedEnjeuxIrd == null){
 
 
 
-EnjeuxIrd savedEnjeuxIrd = enjeuxIrdDao.save(enjeuxIrd);
 
-result = savedEnjeuxIrd;
-   }
+    EnjeuxIrd savedEnjeuxIrd = enjeuxIrdDao.save(enjeuxIrd);
 
-return result;
+    result = savedEnjeuxIrd;
+    }
+
+    return result;
 }
 
 @Override
@@ -187,7 +189,7 @@ String query = "SELECT o FROM EnjeuxIrd o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "username","LIKE",enjeuxIrdVo.getUsername());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",enjeuxIrdVo.getDateArchivageMin(),enjeuxIrdVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",enjeuxIrdVo.getDateCreationMin(),enjeuxIrdVo.getDateCreationMax());
-query+= " ORDER BY o.code";
+    query+= " ORDER BY o.code";
 return entityManager.createQuery(query).getResultList();
 }
 
@@ -195,9 +197,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<EnjeuxIrd> enjeuxIrds){
-        if(ListUtil.isNotEmpty(enjeuxIrds)){
-        enjeuxIrds.forEach(e->enjeuxIrdDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(enjeuxIrds)){
+enjeuxIrds.forEach(e->enjeuxIrdDao.delete(e));
+}
 }
 @Override
 public void update(List<EnjeuxIrd> enjeuxIrds){
@@ -208,4 +210,6 @@ enjeuxIrds.forEach(e->enjeuxIrdDao.save(e));
 
 
 
-}
+
+
+    }

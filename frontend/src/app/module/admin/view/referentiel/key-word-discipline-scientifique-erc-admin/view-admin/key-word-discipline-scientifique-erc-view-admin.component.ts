@@ -25,8 +25,8 @@ constructor(private datePipe: DatePipe, private keyWordDisciplineScientifiqueErc
 ,private roleService:RoleService
 ,private messageService: MessageService
 , private router: Router
-    ,private keyWordService :KeyWordService
-    ,private disciplineScientifiqueService :DisciplineScientifiqueService
+    ,private keyWordService: KeyWordService
+    ,private disciplineScientifiqueService: DisciplineScientifiqueService
 ) {
 }
 
@@ -51,14 +51,14 @@ set keyWordDisciplineScientifiqueErcs(value: Array<KeyWordDisciplineScientifique
         this.keyWordDisciplineScientifiqueErcService.keyWordDisciplineScientifiqueErcs = value;
        }
 
- get selectedKeyWordDisciplineScientifiqueErc():KeyWordDisciplineScientifiqueErcVo {
+ get selectedKeyWordDisciplineScientifiqueErc(): KeyWordDisciplineScientifiqueErcVo {
            return this.keyWordDisciplineScientifiqueErcService.selectedKeyWordDisciplineScientifiqueErc;
        }
     set selectedKeyWordDisciplineScientifiqueErc(value: KeyWordDisciplineScientifiqueErcVo) {
         this.keyWordDisciplineScientifiqueErcService.selectedKeyWordDisciplineScientifiqueErc = value;
        }
 
-   get viewKeyWordDisciplineScientifiqueErcDialog():boolean {
+   get viewKeyWordDisciplineScientifiqueErcDialog(): boolean {
            return this.keyWordDisciplineScientifiqueErcService.viewKeyWordDisciplineScientifiqueErcDialog;
 
        }
@@ -66,7 +66,7 @@ set keyWordDisciplineScientifiqueErcs(value: Array<KeyWordDisciplineScientifique
         this.keyWordDisciplineScientifiqueErcService.viewKeyWordDisciplineScientifiqueErcDialog= value;
        }
 
-       get selectedKeyWord():KeyWordVo {
+       get selectedKeyWord(): KeyWordVo {
            return this.keyWordService.selectedKeyWord;
        }
       set selectedKeyWord(value: KeyWordVo) {
@@ -78,13 +78,13 @@ set keyWordDisciplineScientifiqueErcs(value: Array<KeyWordDisciplineScientifique
        set keyWords(value: Array<KeyWordVo>) {
         this.keyWordService.keyWords = value;
        }
-       get editKeyWordDialog():boolean {
+       get editKeyWordDialog(): boolean {
            return this.keyWordService.editKeyWordDialog;
        }
       set editKeyWordDialog(value: boolean) {
         this.keyWordService.editKeyWordDialog= value;
        }
-       get selectedDisciplineScientifique():DisciplineScientifiqueVo {
+       get selectedDisciplineScientifique(): DisciplineScientifiqueVo {
            return this.disciplineScientifiqueService.selectedDisciplineScientifique;
        }
       set selectedDisciplineScientifique(value: DisciplineScientifiqueVo) {
@@ -96,7 +96,7 @@ set keyWordDisciplineScientifiqueErcs(value: Array<KeyWordDisciplineScientifique
        set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
         this.disciplineScientifiqueService.disciplineScientifiques = value;
        }
-       get editDisciplineScientifiqueDialog():boolean {
+       get editDisciplineScientifiqueDialog(): boolean {
            return this.disciplineScientifiqueService.editDisciplineScientifiqueDialog;
        }
       set editDisciplineScientifiqueDialog(value: boolean) {

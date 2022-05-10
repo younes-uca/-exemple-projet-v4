@@ -48,6 +48,8 @@ public edit(){
 this.editWithShowOption(false);
 }
 public editWithShowOption(showList: boolean){
+            this.selectedDisciplineScientifiqueErcAssociation.dateArchivage = DateUtils.toDate(this.selectedDisciplineScientifiqueErcAssociation.dateArchivage);
+            this.selectedDisciplineScientifiqueErcAssociation.dateCreation = DateUtils.toDate(this.selectedDisciplineScientifiqueErcAssociation.dateCreation);
     this.disciplineScientifiqueErcAssociationService.edit().subscribe(disciplineScientifiqueErcAssociation=>{
     const myIndex = this.disciplineScientifiqueErcAssociations.findIndex(e => e.id === this.selectedDisciplineScientifiqueErcAssociation.id);
     this.disciplineScientifiqueErcAssociations[myIndex] = this.selectedDisciplineScientifiqueErcAssociation;

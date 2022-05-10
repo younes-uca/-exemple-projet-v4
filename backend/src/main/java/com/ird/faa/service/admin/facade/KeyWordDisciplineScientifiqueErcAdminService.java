@@ -10,6 +10,7 @@ public interface KeyWordDisciplineScientifiqueErcAdminService extends AbstractSe
 
 
 
+
 /**
     * delete KeyWordDisciplineScientifiqueErc from database
     * @param id - id of KeyWordDisciplineScientifiqueErc to be deleted
@@ -38,5 +39,7 @@ public interface KeyWordDisciplineScientifiqueErcAdminService extends AbstractSe
 
 
 
+    KeyWordDisciplineScientifiqueErc archiver(KeyWordDisciplineScientifiqueErc keyWordDisciplineScientifiqueErc) ;
+    KeyWordDisciplineScientifiqueErc desarchiver(KeyWordDisciplineScientifiqueErc keyWordDisciplineScientifiqueErc);
 
 }

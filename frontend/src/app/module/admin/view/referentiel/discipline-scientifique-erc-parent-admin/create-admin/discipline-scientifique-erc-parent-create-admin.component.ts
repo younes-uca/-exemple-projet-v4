@@ -140,7 +140,7 @@ set disciplineScientifiqueErcParents(value: Array<DisciplineScientifiqueErcParen
         this.disciplineScientifiqueErcParentService.disciplineScientifiqueErcParents = value;
        }
 
- get selectedDisciplineScientifiqueErcParent():DisciplineScientifiqueErcParentVo {
+ get selectedDisciplineScientifiqueErcParent(): DisciplineScientifiqueErcParentVo {
            return this.disciplineScientifiqueErcParentService.selectedDisciplineScientifiqueErcParent;
        }
     set selectedDisciplineScientifiqueErcParent(value: DisciplineScientifiqueErcParentVo) {

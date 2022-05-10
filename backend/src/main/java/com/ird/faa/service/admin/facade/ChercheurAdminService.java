@@ -9,6 +9,7 @@ public interface ChercheurAdminService extends AbstractService<Chercheur,Long,Ch
 
     Chercheur findByUsername(String username);
 
+
     /**
     * find Chercheur from database by numeroMatricule (reference)
     * @param numeroMatricule - reference of Chercheur

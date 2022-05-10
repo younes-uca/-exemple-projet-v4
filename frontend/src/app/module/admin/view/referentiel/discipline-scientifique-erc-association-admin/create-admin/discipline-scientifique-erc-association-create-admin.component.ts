@@ -10,10 +10,10 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
 import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
 import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
 @Component({
@@ -44,9 +44,9 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueErcAssocia
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private disciplineScientifiqueErcService :DisciplineScientifiqueErcService
-,       private disciplineScientifiqueService :DisciplineScientifiqueService
-,       private semanticRelationshipService :SemanticRelationshipService
+,       private disciplineScientifiqueService: DisciplineScientifiqueService
+,       private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
+,       private semanticRelationshipService: SemanticRelationshipService
 ) {
 
 }
@@ -106,6 +106,12 @@ this.errorMessages = new Array<string>();
 
 
 
+
+
+
+
+
+
 //openPopup
               public async openCreatedisciplineScientifiqueErc(disciplineScientifiqueErc: string) {
                       const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErc', 'add');
@@ -156,7 +162,7 @@ set disciplineScientifiqueErcAssociations(value: Array<DisciplineScientifiqueErc
         this.disciplineScientifiqueErcAssociationService.disciplineScientifiqueErcAssociations = value;
        }
 
- get selectedDisciplineScientifiqueErcAssociation():DisciplineScientifiqueErcAssociationVo {
+ get selectedDisciplineScientifiqueErcAssociation(): DisciplineScientifiqueErcAssociationVo {
            return this.disciplineScientifiqueErcAssociationService.selectedDisciplineScientifiqueErcAssociation;
        }
     set selectedDisciplineScientifiqueErcAssociation(value: DisciplineScientifiqueErcAssociationVo) {

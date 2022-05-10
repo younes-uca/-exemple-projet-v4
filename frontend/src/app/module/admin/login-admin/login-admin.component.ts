@@ -25,6 +25,6 @@ export class LoginAdminComponent implements OnInit {
 
   }
     register(){
-    this.router.navigate(['/Admin/register']);
+    this.router.navigate(['/admin/register']);
   }
 }

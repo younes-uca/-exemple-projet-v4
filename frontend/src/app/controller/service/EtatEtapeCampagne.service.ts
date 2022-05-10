@@ -28,7 +28,7 @@ export class EtatEtapeCampagneService {
      private _viewEtatEtapeCampagneDialog: boolean;
      public editEtatEtapeCampagne$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchEtatEtapeCampagne:EtatEtapeCampagneVo ;
+     private _searchEtatEtapeCampagne: EtatEtapeCampagneVo ;
 
     // methods
 

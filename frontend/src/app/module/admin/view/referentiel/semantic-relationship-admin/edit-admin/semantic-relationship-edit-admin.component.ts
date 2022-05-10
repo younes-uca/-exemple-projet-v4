@@ -33,6 +33,8 @@ public edit(){
 this.editWithShowOption(false);
 }
 public editWithShowOption(showList: boolean){
+            this.selectedSemanticRelationship.dateArchivage = DateUtils.toDate(this.selectedSemanticRelationship.dateArchivage);
+            this.selectedSemanticRelationship.dateCreation = DateUtils.toDate(this.selectedSemanticRelationship.dateCreation);
     this.semanticRelationshipService.edit().subscribe(semanticRelationship=>{
     const myIndex = this.semanticRelationships.findIndex(e => e.id === this.selectedSemanticRelationship.id);
     this.semanticRelationships[myIndex] = this.selectedSemanticRelationship;

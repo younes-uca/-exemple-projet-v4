@@ -35,10 +35,10 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueService: D
 ,private roleService:RoleService
 ,private messageService: MessageService
 , private router: Router
-    ,private disciplineScientifiqueParentService :DisciplineScientifiqueParentService
-    ,private disciplineScientifiqueErcService :DisciplineScientifiqueErcService
-    ,private disciplineScientifiqueErcAssociationService :DisciplineScientifiqueErcAssociationService
-    ,private semanticRelationshipService :SemanticRelationshipService
+    ,private disciplineScientifiqueParentService: DisciplineScientifiqueParentService
+    ,private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
+    ,private disciplineScientifiqueErcAssociationService: DisciplineScientifiqueErcAssociationService
+    ,private semanticRelationshipService: SemanticRelationshipService
 ) {
 }
 
@@ -65,14 +65,14 @@ set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
         this.disciplineScientifiqueService.disciplineScientifiques = value;
        }
 
- get selectedDisciplineScientifique():DisciplineScientifiqueVo {
+ get selectedDisciplineScientifique(): DisciplineScientifiqueVo {
            return this.disciplineScientifiqueService.selectedDisciplineScientifique;
        }
     set selectedDisciplineScientifique(value: DisciplineScientifiqueVo) {
         this.disciplineScientifiqueService.selectedDisciplineScientifique = value;
        }
 
-   get viewDisciplineScientifiqueDialog():boolean {
+   get viewDisciplineScientifiqueDialog(): boolean {
            return this.disciplineScientifiqueService.viewDisciplineScientifiqueDialog;
 
        }
@@ -80,7 +80,7 @@ set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
         this.disciplineScientifiqueService.viewDisciplineScientifiqueDialog= value;
        }
 
-       get selectedDisciplineScientifiqueParent():DisciplineScientifiqueParentVo {
+       get selectedDisciplineScientifiqueParent(): DisciplineScientifiqueParentVo {
            return this.disciplineScientifiqueParentService.selectedDisciplineScientifiqueParent;
        }
       set selectedDisciplineScientifiqueParent(value: DisciplineScientifiqueParentVo) {
@@ -92,13 +92,13 @@ set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
        set disciplineScientifiqueParents(value: Array<DisciplineScientifiqueParentVo>) {
         this.disciplineScientifiqueParentService.disciplineScientifiqueParents = value;
        }
-       get editDisciplineScientifiqueParentDialog():boolean {
+       get editDisciplineScientifiqueParentDialog(): boolean {
            return this.disciplineScientifiqueParentService.editDisciplineScientifiqueParentDialog;
        }
       set editDisciplineScientifiqueParentDialog(value: boolean) {
         this.disciplineScientifiqueParentService.editDisciplineScientifiqueParentDialog= value;
        }
-       get selectedDisciplineScientifiqueErc():DisciplineScientifiqueErcVo {
+       get selectedDisciplineScientifiqueErc(): DisciplineScientifiqueErcVo {
            return this.disciplineScientifiqueErcService.selectedDisciplineScientifiqueErc;
        }
       set selectedDisciplineScientifiqueErc(value: DisciplineScientifiqueErcVo) {
@@ -110,13 +110,13 @@ set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
        set disciplineScientifiqueErcs(value: Array<DisciplineScientifiqueErcVo>) {
         this.disciplineScientifiqueErcService.disciplineScientifiqueErcs = value;
        }
-       get editDisciplineScientifiqueErcDialog():boolean {
+       get editDisciplineScientifiqueErcDialog(): boolean {
            return this.disciplineScientifiqueErcService.editDisciplineScientifiqueErcDialog;
        }
       set editDisciplineScientifiqueErcDialog(value: boolean) {
         this.disciplineScientifiqueErcService.editDisciplineScientifiqueErcDialog= value;
        }
-       get selectedSemanticRelationship():SemanticRelationshipVo {
+       get selectedSemanticRelationship(): SemanticRelationshipVo {
            return this.semanticRelationshipService.selectedSemanticRelationship;
        }
       set selectedSemanticRelationship(value: SemanticRelationshipVo) {
@@ -128,7 +128,7 @@ set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
        set semanticRelationships(value: Array<SemanticRelationshipVo>) {
         this.semanticRelationshipService.semanticRelationships = value;
        }
-       get editSemanticRelationshipDialog():boolean {
+       get editSemanticRelationshipDialog(): boolean {
            return this.semanticRelationshipService.editSemanticRelationshipDialog;
        }
       set editSemanticRelationshipDialog(value: boolean) {

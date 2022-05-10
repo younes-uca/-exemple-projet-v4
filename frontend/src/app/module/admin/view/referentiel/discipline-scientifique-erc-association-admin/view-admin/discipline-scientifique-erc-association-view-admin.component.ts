@@ -27,9 +27,9 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueErcAssocia
 ,private roleService:RoleService
 ,private messageService: MessageService
 , private router: Router
-    ,private disciplineScientifiqueService :DisciplineScientifiqueService
-    ,private semanticRelationshipService :SemanticRelationshipService
-    ,private disciplineScientifiqueErcService :DisciplineScientifiqueErcService
+    ,private disciplineScientifiqueService: DisciplineScientifiqueService
+    ,private semanticRelationshipService: SemanticRelationshipService
+    ,private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
 ) {
 }
 
@@ -56,14 +56,14 @@ set disciplineScientifiqueErcAssociations(value: Array<DisciplineScientifiqueErc
         this.disciplineScientifiqueErcAssociationService.disciplineScientifiqueErcAssociations = value;
        }
 
- get selectedDisciplineScientifiqueErcAssociation():DisciplineScientifiqueErcAssociationVo {
+ get selectedDisciplineScientifiqueErcAssociation(): DisciplineScientifiqueErcAssociationVo {
            return this.disciplineScientifiqueErcAssociationService.selectedDisciplineScientifiqueErcAssociation;
        }
     set selectedDisciplineScientifiqueErcAssociation(value: DisciplineScientifiqueErcAssociationVo) {
         this.disciplineScientifiqueErcAssociationService.selectedDisciplineScientifiqueErcAssociation = value;
        }
 
-   get viewDisciplineScientifiqueErcAssociationDialog():boolean {
+   get viewDisciplineScientifiqueErcAssociationDialog(): boolean {
            return this.disciplineScientifiqueErcAssociationService.viewDisciplineScientifiqueErcAssociationDialog;
 
        }
@@ -71,7 +71,7 @@ set disciplineScientifiqueErcAssociations(value: Array<DisciplineScientifiqueErc
         this.disciplineScientifiqueErcAssociationService.viewDisciplineScientifiqueErcAssociationDialog= value;
        }
 
-       get selectedDisciplineScientifiqueErc():DisciplineScientifiqueErcVo {
+       get selectedDisciplineScientifiqueErc(): DisciplineScientifiqueErcVo {
            return this.disciplineScientifiqueErcService.selectedDisciplineScientifiqueErc;
        }
       set selectedDisciplineScientifiqueErc(value: DisciplineScientifiqueErcVo) {
@@ -83,13 +83,13 @@ set disciplineScientifiqueErcAssociations(value: Array<DisciplineScientifiqueErc
        set disciplineScientifiqueErcs(value: Array<DisciplineScientifiqueErcVo>) {
         this.disciplineScientifiqueErcService.disciplineScientifiqueErcs = value;
        }
-       get editDisciplineScientifiqueErcDialog():boolean {
+       get editDisciplineScientifiqueErcDialog(): boolean {
            return this.disciplineScientifiqueErcService.editDisciplineScientifiqueErcDialog;
        }
       set editDisciplineScientifiqueErcDialog(value: boolean) {
         this.disciplineScientifiqueErcService.editDisciplineScientifiqueErcDialog= value;
        }
-       get selectedSemanticRelationship():SemanticRelationshipVo {
+       get selectedSemanticRelationship(): SemanticRelationshipVo {
            return this.semanticRelationshipService.selectedSemanticRelationship;
        }
       set selectedSemanticRelationship(value: SemanticRelationshipVo) {
@@ -101,13 +101,13 @@ set disciplineScientifiqueErcAssociations(value: Array<DisciplineScientifiqueErc
        set semanticRelationships(value: Array<SemanticRelationshipVo>) {
         this.semanticRelationshipService.semanticRelationships = value;
        }
-       get editSemanticRelationshipDialog():boolean {
+       get editSemanticRelationshipDialog(): boolean {
            return this.semanticRelationshipService.editSemanticRelationshipDialog;
        }
       set editSemanticRelationshipDialog(value: boolean) {
         this.semanticRelationshipService.editSemanticRelationshipDialog= value;
        }
-       get selectedDisciplineScientifique():DisciplineScientifiqueVo {
+       get selectedDisciplineScientifique(): DisciplineScientifiqueVo {
            return this.disciplineScientifiqueService.selectedDisciplineScientifique;
        }
       set selectedDisciplineScientifique(value: DisciplineScientifiqueVo) {
@@ -119,7 +119,7 @@ set disciplineScientifiqueErcAssociations(value: Array<DisciplineScientifiqueErc
        set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
         this.disciplineScientifiqueService.disciplineScientifiques = value;
        }
-       get editDisciplineScientifiqueDialog():boolean {
+       get editDisciplineScientifiqueDialog(): boolean {
            return this.disciplineScientifiqueService.editDisciplineScientifiqueDialog;
        }
       set editDisciplineScientifiqueDialog(value: boolean) {

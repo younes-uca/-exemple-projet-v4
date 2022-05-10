@@ -78,7 +78,19 @@ export class AuthService {
        const index = this._authenticatedUser.roles.findIndex(r=>r.authority == role.authority);
        return  index > -1 ? true : false;
     }
-        public register() {
+    lolo
+    public registerChercheur() {
+        console.log(this.user)
+        this.http.post<any>(this.API+'api/users/save', this.user, {observe: 'response'}).subscribe(
+            resp => {
+                this.router.navigate(['/login']);
+
+            }, (error:HttpErrorResponse) => {
+               console.log(error.error)
+            }
+        );
+    }
+    public registerAdmin() {
         console.log(this.user)
         this.http.post<any>(this.API+'api/users/save', this.user, {observe: 'response'}).subscribe(
             resp => {

@@ -37,11 +37,10 @@ export class DisciplineScientifiqueErcListChercheurComponent implements OnInit {
 
 
     constructor(private datePipe: DatePipe, private disciplineScientifiqueErcService: DisciplineScientifiqueErcService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-
         , private disciplineScientifiqueErcParentService: DisciplineScientifiqueErcParentService
 ) { }
 
-    ngOnInit(): void {
+    ngOnInit() : void {
       this.loadDisciplineScientifiqueErcs();
       this.initExport();
       this.initCol();
@@ -84,7 +83,7 @@ export class DisciplineScientifiqueErcListChercheurComponent implements OnInit {
         ];
     }
     
-    public async editDisciplineScientifiqueErc(disciplineScientifiqueErc:DisciplineScientifiqueErcVo){
+    public async editDisciplineScientifiqueErc(disciplineScientifiqueErc: DisciplineScientifiqueErcVo){
         const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErc', 'edit');
          if(isPermistted){
           this.disciplineScientifiqueErcService.findByIdWithAssociatedList(disciplineScientifiqueErc).subscribe(res => {
@@ -103,7 +102,7 @@ export class DisciplineScientifiqueErcListChercheurComponent implements OnInit {
     
 
 
-   public async viewDisciplineScientifiqueErc(disciplineScientifiqueErc:DisciplineScientifiqueErcVo){
+   public async viewDisciplineScientifiqueErc(disciplineScientifiqueErc: DisciplineScientifiqueErcVo){
         const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErc', 'view');
         if(isPermistted){
            this.disciplineScientifiqueErcService.findByIdWithAssociatedList(disciplineScientifiqueErc).subscribe(res => {
@@ -134,7 +133,7 @@ export class DisciplineScientifiqueErcListChercheurComponent implements OnInit {
     }
 
 
-    public async deleteDisciplineScientifiqueErc(disciplineScientifiqueErc:DisciplineScientifiqueErcVo){
+    public async deleteDisciplineScientifiqueErc(disciplineScientifiqueErc: DisciplineScientifiqueErcVo){
        const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErc', 'delete');
         if(isPermistted){
                       this.confirmationService.confirm({
@@ -190,7 +189,7 @@ public async duplicateDisciplineScientifiqueErc(disciplineScientifiqueErc: Disci
 
 	}
 
-  initExport(): void {
+  initExport() : void {
     this.excelPdfButons = [
       {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
       {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
@@ -199,7 +198,7 @@ public async duplicateDisciplineScientifiqueErc(disciplineScientifiqueErc: Disci
   }
 
 
-    prepareColumnExport(): void {
+    prepareColumnExport() : void {
     this.exportData = this.disciplineScientifiqueErcs.map(e => {
     return {
                     'Libelle fr': e.libelleFr ,
@@ -237,14 +236,14 @@ public async duplicateDisciplineScientifiqueErc(disciplineScientifiqueErc: Disci
 
     // getters and setters
 
-    get disciplineScientifiqueErcs(): Array<DisciplineScientifiqueErcVo> {
+    get disciplineScientifiqueErcs() : Array<DisciplineScientifiqueErcVo> {
            return this.disciplineScientifiqueErcService.disciplineScientifiqueErcs;
        }
     set disciplineScientifiqueErcs(value: Array<DisciplineScientifiqueErcVo>) {
         this.disciplineScientifiqueErcService.disciplineScientifiqueErcs = value;
        }
 
-    get disciplineScientifiqueErcSelections(): Array<DisciplineScientifiqueErcVo> {
+    get disciplineScientifiqueErcSelections() : Array<DisciplineScientifiqueErcVo> {
            return this.disciplineScientifiqueErcService.disciplineScientifiqueErcSelections;
        }
     set disciplineScientifiqueErcSelections(value: Array<DisciplineScientifiqueErcVo>) {
@@ -254,39 +253,40 @@ public async duplicateDisciplineScientifiqueErc(disciplineScientifiqueErc: Disci
      
 
 
-    get selectedDisciplineScientifiqueErc():DisciplineScientifiqueErcVo {
+    get selectedDisciplineScientifiqueErc() : DisciplineScientifiqueErcVo {
            return this.disciplineScientifiqueErcService.selectedDisciplineScientifiqueErc;
        }
     set selectedDisciplineScientifiqueErc(value: DisciplineScientifiqueErcVo) {
         this.disciplineScientifiqueErcService.selectedDisciplineScientifiqueErc = value;
        }
     
-    get createDisciplineScientifiqueErcDialog():boolean {
+    get createDisciplineScientifiqueErcDialog() :boolean {
            return this.disciplineScientifiqueErcService.createDisciplineScientifiqueErcDialog;
        }
     set createDisciplineScientifiqueErcDialog(value: boolean) {
         this.disciplineScientifiqueErcService.createDisciplineScientifiqueErcDialog= value;
        }
     
-    get editDisciplineScientifiqueErcDialog():boolean {
+    get editDisciplineScientifiqueErcDialog() :boolean {
            return this.disciplineScientifiqueErcService.editDisciplineScientifiqueErcDialog;
        }
     set editDisciplineScientifiqueErcDialog(value: boolean) {
         this.disciplineScientifiqueErcService.editDisciplineScientifiqueErcDialog= value;
        }
-    get viewDisciplineScientifiqueErcDialog():boolean {
+    get viewDisciplineScientifiqueErcDialog() :boolean {
            return this.disciplineScientifiqueErcService.viewDisciplineScientifiqueErcDialog;
        }
     set viewDisciplineScientifiqueErcDialog(value: boolean) {
         this.disciplineScientifiqueErcService.viewDisciplineScientifiqueErcDialog = value;
        }
        
-     get searchDisciplineScientifiqueErc(): DisciplineScientifiqueErcVo {
+     get searchDisciplineScientifiqueErc() : DisciplineScientifiqueErcVo {
         return this.disciplineScientifiqueErcService.searchDisciplineScientifiqueErc;
        }
     set searchDisciplineScientifiqueErc(value: DisciplineScientifiqueErcVo) {
         this.disciplineScientifiqueErcService.searchDisciplineScientifiqueErc = value;
        }
+
 
     get dateFormat(){
             return environment.dateFormatList;

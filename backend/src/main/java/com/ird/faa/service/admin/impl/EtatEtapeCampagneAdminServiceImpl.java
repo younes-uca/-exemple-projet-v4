@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,14 +48,14 @@ public List<EtatEtapeCampagne> findAll(){
     }
     @Override
     public EtatEtapeCampagne findByIdOrCode(EtatEtapeCampagne etatEtapeCampagne){
-        EtatEtapeCampagne resultat=null;
-        if(etatEtapeCampagne != null){
-            if(StringUtil.isNotEmpty(etatEtapeCampagne.getId())){
-            resultat= etatEtapeCampagneDao.getOne(etatEtapeCampagne.getId());
-            }else if(StringUtil.isNotEmpty(etatEtapeCampagne.getCode())) {
-            resultat= etatEtapeCampagneDao.findByCode(etatEtapeCampagne.getCode());
-            }
-        }
+    EtatEtapeCampagne resultat=null;
+    if(etatEtapeCampagne != null){
+    if(StringUtil.isNotEmpty(etatEtapeCampagne.getId())){
+    resultat= etatEtapeCampagneDao.getOne(etatEtapeCampagne.getId());
+    }else if(StringUtil.isNotEmpty(etatEtapeCampagne.getCode())) {
+    resultat= etatEtapeCampagneDao.findByCode(etatEtapeCampagne.getCode());
+    }
+    }
     return resultat;
     }
 
@@ -67,8 +67,9 @@ return etatEtapeCampagneDao.getOne(id);
 
 @Override
 public EtatEtapeCampagne findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+
 
 
 @Transactional
@@ -94,18 +95,19 @@ return  etatEtapeCampagneDao.save(etatEtapeCampagne);
 @Override
 public EtatEtapeCampagne save (EtatEtapeCampagne etatEtapeCampagne){
 
-EtatEtapeCampagne result =null;
+    EtatEtapeCampagne result =null;
     EtatEtapeCampagne foundedEtatEtapeCampagne = findByCode(etatEtapeCampagne.getCode());
-   if(foundedEtatEtapeCampagne == null){
+    if(foundedEtatEtapeCampagne == null){
 
 
 
-EtatEtapeCampagne savedEtatEtapeCampagne = etatEtapeCampagneDao.save(etatEtapeCampagne);
 
-result = savedEtatEtapeCampagne;
-   }
+    EtatEtapeCampagne savedEtatEtapeCampagne = etatEtapeCampagneDao.save(etatEtapeCampagne);
 
-return result;
+    result = savedEtatEtapeCampagne;
+    }
+
+    return result;
 }
 
 @Override
@@ -140,7 +142,7 @@ String query = "SELECT o FROM EtatEtapeCampagne o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "code","LIKE",etatEtapeCampagneVo.getCode());
             query += SearchUtil.addConstraint( "o", "ordre","=",etatEtapeCampagneVo.getOrdre());
             query += SearchUtil.addConstraintMinMax("o","ordre",etatEtapeCampagneVo.getOrdreMin(),etatEtapeCampagneVo.getOrdreMax());
-query+= " ORDER BY o.ordre";
+    query+= " ORDER BY o.ordre";
 return entityManager.createQuery(query).getResultList();
 }
 
@@ -148,9 +150,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<EtatEtapeCampagne> etatEtapeCampagnes){
-        if(ListUtil.isNotEmpty(etatEtapeCampagnes)){
-        etatEtapeCampagnes.forEach(e->etatEtapeCampagneDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(etatEtapeCampagnes)){
+etatEtapeCampagnes.forEach(e->etatEtapeCampagneDao.delete(e));
+}
 }
 @Override
 public void update(List<EtatEtapeCampagne> etatEtapeCampagnes){
@@ -161,4 +163,6 @@ etatEtapeCampagnes.forEach(e->etatEtapeCampagneDao.save(e));
 
 
 
-}
+
+
+    }

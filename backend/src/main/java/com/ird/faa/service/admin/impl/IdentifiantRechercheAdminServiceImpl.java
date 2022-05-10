@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import com.ird.faa.service.admin.facade.IdentifiantRechercheAdminService;
 import com.ird.faa.ws.rest.provided.vo.IdentifiantRechercheVo;
 import com.ird.faa.service.util.*;
 
-import com.ird.faa.service.core.facade.ArchivableService;
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -24,8 +24,8 @@ public class IdentifiantRechercheAdminServiceImpl extends AbstractServiceImpl<Id
 @Autowired
 private IdentifiantRechercheDao identifiantRechercheDao;
 
-@Autowired
-private ArchivableService<IdentifiantRecherche> archivableService;
+    @Autowired
+    private ArchivableService<IdentifiantRecherche> archivableService;
 
 
 @Autowired
@@ -51,14 +51,14 @@ public List<IdentifiantRecherche> findAll(){
     }
     @Override
     public IdentifiantRecherche findByIdOrCode(IdentifiantRecherche identifiantRecherche){
-        IdentifiantRecherche resultat=null;
-        if(identifiantRecherche != null){
-            if(StringUtil.isNotEmpty(identifiantRecherche.getId())){
-            resultat= identifiantRechercheDao.getOne(identifiantRecherche.getId());
-            }else if(StringUtil.isNotEmpty(identifiantRecherche.getCode())) {
-            resultat= identifiantRechercheDao.findByCode(identifiantRecherche.getCode());
-            }
-        }
+    IdentifiantRecherche resultat=null;
+    if(identifiantRecherche != null){
+    if(StringUtil.isNotEmpty(identifiantRecherche.getId())){
+    resultat= identifiantRechercheDao.getOne(identifiantRecherche.getId());
+    }else if(StringUtil.isNotEmpty(identifiantRecherche.getCode())) {
+    resultat= identifiantRechercheDao.findByCode(identifiantRecherche.getCode());
+    }
+    }
     return resultat;
     }
 
@@ -70,17 +70,17 @@ return identifiantRechercheDao.getOne(id);
 
 @Override
 public IdentifiantRecherche findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
-     @Override
+    @Override
     public IdentifiantRecherche archiver(IdentifiantRecherche identifiantRecherche) {
-        if (identifiantRecherche.getArchive() == null) {
-        identifiantRecherche.setArchive(false);
-        }
-        identifiantRecherche.setArchive(true);
-        identifiantRecherche.setDateArchivage(new Date());
-        identifiantRechercheDao.save(identifiantRecherche);
-        return identifiantRecherche;
+    if (identifiantRecherche.getArchive() == null) {
+    identifiantRecherche.setArchive(false);
+    }
+    identifiantRecherche.setArchive(true);
+    identifiantRecherche.setDateArchivage(new Date());
+    identifiantRechercheDao.save(identifiantRecherche);
+    return identifiantRecherche;
 
     }
 
@@ -94,6 +94,7 @@ return findById(id);
     identifiantRechercheDao.save(identifiantRecherche);
     return identifiantRecherche;
     }
+
 
 
 
@@ -117,35 +118,36 @@ else{
 return  identifiantRechercheDao.save(identifiantRecherche);
 }
 }
-private void prepareSave(IdentifiantRecherche identifiantRecherche){
-identifiantRecherche.setDateCreation(new Date());
-if(identifiantRecherche.getArchive() == null)
-  identifiantRecherche.setArchive(false);
-if(identifiantRecherche.getAdmin() == null)
-  identifiantRecherche.setAdmin(false);
-if(identifiantRecherche.getVisible() == null)
-  identifiantRecherche.setVisible(false);
+    private void prepareSave(IdentifiantRecherche identifiantRecherche){
+        identifiantRecherche.setDateCreation(new Date());
+                    if(identifiantRecherche.getArchive() == null)
+                identifiantRecherche.setArchive(false);
+                    if(identifiantRecherche.getAdmin() == null)
+                identifiantRecherche.setAdmin(false);
+                    if(identifiantRecherche.getVisible() == null)
+                identifiantRecherche.setVisible(false);
 
 
 
-}
+    }
 
 @Override
 public IdentifiantRecherche save (IdentifiantRecherche identifiantRecherche){
-prepareSave(identifiantRecherche);
+    prepareSave(identifiantRecherche);
 
-IdentifiantRecherche result =null;
+    IdentifiantRecherche result =null;
     IdentifiantRecherche foundedIdentifiantRecherche = findByCode(identifiantRecherche.getCode());
-   if(foundedIdentifiantRecherche == null){
+    if(foundedIdentifiantRecherche == null){
 
 
 
-IdentifiantRecherche savedIdentifiantRecherche = identifiantRechercheDao.save(identifiantRecherche);
 
-result = savedIdentifiantRecherche;
-   }
+    IdentifiantRecherche savedIdentifiantRecherche = identifiantRechercheDao.save(identifiantRecherche);
 
-return result;
+    result = savedIdentifiantRecherche;
+    }
+
+    return result;
 }
 
 @Override
@@ -187,7 +189,7 @@ String query = "SELECT o FROM IdentifiantRecherche o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "username","LIKE",identifiantRechercheVo.getUsername());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",identifiantRechercheVo.getDateArchivageMin(),identifiantRechercheVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",identifiantRechercheVo.getDateCreationMin(),identifiantRechercheVo.getDateCreationMax());
-query+= " ORDER BY o.code";
+    query+= " ORDER BY o.code";
 return entityManager.createQuery(query).getResultList();
 }
 
@@ -195,9 +197,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<IdentifiantRecherche> identifiantRecherches){
-        if(ListUtil.isNotEmpty(identifiantRecherches)){
-        identifiantRecherches.forEach(e->identifiantRechercheDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(identifiantRecherches)){
+identifiantRecherches.forEach(e->identifiantRechercheDao.delete(e));
+}
 }
 @Override
 public void update(List<IdentifiantRecherche> identifiantRecherches){
@@ -208,4 +210,6 @@ identifiantRecherches.forEach(e->identifiantRechercheDao.save(e));
 
 
 
-}
+
+
+    }

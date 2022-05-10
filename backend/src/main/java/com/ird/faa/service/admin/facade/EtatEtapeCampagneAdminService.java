@@ -8,6 +8,7 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface EtatEtapeCampagneAdminService extends AbstractService<EtatEtapeCampagne,Long,EtatEtapeCampagneVo>{
 
 
+
     /**
     * find EtatEtapeCampagne from database by code (reference)
     * @param code - reference of EtatEtapeCampagne

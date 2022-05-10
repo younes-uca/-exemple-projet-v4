@@ -34,6 +34,13 @@ hideViewDialog(){
 
 // getters and setters
 
+get hideKeyWordChercheur(): boolean {
+        return this.selectedKeyWord.username != null;
+    }
+
+get selectedChercheur(): ChercheurVo {
+    return this.chercheurService.selectedChercheur;
+}
 get keyWords(): Array<KeyWordVo> {
     return this.keyWordService.keyWords;
        }
@@ -41,14 +48,14 @@ set keyWords(value: Array<KeyWordVo>) {
         this.keyWordService.keyWords = value;
        }
 
- get selectedKeyWord():KeyWordVo {
+ get selectedKeyWord(): KeyWordVo {
            return this.keyWordService.selectedKeyWord;
        }
     set selectedKeyWord(value: KeyWordVo) {
         this.keyWordService.selectedKeyWord = value;
        }
 
-   get viewKeyWordDialog():boolean {
+   get viewKeyWordDialog(): boolean {
            return this.keyWordService.viewKeyWordDialog;
 
        }

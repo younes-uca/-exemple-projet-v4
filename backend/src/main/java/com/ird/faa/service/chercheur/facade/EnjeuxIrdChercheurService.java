@@ -8,6 +8,8 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface EnjeuxIrdChercheurService extends AbstractService<EnjeuxIrd,Long,EnjeuxIrdVo>{
 
 
+    public List<EnjeuxIrd> findByUsername(String username);
+
     /**
     * find EnjeuxIrd from database by code (reference)
     * @param code - reference of EnjeuxIrd

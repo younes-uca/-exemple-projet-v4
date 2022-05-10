@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,16 +9,17 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.EnjeuxIrdChercheur;
-import com.ird.faa.bean.EnjeuxIrd;
-import com.ird.faa.bean.Chercheur;
+        import com.ird.faa.bean.EnjeuxIrd;
+        import com.ird.faa.bean.Chercheur;
 import com.ird.faa.dao.EnjeuxIrdChercheurDao;
 import com.ird.faa.service.admin.facade.EnjeuxIrdChercheurAdminService;
-import com.ird.faa.service.admin.facade.EnjeuxIrdAdminService;
-import com.ird.faa.service.admin.facade.ChercheurAdminService;
+        import com.ird.faa.service.admin.facade.EnjeuxIrdAdminService;
+        import com.ird.faa.service.admin.facade.ChercheurAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.EnjeuxIrdChercheurVo;
 import com.ird.faa.service.util.*;
 
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -27,6 +28,8 @@ public class EnjeuxIrdChercheurAdminServiceImpl extends AbstractServiceImpl<Enje
 @Autowired
 private EnjeuxIrdChercheurDao enjeuxIrdChercheurDao;
 
+    @Autowired
+    private ArchivableService<EnjeuxIrdChercheur> archivableService;
         @Autowired
         private EnjeuxIrdAdminService enjeuxIrdService ;
         @Autowired
@@ -96,8 +99,32 @@ return enjeuxIrdChercheurDao.getOne(id);
 
 @Override
 public EnjeuxIrdChercheur findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+    @Override
+    public EnjeuxIrdChercheur archiver(EnjeuxIrdChercheur enjeuxIrdChercheur) {
+    if (enjeuxIrdChercheur.getArchive() == null) {
+    enjeuxIrdChercheur.setArchive(false);
+    }
+    enjeuxIrdChercheur.setArchive(true);
+    enjeuxIrdChercheur.setDateArchivage(new Date());
+    enjeuxIrdChercheurDao.save(enjeuxIrdChercheur);
+    return enjeuxIrdChercheur;
+
+    }
+
+    @Override
+    public EnjeuxIrdChercheur desarchiver(EnjeuxIrdChercheur enjeuxIrdChercheur) {
+    if (enjeuxIrdChercheur.getArchive() == null) {
+    enjeuxIrdChercheur.setArchive(false);
+    }
+    enjeuxIrdChercheur.setArchive(false);
+    enjeuxIrdChercheur.setDateArchivage(null);
+    enjeuxIrdChercheurDao.save(enjeuxIrdChercheur);
+    return enjeuxIrdChercheur;
+    }
+
+
 
 
 @Transactional
@@ -116,19 +143,33 @@ public EnjeuxIrdChercheur update(EnjeuxIrdChercheur enjeuxIrdChercheur){
 EnjeuxIrdChercheur foundedEnjeuxIrdChercheur = findById(enjeuxIrdChercheur.getId());
 if(foundedEnjeuxIrdChercheur==null) return null;
 else{
+    archivableService.prepare(enjeuxIrdChercheur);
 return  enjeuxIrdChercheurDao.save(enjeuxIrdChercheur);
 }
 }
+    private void prepareSave(EnjeuxIrdChercheur enjeuxIrdChercheur){
+        enjeuxIrdChercheur.setDateCreation(new Date());
+                    if(enjeuxIrdChercheur.getArchive() == null)
+                enjeuxIrdChercheur.setArchive(false);
+                    if(enjeuxIrdChercheur.getAdmin() == null)
+                enjeuxIrdChercheur.setAdmin(false);
+                    if(enjeuxIrdChercheur.getVisible() == null)
+                enjeuxIrdChercheur.setVisible(false);
+
+
+
+    }
 
 @Override
 public EnjeuxIrdChercheur save (EnjeuxIrdChercheur enjeuxIrdChercheur){
+    prepareSave(enjeuxIrdChercheur);
 
 
 
     findEnjeuxIrd(enjeuxIrdChercheur);
     findChercheur(enjeuxIrdChercheur);
 
-return enjeuxIrdChercheurDao.save(enjeuxIrdChercheur);
+    return enjeuxIrdChercheurDao.save(enjeuxIrdChercheur);
 
 
 }
@@ -160,6 +201,14 @@ public List<EnjeuxIrdChercheur> findByCriteria(EnjeuxIrdChercheurVo enjeuxIrdChe
 String query = "SELECT o FROM EnjeuxIrdChercheur o where 1=1 ";
 
             query += SearchUtil.addConstraint( "o", "id","=",enjeuxIrdChercheurVo.getId());
+            query += SearchUtil.addConstraint( "o", "archive","=",enjeuxIrdChercheurVo.getArchive());
+        query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",enjeuxIrdChercheurVo.getDateArchivage());
+        query += SearchUtil.addConstraintDate( "o", "dateCreation","=",enjeuxIrdChercheurVo.getDateCreation());
+            query += SearchUtil.addConstraint( "o", "admin","=",enjeuxIrdChercheurVo.getAdmin());
+            query += SearchUtil.addConstraint( "o", "visible","=",enjeuxIrdChercheurVo.getVisible());
+            query += SearchUtil.addConstraint( "o", "username","LIKE",enjeuxIrdChercheurVo.getUsername());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",enjeuxIrdChercheurVo.getDateArchivageMin(),enjeuxIrdChercheurVo.getDateArchivageMax());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",enjeuxIrdChercheurVo.getDateCreationMin(),enjeuxIrdChercheurVo.getDateCreationMax());
     if(enjeuxIrdChercheurVo.getEnjeuxIrdVo()!=null){
         query += SearchUtil.addConstraint( "o", "enjeuxIrd.id","=",enjeuxIrdChercheurVo.getEnjeuxIrdVo().getId());
             query += SearchUtil.addConstraint( "o", "enjeuxIrd.code","LIKE",enjeuxIrdChercheurVo.getEnjeuxIrdVo().getCode());
@@ -177,7 +226,7 @@ return entityManager.createQuery(query).getResultList();
         EnjeuxIrd loadedEnjeuxIrd =enjeuxIrdService.findByIdOrCode(enjeuxIrdChercheur.getEnjeuxIrd());
 
     if(loadedEnjeuxIrd==null ) {
-        return;
+    return;
     }
     enjeuxIrdChercheur.setEnjeuxIrd(loadedEnjeuxIrd);
     }
@@ -185,7 +234,7 @@ return entityManager.createQuery(query).getResultList();
         Chercheur loadedChercheur =chercheurService.findByIdOrNumeroMatricule(enjeuxIrdChercheur.getChercheur());
 
     if(loadedChercheur==null ) {
-        return;
+    return;
     }
     enjeuxIrdChercheur.setChercheur(loadedChercheur);
     }
@@ -193,9 +242,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<EnjeuxIrdChercheur> enjeuxIrdChercheurs){
-        if(ListUtil.isNotEmpty(enjeuxIrdChercheurs)){
-        enjeuxIrdChercheurs.forEach(e->enjeuxIrdChercheurDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(enjeuxIrdChercheurs)){
+enjeuxIrdChercheurs.forEach(e->enjeuxIrdChercheurDao.delete(e));
+}
 }
 @Override
 public void update(List<EnjeuxIrdChercheur> enjeuxIrdChercheurs){
@@ -206,4 +255,6 @@ enjeuxIrdChercheurs.forEach(e->enjeuxIrdChercheurDao.save(e));
 
 
 
-}
+
+
+    }

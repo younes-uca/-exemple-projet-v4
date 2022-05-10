@@ -8,6 +8,7 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface SemanticRelationshipChercheurService extends AbstractService<SemanticRelationship,Long,SemanticRelationshipVo>{
 
 
+
     /**
     * find SemanticRelationship from database by code (reference)
     * @param code - reference of SemanticRelationship

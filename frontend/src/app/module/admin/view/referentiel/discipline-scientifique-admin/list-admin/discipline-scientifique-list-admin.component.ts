@@ -38,11 +38,10 @@ export class DisciplineScientifiqueListAdminComponent implements OnInit {
 
 
     constructor(private datePipe: DatePipe, private disciplineScientifiqueService: DisciplineScientifiqueService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-
         , private disciplineScientifiqueParentService: DisciplineScientifiqueParentService
 ) { }
 
-    ngOnInit(): void {
+    ngOnInit() : void {
       this.loadDisciplineScientifiques();
       this.initExport();
       this.initCol();
@@ -85,7 +84,7 @@ export class DisciplineScientifiqueListAdminComponent implements OnInit {
         ];
     }
     
-    public async editDisciplineScientifique(disciplineScientifique:DisciplineScientifiqueVo){
+    public async editDisciplineScientifique(disciplineScientifique: DisciplineScientifiqueVo){
         const isPermistted = await this.roleService.isPermitted('DisciplineScientifique', 'edit');
          if(isPermistted){
           this.disciplineScientifiqueService.findByIdWithAssociatedList(disciplineScientifique).subscribe(res => {
@@ -104,7 +103,7 @@ export class DisciplineScientifiqueListAdminComponent implements OnInit {
     
 
 
-   public async viewDisciplineScientifique(disciplineScientifique:DisciplineScientifiqueVo){
+   public async viewDisciplineScientifique(disciplineScientifique: DisciplineScientifiqueVo){
         const isPermistted = await this.roleService.isPermitted('DisciplineScientifique', 'view');
         if(isPermistted){
            this.disciplineScientifiqueService.findByIdWithAssociatedList(disciplineScientifique).subscribe(res => {
@@ -133,7 +132,7 @@ export class DisciplineScientifiqueListAdminComponent implements OnInit {
         }
        
     }
-public async archiverDisciplineScientifique(disciplineScientifique:DisciplineScientifiqueVo){
+public async archiverDisciplineScientifique(disciplineScientifique: DisciplineScientifiqueVo){
 const isPermistted = await this.roleService.isPermitted('DisciplineScientifique', 'delete');
 if(isPermistted){
 this.confirmationService.confirm({
@@ -160,7 +159,7 @@ severity: 'error', summary: 'erreur', detail: 'Problème de permission'
 }
 }
 
-public async desarchiverDisciplineScientifique(disciplineScientifique:DisciplineScientifiqueVo){
+public async desarchiverDisciplineScientifique(disciplineScientifique: DisciplineScientifiqueVo){
 const isPermistted = await this.roleService.isPermitted('DisciplineScientifique', 'delete');
 if(isPermistted){
 this.confirmationService.confirm({
@@ -188,7 +187,7 @@ severity: 'error', summary: 'erreur', detail: 'Problème de permission'
 }
 
 
-    public async deleteDisciplineScientifique(disciplineScientifique:DisciplineScientifiqueVo){
+    public async deleteDisciplineScientifique(disciplineScientifique: DisciplineScientifiqueVo){
        const isPermistted = await this.roleService.isPermitted('DisciplineScientifique', 'delete');
         if(isPermistted){
                       this.confirmationService.confirm({
@@ -247,7 +246,7 @@ public async duplicateDisciplineScientifique(disciplineScientifique: DisciplineS
 
 	}
 
-  initExport(): void {
+  initExport() : void {
     this.excelPdfButons = [
       {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
       {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
@@ -256,7 +255,7 @@ public async duplicateDisciplineScientifique(disciplineScientifique: DisciplineS
   }
 
 
-    prepareColumnExport(): void {
+    prepareColumnExport() : void {
     this.exportData = this.disciplineScientifiques.map(e => {
     return {
                     'Libelle fr': e.libelleFr ,
@@ -294,14 +293,14 @@ public async duplicateDisciplineScientifique(disciplineScientifique: DisciplineS
 
     // getters and setters
 
-    get disciplineScientifiques(): Array<DisciplineScientifiqueVo> {
+    get disciplineScientifiques() : Array<DisciplineScientifiqueVo> {
            return this.disciplineScientifiqueService.disciplineScientifiques;
        }
     set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
         this.disciplineScientifiqueService.disciplineScientifiques = value;
        }
 
-    get disciplineScientifiqueSelections(): Array<DisciplineScientifiqueVo> {
+    get disciplineScientifiqueSelections() : Array<DisciplineScientifiqueVo> {
            return this.disciplineScientifiqueService.disciplineScientifiqueSelections;
        }
     set disciplineScientifiqueSelections(value: Array<DisciplineScientifiqueVo>) {
@@ -311,39 +310,40 @@ public async duplicateDisciplineScientifique(disciplineScientifique: DisciplineS
      
 
 
-    get selectedDisciplineScientifique():DisciplineScientifiqueVo {
+    get selectedDisciplineScientifique() : DisciplineScientifiqueVo {
            return this.disciplineScientifiqueService.selectedDisciplineScientifique;
        }
     set selectedDisciplineScientifique(value: DisciplineScientifiqueVo) {
         this.disciplineScientifiqueService.selectedDisciplineScientifique = value;
        }
     
-    get createDisciplineScientifiqueDialog():boolean {
+    get createDisciplineScientifiqueDialog() :boolean {
            return this.disciplineScientifiqueService.createDisciplineScientifiqueDialog;
        }
     set createDisciplineScientifiqueDialog(value: boolean) {
         this.disciplineScientifiqueService.createDisciplineScientifiqueDialog= value;
        }
     
-    get editDisciplineScientifiqueDialog():boolean {
+    get editDisciplineScientifiqueDialog() :boolean {
            return this.disciplineScientifiqueService.editDisciplineScientifiqueDialog;
        }
     set editDisciplineScientifiqueDialog(value: boolean) {
         this.disciplineScientifiqueService.editDisciplineScientifiqueDialog= value;
        }
-    get viewDisciplineScientifiqueDialog():boolean {
+    get viewDisciplineScientifiqueDialog() :boolean {
            return this.disciplineScientifiqueService.viewDisciplineScientifiqueDialog;
        }
     set viewDisciplineScientifiqueDialog(value: boolean) {
         this.disciplineScientifiqueService.viewDisciplineScientifiqueDialog = value;
        }
        
-     get searchDisciplineScientifique(): DisciplineScientifiqueVo {
+     get searchDisciplineScientifique() : DisciplineScientifiqueVo {
         return this.disciplineScientifiqueService.searchDisciplineScientifique;
        }
     set searchDisciplineScientifique(value: DisciplineScientifiqueVo) {
         this.disciplineScientifiqueService.searchDisciplineScientifique = value;
        }
+
 
     get dateFormat(){
             return environment.dateFormatList;

@@ -41,14 +41,14 @@ set keyWords(value: Array<KeyWordVo>) {
         this.keyWordService.keyWords = value;
        }
 
- get selectedKeyWord():KeyWordVo {
+ get selectedKeyWord(): KeyWordVo {
            return this.keyWordService.selectedKeyWord;
        }
     set selectedKeyWord(value: KeyWordVo) {
         this.keyWordService.selectedKeyWord = value;
        }
 
-   get viewKeyWordDialog():boolean {
+   get viewKeyWordDialog(): boolean {
            return this.keyWordService.viewKeyWordDialog;
 
        }

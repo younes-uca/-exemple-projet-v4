@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +9,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.DisciplineScientifique;
-import com.ird.faa.bean.DisciplineScientifiqueParent;
-import com.ird.faa.bean.DisciplineScientifiqueErcAssociation;
+        import com.ird.faa.bean.DisciplineScientifiqueParent;
+        import com.ird.faa.bean.DisciplineScientifiqueErcAssociation;
 import com.ird.faa.dao.DisciplineScientifiqueDao;
 import com.ird.faa.service.admin.facade.DisciplineScientifiqueAdminService;
-import com.ird.faa.service.admin.facade.DisciplineScientifiqueParentAdminService;
-import com.ird.faa.service.admin.facade.DisciplineScientifiqueErcAssociationAdminService;
+        import com.ird.faa.service.admin.facade.DisciplineScientifiqueParentAdminService;
+        import com.ird.faa.service.admin.facade.DisciplineScientifiqueErcAssociationAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.DisciplineScientifiqueVo;
 import com.ird.faa.service.util.*;
-import com.ird.faa.bean.DisciplineScientifiqueErcAssociation;
-import com.ird.faa.service.admin.facade.DisciplineScientifiqueErcAssociationAdminService;
+        import com.ird.faa.bean.DisciplineScientifiqueErcAssociation;
+        import com.ird.faa.service.admin.facade.DisciplineScientifiqueErcAssociationAdminService;
 
-import com.ird.faa.service.core.facade.ArchivableService;
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -30,8 +30,8 @@ public class DisciplineScientifiqueAdminServiceImpl extends AbstractServiceImpl<
 @Autowired
 private DisciplineScientifiqueDao disciplineScientifiqueDao;
 
-@Autowired
-private ArchivableService<DisciplineScientifique> archivableService;
+    @Autowired
+    private ArchivableService<DisciplineScientifique> archivableService;
         @Autowired
         private DisciplineScientifiqueParentAdminService disciplineScientifiqueParentService ;
         @Autowired
@@ -84,14 +84,14 @@ public List<DisciplineScientifique> findAll(){
     }
     @Override
     public DisciplineScientifique findByIdOrCode(DisciplineScientifique disciplineScientifique){
-        DisciplineScientifique resultat=null;
-        if(disciplineScientifique != null){
-            if(StringUtil.isNotEmpty(disciplineScientifique.getId())){
-            resultat= disciplineScientifiqueDao.getOne(disciplineScientifique.getId());
-            }else if(StringUtil.isNotEmpty(disciplineScientifique.getCode())) {
-            resultat= disciplineScientifiqueDao.findByCode(disciplineScientifique.getCode());
-            }
-        }
+    DisciplineScientifique resultat=null;
+    if(disciplineScientifique != null){
+    if(StringUtil.isNotEmpty(disciplineScientifique.getId())){
+    resultat= disciplineScientifiqueDao.getOne(disciplineScientifique.getId());
+    }else if(StringUtil.isNotEmpty(disciplineScientifique.getCode())) {
+    resultat= disciplineScientifiqueDao.findByCode(disciplineScientifique.getCode());
+    }
+    }
     return resultat;
     }
 
@@ -103,19 +103,19 @@ return disciplineScientifiqueDao.getOne(id);
 
 @Override
 public DisciplineScientifique findByIdWithAssociatedList(Long id){
-DisciplineScientifique disciplineScientifique  = findById(id);
-findAssociatedLists(disciplineScientifique);
-return disciplineScientifique;
+    DisciplineScientifique disciplineScientifique  = findById(id);
+    findAssociatedLists(disciplineScientifique);
+    return disciplineScientifique;
 }
-     @Override
+    @Override
     public DisciplineScientifique archiver(DisciplineScientifique disciplineScientifique) {
-        if (disciplineScientifique.getArchive() == null) {
-        disciplineScientifique.setArchive(false);
-        }
-        disciplineScientifique.setArchive(true);
-        disciplineScientifique.setDateArchivage(new Date());
-        disciplineScientifiqueDao.save(disciplineScientifique);
-        return disciplineScientifique;
+    if (disciplineScientifique.getArchive() == null) {
+    disciplineScientifique.setArchive(false);
+    }
+    disciplineScientifique.setArchive(true);
+    disciplineScientifique.setDateArchivage(new Date());
+    disciplineScientifiqueDao.save(disciplineScientifique);
+    return disciplineScientifique;
 
     }
 
@@ -130,21 +130,23 @@ return disciplineScientifique;
     return disciplineScientifique;
     }
 
-private void findAssociatedLists(DisciplineScientifique disciplineScientifique){
-if(disciplineScientifique!=null && disciplineScientifique.getId() != null) {
-        List<DisciplineScientifiqueErcAssociation> disciplineScientifiqueErcAssociations = disciplineScientifiqueErcAssociationService.findByDisciplineScientifiqueId(disciplineScientifique.getId());
-        disciplineScientifique.setDisciplineScientifiqueErcAssociations(disciplineScientifiqueErcAssociations);
-}
-}
-private void deleteAssociatedLists(Long id){
-if(id != null ) {
-        disciplineScientifiqueErcAssociationService.deleteByDisciplineScientifiqueId(id);
-}
-}
+
+    private void findAssociatedLists(DisciplineScientifique disciplineScientifique){
+    if(disciplineScientifique!=null && disciplineScientifique.getId() != null) {
+            List<DisciplineScientifiqueErcAssociation> disciplineScientifiqueErcAssociations = disciplineScientifiqueErcAssociationService.findByDisciplineScientifiqueId(disciplineScientifique.getId());
+            disciplineScientifique.setDisciplineScientifiqueErcAssociations(disciplineScientifiqueErcAssociations);
+    }
+    }
+    private void deleteAssociatedLists(Long id){
+    if(id != null ) {
+            disciplineScientifiqueErcAssociationService.deleteByDisciplineScientifiqueId(id);
+    }
+    }
 
     private void updateAssociatedLists(DisciplineScientifique disciplineScientifique){
     if(disciplineScientifique !=null && disciplineScientifique.getId() != null){
-            List<List<DisciplineScientifiqueErcAssociation>> resultDisciplineScientifiqueErcAssociations= disciplineScientifiqueErcAssociationService.getToBeSavedAndToBeDeleted(disciplineScientifiqueErcAssociationService.findByDisciplineScientifiqueId(disciplineScientifique.getId()),disciplineScientifique.getDisciplineScientifiqueErcAssociations());
+            List
+            <List<DisciplineScientifiqueErcAssociation>> resultDisciplineScientifiqueErcAssociations= disciplineScientifiqueErcAssociationService.getToBeSavedAndToBeDeleted(disciplineScientifiqueErcAssociationService.findByDisciplineScientifiqueId(disciplineScientifique.getId()),disciplineScientifique.getDisciplineScientifiqueErcAssociations());
             disciplineScientifiqueErcAssociationService.delete(resultDisciplineScientifiqueErcAssociations.get(1));
             associateDisciplineScientifiqueErcAssociation(disciplineScientifique,resultDisciplineScientifiqueErcAssociations.get(0));
             disciplineScientifiqueErcAssociationService.update(resultDisciplineScientifiqueErcAssociations.get(0));
@@ -156,7 +158,7 @@ if(id != null ) {
 public int deleteById(Long id){
 int res=0;
 if(disciplineScientifiqueDao.findById(id).isPresent())  {
-deleteAssociatedLists(id);
+    deleteAssociatedLists(id);
 disciplineScientifiqueDao.deleteById(id);
 res = 1;
 }
@@ -174,37 +176,38 @@ else{
 return  disciplineScientifiqueDao.save(disciplineScientifique);
 }
 }
-private void prepareSave(DisciplineScientifique disciplineScientifique){
-disciplineScientifique.setDateCreation(new Date());
-if(disciplineScientifique.getArchive() == null)
-  disciplineScientifique.setArchive(false);
-if(disciplineScientifique.getAdmin() == null)
-  disciplineScientifique.setAdmin(false);
-if(disciplineScientifique.getVisible() == null)
-  disciplineScientifique.setVisible(false);
+    private void prepareSave(DisciplineScientifique disciplineScientifique){
+        disciplineScientifique.setDateCreation(new Date());
+                    if(disciplineScientifique.getArchive() == null)
+                disciplineScientifique.setArchive(false);
+                    if(disciplineScientifique.getAdmin() == null)
+                disciplineScientifique.setAdmin(false);
+                    if(disciplineScientifique.getVisible() == null)
+                disciplineScientifique.setVisible(false);
 
 
 
-}
+    }
 
 @Override
 public DisciplineScientifique save (DisciplineScientifique disciplineScientifique){
-prepareSave(disciplineScientifique);
+    prepareSave(disciplineScientifique);
 
-DisciplineScientifique result =null;
+    DisciplineScientifique result =null;
     DisciplineScientifique foundedDisciplineScientifique = findByCode(disciplineScientifique.getCode());
-   if(foundedDisciplineScientifique == null){
+    if(foundedDisciplineScientifique == null){
+
 
 
     findDisciplineScientifiqueParent(disciplineScientifique);
 
-DisciplineScientifique savedDisciplineScientifique = disciplineScientifiqueDao.save(disciplineScientifique);
+    DisciplineScientifique savedDisciplineScientifique = disciplineScientifiqueDao.save(disciplineScientifique);
 
-       saveDisciplineScientifiqueErcAssociations(savedDisciplineScientifique,disciplineScientifique.getDisciplineScientifiqueErcAssociations());
-result = savedDisciplineScientifique;
-   }
+        saveDisciplineScientifiqueErcAssociations(savedDisciplineScientifique,disciplineScientifique.getDisciplineScientifiqueErcAssociations());
+    result = savedDisciplineScientifique;
+    }
 
-return result;
+    return result;
 }
 
 @Override
@@ -259,7 +262,7 @@ String query = "SELECT o FROM DisciplineScientifique o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "disciplineScientifiqueParent.code","LIKE",disciplineScientifiqueVo.getDisciplineScientifiqueParentVo().getCode());
     }
 
-query+= " ORDER BY o.code";
+    query+= " ORDER BY o.code";
 return entityManager.createQuery(query).getResultList();
 }
         private  void saveDisciplineScientifiqueErcAssociations(DisciplineScientifique disciplineScientifique,List<DisciplineScientifiqueErcAssociation> disciplineScientifiqueErcAssociations){
@@ -278,7 +281,7 @@ return entityManager.createQuery(query).getResultList();
         DisciplineScientifiqueParent loadedDisciplineScientifiqueParent =disciplineScientifiqueParentService.findByIdOrCode(disciplineScientifique.getDisciplineScientifiqueParent());
 
     if(loadedDisciplineScientifiqueParent==null ) {
-        return;
+    return;
     }
     disciplineScientifique.setDisciplineScientifiqueParent(loadedDisciplineScientifiqueParent);
     }
@@ -286,9 +289,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<DisciplineScientifique> disciplineScientifiques){
-        if(ListUtil.isNotEmpty(disciplineScientifiques)){
-        disciplineScientifiques.forEach(e->disciplineScientifiqueDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(disciplineScientifiques)){
+disciplineScientifiques.forEach(e->disciplineScientifiqueDao.delete(e));
+}
 }
 @Override
 public void update(List<DisciplineScientifique> disciplineScientifiques){
@@ -297,11 +300,13 @@ disciplineScientifiques.forEach(e->disciplineScientifiqueDao.save(e));
 }
 }
 
-private void associateDisciplineScientifiqueErcAssociation(DisciplineScientifique disciplineScientifique, List<DisciplineScientifiqueErcAssociation> disciplineScientifiqueErcAssociation) {
-    if (ListUtil.isNotEmpty(disciplineScientifiqueErcAssociation)) {
+        private void associateDisciplineScientifiqueErcAssociation(DisciplineScientifique disciplineScientifique, List<DisciplineScientifiqueErcAssociation> disciplineScientifiqueErcAssociation) {
+        if (ListUtil.isNotEmpty(disciplineScientifiqueErcAssociation)) {
         disciplineScientifiqueErcAssociation.forEach(e -> e.setDisciplineScientifique(disciplineScientifique));
-    }
-    }
+        }
+        }
 
 
-}
+
+
+    }

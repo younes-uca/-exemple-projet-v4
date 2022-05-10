@@ -1,14 +1,14 @@
 package com.ird.faa.service.chercheur.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import com.ird.faa.service.util.StringUtil;
-import com.ird.faa.security.common.SecurityUtil;
-import com.ird.faa.security.bean.User;
+    import com.ird.faa.service.util.StringUtil;
+    import com.ird.faa.security.common.SecurityUtil;
+    import com.ird.faa.security.bean.User;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.DisciplineScientifiqueErcParent;
@@ -18,7 +18,7 @@ import com.ird.faa.service.chercheur.facade.DisciplineScientifiqueErcParentCherc
 import com.ird.faa.ws.rest.provided.vo.DisciplineScientifiqueErcParentVo;
 import com.ird.faa.service.util.*;
 
-import com.ird.faa.service.core.facade.ArchivableService;
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -27,8 +27,8 @@ public class DisciplineScientifiqueErcParentChercheurServiceImpl extends Abstrac
 @Autowired
 private DisciplineScientifiqueErcParentDao disciplineScientifiqueErcParentDao;
 
-@Autowired
-private ArchivableService<DisciplineScientifiqueErcParent> archivableService;
+    @Autowired
+    private ArchivableService<DisciplineScientifiqueErcParent> archivableService;
 
 
 @Autowired
@@ -37,10 +37,10 @@ private EntityManager entityManager;
 
 @Override
 public List<DisciplineScientifiqueErcParent> findAll(){
-    String query = "SELECT o FROM DisciplineScientifiqueErcParent o ";
-    query+= " WHERE (o.archive != true AND o.visible = true)";
-    query+= " ORDER BY o.code";
-    return entityManager.createQuery(query).getResultList();
+    List<DisciplineScientifiqueErcParent> resultat= new ArrayList();
+    resultat.addAll(findAllNonArchive());
+    resultat.addAll(findAllByOwner());
+    return result;
 }
     @Override
     public DisciplineScientifiqueErcParent findByCode(String code){
@@ -55,14 +55,14 @@ public List<DisciplineScientifiqueErcParent> findAll(){
     }
     @Override
     public DisciplineScientifiqueErcParent findByIdOrCode(DisciplineScientifiqueErcParent disciplineScientifiqueErcParent){
-        DisciplineScientifiqueErcParent resultat=null;
-        if(disciplineScientifiqueErcParent != null){
-            if(StringUtil.isNotEmpty(disciplineScientifiqueErcParent.getId())){
-            resultat= disciplineScientifiqueErcParentDao.getOne(disciplineScientifiqueErcParent.getId());
-            }else if(StringUtil.isNotEmpty(disciplineScientifiqueErcParent.getCode())) {
-            resultat= disciplineScientifiqueErcParentDao.findByCode(disciplineScientifiqueErcParent.getCode());
-            }
-        }
+    DisciplineScientifiqueErcParent resultat=null;
+    if(disciplineScientifiqueErcParent != null){
+    if(StringUtil.isNotEmpty(disciplineScientifiqueErcParent.getId())){
+    resultat= disciplineScientifiqueErcParentDao.getOne(disciplineScientifiqueErcParent.getId());
+    }else if(StringUtil.isNotEmpty(disciplineScientifiqueErcParent.getCode())) {
+    resultat= disciplineScientifiqueErcParentDao.findByCode(disciplineScientifiqueErcParent.getCode());
+    }
+    }
     return resultat;
     }
 
@@ -74,8 +74,9 @@ return disciplineScientifiqueErcParentDao.getOne(id);
 
 @Override
 public DisciplineScientifiqueErcParent findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+
 
 
 @Transactional
@@ -98,35 +99,42 @@ else{
 return  disciplineScientifiqueErcParentDao.save(disciplineScientifiqueErcParent);
 }
 }
-private void prepareSave(DisciplineScientifiqueErcParent disciplineScientifiqueErcParent){
-disciplineScientifiqueErcParent.setDateCreation(new Date());
-if(disciplineScientifiqueErcParent.getArchive() == null)
-  disciplineScientifiqueErcParent.setArchive(false);
-if(disciplineScientifiqueErcParent.getAdmin() == null)
-  disciplineScientifiqueErcParent.setAdmin(false);
-if(disciplineScientifiqueErcParent.getVisible() == null)
-  disciplineScientifiqueErcParent.setVisible(false);
+    private void prepareSave(DisciplineScientifiqueErcParent disciplineScientifiqueErcParent){
+        disciplineScientifiqueErcParent.setDateCreation(new Date());
+                    if(disciplineScientifiqueErcParent.getArchive() == null)
+                disciplineScientifiqueErcParent.setArchive(false);
+                    if(disciplineScientifiqueErcParent.getAdmin() == null)
+                disciplineScientifiqueErcParent.setAdmin(false);
+                    if(disciplineScientifiqueErcParent.getVisible() == null)
+                disciplineScientifiqueErcParent.setVisible(false);
+
+            disciplineScientifiqueErcParent.setAdmin(false);
+            disciplineScientifiqueErcParent.setVisible(false);
+            User currentUser = SecurityUtil.getCurrentUser();
+            if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
+            disciplineScientifiqueErcParent.setUsername(currentUser.getUsername());
+            }
 
 
-
-}
+    }
 
 @Override
 public DisciplineScientifiqueErcParent save (DisciplineScientifiqueErcParent disciplineScientifiqueErcParent){
-prepareSave(disciplineScientifiqueErcParent);
+    prepareSave(disciplineScientifiqueErcParent);
 
-DisciplineScientifiqueErcParent result =null;
+    DisciplineScientifiqueErcParent result =null;
     DisciplineScientifiqueErcParent foundedDisciplineScientifiqueErcParent = findByCode(disciplineScientifiqueErcParent.getCode());
-   if(foundedDisciplineScientifiqueErcParent == null){
+    if(foundedDisciplineScientifiqueErcParent == null){
 
 
 
-DisciplineScientifiqueErcParent savedDisciplineScientifiqueErcParent = disciplineScientifiqueErcParentDao.save(disciplineScientifiqueErcParent);
 
-result = savedDisciplineScientifiqueErcParent;
-   }
+    DisciplineScientifiqueErcParent savedDisciplineScientifiqueErcParent = disciplineScientifiqueErcParentDao.save(disciplineScientifiqueErcParent);
 
-return result;
+    result = savedDisciplineScientifiqueErcParent;
+    }
+
+    return result;
 }
 
 @Override
@@ -170,7 +178,7 @@ String query = "SELECT o FROM DisciplineScientifiqueErcParent o where 1=1 ";
             query += SearchUtil.addConstraintMinMax("o","niveau",disciplineScientifiqueErcParentVo.getNiveauMin(),disciplineScientifiqueErcParentVo.getNiveauMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",disciplineScientifiqueErcParentVo.getDateArchivageMin(),disciplineScientifiqueErcParentVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",disciplineScientifiqueErcParentVo.getDateCreationMin(),disciplineScientifiqueErcParentVo.getDateCreationMax());
-query+= " ORDER BY o.code";
+    query+= " ORDER BY o.code";
 return entityManager.createQuery(query).getResultList();
 }
 
@@ -178,9 +186,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<DisciplineScientifiqueErcParent> disciplineScientifiqueErcParents){
-        if(ListUtil.isNotEmpty(disciplineScientifiqueErcParents)){
-        disciplineScientifiqueErcParents.forEach(e->disciplineScientifiqueErcParentDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(disciplineScientifiqueErcParents)){
+disciplineScientifiqueErcParents.forEach(e->disciplineScientifiqueErcParentDao.delete(e));
+}
 }
 @Override
 public void update(List<DisciplineScientifiqueErcParent> disciplineScientifiqueErcParents){
@@ -191,4 +199,24 @@ disciplineScientifiqueErcParents.forEach(e->disciplineScientifiqueErcParentDao.s
 
 
 
-}
+
+        public List<DisciplineScientifiqueErcParent> findAllNonArchive(){
+        String query = "SELECT o FROM DisciplineScientifiqueErcParent o  WHERE o.archive != true AND o.visible = true";
+            query+= " ORDER BY o.code";
+        return entityManager.createQuery(query).getResultList();
+        }
+
+        public List<DisciplineScientifiqueErcParent> findAllByOwner(){
+        List<DisciplineScientifiqueErcParent> result= new ArrayList();
+        User currentUser = SecurityUtil.getCurrentUser();
+        if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
+        String query = "SELECT o FROM DisciplineScientifiqueErcParent o  WHERE o.archive != true AND o.visible = false AND o.username = '"+ currentUser.getUsername()+"'";
+            query+= " ORDER BY o.code";
+        result = entityManager.createQuery(query).getResultList();
+        }
+        return result;
+        }
+
+
+
+    }

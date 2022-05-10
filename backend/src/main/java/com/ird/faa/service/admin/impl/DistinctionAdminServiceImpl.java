@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,21 +9,21 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.Distinction;
-import com.ird.faa.bean.Chercheur;
-import com.ird.faa.bean.Campagne;
-import com.ird.faa.bean.EtatEtapeCampagne;
-import com.ird.faa.bean.DistinctionDisciplineScientifique;
+        import com.ird.faa.bean.Chercheur;
+        import com.ird.faa.bean.Campagne;
+        import com.ird.faa.bean.EtatEtapeCampagne;
+        import com.ird.faa.bean.DistinctionDisciplineScientifique;
 import com.ird.faa.dao.DistinctionDao;
 import com.ird.faa.service.admin.facade.DistinctionAdminService;
-import com.ird.faa.service.admin.facade.EtatEtapeCampagneAdminService;
-import com.ird.faa.service.admin.facade.CampagneAdminService;
-import com.ird.faa.service.admin.facade.DistinctionDisciplineScientifiqueAdminService;
-import com.ird.faa.service.admin.facade.ChercheurAdminService;
+        import com.ird.faa.service.admin.facade.EtatEtapeCampagneAdminService;
+        import com.ird.faa.service.admin.facade.CampagneAdminService;
+        import com.ird.faa.service.admin.facade.DistinctionDisciplineScientifiqueAdminService;
+        import com.ird.faa.service.admin.facade.ChercheurAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.DistinctionVo;
 import com.ird.faa.service.util.*;
-import com.ird.faa.bean.DistinctionDisciplineScientifique;
-import com.ird.faa.service.admin.facade.DistinctionDisciplineScientifiqueAdminService;
+        import com.ird.faa.bean.DistinctionDisciplineScientifique;
+        import com.ird.faa.service.admin.facade.DistinctionDisciplineScientifiqueAdminService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
@@ -129,25 +129,27 @@ return distinctionDao.getOne(id);
 
 @Override
 public Distinction findByIdWithAssociatedList(Long id){
-Distinction distinction  = findById(id);
-findAssociatedLists(distinction);
-return distinction;
+    Distinction distinction  = findById(id);
+    findAssociatedLists(distinction);
+    return distinction;
 }
-private void findAssociatedLists(Distinction distinction){
-if(distinction!=null && distinction.getId() != null) {
-        List<DistinctionDisciplineScientifique> distinctionDisciplineScientifiques = distinctionDisciplineScientifiqueService.findByDistinctionId(distinction.getId());
-        distinction.setDistinctionDisciplineScientifiques(distinctionDisciplineScientifiques);
-}
-}
-private void deleteAssociatedLists(Long id){
-if(id != null ) {
-        distinctionDisciplineScientifiqueService.deleteByDistinctionId(id);
-}
-}
+
+    private void findAssociatedLists(Distinction distinction){
+    if(distinction!=null && distinction.getId() != null) {
+            List<DistinctionDisciplineScientifique> distinctionDisciplineScientifiques = distinctionDisciplineScientifiqueService.findByDistinctionId(distinction.getId());
+            distinction.setDistinctionDisciplineScientifiques(distinctionDisciplineScientifiques);
+    }
+    }
+    private void deleteAssociatedLists(Long id){
+    if(id != null ) {
+            distinctionDisciplineScientifiqueService.deleteByDistinctionId(id);
+    }
+    }
 
     private void updateAssociatedLists(Distinction distinction){
     if(distinction !=null && distinction.getId() != null){
-            List<List<DistinctionDisciplineScientifique>> resultDistinctionDisciplineScientifiques= distinctionDisciplineScientifiqueService.getToBeSavedAndToBeDeleted(distinctionDisciplineScientifiqueService.findByDistinctionId(distinction.getId()),distinction.getDistinctionDisciplineScientifiques());
+            List
+            <List<DistinctionDisciplineScientifique>> resultDistinctionDisciplineScientifiques= distinctionDisciplineScientifiqueService.getToBeSavedAndToBeDeleted(distinctionDisciplineScientifiqueService.findByDistinctionId(distinction.getId()),distinction.getDistinctionDisciplineScientifiques());
             distinctionDisciplineScientifiqueService.delete(resultDistinctionDisciplineScientifiques.get(1));
             associateDistinctionDisciplineScientifique(distinction,resultDistinctionDisciplineScientifiques.get(0));
             distinctionDisciplineScientifiqueService.update(resultDistinctionDisciplineScientifiques.get(0));
@@ -159,7 +161,7 @@ if(id != null ) {
 public int deleteById(Long id){
 int res=0;
 if(distinctionDao.findById(id).isPresent())  {
-deleteAssociatedLists(id);
+    deleteAssociatedLists(id);
 distinctionDao.deleteById(id);
 res = 1;
 }
@@ -180,19 +182,19 @@ return  distinctionDao.save(distinction);
 @Override
 public Distinction save (Distinction distinction){
 
-Distinction result =null;
+    Distinction result =null;
 
 
     findChercheur(distinction);
     findCampagne(distinction);
     findEtatEtapeCampagne(distinction);
 
-Distinction savedDistinction = distinctionDao.save(distinction);
+    Distinction savedDistinction = distinctionDao.save(distinction);
 
-       saveDistinctionDisciplineScientifiques(savedDistinction,distinction.getDistinctionDisciplineScientifiques());
-result = savedDistinction;
+        saveDistinctionDisciplineScientifiques(savedDistinction,distinction.getDistinctionDisciplineScientifiques());
+    result = savedDistinction;
 
-return result;
+    return result;
 }
 
 @Override
@@ -264,7 +266,7 @@ return entityManager.createQuery(query).getResultList();
         Chercheur loadedChercheur =chercheurService.findByIdOrNumeroMatricule(distinction.getChercheur());
 
     if(loadedChercheur==null ) {
-        return;
+    return;
     }
     distinction.setChercheur(loadedChercheur);
     }
@@ -272,7 +274,7 @@ return entityManager.createQuery(query).getResultList();
         Campagne loadedCampagne =campagneService.findByIdOrCode(distinction.getCampagne());
 
     if(loadedCampagne==null ) {
-        return;
+    return;
     }
     distinction.setCampagne(loadedCampagne);
     }
@@ -280,7 +282,7 @@ return entityManager.createQuery(query).getResultList();
         EtatEtapeCampagne loadedEtatEtapeCampagne =etatEtapeCampagneService.findByIdOrCode(distinction.getEtatEtapeCampagne());
 
     if(loadedEtatEtapeCampagne==null ) {
-        return;
+    return;
     }
     distinction.setEtatEtapeCampagne(loadedEtatEtapeCampagne);
     }
@@ -288,9 +290,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<Distinction> distinctions){
-        if(ListUtil.isNotEmpty(distinctions)){
-        distinctions.forEach(e->distinctionDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(distinctions)){
+distinctions.forEach(e->distinctionDao.delete(e));
+}
 }
 @Override
 public void update(List<Distinction> distinctions){
@@ -299,11 +301,13 @@ distinctions.forEach(e->distinctionDao.save(e));
 }
 }
 
-private void associateDistinctionDisciplineScientifique(Distinction distinction, List<DistinctionDisciplineScientifique> distinctionDisciplineScientifique) {
-    if (ListUtil.isNotEmpty(distinctionDisciplineScientifique)) {
+        private void associateDistinctionDisciplineScientifique(Distinction distinction, List<DistinctionDisciplineScientifique> distinctionDisciplineScientifique) {
+        if (ListUtil.isNotEmpty(distinctionDisciplineScientifique)) {
         distinctionDisciplineScientifique.forEach(e -> e.setDistinction(distinction));
-    }
-    }
+        }
+        }
 
 
-}
+
+
+    }

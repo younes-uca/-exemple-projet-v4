@@ -41,14 +41,14 @@ set identifiantRecherches(value: Array<IdentifiantRechercheVo>) {
         this.identifiantRechercheService.identifiantRecherches = value;
        }
 
- get selectedIdentifiantRecherche():IdentifiantRechercheVo {
+ get selectedIdentifiantRecherche(): IdentifiantRechercheVo {
            return this.identifiantRechercheService.selectedIdentifiantRecherche;
        }
     set selectedIdentifiantRecherche(value: IdentifiantRechercheVo) {
         this.identifiantRechercheService.selectedIdentifiantRecherche = value;
        }
 
-   get viewIdentifiantRechercheDialog():boolean {
+   get viewIdentifiantRechercheDialog(): boolean {
            return this.identifiantRechercheService.viewIdentifiantRechercheDialog;
 
        }

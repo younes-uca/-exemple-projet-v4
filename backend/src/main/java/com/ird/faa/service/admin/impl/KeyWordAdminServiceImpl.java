@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import com.ird.faa.service.admin.facade.KeyWordAdminService;
 import com.ird.faa.ws.rest.provided.vo.KeyWordVo;
 import com.ird.faa.service.util.*;
 
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -23,6 +24,8 @@ public class KeyWordAdminServiceImpl extends AbstractServiceImpl<KeyWord> implem
 @Autowired
 private KeyWordDao keyWordDao;
 
+    @Autowired
+    private ArchivableService<KeyWord> archivableService;
 
 
 @Autowired
@@ -48,14 +51,14 @@ public List<KeyWord> findAll(){
     }
     @Override
     public KeyWord findByIdOrCode(KeyWord keyWord){
-        KeyWord resultat=null;
-        if(keyWord != null){
-            if(StringUtil.isNotEmpty(keyWord.getId())){
-            resultat= keyWordDao.getOne(keyWord.getId());
-            }else if(StringUtil.isNotEmpty(keyWord.getCode())) {
-            resultat= keyWordDao.findByCode(keyWord.getCode());
-            }
-        }
+    KeyWord resultat=null;
+    if(keyWord != null){
+    if(StringUtil.isNotEmpty(keyWord.getId())){
+    resultat= keyWordDao.getOne(keyWord.getId());
+    }else if(StringUtil.isNotEmpty(keyWord.getCode())) {
+    resultat= keyWordDao.findByCode(keyWord.getCode());
+    }
+    }
     return resultat;
     }
 
@@ -67,8 +70,32 @@ return keyWordDao.getOne(id);
 
 @Override
 public KeyWord findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+    @Override
+    public KeyWord archiver(KeyWord keyWord) {
+    if (keyWord.getArchive() == null) {
+    keyWord.setArchive(false);
+    }
+    keyWord.setArchive(true);
+    keyWord.setDateArchivage(new Date());
+    keyWordDao.save(keyWord);
+    return keyWord;
+
+    }
+
+    @Override
+    public KeyWord desarchiver(KeyWord keyWord) {
+    if (keyWord.getArchive() == null) {
+    keyWord.setArchive(false);
+    }
+    keyWord.setArchive(false);
+    keyWord.setDateArchivage(null);
+    keyWordDao.save(keyWord);
+    return keyWord;
+    }
+
+
 
 
 @Transactional
@@ -87,25 +114,40 @@ public KeyWord update(KeyWord keyWord){
 KeyWord foundedKeyWord = findById(keyWord.getId());
 if(foundedKeyWord==null) return null;
 else{
+    archivableService.prepare(keyWord);
 return  keyWordDao.save(keyWord);
 }
 }
+    private void prepareSave(KeyWord keyWord){
+        keyWord.setDateCreation(new Date());
+                    if(keyWord.getArchive() == null)
+                keyWord.setArchive(false);
+                    if(keyWord.getAdmin() == null)
+                keyWord.setAdmin(false);
+                    if(keyWord.getVisible() == null)
+                keyWord.setVisible(false);
+
+
+
+    }
 
 @Override
 public KeyWord save (KeyWord keyWord){
+    prepareSave(keyWord);
 
-KeyWord result =null;
+    KeyWord result =null;
     KeyWord foundedKeyWord = findByCode(keyWord.getCode());
-   if(foundedKeyWord == null){
+    if(foundedKeyWord == null){
 
 
 
-KeyWord savedKeyWord = keyWordDao.save(keyWord);
 
-result = savedKeyWord;
-   }
+    KeyWord savedKeyWord = keyWordDao.save(keyWord);
 
-return result;
+    result = savedKeyWord;
+    }
+
+    return result;
 }
 
 @Override
@@ -139,7 +181,15 @@ String query = "SELECT o FROM KeyWord o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "libelleFr","LIKE",keyWordVo.getLibelleFr());
             query += SearchUtil.addConstraint( "o", "libelleEng","LIKE",keyWordVo.getLibelleEng());
             query += SearchUtil.addConstraint( "o", "code","LIKE",keyWordVo.getCode());
-query+= " ORDER BY o.code";
+            query += SearchUtil.addConstraint( "o", "archive","=",keyWordVo.getArchive());
+        query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",keyWordVo.getDateArchivage());
+        query += SearchUtil.addConstraintDate( "o", "dateCreation","=",keyWordVo.getDateCreation());
+            query += SearchUtil.addConstraint( "o", "admin","=",keyWordVo.getAdmin());
+            query += SearchUtil.addConstraint( "o", "visible","=",keyWordVo.getVisible());
+            query += SearchUtil.addConstraint( "o", "username","LIKE",keyWordVo.getUsername());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",keyWordVo.getDateArchivageMin(),keyWordVo.getDateArchivageMax());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",keyWordVo.getDateCreationMin(),keyWordVo.getDateCreationMax());
+    query+= " ORDER BY o.code";
 return entityManager.createQuery(query).getResultList();
 }
 
@@ -147,9 +197,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<KeyWord> keyWords){
-        if(ListUtil.isNotEmpty(keyWords)){
-        keyWords.forEach(e->keyWordDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(keyWords)){
+keyWords.forEach(e->keyWordDao.delete(e));
+}
 }
 @Override
 public void update(List<KeyWord> keyWords){
@@ -160,4 +210,6 @@ keyWords.forEach(e->keyWordDao.save(e));
 
 
 
-}
+
+
+    }

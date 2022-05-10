@@ -28,16 +28,22 @@ export class KeyWordService {
      private _viewKeyWordDialog: boolean;
      public editKeyWord$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchKeyWord:KeyWordVo ;
+     private _searchKeyWord: KeyWordVo ;
 
     // methods
+    public archiver(keyWord: KeyWordVo): Observable<KeyWordVo> {
+        return this.http.put<KeyWordVo>(this.API + 'archiver/' ,keyWord);
+    }
+    public desarchiver(keyWord: KeyWordVo): Observable<KeyWordVo> {
+    return this.http.put<KeyWordVo>(this.API + 'desarchiver/' ,keyWord);
+    }
 
     public findAll(){
      return this.http.get<Array<KeyWordVo>>(this.API);
     }
 
     public save(): Observable<KeyWordVo> {
-         return this.http.post<KeyWordVo>(this.API, this.selectedKeyWord);
+           return this.http.post<KeyWordVo>(this.API, {...this.selectedKeyWord,dateCreation: moment(this.selectedKeyWord.dateCreation).format("YYYY-MM-DD")});
     }
 
     delete(keyWord: KeyWordVo) {

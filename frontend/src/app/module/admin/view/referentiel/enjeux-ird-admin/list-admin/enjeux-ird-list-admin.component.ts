@@ -34,10 +34,9 @@ export class EnjeuxIrdListAdminComponent implements OnInit {
 
 
     constructor(private datePipe: DatePipe, private enjeuxIrdService: EnjeuxIrdService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-
 ) { }
 
-    ngOnInit(): void {
+    ngOnInit() : void {
       this.loadEnjeuxIrds();
       this.initExport();
       this.initCol();
@@ -76,7 +75,7 @@ export class EnjeuxIrdListAdminComponent implements OnInit {
         ];
     }
     
-    public async editEnjeuxIrd(enjeuxIrd:EnjeuxIrdVo){
+    public async editEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo){
         const isPermistted = await this.roleService.isPermitted('EnjeuxIrd', 'edit');
          if(isPermistted){
           this.enjeuxIrdService.findByIdWithAssociatedList(enjeuxIrd).subscribe(res => {
@@ -95,7 +94,7 @@ export class EnjeuxIrdListAdminComponent implements OnInit {
     
 
 
-   public async viewEnjeuxIrd(enjeuxIrd:EnjeuxIrdVo){
+   public async viewEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo){
         const isPermistted = await this.roleService.isPermitted('EnjeuxIrd', 'view');
         if(isPermistted){
            this.enjeuxIrdService.findByIdWithAssociatedList(enjeuxIrd).subscribe(res => {
@@ -124,7 +123,7 @@ export class EnjeuxIrdListAdminComponent implements OnInit {
         }
        
     }
-public async archiverEnjeuxIrd(enjeuxIrd:EnjeuxIrdVo){
+public async archiverEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo){
 const isPermistted = await this.roleService.isPermitted('EnjeuxIrd', 'delete');
 if(isPermistted){
 this.confirmationService.confirm({
@@ -151,7 +150,7 @@ severity: 'error', summary: 'erreur', detail: 'Problème de permission'
 }
 }
 
-public async desarchiverEnjeuxIrd(enjeuxIrd:EnjeuxIrdVo){
+public async desarchiverEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo){
 const isPermistted = await this.roleService.isPermitted('EnjeuxIrd', 'delete');
 if(isPermistted){
 this.confirmationService.confirm({
@@ -179,7 +178,7 @@ severity: 'error', summary: 'erreur', detail: 'Problème de permission'
 }
 
 
-    public async deleteEnjeuxIrd(enjeuxIrd:EnjeuxIrdVo){
+    public async deleteEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo){
        const isPermistted = await this.roleService.isPermitted('EnjeuxIrd', 'delete');
         if(isPermistted){
                       this.confirmationService.confirm({
@@ -228,7 +227,7 @@ public async duplicateEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo) {
 
 	}
 
-  initExport(): void {
+  initExport() : void {
     this.excelPdfButons = [
       {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
       {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
@@ -237,7 +236,7 @@ public async duplicateEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo) {
   }
 
 
-    prepareColumnExport(): void {
+    prepareColumnExport() : void {
     this.exportData = this.enjeuxIrds.map(e => {
     return {
                     'Libelle': e.libelle ,
@@ -270,14 +269,14 @@ public async duplicateEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo) {
 
     // getters and setters
 
-    get enjeuxIrds(): Array<EnjeuxIrdVo> {
+    get enjeuxIrds() : Array<EnjeuxIrdVo> {
            return this.enjeuxIrdService.enjeuxIrds;
        }
     set enjeuxIrds(value: Array<EnjeuxIrdVo>) {
         this.enjeuxIrdService.enjeuxIrds = value;
        }
 
-    get enjeuxIrdSelections(): Array<EnjeuxIrdVo> {
+    get enjeuxIrdSelections() : Array<EnjeuxIrdVo> {
            return this.enjeuxIrdService.enjeuxIrdSelections;
        }
     set enjeuxIrdSelections(value: Array<EnjeuxIrdVo>) {
@@ -287,39 +286,40 @@ public async duplicateEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo) {
      
 
 
-    get selectedEnjeuxIrd():EnjeuxIrdVo {
+    get selectedEnjeuxIrd() : EnjeuxIrdVo {
            return this.enjeuxIrdService.selectedEnjeuxIrd;
        }
     set selectedEnjeuxIrd(value: EnjeuxIrdVo) {
         this.enjeuxIrdService.selectedEnjeuxIrd = value;
        }
     
-    get createEnjeuxIrdDialog():boolean {
+    get createEnjeuxIrdDialog() :boolean {
            return this.enjeuxIrdService.createEnjeuxIrdDialog;
        }
     set createEnjeuxIrdDialog(value: boolean) {
         this.enjeuxIrdService.createEnjeuxIrdDialog= value;
        }
     
-    get editEnjeuxIrdDialog():boolean {
+    get editEnjeuxIrdDialog() :boolean {
            return this.enjeuxIrdService.editEnjeuxIrdDialog;
        }
     set editEnjeuxIrdDialog(value: boolean) {
         this.enjeuxIrdService.editEnjeuxIrdDialog= value;
        }
-    get viewEnjeuxIrdDialog():boolean {
+    get viewEnjeuxIrdDialog() :boolean {
            return this.enjeuxIrdService.viewEnjeuxIrdDialog;
        }
     set viewEnjeuxIrdDialog(value: boolean) {
         this.enjeuxIrdService.viewEnjeuxIrdDialog = value;
        }
        
-     get searchEnjeuxIrd(): EnjeuxIrdVo {
+     get searchEnjeuxIrd() : EnjeuxIrdVo {
         return this.enjeuxIrdService.searchEnjeuxIrd;
        }
     set searchEnjeuxIrd(value: EnjeuxIrdVo) {
         this.enjeuxIrdService.searchEnjeuxIrd = value;
        }
+
 
     get dateFormat(){
             return environment.dateFormatList;

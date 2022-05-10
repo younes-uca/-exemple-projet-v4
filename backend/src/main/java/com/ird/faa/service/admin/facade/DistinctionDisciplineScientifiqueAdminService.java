@@ -10,6 +10,7 @@ public interface DistinctionDisciplineScientifiqueAdminService extends AbstractS
 
 
 
+
 /**
     * delete DistinctionDisciplineScientifique from database
     * @param id - id of DistinctionDisciplineScientifique to be deleted

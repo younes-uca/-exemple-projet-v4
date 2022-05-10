@@ -7,15 +7,15 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { DisciplineScientifiqueParentAdminComponent } from './discipline-scientifique-parent-admin/discipline-scientifique-parent-admin.component';
+    import { SemanticRelationshipAdminComponent } from './semantic-relationship-admin/semantic-relationship-admin.component';
 
 
 
-    import { DisciplineScientifiqueErcParentAdminComponent } from './discipline-scientifique-erc-parent-admin/discipline-scientifique-erc-parent-admin.component';
+    import { KeyWordAdminComponent } from './key-word-admin/key-word-admin.component';
 
 
 
-    import { KeyWordDisciplineScientifiqueErcAdminComponent } from './key-word-discipline-scientifique-erc-admin/key-word-discipline-scientifique-erc-admin.component';
+    import { DisciplineScientifiqueChercheurAdminComponent } from './discipline-scientifique-chercheur-admin/discipline-scientifique-chercheur-admin.component';
 
 
 
@@ -23,19 +23,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { DisciplineScientifiqueErcAdminComponent } from './discipline-scientifique-erc-admin/discipline-scientifique-erc-admin.component';
+    import { EnjeuxIrdChercheurAdminComponent } from './enjeux-ird-chercheur-admin/enjeux-ird-chercheur-admin.component';
 
 
 
-    import { IdentifiantRechercheAdminComponent } from './identifiant-recherche-admin/identifiant-recherche-admin.component';
-
-
-
-    import { EnjeuxIrdAdminComponent } from './enjeux-ird-admin/enjeux-ird-admin.component';
-
-
-
-    import { SemanticRelationshipAdminComponent } from './semantic-relationship-admin/semantic-relationship-admin.component';
+    import { DisciplineScientifiqueParentAdminComponent } from './discipline-scientifique-parent-admin/discipline-scientifique-parent-admin.component';
 
 
 
@@ -43,7 +35,23 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { KeyWordAdminComponent } from './key-word-admin/key-word-admin.component';
+    import { KeyWordDisciplineScientifiqueErcAdminComponent } from './key-word-discipline-scientifique-erc-admin/key-word-discipline-scientifique-erc-admin.component';
+
+
+
+    import { EnjeuxIrdAdminComponent } from './enjeux-ird-admin/enjeux-ird-admin.component';
+
+
+
+    import { DisciplineScientifiqueErcAdminComponent } from './discipline-scientifique-erc-admin/discipline-scientifique-erc-admin.component';
+
+
+
+    import { DisciplineScientifiqueErcParentAdminComponent } from './discipline-scientifique-erc-parent-admin/discipline-scientifique-erc-parent-admin.component';
+
+
+
+    import { IdentifiantRechercheAdminComponent } from './identifiant-recherche-admin/identifiant-recherche-admin.component';
 
 
 @NgModule({
@@ -57,11 +65,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'discipline-scientifique-parent',
+                            path: 'semantic-relationship',
                             children: [
                                 {
                                     path: 'list',
-                                    component: DisciplineScientifiqueParentAdminComponent ,
+                                    component: SemanticRelationshipAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -69,11 +77,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'discipline-scientifique-erc-parent',
+                            path: 'key-word',
                             children: [
                                 {
                                     path: 'list',
-                                    component: DisciplineScientifiqueErcParentAdminComponent ,
+                                    component: KeyWordAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -81,11 +89,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'key-word-discipline-scientifique-erc',
+                            path: 'discipline-scientifique-chercheur',
                             children: [
                                 {
                                     path: 'list',
-                                    component: KeyWordDisciplineScientifiqueErcAdminComponent ,
+                                    component: DisciplineScientifiqueChercheurAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -105,11 +113,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'discipline-scientifique-erc',
+                            path: 'enjeux-ird-chercheur',
                             children: [
                                 {
                                     path: 'list',
-                                    component: DisciplineScientifiqueErcAdminComponent ,
+                                    component: EnjeuxIrdChercheurAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -117,35 +125,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'identifiant-recherche',
+                            path: 'discipline-scientifique-parent',
                             children: [
                                 {
                                     path: 'list',
-                                    component: IdentifiantRechercheAdminComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
-                        {
-
-                            path: 'enjeux-ird',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: EnjeuxIrdAdminComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
-                        {
-
-                            path: 'semantic-relationship',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: SemanticRelationshipAdminComponent ,
+                                    component: DisciplineScientifiqueParentAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -165,11 +149,59 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'key-word',
+                            path: 'key-word-discipline-scientifique-erc',
                             children: [
                                 {
                                     path: 'list',
-                                    component: KeyWordAdminComponent ,
+                                    component: KeyWordDisciplineScientifiqueErcAdminComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
+                            path: 'enjeux-ird',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: EnjeuxIrdAdminComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
+                            path: 'discipline-scientifique-erc',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: DisciplineScientifiqueErcAdminComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
+                            path: 'discipline-scientifique-erc-parent',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: DisciplineScientifiqueErcParentAdminComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
+                            path: 'identifiant-recherche',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: IdentifiantRechercheAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]

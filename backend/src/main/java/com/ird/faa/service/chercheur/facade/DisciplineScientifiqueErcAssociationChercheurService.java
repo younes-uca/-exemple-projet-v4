@@ -10,6 +10,7 @@ public interface DisciplineScientifiqueErcAssociationChercheurService extends Ab
 
 
 
+
 /**
     * delete DisciplineScientifiqueErcAssociation from database
     * @param id - id of DisciplineScientifiqueErcAssociation to be deleted

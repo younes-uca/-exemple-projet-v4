@@ -47,14 +47,14 @@ public List<Campagne> findAll(){
     }
     @Override
     public Campagne findByIdOrCode(Campagne campagne){
-        Campagne resultat=null;
-        if(campagne != null){
-            if(StringUtil.isNotEmpty(campagne.getId())){
-            resultat= campagneDao.getOne(campagne.getId());
-            }else if(StringUtil.isNotEmpty(campagne.getCode())) {
-            resultat= campagneDao.findByCode(campagne.getCode());
-            }
-        }
+    Campagne resultat=null;
+    if(campagne != null){
+    if(StringUtil.isNotEmpty(campagne.getId())){
+    resultat= campagneDao.getOne(campagne.getId());
+    }else if(StringUtil.isNotEmpty(campagne.getCode())) {
+    resultat= campagneDao.findByCode(campagne.getCode());
+    }
+    }
     return resultat;
     }
 
@@ -66,8 +66,9 @@ return campagneDao.getOne(id);
 
 @Override
 public Campagne findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+
 
 
 @Transactional
@@ -93,18 +94,19 @@ return  campagneDao.save(campagne);
 @Override
 public Campagne save (Campagne campagne){
 
-Campagne result =null;
+    Campagne result =null;
     Campagne foundedCampagne = findByCode(campagne.getCode());
-   if(foundedCampagne == null){
+    if(foundedCampagne == null){
 
 
 
-Campagne savedCampagne = campagneDao.save(campagne);
 
-result = savedCampagne;
-   }
+    Campagne savedCampagne = campagneDao.save(campagne);
 
-return result;
+    result = savedCampagne;
+    }
+
+    return result;
 }
 
 @Override
@@ -143,7 +145,7 @@ String query = "SELECT o FROM Campagne o where 1=1 ";
             query += SearchUtil.addConstraintMinMax("o","annee",campagneVo.getAnneeMin(),campagneVo.getAnneeMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateDepart",campagneVo.getDateDepartMin(),campagneVo.getDateDepartMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateFin",campagneVo.getDateFinMin(),campagneVo.getDateFinMax());
-query+= " ORDER BY o.dateDepart";
+    query+= " ORDER BY o.dateDepart";
 return entityManager.createQuery(query).getResultList();
 }
 
@@ -151,9 +153,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<Campagne> campagnes){
-        if(ListUtil.isNotEmpty(campagnes)){
-        campagnes.forEach(e->campagneDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(campagnes)){
+campagnes.forEach(e->campagneDao.delete(e));
+}
 }
 @Override
 public void update(List<Campagne> campagnes){
@@ -170,11 +172,14 @@ query += "inner join CampagneChercheurOuverture cc on o.id=cc.campagne.id where 
 query += SearchUtil.addConstraint("cc", "chercheur.username", "=", username);
 query += SearchUtil.addConstraint("cc", "etatCampagneChercheur.code", "!=", "termine");
 query += "ORDER BY cc.campagne.dateDepart DESC";
-List<Campagne> campagnes = entityManager.createQuery(query).getResultList();
+List
+<Campagne> campagnes = entityManager.createQuery(query).getResultList();
     if (campagnes != null && !campagnes.isEmpty()) {
     return campagnes.get(0);
     }
     return null;
     }
 
-}
+
+
+    }

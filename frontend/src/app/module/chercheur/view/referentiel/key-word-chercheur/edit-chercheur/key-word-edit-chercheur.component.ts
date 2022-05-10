@@ -33,6 +33,8 @@ public edit(){
 this.editWithShowOption(false);
 }
 public editWithShowOption(showList: boolean){
+            this.selectedKeyWord.dateArchivage = DateUtils.toDate(this.selectedKeyWord.dateArchivage);
+            this.selectedKeyWord.dateCreation = DateUtils.toDate(this.selectedKeyWord.dateCreation);
     this.keyWordService.edit().subscribe(keyWord=>{
     const myIndex = this.keyWords.findIndex(e => e.id === this.selectedKeyWord.id);
     this.keyWords[myIndex] = this.selectedKeyWord;

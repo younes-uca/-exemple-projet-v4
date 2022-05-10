@@ -10,6 +10,7 @@ public interface DistinctionAdminService extends AbstractService<Distinction,Lon
 
 
 
+
 /**
     * delete Distinction from database
     * @param id - id of Distinction to be deleted

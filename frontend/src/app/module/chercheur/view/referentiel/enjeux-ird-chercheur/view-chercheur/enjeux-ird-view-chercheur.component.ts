@@ -34,6 +34,13 @@ hideViewDialog(){
 
 // getters and setters
 
+get hideEnjeuxIrdChercheur(): boolean {
+        return this.selectedEnjeuxIrd.username != null;
+    }
+
+get selectedChercheur(): ChercheurVo {
+    return this.chercheurService.selectedChercheur;
+}
 get enjeuxIrds(): Array<EnjeuxIrdVo> {
     return this.enjeuxIrdService.enjeuxIrds;
        }
@@ -41,14 +48,14 @@ set enjeuxIrds(value: Array<EnjeuxIrdVo>) {
         this.enjeuxIrdService.enjeuxIrds = value;
        }
 
- get selectedEnjeuxIrd():EnjeuxIrdVo {
+ get selectedEnjeuxIrd(): EnjeuxIrdVo {
            return this.enjeuxIrdService.selectedEnjeuxIrd;
        }
     set selectedEnjeuxIrd(value: EnjeuxIrdVo) {
         this.enjeuxIrdService.selectedEnjeuxIrd = value;
        }
 
-   get viewEnjeuxIrdDialog():boolean {
+   get viewEnjeuxIrdDialog(): boolean {
            return this.enjeuxIrdService.viewEnjeuxIrdDialog;
 
        }

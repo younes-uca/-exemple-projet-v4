@@ -34,10 +34,9 @@ export class IdentifiantRechercheListChercheurComponent implements OnInit {
 
 
     constructor(private datePipe: DatePipe, private identifiantRechercheService: IdentifiantRechercheService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-
 ) { }
 
-    ngOnInit(): void {
+    ngOnInit() : void {
       this.loadIdentifiantRecherches();
       this.initExport();
       this.initCol();
@@ -76,7 +75,7 @@ export class IdentifiantRechercheListChercheurComponent implements OnInit {
         ];
     }
     
-    public async editIdentifiantRecherche(identifiantRecherche:IdentifiantRechercheVo){
+    public async editIdentifiantRecherche(identifiantRecherche: IdentifiantRechercheVo){
         const isPermistted = await this.roleService.isPermitted('IdentifiantRecherche', 'edit');
          if(isPermistted){
           this.identifiantRechercheService.findByIdWithAssociatedList(identifiantRecherche).subscribe(res => {
@@ -95,7 +94,7 @@ export class IdentifiantRechercheListChercheurComponent implements OnInit {
     
 
 
-   public async viewIdentifiantRecherche(identifiantRecherche:IdentifiantRechercheVo){
+   public async viewIdentifiantRecherche(identifiantRecherche: IdentifiantRechercheVo){
         const isPermistted = await this.roleService.isPermitted('IdentifiantRecherche', 'view');
         if(isPermistted){
            this.identifiantRechercheService.findByIdWithAssociatedList(identifiantRecherche).subscribe(res => {
@@ -126,7 +125,7 @@ export class IdentifiantRechercheListChercheurComponent implements OnInit {
     }
 
 
-    public async deleteIdentifiantRecherche(identifiantRecherche:IdentifiantRechercheVo){
+    public async deleteIdentifiantRecherche(identifiantRecherche: IdentifiantRechercheVo){
        const isPermistted = await this.roleService.isPermitted('IdentifiantRecherche', 'delete');
         if(isPermistted){
                       this.confirmationService.confirm({
@@ -175,7 +174,7 @@ public async duplicateIdentifiantRecherche(identifiantRecherche: IdentifiantRech
 
 	}
 
-  initExport(): void {
+  initExport() : void {
     this.excelPdfButons = [
       {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
       {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
@@ -184,7 +183,7 @@ public async duplicateIdentifiantRecherche(identifiantRecherche: IdentifiantRech
   }
 
 
-    prepareColumnExport(): void {
+    prepareColumnExport() : void {
     this.exportData = this.identifiantRecherches.map(e => {
     return {
                     'Libelle': e.libelle ,
@@ -217,14 +216,14 @@ public async duplicateIdentifiantRecherche(identifiantRecherche: IdentifiantRech
 
     // getters and setters
 
-    get identifiantRecherches(): Array<IdentifiantRechercheVo> {
+    get identifiantRecherches() : Array<IdentifiantRechercheVo> {
            return this.identifiantRechercheService.identifiantRecherches;
        }
     set identifiantRecherches(value: Array<IdentifiantRechercheVo>) {
         this.identifiantRechercheService.identifiantRecherches = value;
        }
 
-    get identifiantRechercheSelections(): Array<IdentifiantRechercheVo> {
+    get identifiantRechercheSelections() : Array<IdentifiantRechercheVo> {
            return this.identifiantRechercheService.identifiantRechercheSelections;
        }
     set identifiantRechercheSelections(value: Array<IdentifiantRechercheVo>) {
@@ -234,39 +233,40 @@ public async duplicateIdentifiantRecherche(identifiantRecherche: IdentifiantRech
      
 
 
-    get selectedIdentifiantRecherche():IdentifiantRechercheVo {
+    get selectedIdentifiantRecherche() : IdentifiantRechercheVo {
            return this.identifiantRechercheService.selectedIdentifiantRecherche;
        }
     set selectedIdentifiantRecherche(value: IdentifiantRechercheVo) {
         this.identifiantRechercheService.selectedIdentifiantRecherche = value;
        }
     
-    get createIdentifiantRechercheDialog():boolean {
+    get createIdentifiantRechercheDialog() :boolean {
            return this.identifiantRechercheService.createIdentifiantRechercheDialog;
        }
     set createIdentifiantRechercheDialog(value: boolean) {
         this.identifiantRechercheService.createIdentifiantRechercheDialog= value;
        }
     
-    get editIdentifiantRechercheDialog():boolean {
+    get editIdentifiantRechercheDialog() :boolean {
            return this.identifiantRechercheService.editIdentifiantRechercheDialog;
        }
     set editIdentifiantRechercheDialog(value: boolean) {
         this.identifiantRechercheService.editIdentifiantRechercheDialog= value;
        }
-    get viewIdentifiantRechercheDialog():boolean {
+    get viewIdentifiantRechercheDialog() :boolean {
            return this.identifiantRechercheService.viewIdentifiantRechercheDialog;
        }
     set viewIdentifiantRechercheDialog(value: boolean) {
         this.identifiantRechercheService.viewIdentifiantRechercheDialog = value;
        }
        
-     get searchIdentifiantRecherche(): IdentifiantRechercheVo {
+     get searchIdentifiantRecherche() : IdentifiantRechercheVo {
         return this.identifiantRechercheService.searchIdentifiantRecherche;
        }
     set searchIdentifiantRecherche(value: IdentifiantRechercheVo) {
         this.identifiantRechercheService.searchIdentifiantRecherche = value;
        }
+
 
     get dateFormat(){
             return environment.dateFormatList;

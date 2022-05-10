@@ -12,7 +12,7 @@ export class RegisterAdminComponent implements OnInit {
   registerForm = new FormGroup({
     prenom : new FormControl('',Validators.required),
     nom : new FormControl('',Validators.required),
-    email:new FormControl('',Validators.required),
+    email : new FormControl('',Validators.required),
     userName : new FormControl('',Validators.required),
     password : new FormControl('',Validators.required)
   })
@@ -23,12 +23,15 @@ export class RegisterAdminComponent implements OnInit {
   submit(){
     const formValues = this.registerForm.value;
     const {prenom,nom,userName,password,email} = formValues;
+    const role = new Role();
+    role.authority = 'ROLE_Admin' ;
     this.user.prenom = prenom;
     this.user.nom = nom;
     this.user.username = userName;
     this.user.password = password;
     this.user.email = email;
-    this.authService.register();
+    this.user.roles = [role] ;
+    this.authService.registerAdmin();
 
   }
     get user(): User {

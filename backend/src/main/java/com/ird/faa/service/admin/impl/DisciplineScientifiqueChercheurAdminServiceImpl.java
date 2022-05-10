@@ -1,7 +1,7 @@
 package com.ird.faa.service.admin.impl;
 
 import java.util.List;
-import java.util.Date;
+    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,18 +9,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.DisciplineScientifiqueChercheur;
-import com.ird.faa.bean.DisciplineScientifique;
-import com.ird.faa.bean.DisciplineScientifiqueErc;
-import com.ird.faa.bean.Chercheur;
+        import com.ird.faa.bean.DisciplineScientifique;
+        import com.ird.faa.bean.DisciplineScientifiqueErc;
+        import com.ird.faa.bean.Chercheur;
 import com.ird.faa.dao.DisciplineScientifiqueChercheurDao;
 import com.ird.faa.service.admin.facade.DisciplineScientifiqueChercheurAdminService;
-import com.ird.faa.service.admin.facade.DisciplineScientifiqueAdminService;
-import com.ird.faa.service.admin.facade.DisciplineScientifiqueErcAdminService;
-import com.ird.faa.service.admin.facade.ChercheurAdminService;
+        import com.ird.faa.service.admin.facade.DisciplineScientifiqueAdminService;
+        import com.ird.faa.service.admin.facade.DisciplineScientifiqueErcAdminService;
+        import com.ird.faa.service.admin.facade.ChercheurAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.DisciplineScientifiqueChercheurVo;
 import com.ird.faa.service.util.*;
 
+    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -29,6 +30,8 @@ public class DisciplineScientifiqueChercheurAdminServiceImpl extends AbstractSer
 @Autowired
 private DisciplineScientifiqueChercheurDao disciplineScientifiqueChercheurDao;
 
+    @Autowired
+    private ArchivableService<DisciplineScientifiqueChercheur> archivableService;
         @Autowired
         private DisciplineScientifiqueAdminService disciplineScientifiqueService ;
         @Autowired
@@ -123,8 +126,32 @@ return disciplineScientifiqueChercheurDao.getOne(id);
 
 @Override
 public DisciplineScientifiqueChercheur findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+    @Override
+    public DisciplineScientifiqueChercheur archiver(DisciplineScientifiqueChercheur disciplineScientifiqueChercheur) {
+    if (disciplineScientifiqueChercheur.getArchive() == null) {
+    disciplineScientifiqueChercheur.setArchive(false);
+    }
+    disciplineScientifiqueChercheur.setArchive(true);
+    disciplineScientifiqueChercheur.setDateArchivage(new Date());
+    disciplineScientifiqueChercheurDao.save(disciplineScientifiqueChercheur);
+    return disciplineScientifiqueChercheur;
+
+    }
+
+    @Override
+    public DisciplineScientifiqueChercheur desarchiver(DisciplineScientifiqueChercheur disciplineScientifiqueChercheur) {
+    if (disciplineScientifiqueChercheur.getArchive() == null) {
+    disciplineScientifiqueChercheur.setArchive(false);
+    }
+    disciplineScientifiqueChercheur.setArchive(false);
+    disciplineScientifiqueChercheur.setDateArchivage(null);
+    disciplineScientifiqueChercheurDao.save(disciplineScientifiqueChercheur);
+    return disciplineScientifiqueChercheur;
+    }
+
+
 
 
 @Transactional
@@ -143,12 +170,26 @@ public DisciplineScientifiqueChercheur update(DisciplineScientifiqueChercheur di
 DisciplineScientifiqueChercheur foundedDisciplineScientifiqueChercheur = findById(disciplineScientifiqueChercheur.getId());
 if(foundedDisciplineScientifiqueChercheur==null) return null;
 else{
+    archivableService.prepare(disciplineScientifiqueChercheur);
 return  disciplineScientifiqueChercheurDao.save(disciplineScientifiqueChercheur);
 }
 }
+    private void prepareSave(DisciplineScientifiqueChercheur disciplineScientifiqueChercheur){
+        disciplineScientifiqueChercheur.setDateCreation(new Date());
+                    if(disciplineScientifiqueChercheur.getArchive() == null)
+                disciplineScientifiqueChercheur.setArchive(false);
+                    if(disciplineScientifiqueChercheur.getAdmin() == null)
+                disciplineScientifiqueChercheur.setAdmin(false);
+                    if(disciplineScientifiqueChercheur.getVisible() == null)
+                disciplineScientifiqueChercheur.setVisible(false);
+
+
+
+    }
 
 @Override
 public DisciplineScientifiqueChercheur save (DisciplineScientifiqueChercheur disciplineScientifiqueChercheur){
+    prepareSave(disciplineScientifiqueChercheur);
 
 
 
@@ -156,7 +197,7 @@ public DisciplineScientifiqueChercheur save (DisciplineScientifiqueChercheur dis
     findDisciplineScientifiqueErc(disciplineScientifiqueChercheur);
     findChercheur(disciplineScientifiqueChercheur);
 
-return disciplineScientifiqueChercheurDao.save(disciplineScientifiqueChercheur);
+    return disciplineScientifiqueChercheurDao.save(disciplineScientifiqueChercheur);
 
 
 }
@@ -188,6 +229,14 @@ public List<DisciplineScientifiqueChercheur> findByCriteria(DisciplineScientifiq
 String query = "SELECT o FROM DisciplineScientifiqueChercheur o where 1=1 ";
 
             query += SearchUtil.addConstraint( "o", "id","=",disciplineScientifiqueChercheurVo.getId());
+            query += SearchUtil.addConstraint( "o", "archive","=",disciplineScientifiqueChercheurVo.getArchive());
+        query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",disciplineScientifiqueChercheurVo.getDateArchivage());
+        query += SearchUtil.addConstraintDate( "o", "dateCreation","=",disciplineScientifiqueChercheurVo.getDateCreation());
+            query += SearchUtil.addConstraint( "o", "admin","=",disciplineScientifiqueChercheurVo.getAdmin());
+            query += SearchUtil.addConstraint( "o", "visible","=",disciplineScientifiqueChercheurVo.getVisible());
+            query += SearchUtil.addConstraint( "o", "username","LIKE",disciplineScientifiqueChercheurVo.getUsername());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",disciplineScientifiqueChercheurVo.getDateArchivageMin(),disciplineScientifiqueChercheurVo.getDateArchivageMax());
+            query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",disciplineScientifiqueChercheurVo.getDateCreationMin(),disciplineScientifiqueChercheurVo.getDateCreationMax());
     if(disciplineScientifiqueChercheurVo.getDisciplineScientifiqueVo()!=null){
         query += SearchUtil.addConstraint( "o", "disciplineScientifique.id","=",disciplineScientifiqueChercheurVo.getDisciplineScientifiqueVo().getId());
             query += SearchUtil.addConstraint( "o", "disciplineScientifique.code","LIKE",disciplineScientifiqueChercheurVo.getDisciplineScientifiqueVo().getCode());
@@ -210,7 +259,7 @@ return entityManager.createQuery(query).getResultList();
         DisciplineScientifique loadedDisciplineScientifique =disciplineScientifiqueService.findByIdOrCode(disciplineScientifiqueChercheur.getDisciplineScientifique());
 
     if(loadedDisciplineScientifique==null ) {
-        return;
+    return;
     }
     disciplineScientifiqueChercheur.setDisciplineScientifique(loadedDisciplineScientifique);
     }
@@ -218,7 +267,7 @@ return entityManager.createQuery(query).getResultList();
         DisciplineScientifiqueErc loadedDisciplineScientifiqueErc =disciplineScientifiqueErcService.findByIdOrCode(disciplineScientifiqueChercheur.getDisciplineScientifiqueErc());
 
     if(loadedDisciplineScientifiqueErc==null ) {
-        return;
+    return;
     }
     disciplineScientifiqueChercheur.setDisciplineScientifiqueErc(loadedDisciplineScientifiqueErc);
     }
@@ -226,7 +275,7 @@ return entityManager.createQuery(query).getResultList();
         Chercheur loadedChercheur =chercheurService.findByIdOrNumeroMatricule(disciplineScientifiqueChercheur.getChercheur());
 
     if(loadedChercheur==null ) {
-        return;
+    return;
     }
     disciplineScientifiqueChercheur.setChercheur(loadedChercheur);
     }
@@ -234,9 +283,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<DisciplineScientifiqueChercheur> disciplineScientifiqueChercheurs){
-        if(ListUtil.isNotEmpty(disciplineScientifiqueChercheurs)){
-        disciplineScientifiqueChercheurs.forEach(e->disciplineScientifiqueChercheurDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(disciplineScientifiqueChercheurs)){
+disciplineScientifiqueChercheurs.forEach(e->disciplineScientifiqueChercheurDao.delete(e));
+}
 }
 @Override
 public void update(List<DisciplineScientifiqueChercheur> disciplineScientifiqueChercheurs){
@@ -247,4 +296,6 @@ disciplineScientifiqueChercheurs.forEach(e->disciplineScientifiqueChercheurDao.s
 
 
 
-}
+
+
+    }

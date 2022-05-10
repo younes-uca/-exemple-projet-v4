@@ -10,6 +10,7 @@ public interface DisciplineScientifiqueErcAssociationAdminService extends Abstra
 
 
 
+
 /**
     * delete DisciplineScientifiqueErcAssociation from database
     * @param id - id of DisciplineScientifiqueErcAssociation to be deleted
@@ -45,5 +46,7 @@ public interface DisciplineScientifiqueErcAssociationAdminService extends Abstra
 
 
 
+    DisciplineScientifiqueErcAssociation archiver(DisciplineScientifiqueErcAssociation disciplineScientifiqueErcAssociation) ;
+    DisciplineScientifiqueErcAssociation desarchiver(DisciplineScientifiqueErcAssociation disciplineScientifiqueErcAssociation);
 
 }

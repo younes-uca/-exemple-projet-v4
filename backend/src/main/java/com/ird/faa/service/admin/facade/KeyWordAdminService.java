@@ -8,6 +8,7 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface KeyWordAdminService extends AbstractService<KeyWord,Long,KeyWordVo>{
 
 
+
     /**
     * find KeyWord from database by code (reference)
     * @param code - reference of KeyWord
@@ -47,5 +48,7 @@ public interface KeyWordAdminService extends AbstractService<KeyWord,Long,KeyWor
 
 
 
+    KeyWord archiver(KeyWord keyWord) ;
+    KeyWord desarchiver(KeyWord keyWord);
 
 }

@@ -34,25 +34,30 @@ export class DisciplineScientifiqueErcAssociationListChercheurComponent implemen
     exportData: any[] = [];
     criteriaData: any[] = [];
     fileName = 'DisciplineScientifiqueErcAssociation';
+     yesOrNoArchive :any[] =[];
+     yesOrNoAdmin :any[] =[];
+     yesOrNoVisible :any[] =[];
     disciplineScientifiqueErcs :Array<DisciplineScientifiqueErcVo>;
     disciplineScientifiques :Array<DisciplineScientifiqueVo>;
     semanticRelationships :Array<SemanticRelationshipVo>;
 
 
     constructor(private datePipe: DatePipe, private disciplineScientifiqueErcAssociationService: DisciplineScientifiqueErcAssociationService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-
         , private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
         , private disciplineScientifiqueService: DisciplineScientifiqueService
         , private semanticRelationshipService: SemanticRelationshipService
 ) { }
 
-    ngOnInit(): void {
+    ngOnInit() : void {
       this.loadDisciplineScientifiqueErcAssociations();
       this.initExport();
       this.initCol();
       this.loadDisciplineScientifiqueErc();
       this.loadDisciplineScientifique();
       this.loadSemanticRelationship();
+    this.yesOrNoArchive =  [{label: 'Archive', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
+    this.yesOrNoAdmin =  [{label: 'Admin', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
+    this.yesOrNoVisible =  [{label: 'Visible', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
     }
     
     // methods
@@ -77,14 +82,22 @@ export class DisciplineScientifiqueErcAssociationListChercheurComponent implemen
                         {field: 'disciplineScientifiqueErc?.libelleEng', header: 'Discipline scientifique erc'},
                         {field: 'disciplineScientifique?.libelleEng', header: 'Discipline scientifique'},
                         {field: 'semanticRelationship?.libelle', header: 'Semantic relationship'},
+                            {field: 'archive', header: 'Archive'},
+                            {field: 'dateArchivage', header: 'Date archivage'},
+                            {field: 'dateCreation', header: 'Date creation'},
+                            {field: 'admin', header: 'Admin'},
+                            {field: 'visible', header: 'Visible'},
+                            {field: 'username', header: 'Username'},
         ];
     }
     
-    public async editDisciplineScientifiqueErcAssociation(disciplineScientifiqueErcAssociation:DisciplineScientifiqueErcAssociationVo){
+    public async editDisciplineScientifiqueErcAssociation(disciplineScientifiqueErcAssociation: DisciplineScientifiqueErcAssociationVo){
         const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErcAssociation', 'edit');
          if(isPermistted){
           this.disciplineScientifiqueErcAssociationService.findByIdWithAssociatedList(disciplineScientifiqueErcAssociation).subscribe(res => {
            this.selectedDisciplineScientifiqueErcAssociation = res;
+            this.selectedDisciplineScientifiqueErcAssociation.dateArchivage = new Date(disciplineScientifiqueErcAssociation.dateArchivage);
+            this.selectedDisciplineScientifiqueErcAssociation.dateCreation = new Date(disciplineScientifiqueErcAssociation.dateCreation);
             this.editDisciplineScientifiqueErcAssociationDialog = true;
           });
         }else{
@@ -97,11 +110,13 @@ export class DisciplineScientifiqueErcAssociationListChercheurComponent implemen
     
 
 
-   public async viewDisciplineScientifiqueErcAssociation(disciplineScientifiqueErcAssociation:DisciplineScientifiqueErcAssociationVo){
+   public async viewDisciplineScientifiqueErcAssociation(disciplineScientifiqueErcAssociation: DisciplineScientifiqueErcAssociationVo){
         const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErcAssociation', 'view');
         if(isPermistted){
            this.disciplineScientifiqueErcAssociationService.findByIdWithAssociatedList(disciplineScientifiqueErcAssociation).subscribe(res => {
            this.selectedDisciplineScientifiqueErcAssociation = res;
+            this.selectedDisciplineScientifiqueErcAssociation.dateArchivage = new Date(disciplineScientifiqueErcAssociation.dateArchivage);
+            this.selectedDisciplineScientifiqueErcAssociation.dateCreation = new Date(disciplineScientifiqueErcAssociation.dateCreation);
             this.viewDisciplineScientifiqueErcAssociationDialog = true;
           });
         }else{
@@ -126,7 +141,7 @@ export class DisciplineScientifiqueErcAssociationListChercheurComponent implemen
     }
 
 
-    public async deleteDisciplineScientifiqueErcAssociation(disciplineScientifiqueErcAssociation:DisciplineScientifiqueErcAssociationVo){
+    public async deleteDisciplineScientifiqueErcAssociation(disciplineScientifiqueErcAssociation: DisciplineScientifiqueErcAssociationVo){
        const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErcAssociation', 'delete');
         if(isPermistted){
                       this.confirmationService.confirm({
@@ -196,7 +211,7 @@ public async duplicateDisciplineScientifiqueErcAssociation(disciplineScientifiqu
 
 	}
 
-  initExport(): void {
+  initExport() : void {
     this.excelPdfButons = [
       {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
       {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
@@ -205,12 +220,18 @@ public async duplicateDisciplineScientifiqueErcAssociation(disciplineScientifiqu
   }
 
 
-    prepareColumnExport(): void {
+    prepareColumnExport() : void {
     this.exportData = this.disciplineScientifiqueErcAssociations.map(e => {
     return {
             'Discipline scientifique erc': e.disciplineScientifiqueErcVo?.libelleEng ,
             'Discipline scientifique': e.disciplineScientifiqueVo?.libelleEng ,
             'Semantic relationship': e.semanticRelationshipVo?.libelle ,
+                    'Archive': e.archive? 'Vrai' : 'Faux' ,
+                    'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
+                    'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
+                    'Admin': e.admin? 'Vrai' : 'Faux' ,
+                    'Visible': e.visible? 'Vrai' : 'Faux' ,
+                    'Username': e.username ,
      }
       });
 
@@ -218,20 +239,28 @@ public async duplicateDisciplineScientifiqueErcAssociation(disciplineScientifiqu
         'Discipline scientifique erc': this.searchDisciplineScientifiqueErcAssociation.disciplineScientifiqueErcVo?.libelleEng ? this.searchDisciplineScientifiqueErcAssociation.disciplineScientifiqueErcVo?.libelleEng : environment.emptyForExport ,
         'Discipline scientifique': this.searchDisciplineScientifiqueErcAssociation.disciplineScientifiqueVo?.libelleEng ? this.searchDisciplineScientifiqueErcAssociation.disciplineScientifiqueVo?.libelleEng : environment.emptyForExport ,
         'Semantic relationship': this.searchDisciplineScientifiqueErcAssociation.semanticRelationshipVo?.libelle ? this.searchDisciplineScientifiqueErcAssociation.semanticRelationshipVo?.libelle : environment.emptyForExport ,
+            'Archive': this.searchDisciplineScientifiqueErcAssociation.archive ? (this.searchDisciplineScientifiqueErcAssociation.archive ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            'Date archivage Min': this.searchDisciplineScientifiqueErcAssociation.dateArchivageMin ? this.datePipe.transform(this.searchDisciplineScientifiqueErcAssociation.dateArchivageMin , this.dateFormat) : environment.emptyForExport ,
+            'Date archivage Max': this.searchDisciplineScientifiqueErcAssociation.dateArchivageMax ? this.datePipe.transform(this.searchDisciplineScientifiqueErcAssociation.dateArchivageMax , this.dateFormat) : environment.emptyForExport ,
+            'Date creation Min': this.searchDisciplineScientifiqueErcAssociation.dateCreationMin ? this.datePipe.transform(this.searchDisciplineScientifiqueErcAssociation.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
+            'Date creation Max': this.searchDisciplineScientifiqueErcAssociation.dateCreationMax ? this.datePipe.transform(this.searchDisciplineScientifiqueErcAssociation.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
+            'Admin': this.searchDisciplineScientifiqueErcAssociation.admin ? (this.searchDisciplineScientifiqueErcAssociation.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            'Visible': this.searchDisciplineScientifiqueErcAssociation.visible ? (this.searchDisciplineScientifiqueErcAssociation.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
+            'Username': this.searchDisciplineScientifiqueErcAssociation.username ? this.searchDisciplineScientifiqueErcAssociation.username : environment.emptyForExport ,
      }];
 
       }
 
     // getters and setters
 
-    get disciplineScientifiqueErcAssociations(): Array<DisciplineScientifiqueErcAssociationVo> {
+    get disciplineScientifiqueErcAssociations() : Array<DisciplineScientifiqueErcAssociationVo> {
            return this.disciplineScientifiqueErcAssociationService.disciplineScientifiqueErcAssociations;
        }
     set disciplineScientifiqueErcAssociations(value: Array<DisciplineScientifiqueErcAssociationVo>) {
         this.disciplineScientifiqueErcAssociationService.disciplineScientifiqueErcAssociations = value;
        }
 
-    get disciplineScientifiqueErcAssociationSelections(): Array<DisciplineScientifiqueErcAssociationVo> {
+    get disciplineScientifiqueErcAssociationSelections() : Array<DisciplineScientifiqueErcAssociationVo> {
            return this.disciplineScientifiqueErcAssociationService.disciplineScientifiqueErcAssociationSelections;
        }
     set disciplineScientifiqueErcAssociationSelections(value: Array<DisciplineScientifiqueErcAssociationVo>) {
@@ -241,39 +270,40 @@ public async duplicateDisciplineScientifiqueErcAssociation(disciplineScientifiqu
      
 
 
-    get selectedDisciplineScientifiqueErcAssociation():DisciplineScientifiqueErcAssociationVo {
+    get selectedDisciplineScientifiqueErcAssociation() : DisciplineScientifiqueErcAssociationVo {
            return this.disciplineScientifiqueErcAssociationService.selectedDisciplineScientifiqueErcAssociation;
        }
     set selectedDisciplineScientifiqueErcAssociation(value: DisciplineScientifiqueErcAssociationVo) {
         this.disciplineScientifiqueErcAssociationService.selectedDisciplineScientifiqueErcAssociation = value;
        }
     
-    get createDisciplineScientifiqueErcAssociationDialog():boolean {
+    get createDisciplineScientifiqueErcAssociationDialog() :boolean {
            return this.disciplineScientifiqueErcAssociationService.createDisciplineScientifiqueErcAssociationDialog;
        }
     set createDisciplineScientifiqueErcAssociationDialog(value: boolean) {
         this.disciplineScientifiqueErcAssociationService.createDisciplineScientifiqueErcAssociationDialog= value;
        }
     
-    get editDisciplineScientifiqueErcAssociationDialog():boolean {
+    get editDisciplineScientifiqueErcAssociationDialog() :boolean {
            return this.disciplineScientifiqueErcAssociationService.editDisciplineScientifiqueErcAssociationDialog;
        }
     set editDisciplineScientifiqueErcAssociationDialog(value: boolean) {
         this.disciplineScientifiqueErcAssociationService.editDisciplineScientifiqueErcAssociationDialog= value;
        }
-    get viewDisciplineScientifiqueErcAssociationDialog():boolean {
+    get viewDisciplineScientifiqueErcAssociationDialog() :boolean {
            return this.disciplineScientifiqueErcAssociationService.viewDisciplineScientifiqueErcAssociationDialog;
        }
     set viewDisciplineScientifiqueErcAssociationDialog(value: boolean) {
         this.disciplineScientifiqueErcAssociationService.viewDisciplineScientifiqueErcAssociationDialog = value;
        }
        
-     get searchDisciplineScientifiqueErcAssociation(): DisciplineScientifiqueErcAssociationVo {
+     get searchDisciplineScientifiqueErcAssociation() : DisciplineScientifiqueErcAssociationVo {
         return this.disciplineScientifiqueErcAssociationService.searchDisciplineScientifiqueErcAssociation;
        }
     set searchDisciplineScientifiqueErcAssociation(value: DisciplineScientifiqueErcAssociationVo) {
         this.disciplineScientifiqueErcAssociationService.searchDisciplineScientifiqueErcAssociation = value;
        }
+
 
     get dateFormat(){
             return environment.dateFormatList;

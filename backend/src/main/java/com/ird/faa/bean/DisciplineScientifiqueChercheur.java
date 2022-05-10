@@ -2,6 +2,8 @@ package com.ird.faa.bean;
 
 import java.util.Objects;
 
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 import javax.persistence.*;
@@ -10,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "discipline_scientifique_chercheur")
-public class DisciplineScientifiqueChercheur   {
+public class DisciplineScientifiqueChercheur    implements Archivable  {
 
 @Id
     @SequenceGenerator(name="discipline_scientifique_chercheur_seq",sequenceName="discipline_scientifique_chercheur_seq",
@@ -18,6 +20,20 @@ public class DisciplineScientifiqueChercheur   {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator="discipline_scientifique_chercheur_seq")
 private Long id;
 
+            @Column(columnDefinition = "boolean default false")
+                 private Boolean archive = false;
+            @JsonFormat(pattern="yyyy-MM-dd")
+            @Temporal(TemporalType.DATE)
+            private Date dateArchivage ;
+            @JsonFormat(pattern="yyyy-MM-dd")
+            @Temporal(TemporalType.DATE)
+            private Date dateCreation ;
+            @Column(columnDefinition = "boolean default false")
+                 private Boolean admin = false;
+            @Column(columnDefinition = "boolean default false")
+                 private Boolean visible = false;
+            @Column(length = 500)
+            private String username;
 
     @ManyToOne
     private DisciplineScientifique disciplineScientifique ;
@@ -55,6 +71,42 @@ super();
             }
             public void setChercheur(Chercheur chercheur){
             this.chercheur = chercheur;
+            }
+        public Boolean  getArchive(){
+        return this.archive;
+        }
+        public void setArchive(Boolean archive){
+        this.archive = archive;
+        }
+            public Date getDateArchivage(){
+            return this.dateArchivage;
+            }
+            public void setDateArchivage(Date dateArchivage){
+            this.dateArchivage = dateArchivage;
+            }
+            public Date getDateCreation(){
+            return this.dateCreation;
+            }
+            public void setDateCreation(Date dateCreation){
+            this.dateCreation = dateCreation;
+            }
+        public Boolean  getAdmin(){
+        return this.admin;
+        }
+        public void setAdmin(Boolean admin){
+        this.admin = admin;
+        }
+        public Boolean  getVisible(){
+        return this.visible;
+        }
+        public void setVisible(Boolean visible){
+        this.visible = visible;
+        }
+            public String getUsername(){
+            return this.username;
+            }
+            public void setUsername(String username){
+            this.username = username;
             }
 
         @Override

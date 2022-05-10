@@ -30,7 +30,7 @@ export class ChercheurService {
      private _viewChercheurDialog: boolean;
      public editChercheur$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchChercheur:ChercheurVo ;
+     private _searchChercheur: ChercheurVo ;
      private _switchChercheurDialog: boolean;
 
     // methods

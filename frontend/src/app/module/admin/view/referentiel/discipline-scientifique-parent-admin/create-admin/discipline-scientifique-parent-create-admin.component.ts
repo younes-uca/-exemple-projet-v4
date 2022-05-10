@@ -140,7 +140,7 @@ set disciplineScientifiqueParents(value: Array<DisciplineScientifiqueParentVo>) 
         this.disciplineScientifiqueParentService.disciplineScientifiqueParents = value;
        }
 
- get selectedDisciplineScientifiqueParent():DisciplineScientifiqueParentVo {
+ get selectedDisciplineScientifiqueParent(): DisciplineScientifiqueParentVo {
            return this.disciplineScientifiqueParentService.selectedDisciplineScientifiqueParent;
        }
     set selectedDisciplineScientifiqueParent(value: DisciplineScientifiqueParentVo) {

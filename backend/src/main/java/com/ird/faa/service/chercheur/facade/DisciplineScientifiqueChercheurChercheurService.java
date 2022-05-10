@@ -10,6 +10,7 @@ public interface DisciplineScientifiqueChercheurChercheurService extends Abstrac
 
 
 
+
 /**
     * delete DisciplineScientifiqueChercheur from database
     * @param id - id of DisciplineScientifiqueChercheur to be deleted

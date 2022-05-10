@@ -5,27 +5,27 @@ import java.util.List;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import com.ird.faa.service.util.StringUtil;
-import com.ird.faa.security.common.SecurityUtil;
-import com.ird.faa.security.bean.User;
+    import com.ird.faa.service.util.StringUtil;
+    import com.ird.faa.security.common.SecurityUtil;
+    import com.ird.faa.security.bean.User;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.Distinction;
-import com.ird.faa.bean.Chercheur;
-import com.ird.faa.bean.Campagne;
-import com.ird.faa.bean.EtatEtapeCampagne;
-import com.ird.faa.bean.DistinctionDisciplineScientifique;
+        import com.ird.faa.bean.Chercheur;
+        import com.ird.faa.bean.Campagne;
+        import com.ird.faa.bean.EtatEtapeCampagne;
+        import com.ird.faa.bean.DistinctionDisciplineScientifique;
 import com.ird.faa.dao.DistinctionDao;
 import com.ird.faa.service.chercheur.facade.DistinctionChercheurService;
-import com.ird.faa.service.chercheur.facade.EtatEtapeCampagneChercheurService;
-import com.ird.faa.service.chercheur.facade.CampagneChercheurService;
-import com.ird.faa.service.chercheur.facade.DistinctionDisciplineScientifiqueChercheurService;
-import com.ird.faa.service.chercheur.facade.ChercheurChercheurService;
+        import com.ird.faa.service.chercheur.facade.EtatEtapeCampagneChercheurService;
+        import com.ird.faa.service.chercheur.facade.CampagneChercheurService;
+        import com.ird.faa.service.chercheur.facade.DistinctionDisciplineScientifiqueChercheurService;
+        import com.ird.faa.service.chercheur.facade.ChercheurChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.DistinctionVo;
 import com.ird.faa.service.util.*;
-import com.ird.faa.bean.DistinctionDisciplineScientifique;
-import com.ird.faa.service.chercheur.facade.DistinctionDisciplineScientifiqueChercheurService;
+        import com.ird.faa.bean.DistinctionDisciplineScientifique;
+        import com.ird.faa.service.chercheur.facade.DistinctionDisciplineScientifiqueChercheurService;
 
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
@@ -51,8 +51,8 @@ private EntityManager entityManager;
 
 @Override
 public List<Distinction> findAll(){
-User currentUser = SecurityUtil.getCurrentUser();
-if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
+    User currentUser = SecurityUtil.getCurrentUser();
+    if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
     return distinctionDao.findByChercheurUsername(currentUser.getUsername());
     }
     return new ArrayList<>();
@@ -135,25 +135,27 @@ return distinctionDao.getOne(id);
 
 @Override
 public Distinction findByIdWithAssociatedList(Long id){
-Distinction distinction  = findById(id);
-findAssociatedLists(distinction);
-return distinction;
+    Distinction distinction  = findById(id);
+    findAssociatedLists(distinction);
+    return distinction;
 }
-private void findAssociatedLists(Distinction distinction){
-if(distinction!=null && distinction.getId() != null) {
-        List<DistinctionDisciplineScientifique> distinctionDisciplineScientifiques = distinctionDisciplineScientifiqueService.findByDistinctionId(distinction.getId());
-        distinction.setDistinctionDisciplineScientifiques(distinctionDisciplineScientifiques);
-}
-}
-private void deleteAssociatedLists(Long id){
-if(id != null ) {
-        distinctionDisciplineScientifiqueService.deleteByDistinctionId(id);
-}
-}
+
+    private void findAssociatedLists(Distinction distinction){
+    if(distinction!=null && distinction.getId() != null) {
+            List<DistinctionDisciplineScientifique> distinctionDisciplineScientifiques = distinctionDisciplineScientifiqueService.findByDistinctionId(distinction.getId());
+            distinction.setDistinctionDisciplineScientifiques(distinctionDisciplineScientifiques);
+    }
+    }
+    private void deleteAssociatedLists(Long id){
+    if(id != null ) {
+            distinctionDisciplineScientifiqueService.deleteByDistinctionId(id);
+    }
+    }
 
     private void updateAssociatedLists(Distinction distinction){
     if(distinction !=null && distinction.getId() != null){
-            List<List<DistinctionDisciplineScientifique>> resultDistinctionDisciplineScientifiques= distinctionDisciplineScientifiqueService.getToBeSavedAndToBeDeleted(distinctionDisciplineScientifiqueService.findByDistinctionId(distinction.getId()),distinction.getDistinctionDisciplineScientifiques());
+            List
+            <List<DistinctionDisciplineScientifique>> resultDistinctionDisciplineScientifiques= distinctionDisciplineScientifiqueService.getToBeSavedAndToBeDeleted(distinctionDisciplineScientifiqueService.findByDistinctionId(distinction.getId()),distinction.getDistinctionDisciplineScientifiques());
             distinctionDisciplineScientifiqueService.delete(resultDistinctionDisciplineScientifiques.get(1));
             associateDistinctionDisciplineScientifique(distinction,resultDistinctionDisciplineScientifiques.get(0));
             distinctionDisciplineScientifiqueService.update(resultDistinctionDisciplineScientifiques.get(0));
@@ -165,7 +167,7 @@ if(id != null ) {
 public int deleteById(Long id){
 int res=0;
 if(distinctionDao.findById(id).isPresent())  {
-deleteAssociatedLists(id);
+    deleteAssociatedLists(id);
 distinctionDao.deleteById(id);
 res = 1;
 }
@@ -186,7 +188,7 @@ return  distinctionDao.save(distinction);
 @Override
 public Distinction save (Distinction distinction){
 
-Distinction result =null;
+    Distinction result =null;
 
     User currentUser = SecurityUtil.getCurrentUser();
     if (currentUser == null || StringUtil.isEmpty(currentUser.getUsername())) {
@@ -208,13 +210,13 @@ Distinction result =null;
     findCampagne(distinction);
     findEtatEtapeCampagne(distinction);
 
-Distinction savedDistinction = distinctionDao.save(distinction);
+    Distinction savedDistinction = distinctionDao.save(distinction);
 
-       saveDistinctionDisciplineScientifiques(savedDistinction,distinction.getDistinctionDisciplineScientifiques());
-result = savedDistinction;
-}
+        saveDistinctionDisciplineScientifiques(savedDistinction,distinction.getDistinctionDisciplineScientifiques());
+    result = savedDistinction;
+    }
 
-return result;
+    return result;
 }
 
 @Override
@@ -246,8 +248,8 @@ return 1;
 
 
 public List<Distinction> findByCriteria(DistinctionVo distinctionVo){
-User currentUser = SecurityUtil.getCurrentUser();
-if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())) {
+    User currentUser = SecurityUtil.getCurrentUser();
+    if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())) {
 
 String query = "SELECT o FROM Distinction o where 1=1 ";
     query += SearchUtil.addConstraint("o", "chercheur.username", "=", currentUser.getUsername());
@@ -273,8 +275,8 @@ String query = "SELECT o FROM Distinction o where 1=1 ";
 
 return entityManager.createQuery(query).getResultList();
 }
-return new ArrayList<>();
-}
+    return new ArrayList<>();
+    }
         private  void saveDistinctionDisciplineScientifiques(Distinction distinction,List<DistinctionDisciplineScientifique> distinctionDisciplineScientifiques){
 
         if (ListUtil.isNotEmpty(distinction.getDistinctionDisciplineScientifiques())) {
@@ -291,7 +293,7 @@ return new ArrayList<>();
         Chercheur loadedChercheur =chercheurService.findByIdOrNumeroMatricule(distinction.getChercheur());
 
     if(loadedChercheur==null ) {
-        return;
+    return;
     }
     distinction.setChercheur(loadedChercheur);
     }
@@ -299,7 +301,7 @@ return new ArrayList<>();
         Campagne loadedCampagne =campagneService.findByIdOrCode(distinction.getCampagne());
 
     if(loadedCampagne==null ) {
-        return;
+    return;
     }
     distinction.setCampagne(loadedCampagne);
     }
@@ -307,7 +309,7 @@ return new ArrayList<>();
         EtatEtapeCampagne loadedEtatEtapeCampagne =etatEtapeCampagneService.findByIdOrCode(distinction.getEtatEtapeCampagne());
 
     if(loadedEtatEtapeCampagne==null ) {
-        return;
+    return;
     }
     distinction.setEtatEtapeCampagne(loadedEtatEtapeCampagne);
     }
@@ -315,9 +317,9 @@ return new ArrayList<>();
 @Override
 @Transactional
 public void delete(List<Distinction> distinctions){
-        if(ListUtil.isNotEmpty(distinctions)){
-        distinctions.forEach(e->distinctionDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(distinctions)){
+distinctions.forEach(e->distinctionDao.delete(e));
+}
 }
 @Override
 public void update(List<Distinction> distinctions){
@@ -326,16 +328,18 @@ distinctions.forEach(e->distinctionDao.save(e));
 }
 }
 
-private void associateDistinctionDisciplineScientifique(Distinction distinction, List<DistinctionDisciplineScientifique> distinctionDisciplineScientifique) {
-    if (ListUtil.isNotEmpty(distinctionDisciplineScientifique)) {
+        private void associateDistinctionDisciplineScientifique(Distinction distinction, List<DistinctionDisciplineScientifique> distinctionDisciplineScientifique) {
+        if (ListUtil.isNotEmpty(distinctionDisciplineScientifique)) {
         distinctionDisciplineScientifique.forEach(e -> e.setDistinction(distinction));
-    }
-    }
+        }
+        }
 
-@Override
-public List<Distinction> findByChercheurUsernameAndCampagneId(String username, Long compagneId){
-List<Distinction> resultat= distinctionDao.findByChercheurUsernameAndCampagneId(username, compagneId);
+    @Override
+    public List<Distinction> findByChercheurUsernameAndCampagneId(String username, Long compagneId){
+    List<Distinction> resultat= distinctionDao.findByChercheurUsernameAndCampagneId(username, compagneId);
     return resultat;
-}
+    }
 
-}
+
+
+    }

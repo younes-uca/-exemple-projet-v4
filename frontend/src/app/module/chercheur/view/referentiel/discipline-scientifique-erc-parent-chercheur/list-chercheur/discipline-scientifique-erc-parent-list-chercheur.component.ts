@@ -34,10 +34,9 @@ export class DisciplineScientifiqueErcParentListChercheurComponent implements On
 
 
     constructor(private datePipe: DatePipe, private disciplineScientifiqueErcParentService: DisciplineScientifiqueErcParentService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-
 ) { }
 
-    ngOnInit(): void {
+    ngOnInit() : void {
       this.loadDisciplineScientifiqueErcParents();
       this.initExport();
       this.initCol();
@@ -78,7 +77,7 @@ export class DisciplineScientifiqueErcParentListChercheurComponent implements On
         ];
     }
     
-    public async editDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent:DisciplineScientifiqueErcParentVo){
+    public async editDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent: DisciplineScientifiqueErcParentVo){
         const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErcParent', 'edit');
          if(isPermistted){
           this.disciplineScientifiqueErcParentService.findByIdWithAssociatedList(disciplineScientifiqueErcParent).subscribe(res => {
@@ -97,7 +96,7 @@ export class DisciplineScientifiqueErcParentListChercheurComponent implements On
     
 
 
-   public async viewDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent:DisciplineScientifiqueErcParentVo){
+   public async viewDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent: DisciplineScientifiqueErcParentVo){
         const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErcParent', 'view');
         if(isPermistted){
            this.disciplineScientifiqueErcParentService.findByIdWithAssociatedList(disciplineScientifiqueErcParent).subscribe(res => {
@@ -128,7 +127,7 @@ export class DisciplineScientifiqueErcParentListChercheurComponent implements On
     }
 
 
-    public async deleteDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent:DisciplineScientifiqueErcParentVo){
+    public async deleteDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent: DisciplineScientifiqueErcParentVo){
        const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErcParent', 'delete');
         if(isPermistted){
                       this.confirmationService.confirm({
@@ -177,7 +176,7 @@ public async duplicateDisciplineScientifiqueErcParent(disciplineScientifiqueErcP
 
 	}
 
-  initExport(): void {
+  initExport() : void {
     this.excelPdfButons = [
       {label: 'CSV', icon: 'pi pi-file', command: () => {this.prepareColumnExport();this.exportService.exportCSV(this.criteriaData,this.exportData,this.fileName);}},
       {label: 'XLS', icon: 'pi pi-file-excel', command: () => {this.prepareColumnExport();this.exportService.exportExcel(this.criteriaData,this.exportData,this.fileName);}},
@@ -186,7 +185,7 @@ public async duplicateDisciplineScientifiqueErcParent(disciplineScientifiqueErcP
   }
 
 
-    prepareColumnExport(): void {
+    prepareColumnExport() : void {
     this.exportData = this.disciplineScientifiqueErcParents.map(e => {
     return {
                     'Libelle fr': e.libelleFr ,
@@ -222,14 +221,14 @@ public async duplicateDisciplineScientifiqueErcParent(disciplineScientifiqueErcP
 
     // getters and setters
 
-    get disciplineScientifiqueErcParents(): Array<DisciplineScientifiqueErcParentVo> {
+    get disciplineScientifiqueErcParents() : Array<DisciplineScientifiqueErcParentVo> {
            return this.disciplineScientifiqueErcParentService.disciplineScientifiqueErcParents;
        }
     set disciplineScientifiqueErcParents(value: Array<DisciplineScientifiqueErcParentVo>) {
         this.disciplineScientifiqueErcParentService.disciplineScientifiqueErcParents = value;
        }
 
-    get disciplineScientifiqueErcParentSelections(): Array<DisciplineScientifiqueErcParentVo> {
+    get disciplineScientifiqueErcParentSelections() : Array<DisciplineScientifiqueErcParentVo> {
            return this.disciplineScientifiqueErcParentService.disciplineScientifiqueErcParentSelections;
        }
     set disciplineScientifiqueErcParentSelections(value: Array<DisciplineScientifiqueErcParentVo>) {
@@ -239,39 +238,40 @@ public async duplicateDisciplineScientifiqueErcParent(disciplineScientifiqueErcP
      
 
 
-    get selectedDisciplineScientifiqueErcParent():DisciplineScientifiqueErcParentVo {
+    get selectedDisciplineScientifiqueErcParent() : DisciplineScientifiqueErcParentVo {
            return this.disciplineScientifiqueErcParentService.selectedDisciplineScientifiqueErcParent;
        }
     set selectedDisciplineScientifiqueErcParent(value: DisciplineScientifiqueErcParentVo) {
         this.disciplineScientifiqueErcParentService.selectedDisciplineScientifiqueErcParent = value;
        }
     
-    get createDisciplineScientifiqueErcParentDialog():boolean {
+    get createDisciplineScientifiqueErcParentDialog() :boolean {
            return this.disciplineScientifiqueErcParentService.createDisciplineScientifiqueErcParentDialog;
        }
     set createDisciplineScientifiqueErcParentDialog(value: boolean) {
         this.disciplineScientifiqueErcParentService.createDisciplineScientifiqueErcParentDialog= value;
        }
     
-    get editDisciplineScientifiqueErcParentDialog():boolean {
+    get editDisciplineScientifiqueErcParentDialog() :boolean {
            return this.disciplineScientifiqueErcParentService.editDisciplineScientifiqueErcParentDialog;
        }
     set editDisciplineScientifiqueErcParentDialog(value: boolean) {
         this.disciplineScientifiqueErcParentService.editDisciplineScientifiqueErcParentDialog= value;
        }
-    get viewDisciplineScientifiqueErcParentDialog():boolean {
+    get viewDisciplineScientifiqueErcParentDialog() :boolean {
            return this.disciplineScientifiqueErcParentService.viewDisciplineScientifiqueErcParentDialog;
        }
     set viewDisciplineScientifiqueErcParentDialog(value: boolean) {
         this.disciplineScientifiqueErcParentService.viewDisciplineScientifiqueErcParentDialog = value;
        }
        
-     get searchDisciplineScientifiqueErcParent(): DisciplineScientifiqueErcParentVo {
+     get searchDisciplineScientifiqueErcParent() : DisciplineScientifiqueErcParentVo {
         return this.disciplineScientifiqueErcParentService.searchDisciplineScientifiqueErcParent;
        }
     set searchDisciplineScientifiqueErcParent(value: DisciplineScientifiqueErcParentVo) {
         this.disciplineScientifiqueErcParentService.searchDisciplineScientifiqueErcParent = value;
        }
+
 
     get dateFormat(){
             return environment.dateFormatList;

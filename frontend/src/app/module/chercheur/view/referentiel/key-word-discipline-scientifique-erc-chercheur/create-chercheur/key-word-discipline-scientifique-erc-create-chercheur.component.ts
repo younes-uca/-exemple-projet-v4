@@ -10,10 +10,10 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
 import {KeyWordVo} from '../../../../../../controller/model/KeyWord.model';
 import {KeyWordService} from '../../../../../../controller/service/KeyWord.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
 @Component({
   selector: 'app-key-word-discipline-scientifique-erc-create-chercheur',
   templateUrl: './key-word-discipline-scientifique-erc-create-chercheur.component.html',
@@ -40,8 +40,8 @@ constructor(private datePipe: DatePipe, private keyWordDisciplineScientifiqueErc
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private disciplineScientifiqueService :DisciplineScientifiqueService
-,       private keyWordService :KeyWordService
+,       private keyWordService: KeyWordService
+,       private disciplineScientifiqueService: DisciplineScientifiqueService
 ) {
 
 }
@@ -98,6 +98,12 @@ this.errorMessages = new Array<string>();
 
 
 
+
+
+
+
+
+
 //openPopup
               public async openCreatekeyWord(keyWord: string) {
                       const isPermistted = await this.roleService.isPermitted('KeyWord', 'add');
@@ -137,7 +143,7 @@ set keyWordDisciplineScientifiqueErcs(value: Array<KeyWordDisciplineScientifique
         this.keyWordDisciplineScientifiqueErcService.keyWordDisciplineScientifiqueErcs = value;
        }
 
- get selectedKeyWordDisciplineScientifiqueErc():KeyWordDisciplineScientifiqueErcVo {
+ get selectedKeyWordDisciplineScientifiqueErc(): KeyWordDisciplineScientifiqueErcVo {
            return this.keyWordDisciplineScientifiqueErcService.selectedKeyWordDisciplineScientifiqueErc;
        }
     set selectedKeyWordDisciplineScientifiqueErc(value: KeyWordDisciplineScientifiqueErcVo) {

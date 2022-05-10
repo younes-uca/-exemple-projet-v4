@@ -8,12 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.IdentifiantAuteurExpert;
-import com.ird.faa.bean.IdentifiantRecherche;
-import com.ird.faa.bean.Chercheur;
+        import com.ird.faa.bean.IdentifiantRecherche;
+        import com.ird.faa.bean.Chercheur;
 import com.ird.faa.dao.IdentifiantAuteurExpertDao;
 import com.ird.faa.service.chercheur.facade.IdentifiantAuteurExpertChercheurService;
-import com.ird.faa.service.chercheur.facade.IdentifiantRechercheChercheurService;
-import com.ird.faa.service.chercheur.facade.ChercheurChercheurService;
+        import com.ird.faa.service.chercheur.facade.IdentifiantRechercheChercheurService;
+        import com.ird.faa.service.chercheur.facade.ChercheurChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.IdentifiantAuteurExpertVo;
 import com.ird.faa.service.util.*;
@@ -95,8 +95,9 @@ return identifiantAuteurExpertDao.getOne(id);
 
 @Override
 public IdentifiantAuteurExpert findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+
 
 
 @Transactional
@@ -127,7 +128,7 @@ public IdentifiantAuteurExpert save (IdentifiantAuteurExpert identifiantAuteurEx
     findIdentifiantRecherche(identifiantAuteurExpert);
     findChercheur(identifiantAuteurExpert);
 
-return identifiantAuteurExpertDao.save(identifiantAuteurExpert);
+    return identifiantAuteurExpertDao.save(identifiantAuteurExpert);
 
 
 }
@@ -177,7 +178,7 @@ return entityManager.createQuery(query).getResultList();
         IdentifiantRecherche loadedIdentifiantRecherche =identifiantRechercheService.findByIdOrCode(identifiantAuteurExpert.getIdentifiantRecherche());
 
     if(loadedIdentifiantRecherche==null ) {
-        return;
+    return;
     }
     identifiantAuteurExpert.setIdentifiantRecherche(loadedIdentifiantRecherche);
     }
@@ -185,7 +186,7 @@ return entityManager.createQuery(query).getResultList();
         Chercheur loadedChercheur =chercheurService.findByIdOrNumeroMatricule(identifiantAuteurExpert.getChercheur());
 
     if(loadedChercheur==null ) {
-        return;
+    return;
     }
     identifiantAuteurExpert.setChercheur(loadedChercheur);
     }
@@ -193,9 +194,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<IdentifiantAuteurExpert> identifiantAuteurExperts){
-        if(ListUtil.isNotEmpty(identifiantAuteurExperts)){
-        identifiantAuteurExperts.forEach(e->identifiantAuteurExpertDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(identifiantAuteurExperts)){
+identifiantAuteurExperts.forEach(e->identifiantAuteurExpertDao.delete(e));
+}
 }
 @Override
 public void update(List<IdentifiantAuteurExpert> identifiantAuteurExperts){
@@ -206,4 +207,6 @@ identifiantAuteurExperts.forEach(e->identifiantAuteurExpertDao.save(e));
 
 
 
-}
+
+
+    }

@@ -10,6 +10,7 @@ public interface EnjeuxIrdChercheurChercheurService extends AbstractService<Enje
 
 
 
+
 /**
     * delete EnjeuxIrdChercheur from database
     * @param id - id of EnjeuxIrdChercheur to be deleted

@@ -30,7 +30,7 @@ export class IdentifiantAuteurExpertService {
      private _viewIdentifiantAuteurExpertDialog: boolean;
      public editIdentifiantAuteurExpert$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchIdentifiantAuteurExpert:IdentifiantAuteurExpertVo ;
+     private _searchIdentifiantAuteurExpert: IdentifiantAuteurExpertVo ;
 
     // methods
 

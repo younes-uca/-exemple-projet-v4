@@ -2,6 +2,8 @@ package com.ird.faa.bean;
 
 import java.util.Objects;
 
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 import javax.persistence.*;
@@ -10,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "discipline_scientifique_erc_association")
-public class DisciplineScientifiqueErcAssociation   {
+public class DisciplineScientifiqueErcAssociation    implements Archivable  {
 
 @Id
     @SequenceGenerator(name="discipline_scientifique_erc_association_seq",sequenceName="discipline_scientifique_erc_association_seq",
@@ -18,6 +20,20 @@ public class DisciplineScientifiqueErcAssociation   {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator="discipline_scientifique_erc_association_seq")
 private Long id;
 
+            @Column(columnDefinition = "boolean default false")
+                 private Boolean archive = false;
+            @JsonFormat(pattern="yyyy-MM-dd")
+            @Temporal(TemporalType.DATE)
+            private Date dateArchivage ;
+            @JsonFormat(pattern="yyyy-MM-dd")
+            @Temporal(TemporalType.DATE)
+            private Date dateCreation ;
+            @Column(columnDefinition = "boolean default false")
+                 private Boolean admin = false;
+            @Column(columnDefinition = "boolean default false")
+                 private Boolean visible = false;
+            @Column(length = 500)
+            private String username;
 
     @ManyToOne
     private DisciplineScientifiqueErc disciplineScientifiqueErc ;
@@ -55,6 +71,42 @@ super();
             }
             public void setSemanticRelationship(SemanticRelationship semanticRelationship){
             this.semanticRelationship = semanticRelationship;
+            }
+        public Boolean  getArchive(){
+        return this.archive;
+        }
+        public void setArchive(Boolean archive){
+        this.archive = archive;
+        }
+            public Date getDateArchivage(){
+            return this.dateArchivage;
+            }
+            public void setDateArchivage(Date dateArchivage){
+            this.dateArchivage = dateArchivage;
+            }
+            public Date getDateCreation(){
+            return this.dateCreation;
+            }
+            public void setDateCreation(Date dateCreation){
+            this.dateCreation = dateCreation;
+            }
+        public Boolean  getAdmin(){
+        return this.admin;
+        }
+        public void setAdmin(Boolean admin){
+        this.admin = admin;
+        }
+        public Boolean  getVisible(){
+        return this.visible;
+        }
+        public void setVisible(Boolean visible){
+        this.visible = visible;
+        }
+            public String getUsername(){
+            return this.username;
+            }
+            public void setUsername(String username){
+            this.username = username;
             }
 
         @Override

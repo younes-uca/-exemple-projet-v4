@@ -10,6 +10,7 @@ public interface IdentifiantAuteurExpertAdminService extends AbstractService<Ide
 
 
 
+
 /**
     * delete IdentifiantAuteurExpert from database
     * @param id - id of IdentifiantAuteurExpert to be deleted

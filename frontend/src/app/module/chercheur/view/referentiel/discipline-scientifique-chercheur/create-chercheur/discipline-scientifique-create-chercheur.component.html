@@ -137,9 +137,10 @@
                         </div>
                     </p-tabPanel>
                     <p-tabPanel header="Discipline scientifique erc associations">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
                                 <div class="p-grid">
-                                      <div class="p-col">
-                                                    <div class="p-field p-col-11 p-md-5">
+                                                    <div class="p-field p-col-11 p-md-3">
                                                         <label>Discipline scientifique erc</label>
                                                         <p-dropdown [options]="disciplineScientifiqueErcs" [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.disciplineScientifiqueErcVo"
                                                                 id="1"  [filter]="true"
@@ -157,7 +158,7 @@
                                                                 class="p-button-success one-colonne-btn-success-align"></button>
                                                     </div>
 
-                                                    <div class="p-field p-col-11 p-md-5">
+                                                    <div class="p-field p-col-11 p-md-3">
                                                         <label>Semantic relationship</label>
                                                         <p-dropdown [options]="semanticRelationships" [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.semanticRelationshipVo"
                                                                 id="3"  [filter]="true"
@@ -175,14 +176,62 @@
                                                                 class="p-button-success one-colonne-btn-success-align"></button>
                                                     </div>
 
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="4">Archive</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="4"  [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.archive"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Date archivage</label>
+                                                    <p-calendar id="5"
+                                                                placeholder="Date archivage"
+                                                            [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.dateArchivage"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Date creation</label>
+                                                    <p-calendar id="6"
+                                                                placeholder="Date creation"
+                                                            [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.dateCreation"
+                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
+                                                    
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="7">Admin</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="7"  [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.admin"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
+                                                    <div  class="label-inputswitch">
+                                                        <label for="8">Visible</label>
+                                                    </div>
+                                                    <div class="input-switch">
+                                                        <p-inputSwitch id="8"  [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.visible"></p-inputSwitch>
+                                                    </div>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="9">Username</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Username"
+                                                           id="9" [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.username"
+                                                           autofocus   >
+                                                    
+                                                </div>
                                           <div class="p-field p-col-12 p-md-1">
                                               <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
                                                     label="OK" (click)="addDisciplineScientifiqueErcAssociations()">
                                               </button>
                                           </div>
-                                        </div>
                                 </div>
-                                  <div class="p-col">
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
                                     <div class="card">
                                         <p-table [value]="selectedDisciplineScientifique.disciplineScientifiqueErcAssociationsVo" [scrollable]="true"
                                                 scrollHeight="200px">
@@ -190,6 +239,12 @@
                                                 <tr>
                                                                 <th>Discipline scientifique erc</th>
                                                                 <th>Semantic relationship</th>
+                                                                <th>Archive</th>
+                                                                <th>Date archivage</th>
+                                                                <th>Date creation</th>
+                                                                <th>Admin</th>
+                                                                <th>Visible</th>
+                                                                <th>Username</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </ng-template>
@@ -197,6 +252,24 @@
                                                 <tr>
                                                             <td>{{p.disciplineScientifiqueErcVo?.libelleEng}}</td>
                                                             <td>{{p.semanticRelationshipVo?.libelle}}</td>
+                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
+
+                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
+
+                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
+                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
+                                                                </td>
+
+                                                                <td>{{p.username}}</td>
+
                                                     <td>
                                                         <button (click)="deleteDisciplineScientifiqueErcAssociations(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
                                                         </button>
@@ -206,7 +279,8 @@
                                         </p-table>
                                     </div>
 
-                                 </div>
+                                </p-tabPanel>
+                                </p-tabView>
                             </p-tabPanel>
 
 

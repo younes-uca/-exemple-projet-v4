@@ -32,7 +32,7 @@ export class DistinctionService {
      private _viewDistinctionDialog: boolean;
      public editDistinction$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchDistinction:DistinctionVo ;
+     private _searchDistinction: DistinctionVo ;
 
     // methods
 

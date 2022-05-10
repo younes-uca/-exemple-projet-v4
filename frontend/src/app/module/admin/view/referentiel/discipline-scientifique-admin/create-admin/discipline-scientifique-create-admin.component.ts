@@ -10,14 +10,14 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
-import {DisciplineScientifiqueErcAssociationVo} from '../../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
-import {DisciplineScientifiqueErcAssociationService} from '../../../../../../controller/service/DisciplineScientifiqueErcAssociation.service';
-import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
-import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
 import {DisciplineScientifiqueParentVo} from '../../../../../../controller/model/DisciplineScientifiqueParent.model';
 import {DisciplineScientifiqueParentService} from '../../../../../../controller/service/DisciplineScientifiqueParent.service';
+import {DisciplineScientifiqueErcAssociationVo} from '../../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
+import {DisciplineScientifiqueErcAssociationService} from '../../../../../../controller/service/DisciplineScientifiqueErcAssociation.service';
+import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
+import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
+import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
 @Component({
   selector: 'app-discipline-scientifique-create-admin',
   templateUrl: './discipline-scientifique-create-admin.component.html',
@@ -45,10 +45,10 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueService: D
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private disciplineScientifiqueErcService :DisciplineScientifiqueErcService
-,       private disciplineScientifiqueErcAssociationService :DisciplineScientifiqueErcAssociationService
-,       private semanticRelationshipService :SemanticRelationshipService
-,       private disciplineScientifiqueParentService :DisciplineScientifiqueParentService
+,       private disciplineScientifiqueParentService: DisciplineScientifiqueParentService
+,       private disciplineScientifiqueErcAssociationService: DisciplineScientifiqueErcAssociationService
+,       private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
+,       private semanticRelationshipService: SemanticRelationshipService
 ) {
 
 }
@@ -180,6 +180,12 @@ private validateDisciplineScientifiqueCode(){
 
 
 
+
+
+
+
+
+
 //openPopup
               public async openCreatedisciplineScientifiqueParent(disciplineScientifiqueParent: string) {
                       const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueParent', 'add');
@@ -230,7 +236,7 @@ set disciplineScientifiques(value: Array<DisciplineScientifiqueVo>) {
         this.disciplineScientifiqueService.disciplineScientifiques = value;
        }
 
- get selectedDisciplineScientifique():DisciplineScientifiqueVo {
+ get selectedDisciplineScientifique(): DisciplineScientifiqueVo {
            return this.disciplineScientifiqueService.selectedDisciplineScientifique;
        }
     set selectedDisciplineScientifique(value: DisciplineScientifiqueVo) {

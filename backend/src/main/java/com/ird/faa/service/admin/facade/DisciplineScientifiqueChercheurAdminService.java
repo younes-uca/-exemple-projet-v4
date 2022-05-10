@@ -10,6 +10,7 @@ public interface DisciplineScientifiqueChercheurAdminService extends AbstractSer
 
 
 
+
 /**
     * delete DisciplineScientifiqueChercheur from database
     * @param id - id of DisciplineScientifiqueChercheur to be deleted
@@ -45,5 +46,7 @@ public interface DisciplineScientifiqueChercheurAdminService extends AbstractSer
 
 
 
+    DisciplineScientifiqueChercheur archiver(DisciplineScientifiqueChercheur disciplineScientifiqueChercheur) ;
+    DisciplineScientifiqueChercheur desarchiver(DisciplineScientifiqueChercheur disciplineScientifiqueChercheur);
 
 }

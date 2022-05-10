@@ -8,6 +8,7 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface IdentifiantRechercheAdminService extends AbstractService<IdentifiantRecherche,Long,IdentifiantRechercheVo>{
 
 
+
     /**
     * find IdentifiantRecherche from database by code (reference)
     * @param code - reference of IdentifiantRecherche

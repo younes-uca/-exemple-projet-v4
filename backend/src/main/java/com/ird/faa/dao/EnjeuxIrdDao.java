@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface EnjeuxIrdDao extends JpaRepository<EnjeuxIrd,Long> {
 
 
+    public List<EnjeuxIrd> findByUsername(String username);
 
     @Query("SELECT item FROM EnjeuxIrd item ORDER BY item.code ASC")
     List<EnjeuxIrd> findAll();

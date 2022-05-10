@@ -41,14 +41,14 @@ set disciplineScientifiqueErcParents(value: Array<DisciplineScientifiqueErcParen
         this.disciplineScientifiqueErcParentService.disciplineScientifiqueErcParents = value;
        }
 
- get selectedDisciplineScientifiqueErcParent():DisciplineScientifiqueErcParentVo {
+ get selectedDisciplineScientifiqueErcParent(): DisciplineScientifiqueErcParentVo {
            return this.disciplineScientifiqueErcParentService.selectedDisciplineScientifiqueErcParent;
        }
     set selectedDisciplineScientifiqueErcParent(value: DisciplineScientifiqueErcParentVo) {
         this.disciplineScientifiqueErcParentService.selectedDisciplineScientifiqueErcParent = value;
        }
 
-   get viewDisciplineScientifiqueErcParentDialog():boolean {
+   get viewDisciplineScientifiqueErcParentDialog(): boolean {
            return this.disciplineScientifiqueErcParentService.viewDisciplineScientifiqueErcParentDialog;
 
        }

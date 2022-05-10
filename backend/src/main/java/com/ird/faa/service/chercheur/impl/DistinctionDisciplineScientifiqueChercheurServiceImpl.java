@@ -8,12 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.DistinctionDisciplineScientifique;
-import com.ird.faa.bean.Distinction;
-import com.ird.faa.bean.DisciplineScientifique;
+        import com.ird.faa.bean.Distinction;
+        import com.ird.faa.bean.DisciplineScientifique;
 import com.ird.faa.dao.DistinctionDisciplineScientifiqueDao;
 import com.ird.faa.service.chercheur.facade.DistinctionDisciplineScientifiqueChercheurService;
-import com.ird.faa.service.chercheur.facade.DisciplineScientifiqueChercheurService;
-import com.ird.faa.service.chercheur.facade.DistinctionChercheurService;
+        import com.ird.faa.service.chercheur.facade.DisciplineScientifiqueChercheurService;
+        import com.ird.faa.service.chercheur.facade.DistinctionChercheurService;
 
 import com.ird.faa.ws.rest.provided.vo.DistinctionDisciplineScientifiqueVo;
 import com.ird.faa.service.util.*;
@@ -83,8 +83,9 @@ return distinctionDisciplineScientifiqueDao.getOne(id);
 
 @Override
 public DistinctionDisciplineScientifique findByIdWithAssociatedList(Long id){
-return findById(id);
+    return findById(id);
 }
+
 
 
 @Transactional
@@ -115,7 +116,7 @@ public DistinctionDisciplineScientifique save (DistinctionDisciplineScientifique
     findDistinction(distinctionDisciplineScientifique);
     findDisciplineScientifique(distinctionDisciplineScientifique);
 
-return distinctionDisciplineScientifiqueDao.save(distinctionDisciplineScientifique);
+    return distinctionDisciplineScientifiqueDao.save(distinctionDisciplineScientifique);
 
 
 }
@@ -165,7 +166,7 @@ return entityManager.createQuery(query).getResultList();
         loadedDistinction =distinctionService.findById(distinctionDisciplineScientifique.getDistinction().getId());
 
     if(loadedDistinction==null ) {
-        return;
+    return;
     }
     distinctionDisciplineScientifique.setDistinction(loadedDistinction);
     }
@@ -173,7 +174,7 @@ return entityManager.createQuery(query).getResultList();
         DisciplineScientifique loadedDisciplineScientifique =disciplineScientifiqueService.findByIdOrCode(distinctionDisciplineScientifique.getDisciplineScientifique());
 
     if(loadedDisciplineScientifique==null ) {
-        return;
+    return;
     }
     distinctionDisciplineScientifique.setDisciplineScientifique(loadedDisciplineScientifique);
     }
@@ -181,9 +182,9 @@ return entityManager.createQuery(query).getResultList();
 @Override
 @Transactional
 public void delete(List<DistinctionDisciplineScientifique> distinctionDisciplineScientifiques){
-        if(ListUtil.isNotEmpty(distinctionDisciplineScientifiques)){
-        distinctionDisciplineScientifiques.forEach(e->distinctionDisciplineScientifiqueDao.delete(e));
-        }
+if(ListUtil.isNotEmpty(distinctionDisciplineScientifiques)){
+distinctionDisciplineScientifiques.forEach(e->distinctionDisciplineScientifiqueDao.delete(e));
+}
 }
 @Override
 public void update(List<DistinctionDisciplineScientifique> distinctionDisciplineScientifiques){
@@ -194,4 +195,6 @@ distinctionDisciplineScientifiques.forEach(e->distinctionDisciplineScientifiqueD
 
 
 
-}
+
+
+    }

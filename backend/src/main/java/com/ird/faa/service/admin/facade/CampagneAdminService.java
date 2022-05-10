@@ -8,6 +8,7 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface CampagneAdminService extends AbstractService<Campagne,Long,CampagneVo>{
 
 
+
     /**
     * find Campagne from database by code (reference)
     * @param code - reference of Campagne

@@ -28,16 +28,22 @@ export class SemanticRelationshipService {
      private _viewSemanticRelationshipDialog: boolean;
      public editSemanticRelationship$ = new BehaviorSubject<boolean>(false);
      private role$: Observable<string>;
-     private _searchSemanticRelationship:SemanticRelationshipVo ;
+     private _searchSemanticRelationship: SemanticRelationshipVo ;
 
     // methods
+    public archiver(semanticRelationship: SemanticRelationshipVo): Observable<SemanticRelationshipVo> {
+        return this.http.put<SemanticRelationshipVo>(this.API + 'archiver/' ,semanticRelationship);
+    }
+    public desarchiver(semanticRelationship: SemanticRelationshipVo): Observable<SemanticRelationshipVo> {
+    return this.http.put<SemanticRelationshipVo>(this.API + 'desarchiver/' ,semanticRelationship);
+    }
 
     public findAll(){
      return this.http.get<Array<SemanticRelationshipVo>>(this.API);
     }
 
     public save(): Observable<SemanticRelationshipVo> {
-         return this.http.post<SemanticRelationshipVo>(this.API, this.selectedSemanticRelationship);
+           return this.http.post<SemanticRelationshipVo>(this.API, {...this.selectedSemanticRelationship,dateCreation: moment(this.selectedSemanticRelationship.dateCreation).format("YYYY-MM-DD")});
     }
 
     delete(semanticRelationship: SemanticRelationshipVo) {

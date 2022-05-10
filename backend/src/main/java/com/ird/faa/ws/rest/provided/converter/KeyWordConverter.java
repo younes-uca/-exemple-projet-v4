@@ -30,6 +30,18 @@ KeyWord item = new KeyWord();
         item.setLibelleEng(vo.getLibelleEng());
         if(StringUtil.isNotEmpty(vo.getCode()))
         item.setCode(vo.getCode());
+            if(vo.getArchive() != null)
+            item.setArchive(vo.getArchive());
+        if(StringUtil.isNotEmpty(vo.getDateArchivage()))
+        item.setDateArchivage(DateUtil.parse(vo.getDateArchivage()));
+        if(StringUtil.isNotEmpty(vo.getDateCreation()))
+        item.setDateCreation(DateUtil.parse(vo.getDateCreation()));
+            if(vo.getAdmin() != null)
+            item.setAdmin(vo.getAdmin());
+            if(vo.getVisible() != null)
+            item.setVisible(vo.getVisible());
+        if(StringUtil.isNotEmpty(vo.getUsername()))
+        item.setUsername(vo.getUsername());
 
 
 return item;
@@ -54,6 +66,19 @@ KeyWordVo vo = new KeyWordVo();
         if(StringUtil.isNotEmpty(item.getCode()))
         vo.setCode(item.getCode());
 
+        if(item.getArchive()!=null)
+        vo.setArchive(item.getArchive());
+        if(item.getDateArchivage()!=null)
+        vo.setDateArchivage(DateUtil.formateDate(item.getDateArchivage()));
+        if(item.getDateCreation()!=null)
+        vo.setDateCreation(DateUtil.formateDate(item.getDateCreation()));
+        if(item.getAdmin()!=null)
+        vo.setAdmin(item.getAdmin());
+        if(item.getVisible()!=null)
+        vo.setVisible(item.getVisible());
+        if(StringUtil.isNotEmpty(item.getUsername()))
+        vo.setUsername(item.getUsername());
+
 
 return vo;
 }
@@ -61,6 +86,18 @@ return vo;
 
 public void init(Boolean value) {
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
