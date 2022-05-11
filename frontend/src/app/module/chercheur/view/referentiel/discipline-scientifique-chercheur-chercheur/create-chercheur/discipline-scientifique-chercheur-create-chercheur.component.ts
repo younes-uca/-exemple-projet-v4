@@ -10,12 +10,12 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
 import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
 import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
 import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
+import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 @Component({
   selector: 'app-discipline-scientifique-chercheur-create-chercheur',
   templateUrl: './discipline-scientifique-chercheur-create-chercheur.component.html',
@@ -42,9 +42,9 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueChercheurS
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
 ,       private disciplineScientifiqueService: DisciplineScientifiqueService
 ,       private chercheurService: ChercheurService
+,       private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
 ) {
 
 }

@@ -10,10 +10,10 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {KeyWordVo} from '../../../../../../controller/model/KeyWord.model';
-import {KeyWordService} from '../../../../../../controller/service/KeyWord.service';
 import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
 import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {KeyWordVo} from '../../../../../../controller/model/KeyWord.model';
+import {KeyWordService} from '../../../../../../controller/service/KeyWord.service';
 @Component({
   selector: 'app-key-word-discipline-scientifique-erc-create-admin',
   templateUrl: './key-word-discipline-scientifique-erc-create-admin.component.html',
@@ -40,8 +40,8 @@ constructor(private datePipe: DatePipe, private keyWordDisciplineScientifiqueErc
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private keyWordService: KeyWordService
 ,       private disciplineScientifiqueService: DisciplineScientifiqueService
+,       private keyWordService: KeyWordService
 ) {
 
 }
@@ -91,9 +91,6 @@ private validateForm(): void{
 this.errorMessages = new Array<string>();
 
     }
-
-
-
 
 
 

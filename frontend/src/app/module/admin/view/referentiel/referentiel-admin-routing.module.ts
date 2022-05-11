@@ -7,6 +7,10 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
+    import { EnjeuxIrdChercheurAdminComponent } from './enjeux-ird-chercheur-admin/enjeux-ird-chercheur-admin.component';
+
+
+
     import { SemanticRelationshipAdminComponent } from './semantic-relationship-admin/semantic-relationship-admin.component';
 
 
@@ -15,15 +19,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
+    import { EnjeuxIrdAdminComponent } from './enjeux-ird-admin/enjeux-ird-admin.component';
+
+
+
     import { DisciplineScientifiqueChercheurAdminComponent } from './discipline-scientifique-chercheur-admin/discipline-scientifique-chercheur-admin.component';
-
-
-
-    import { DisciplineScientifiqueErcAssociationAdminComponent } from './discipline-scientifique-erc-association-admin/discipline-scientifique-erc-association-admin.component';
-
-
-
-    import { EnjeuxIrdChercheurAdminComponent } from './enjeux-ird-chercheur-admin/enjeux-ird-chercheur-admin.component';
 
 
 
@@ -39,7 +39,7 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { EnjeuxIrdAdminComponent } from './enjeux-ird-admin/enjeux-ird-admin.component';
+    import { DisciplineScientifiqueErcAssociationAdminComponent } from './discipline-scientifique-erc-association-admin/discipline-scientifique-erc-association-admin.component';
 
 
 
@@ -62,6 +62,18 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
                     path: '',
                     children: [
 
+
+                        {
+
+                            path: 'enjeux-ird-chercheur',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: EnjeuxIrdChercheurAdminComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
 
                         {
 
@@ -89,35 +101,23 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
+                            path: 'enjeux-ird',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: EnjeuxIrdAdminComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
                             path: 'discipline-scientifique-chercheur',
                             children: [
                                 {
                                     path: 'list',
                                     component: DisciplineScientifiqueChercheurAdminComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
-                        {
-
-                            path: 'discipline-scientifique-erc-association',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: DisciplineScientifiqueErcAssociationAdminComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
-                        {
-
-                            path: 'enjeux-ird-chercheur',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: EnjeuxIrdChercheurAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -161,11 +161,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'enjeux-ird',
+                            path: 'discipline-scientifique-erc-association',
                             children: [
                                 {
                                     path: 'list',
-                                    component: EnjeuxIrdAdminComponent ,
+                                    component: DisciplineScientifiqueErcAssociationAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]

@@ -10,10 +10,10 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
 import {DistinctionVo} from '../../../../../../controller/model/Distinction.model';
 import {DistinctionService} from '../../../../../../controller/service/Distinction.service';
+import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
 @Component({
   selector: 'app-distinction-discipline-scientifique-create-admin',
   templateUrl: './distinction-discipline-scientifique-create-admin.component.html',
@@ -37,8 +37,8 @@ constructor(private datePipe: DatePipe, private distinctionDisciplineScientifiqu
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private disciplineScientifiqueService: DisciplineScientifiqueService
 ,       private distinctionService: DistinctionService
+,       private disciplineScientifiqueService: DisciplineScientifiqueService
 ) {
 
 }

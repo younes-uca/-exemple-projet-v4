@@ -11,6 +11,7 @@ import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
 
+
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
 import {AuthService} from '../../../../../../controller/service/Auth.service';
 import { ExportService } from '../../../../../../controller/service/Export.service';
@@ -70,8 +71,8 @@ export class EnjeuxIrdListAdminComponent implements OnInit {
                             {field: 'dateArchivage', header: 'Date archivage'},
                             {field: 'dateCreation', header: 'Date creation'},
                             {field: 'admin', header: 'Admin'},
-                            {field: 'visible', header: 'Visible'},
                             {field: 'username', header: 'Username'},
+                            {field: 'visible', header: 'Visible'},
         ];
     }
     
@@ -246,8 +247,8 @@ public async duplicateEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo) {
                     'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
                     'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
                     'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
                     'Username': e.username ,
+                    'Visible': e.visible? 'Vrai' : 'Faux' ,
      }
       });
 
@@ -261,8 +262,8 @@ public async duplicateEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo) {
             'Date creation Min': this.searchEnjeuxIrd.dateCreationMin ? this.datePipe.transform(this.searchEnjeuxIrd.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
             'Date creation Max': this.searchEnjeuxIrd.dateCreationMax ? this.datePipe.transform(this.searchEnjeuxIrd.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
             'Admin': this.searchEnjeuxIrd.admin ? (this.searchEnjeuxIrd.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchEnjeuxIrd.visible ? (this.searchEnjeuxIrd.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
             'Username': this.searchEnjeuxIrd.username ? this.searchEnjeuxIrd.username : environment.emptyForExport ,
+            'Visible': this.searchEnjeuxIrd.visible ? (this.searchEnjeuxIrd.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
      }];
 
       }

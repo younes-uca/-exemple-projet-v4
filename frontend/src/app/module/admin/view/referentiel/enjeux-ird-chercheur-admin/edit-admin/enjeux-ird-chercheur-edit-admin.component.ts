@@ -43,8 +43,6 @@ public edit(){
 this.editWithShowOption(false);
 }
 public editWithShowOption(showList: boolean){
-            this.selectedEnjeuxIrdChercheur.dateArchivage = DateUtils.toDate(this.selectedEnjeuxIrdChercheur.dateArchivage);
-            this.selectedEnjeuxIrdChercheur.dateCreation = DateUtils.toDate(this.selectedEnjeuxIrdChercheur.dateCreation);
     this.enjeuxIrdChercheurService.edit().subscribe(enjeuxIrdChercheur=>{
     const myIndex = this.enjeuxIrdChercheurs.findIndex(e => e.id === this.selectedEnjeuxIrdChercheur.id);
     this.enjeuxIrdChercheurs[myIndex] = this.selectedEnjeuxIrdChercheur;

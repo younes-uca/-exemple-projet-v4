@@ -120,9 +120,6 @@ private validateDisciplineScientifiqueParentCode(){
 
 
 
-
-
-
 //openPopup
 // methods
 

@@ -80,15 +80,15 @@
                                     </p-dropdown>
                                 </span>
                                 <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <p-dropdown  id="8" [options]="yesOrNoVisible" [(ngModel)]="searchEnjeuxIrd.visible"
+                                    <input class="p-mr-2" pInputText id="8"
+                                           type="text"  [(ngModel)]="searchEnjeuxIrd.username">
+                                    <label for="8">Username</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="9" [options]="yesOrNoVisible" [(ngModel)]="searchEnjeuxIrd.visible"
                                             [filter]="false" [showClear]="true"  placeholder="Visible"
                                                  optionLabel="label" optionValue="value">
                                     </p-dropdown>
-                                </span>
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <input class="p-mr-2" pInputText id="9"
-                                           type="text"  [(ngModel)]="searchEnjeuxIrd.username">
-                                    <label for="9">Username</label>
                                 </span>
                 </div>
 
@@ -100,7 +100,7 @@
 
 
             <p-table #dt [value]="enjeuxIrds" [columns]="cols" [rows]="4" [paginator]="true"
-                    [globalFilterFields]="['libelle', 'code', 'archive', 'dateArchivage', 'dateCreation', 'admin', 'visible', 'username']" [(selection)]="selectedEnjeuxIrd"
+                    [globalFilterFields]="['libelle', 'code', 'archive', 'dateArchivage', 'dateCreation', 'admin', 'username', 'visible']" [(selection)]="selectedEnjeuxIrd"
                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
                                       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [showCurrentPageReport]="true">
@@ -181,20 +181,20 @@
 
 
                                 
-                                <th pSortableColumn="visible">
+                                <th pSortableColumn="username">
                                     <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Visible</span>
-                                        <p-sortIcon field="visible"></p-sortIcon>
+                                        <span>Username</span>
+                                        <p-sortIcon field="username"></p-sortIcon>
                                     </div>
                                 </th>
                                 
 
 
                                 
-                                <th pSortableColumn="username">
+                                <th pSortableColumn="visible">
                                     <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Username</span>
-                                        <p-sortIcon field="username"></p-sortIcon>
+                                        <span>Visible</span>
+                                        <p-sortIcon field="visible"></p-sortIcon>
                                     </div>
                                 </th>
                                 
@@ -237,13 +237,13 @@
                             
 
                             
-                                <td><i *ngIf="enjeuxIrd.visible" class="pi pi-check checked-toogle"></i>
-                                    <i *ngIf="!enjeuxIrd.visible" class="pi pi-times unchecked-toogle"></i>
-                                </td>
+                                 <td>{{enjeuxIrd.username}}</td>
                             
 
                             
-                                 <td>{{enjeuxIrd.username}}</td>
+                                <td><i *ngIf="enjeuxIrd.visible" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!enjeuxIrd.visible" class="pi pi-times unchecked-toogle"></i>
+                                </td>
                             
 
 

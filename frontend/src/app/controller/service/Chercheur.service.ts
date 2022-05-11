@@ -34,6 +34,9 @@ export class ChercheurService {
      private _switchChercheurDialog: boolean;
 
     // methods
+ public findByUsername(username: string): Observable<ChercheurVo> {
+        return this.http.get<ChercheurVo>(this.API + 'username/' + username);
+    }
 
     public findAll(){
      return this.http.get<Array<ChercheurVo>>(this.API);

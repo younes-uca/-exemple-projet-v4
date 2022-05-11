@@ -59,6 +59,7 @@ export class AppMenuComponent implements OnInit {
   modelsuperadmin:any[];
   modelanonymous: any[];
     modelchercheur : any[];
+  modeladmin : any[];
   constructor(public app: AppComponent,
    public appMain: AppMainComponent,
    private roleService: RoleService,
@@ -186,6 +187,123 @@ export class AppMenuComponent implements OnInit {
                       label: 'Liste Identifiant auteur expert',
                       icon: 'pi pi-fw pi-plus-circle',
                       routerLink: ['/app/chercheur/formulaire/identifiant-auteur-expert/list']
+                    },
+                ]
+              },
+    ]
+    this.modeladmin =
+      [
+              {
+                label: 'distinction',
+                icon: 'pi pi-wallet',
+                items:[
+                    {
+                      label: 'Liste Distinction',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/formulaire/distinction/list']
+                    },
+                    {
+                      label: 'Liste Distinction discipline scientifique',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/formulaire/distinction-discipline-scientifique/list']
+                    },
+                ]
+              },
+              {
+                label: 'referentiel',
+                icon: 'pi pi-wallet',
+                items:[
+                    {
+                      label: 'Liste Semantic relationship',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/semantic-relationship/list']
+                    },
+                    {
+                      label: 'Liste Key word',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/key-word/list']
+                    },
+                    {
+                      label: 'Liste Enjeux ird',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/enjeux-ird/list']
+                    },
+                    {
+                      label: 'Liste Discipline scientifique parent',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/discipline-scientifique-parent/list']
+                    },
+                    {
+                      label: 'Liste Discipline scientifique',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/discipline-scientifique/list']
+                    },
+                    {
+                      label: 'Liste Key word discipline scientifique erc',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/key-word-discipline-scientifique-erc/list']
+                    },
+                    {
+                      label: 'Liste Discipline scientifique erc association',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/discipline-scientifique-erc-association/list']
+                    },
+                    {
+                      label: 'Liste Discipline scientifique erc',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/discipline-scientifique-erc/list']
+                    },
+                    {
+                      label: 'Liste Discipline scientifique erc parent',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/discipline-scientifique-erc-parent/list']
+                    },
+                    {
+                      label: 'Liste Identifiant recherche',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/identifiant-recherche/list']
+                    },
+                ]
+              },
+              {
+                label: 'campagne',
+                icon: 'pi pi-wallet',
+                items:[
+                    {
+                      label: 'Liste Campagne',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/formulaire/campagne/list']
+                    },
+                    {
+                      label: 'Liste Etat etape campagne',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/formulaire/etat-etape-campagne/list']
+                    },
+                ]
+              },
+              {
+                label: 'chercheur',
+                icon: 'pi pi-wallet',
+                items:[
+                    {
+                      label: 'Liste Enjeux ird chercheur',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/enjeux-ird-chercheur/list']
+                    },
+                    {
+                      label: 'Liste Chercheur',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/formulaire/chercheur/list']
+                    },
+                    {
+                      label: 'Liste Discipline scientifique chercheur',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/referentiel/discipline-scientifique-chercheur/list']
+                    },
+                    {
+                      label: 'Liste Identifiant auteur expert',
+                      icon: 'pi pi-fw pi-plus-circle',
+                      routerLink: ['/app/admin/formulaire/identifiant-auteur-expert/list']
                     },
                 ]
               },

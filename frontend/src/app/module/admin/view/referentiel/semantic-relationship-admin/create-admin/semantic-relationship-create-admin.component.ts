@@ -108,9 +108,6 @@ private validateSemanticRelationshipCode(){
 
 
 
-
-
-
 //openPopup
 // methods
 

@@ -120,9 +120,6 @@ private validateDisciplineScientifiqueErcParentCode(){
 
 
 
-
-
-
 //openPopup
 // methods
 

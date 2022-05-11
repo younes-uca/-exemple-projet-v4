@@ -11,6 +11,7 @@ import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
 
+
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
 import {AuthService} from '../../../../../../controller/service/Auth.service';
 import { ExportService } from '../../../../../../controller/service/Export.service';
@@ -29,8 +30,6 @@ export class SemanticRelationshipListAdminComponent implements OnInit {
     criteriaData: any[] = [];
     fileName = 'SemanticRelationship';
      yesOrNoArchive :any[] =[];
-     yesOrNoAdmin :any[] =[];
-     yesOrNoVisible :any[] =[];
 
 
     constructor(private datePipe: DatePipe, private semanticRelationshipService: SemanticRelationshipService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
@@ -41,8 +40,6 @@ export class SemanticRelationshipListAdminComponent implements OnInit {
       this.initExport();
       this.initCol();
     this.yesOrNoArchive =  [{label: 'Archive', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoAdmin =  [{label: 'Admin', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoVisible =  [{label: 'Visible', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
     }
     
     // methods
@@ -70,9 +67,6 @@ export class SemanticRelationshipListAdminComponent implements OnInit {
                             {field: 'archive', header: 'Archive'},
                             {field: 'dateArchivage', header: 'Date archivage'},
                             {field: 'dateCreation', header: 'Date creation'},
-                            {field: 'admin', header: 'Admin'},
-                            {field: 'visible', header: 'Visible'},
-                            {field: 'username', header: 'Username'},
         ];
     }
     
@@ -246,9 +240,6 @@ public async duplicateSemanticRelationship(semanticRelationship: SemanticRelatio
                     'Archive': e.archive? 'Vrai' : 'Faux' ,
                     'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
                     'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
-                    'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
-                    'Username': e.username ,
      }
       });
 
@@ -262,9 +253,6 @@ public async duplicateSemanticRelationship(semanticRelationship: SemanticRelatio
             'Date archivage Max': this.searchSemanticRelationship.dateArchivageMax ? this.datePipe.transform(this.searchSemanticRelationship.dateArchivageMax , this.dateFormat) : environment.emptyForExport ,
             'Date creation Min': this.searchSemanticRelationship.dateCreationMin ? this.datePipe.transform(this.searchSemanticRelationship.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
             'Date creation Max': this.searchSemanticRelationship.dateCreationMax ? this.datePipe.transform(this.searchSemanticRelationship.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
-            'Admin': this.searchSemanticRelationship.admin ? (this.searchSemanticRelationship.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchSemanticRelationship.visible ? (this.searchSemanticRelationship.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Username': this.searchSemanticRelationship.username ? this.searchSemanticRelationship.username : environment.emptyForExport ,
      }];
 
       }

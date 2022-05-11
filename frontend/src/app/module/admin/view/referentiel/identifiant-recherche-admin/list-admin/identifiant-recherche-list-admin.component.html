@@ -73,23 +73,6 @@
                             <label for="6-2">Date creation Max</label>
                         </span>
 
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <p-dropdown  id="7" [options]="yesOrNoAdmin" [(ngModel)]="searchIdentifiantRecherche.admin"
-                                            [filter]="false" [showClear]="true"  placeholder="Admin"
-                                                 optionLabel="label" optionValue="value">
-                                    </p-dropdown>
-                                </span>
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <p-dropdown  id="8" [options]="yesOrNoVisible" [(ngModel)]="searchIdentifiantRecherche.visible"
-                                            [filter]="false" [showClear]="true"  placeholder="Visible"
-                                                 optionLabel="label" optionValue="value">
-                                    </p-dropdown>
-                                </span>
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <input class="p-mr-2" pInputText id="9"
-                                           type="text"  [(ngModel)]="searchIdentifiantRecherche.username">
-                                    <label for="9">Username</label>
-                                </span>
                 </div>
 
                 <div class="align-search-button">
@@ -100,7 +83,7 @@
 
 
             <p-table #dt [value]="identifiantRecherches" [columns]="cols" [rows]="4" [paginator]="true"
-                    [globalFilterFields]="['libelle', 'code', 'archive', 'dateArchivage', 'dateCreation', 'admin', 'visible', 'username']" [(selection)]="selectedIdentifiantRecherche"
+                    [globalFilterFields]="['libelle', 'code', 'archive', 'dateArchivage', 'dateCreation']" [(selection)]="selectedIdentifiantRecherche"
                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
                                       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [showCurrentPageReport]="true">
@@ -170,36 +153,6 @@
                                 
 
 
-                                
-                                <th pSortableColumn="admin">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Admin</span>
-                                        <p-sortIcon field="admin"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
-
-
-                                
-                                <th pSortableColumn="visible">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Visible</span>
-                                        <p-sortIcon field="visible"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
-
-
-                                
-                                <th pSortableColumn="username">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Username</span>
-                                        <p-sortIcon field="username"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
-
-
                         <th>Actions</th>
                     </tr>
                 </ng-template>
@@ -228,22 +181,6 @@
 
                             
                                 <td>{{identifiantRecherche.dateCreation | date:'dd-M-yyyy' }}</td>
-                            
-
-                            
-                                <td><i *ngIf="identifiantRecherche.admin" class="pi pi-check checked-toogle"></i>
-                                    <i *ngIf="!identifiantRecherche.admin" class="pi pi-times unchecked-toogle"></i>
-                                </td>
-                            
-
-                            
-                                <td><i *ngIf="identifiantRecherche.visible" class="pi pi-check checked-toogle"></i>
-                                    <i *ngIf="!identifiantRecherche.visible" class="pi pi-times unchecked-toogle"></i>
-                                </td>
-                            
-
-                            
-                                 <td>{{identifiantRecherche.username}}</td>
                             
 
 

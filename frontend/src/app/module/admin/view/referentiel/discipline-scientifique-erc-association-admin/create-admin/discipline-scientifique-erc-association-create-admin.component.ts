@@ -12,10 +12,10 @@ import {StringUtilService} from '../../../../../../controller/service/StringUtil
 
 import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
 import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
-import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
 import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
+import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 @Component({
   selector: 'app-discipline-scientifique-erc-association-create-admin',
   templateUrl: './discipline-scientifique-erc-association-create-admin.component.html',
@@ -45,8 +45,8 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueErcAssocia
  ,       private router: Router
  
 ,       private disciplineScientifiqueService: DisciplineScientifiqueService
-,       private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
 ,       private semanticRelationshipService: SemanticRelationshipService
+,       private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
 ) {
 
 }
@@ -98,12 +98,6 @@ private validateForm(): void{
 this.errorMessages = new Array<string>();
 
     }
-
-
-
-
-
-
 
 
 

@@ -17,6 +17,11 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {BadgeModule} from 'primeng/badge';
 import { MultiSelectModule } from 'primeng/multiselect';
 
+import { EnjeuxIrdChercheurCreateAdminComponent } from './enjeux-ird-chercheur-admin/create-admin/enjeux-ird-chercheur-create-admin.component';
+import { EnjeuxIrdChercheurEditAdminComponent } from './enjeux-ird-chercheur-admin/edit-admin/enjeux-ird-chercheur-edit-admin.component';
+import { EnjeuxIrdChercheurViewAdminComponent } from './enjeux-ird-chercheur-admin/view-admin/enjeux-ird-chercheur-view-admin.component';
+import { EnjeuxIrdChercheurListAdminComponent } from './enjeux-ird-chercheur-admin/list-admin/enjeux-ird-chercheur-list-admin.component';
+import { EnjeuxIrdChercheurAdminComponent } from './enjeux-ird-chercheur-admin/enjeux-ird-chercheur-admin.component';
 import { SemanticRelationshipCreateAdminComponent } from './semantic-relationship-admin/create-admin/semantic-relationship-create-admin.component';
 import { SemanticRelationshipEditAdminComponent } from './semantic-relationship-admin/edit-admin/semantic-relationship-edit-admin.component';
 import { SemanticRelationshipViewAdminComponent } from './semantic-relationship-admin/view-admin/semantic-relationship-view-admin.component';
@@ -27,21 +32,16 @@ import { KeyWordEditAdminComponent } from './key-word-admin/edit-admin/key-word-
 import { KeyWordViewAdminComponent } from './key-word-admin/view-admin/key-word-view-admin.component';
 import { KeyWordListAdminComponent } from './key-word-admin/list-admin/key-word-list-admin.component';
 import { KeyWordAdminComponent } from './key-word-admin/key-word-admin.component';
+import { EnjeuxIrdCreateAdminComponent } from './enjeux-ird-admin/create-admin/enjeux-ird-create-admin.component';
+import { EnjeuxIrdEditAdminComponent } from './enjeux-ird-admin/edit-admin/enjeux-ird-edit-admin.component';
+import { EnjeuxIrdViewAdminComponent } from './enjeux-ird-admin/view-admin/enjeux-ird-view-admin.component';
+import { EnjeuxIrdListAdminComponent } from './enjeux-ird-admin/list-admin/enjeux-ird-list-admin.component';
+import { EnjeuxIrdAdminComponent } from './enjeux-ird-admin/enjeux-ird-admin.component';
 import { DisciplineScientifiqueChercheurCreateAdminComponent } from './discipline-scientifique-chercheur-admin/create-admin/discipline-scientifique-chercheur-create-admin.component';
 import { DisciplineScientifiqueChercheurEditAdminComponent } from './discipline-scientifique-chercheur-admin/edit-admin/discipline-scientifique-chercheur-edit-admin.component';
 import { DisciplineScientifiqueChercheurViewAdminComponent } from './discipline-scientifique-chercheur-admin/view-admin/discipline-scientifique-chercheur-view-admin.component';
 import { DisciplineScientifiqueChercheurListAdminComponent } from './discipline-scientifique-chercheur-admin/list-admin/discipline-scientifique-chercheur-list-admin.component';
 import { DisciplineScientifiqueChercheurAdminComponent } from './discipline-scientifique-chercheur-admin/discipline-scientifique-chercheur-admin.component';
-import { DisciplineScientifiqueErcAssociationCreateAdminComponent } from './discipline-scientifique-erc-association-admin/create-admin/discipline-scientifique-erc-association-create-admin.component';
-import { DisciplineScientifiqueErcAssociationEditAdminComponent } from './discipline-scientifique-erc-association-admin/edit-admin/discipline-scientifique-erc-association-edit-admin.component';
-import { DisciplineScientifiqueErcAssociationViewAdminComponent } from './discipline-scientifique-erc-association-admin/view-admin/discipline-scientifique-erc-association-view-admin.component';
-import { DisciplineScientifiqueErcAssociationListAdminComponent } from './discipline-scientifique-erc-association-admin/list-admin/discipline-scientifique-erc-association-list-admin.component';
-import { DisciplineScientifiqueErcAssociationAdminComponent } from './discipline-scientifique-erc-association-admin/discipline-scientifique-erc-association-admin.component';
-import { EnjeuxIrdChercheurCreateAdminComponent } from './enjeux-ird-chercheur-admin/create-admin/enjeux-ird-chercheur-create-admin.component';
-import { EnjeuxIrdChercheurEditAdminComponent } from './enjeux-ird-chercheur-admin/edit-admin/enjeux-ird-chercheur-edit-admin.component';
-import { EnjeuxIrdChercheurViewAdminComponent } from './enjeux-ird-chercheur-admin/view-admin/enjeux-ird-chercheur-view-admin.component';
-import { EnjeuxIrdChercheurListAdminComponent } from './enjeux-ird-chercheur-admin/list-admin/enjeux-ird-chercheur-list-admin.component';
-import { EnjeuxIrdChercheurAdminComponent } from './enjeux-ird-chercheur-admin/enjeux-ird-chercheur-admin.component';
 import { DisciplineScientifiqueParentCreateAdminComponent } from './discipline-scientifique-parent-admin/create-admin/discipline-scientifique-parent-create-admin.component';
 import { DisciplineScientifiqueParentEditAdminComponent } from './discipline-scientifique-parent-admin/edit-admin/discipline-scientifique-parent-edit-admin.component';
 import { DisciplineScientifiqueParentViewAdminComponent } from './discipline-scientifique-parent-admin/view-admin/discipline-scientifique-parent-view-admin.component';
@@ -57,11 +57,11 @@ import { KeyWordDisciplineScientifiqueErcEditAdminComponent } from './key-word-d
 import { KeyWordDisciplineScientifiqueErcViewAdminComponent } from './key-word-discipline-scientifique-erc-admin/view-admin/key-word-discipline-scientifique-erc-view-admin.component';
 import { KeyWordDisciplineScientifiqueErcListAdminComponent } from './key-word-discipline-scientifique-erc-admin/list-admin/key-word-discipline-scientifique-erc-list-admin.component';
 import { KeyWordDisciplineScientifiqueErcAdminComponent } from './key-word-discipline-scientifique-erc-admin/key-word-discipline-scientifique-erc-admin.component';
-import { EnjeuxIrdCreateAdminComponent } from './enjeux-ird-admin/create-admin/enjeux-ird-create-admin.component';
-import { EnjeuxIrdEditAdminComponent } from './enjeux-ird-admin/edit-admin/enjeux-ird-edit-admin.component';
-import { EnjeuxIrdViewAdminComponent } from './enjeux-ird-admin/view-admin/enjeux-ird-view-admin.component';
-import { EnjeuxIrdListAdminComponent } from './enjeux-ird-admin/list-admin/enjeux-ird-list-admin.component';
-import { EnjeuxIrdAdminComponent } from './enjeux-ird-admin/enjeux-ird-admin.component';
+import { DisciplineScientifiqueErcAssociationCreateAdminComponent } from './discipline-scientifique-erc-association-admin/create-admin/discipline-scientifique-erc-association-create-admin.component';
+import { DisciplineScientifiqueErcAssociationEditAdminComponent } from './discipline-scientifique-erc-association-admin/edit-admin/discipline-scientifique-erc-association-edit-admin.component';
+import { DisciplineScientifiqueErcAssociationViewAdminComponent } from './discipline-scientifique-erc-association-admin/view-admin/discipline-scientifique-erc-association-view-admin.component';
+import { DisciplineScientifiqueErcAssociationListAdminComponent } from './discipline-scientifique-erc-association-admin/list-admin/discipline-scientifique-erc-association-list-admin.component';
+import { DisciplineScientifiqueErcAssociationAdminComponent } from './discipline-scientifique-erc-association-admin/discipline-scientifique-erc-association-admin.component';
 import { DisciplineScientifiqueErcCreateAdminComponent } from './discipline-scientifique-erc-admin/create-admin/discipline-scientifique-erc-create-admin.component';
 import { DisciplineScientifiqueErcEditAdminComponent } from './discipline-scientifique-erc-admin/edit-admin/discipline-scientifique-erc-edit-admin.component';
 import { DisciplineScientifiqueErcViewAdminComponent } from './discipline-scientifique-erc-admin/view-admin/discipline-scientifique-erc-view-admin.component';
@@ -92,6 +92,11 @@ import {MessagesModule} from 'primeng/messages';
 @NgModule({
   declarations: [
 
+    EnjeuxIrdChercheurCreateAdminComponent,
+    EnjeuxIrdChercheurListAdminComponent,
+    EnjeuxIrdChercheurViewAdminComponent,
+    EnjeuxIrdChercheurEditAdminComponent,
+    EnjeuxIrdChercheurAdminComponent,
     SemanticRelationshipCreateAdminComponent,
     SemanticRelationshipListAdminComponent,
     SemanticRelationshipViewAdminComponent,
@@ -102,21 +107,16 @@ import {MessagesModule} from 'primeng/messages';
     KeyWordViewAdminComponent,
     KeyWordEditAdminComponent,
     KeyWordAdminComponent,
+    EnjeuxIrdCreateAdminComponent,
+    EnjeuxIrdListAdminComponent,
+    EnjeuxIrdViewAdminComponent,
+    EnjeuxIrdEditAdminComponent,
+    EnjeuxIrdAdminComponent,
     DisciplineScientifiqueChercheurCreateAdminComponent,
     DisciplineScientifiqueChercheurListAdminComponent,
     DisciplineScientifiqueChercheurViewAdminComponent,
     DisciplineScientifiqueChercheurEditAdminComponent,
     DisciplineScientifiqueChercheurAdminComponent,
-    DisciplineScientifiqueErcAssociationCreateAdminComponent,
-    DisciplineScientifiqueErcAssociationListAdminComponent,
-    DisciplineScientifiqueErcAssociationViewAdminComponent,
-    DisciplineScientifiqueErcAssociationEditAdminComponent,
-    DisciplineScientifiqueErcAssociationAdminComponent,
-    EnjeuxIrdChercheurCreateAdminComponent,
-    EnjeuxIrdChercheurListAdminComponent,
-    EnjeuxIrdChercheurViewAdminComponent,
-    EnjeuxIrdChercheurEditAdminComponent,
-    EnjeuxIrdChercheurAdminComponent,
     DisciplineScientifiqueParentCreateAdminComponent,
     DisciplineScientifiqueParentListAdminComponent,
     DisciplineScientifiqueParentViewAdminComponent,
@@ -132,11 +132,11 @@ import {MessagesModule} from 'primeng/messages';
     KeyWordDisciplineScientifiqueErcViewAdminComponent,
     KeyWordDisciplineScientifiqueErcEditAdminComponent,
     KeyWordDisciplineScientifiqueErcAdminComponent,
-    EnjeuxIrdCreateAdminComponent,
-    EnjeuxIrdListAdminComponent,
-    EnjeuxIrdViewAdminComponent,
-    EnjeuxIrdEditAdminComponent,
-    EnjeuxIrdAdminComponent,
+    DisciplineScientifiqueErcAssociationCreateAdminComponent,
+    DisciplineScientifiqueErcAssociationListAdminComponent,
+    DisciplineScientifiqueErcAssociationViewAdminComponent,
+    DisciplineScientifiqueErcAssociationEditAdminComponent,
+    DisciplineScientifiqueErcAssociationAdminComponent,
     DisciplineScientifiqueErcCreateAdminComponent,
     DisciplineScientifiqueErcListAdminComponent,
     DisciplineScientifiqueErcViewAdminComponent,
@@ -181,6 +181,11 @@ import {MessagesModule} from 'primeng/messages';
     MultiSelectModule,
   ],
   exports: [
+  EnjeuxIrdChercheurCreateAdminComponent,
+  EnjeuxIrdChercheurListAdminComponent,
+  EnjeuxIrdChercheurViewAdminComponent,
+  EnjeuxIrdChercheurEditAdminComponent,
+  EnjeuxIrdChercheurAdminComponent,
   SemanticRelationshipCreateAdminComponent,
   SemanticRelationshipListAdminComponent,
   SemanticRelationshipViewAdminComponent,
@@ -191,21 +196,16 @@ import {MessagesModule} from 'primeng/messages';
   KeyWordViewAdminComponent,
   KeyWordEditAdminComponent,
   KeyWordAdminComponent,
+  EnjeuxIrdCreateAdminComponent,
+  EnjeuxIrdListAdminComponent,
+  EnjeuxIrdViewAdminComponent,
+  EnjeuxIrdEditAdminComponent,
+  EnjeuxIrdAdminComponent,
   DisciplineScientifiqueChercheurCreateAdminComponent,
   DisciplineScientifiqueChercheurListAdminComponent,
   DisciplineScientifiqueChercheurViewAdminComponent,
   DisciplineScientifiqueChercheurEditAdminComponent,
   DisciplineScientifiqueChercheurAdminComponent,
-  DisciplineScientifiqueErcAssociationCreateAdminComponent,
-  DisciplineScientifiqueErcAssociationListAdminComponent,
-  DisciplineScientifiqueErcAssociationViewAdminComponent,
-  DisciplineScientifiqueErcAssociationEditAdminComponent,
-  DisciplineScientifiqueErcAssociationAdminComponent,
-  EnjeuxIrdChercheurCreateAdminComponent,
-  EnjeuxIrdChercheurListAdminComponent,
-  EnjeuxIrdChercheurViewAdminComponent,
-  EnjeuxIrdChercheurEditAdminComponent,
-  EnjeuxIrdChercheurAdminComponent,
   DisciplineScientifiqueParentCreateAdminComponent,
   DisciplineScientifiqueParentListAdminComponent,
   DisciplineScientifiqueParentViewAdminComponent,
@@ -221,11 +221,11 @@ import {MessagesModule} from 'primeng/messages';
   KeyWordDisciplineScientifiqueErcViewAdminComponent,
   KeyWordDisciplineScientifiqueErcEditAdminComponent,
   KeyWordDisciplineScientifiqueErcAdminComponent,
-  EnjeuxIrdCreateAdminComponent,
-  EnjeuxIrdListAdminComponent,
-  EnjeuxIrdViewAdminComponent,
-  EnjeuxIrdEditAdminComponent,
-  EnjeuxIrdAdminComponent,
+  DisciplineScientifiqueErcAssociationCreateAdminComponent,
+  DisciplineScientifiqueErcAssociationListAdminComponent,
+  DisciplineScientifiqueErcAssociationViewAdminComponent,
+  DisciplineScientifiqueErcAssociationEditAdminComponent,
+  DisciplineScientifiqueErcAssociationAdminComponent,
   DisciplineScientifiqueErcCreateAdminComponent,
   DisciplineScientifiqueErcListAdminComponent,
   DisciplineScientifiqueErcViewAdminComponent,

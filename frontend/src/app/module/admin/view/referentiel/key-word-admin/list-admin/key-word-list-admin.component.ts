@@ -11,6 +11,7 @@ import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
 
+
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
 import {AuthService} from '../../../../../../controller/service/Auth.service';
 import { ExportService } from '../../../../../../controller/service/Export.service';
@@ -71,8 +72,8 @@ export class KeyWordListAdminComponent implements OnInit {
                             {field: 'dateArchivage', header: 'Date archivage'},
                             {field: 'dateCreation', header: 'Date creation'},
                             {field: 'admin', header: 'Admin'},
-                            {field: 'visible', header: 'Visible'},
                             {field: 'username', header: 'Username'},
+                            {field: 'visible', header: 'Visible'},
         ];
     }
     
@@ -247,8 +248,8 @@ public async duplicateKeyWord(keyWord: KeyWordVo) {
                     'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
                     'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
                     'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
                     'Username': e.username ,
+                    'Visible': e.visible? 'Vrai' : 'Faux' ,
      }
       });
 
@@ -262,8 +263,8 @@ public async duplicateKeyWord(keyWord: KeyWordVo) {
             'Date creation Min': this.searchKeyWord.dateCreationMin ? this.datePipe.transform(this.searchKeyWord.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
             'Date creation Max': this.searchKeyWord.dateCreationMax ? this.datePipe.transform(this.searchKeyWord.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
             'Admin': this.searchKeyWord.admin ? (this.searchKeyWord.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchKeyWord.visible ? (this.searchKeyWord.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
             'Username': this.searchKeyWord.username ? this.searchKeyWord.username : environment.emptyForExport ,
+            'Visible': this.searchKeyWord.visible ? (this.searchKeyWord.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
      }];
 
       }

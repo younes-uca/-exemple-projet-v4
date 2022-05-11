@@ -10,14 +10,14 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {EnjeuxIrdChercheurVo} from '../../../../../../controller/model/EnjeuxIrdChercheur.model';
-import {EnjeuxIrdChercheurService} from '../../../../../../controller/service/EnjeuxIrdChercheur.service';
+import {IdentifiantRechercheVo} from '../../../../../../controller/model/IdentifiantRecherche.model';
+import {IdentifiantRechercheService} from '../../../../../../controller/service/IdentifiantRecherche.service';
 import {IdentifiantAuteurExpertVo} from '../../../../../../controller/model/IdentifiantAuteurExpert.model';
 import {IdentifiantAuteurExpertService} from '../../../../../../controller/service/IdentifiantAuteurExpert.service';
 import {EnjeuxIrdVo} from '../../../../../../controller/model/EnjeuxIrd.model';
 import {EnjeuxIrdService} from '../../../../../../controller/service/EnjeuxIrd.service';
-import {IdentifiantRechercheVo} from '../../../../../../controller/model/IdentifiantRecherche.model';
-import {IdentifiantRechercheService} from '../../../../../../controller/service/IdentifiantRecherche.service';
+import {EnjeuxIrdChercheurVo} from '../../../../../../controller/model/EnjeuxIrdChercheur.model';
+import {EnjeuxIrdChercheurService} from '../../../../../../controller/service/EnjeuxIrdChercheur.service';
 @Component({
   selector: 'app-chercheur-create-chercheur',
   templateUrl: './chercheur-create-chercheur.component.html',
@@ -41,10 +41,10 @@ constructor(private datePipe: DatePipe, private chercheurService: ChercheurServi
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private enjeuxIrdChercheurService: EnjeuxIrdChercheurService
+,       private identifiantRechercheService: IdentifiantRechercheService
 ,       private identifiantAuteurExpertService: IdentifiantAuteurExpertService
 ,       private enjeuxIrdService: EnjeuxIrdService
-,       private identifiantRechercheService: IdentifiantRechercheService
+,       private enjeuxIrdChercheurService: EnjeuxIrdChercheurService
 ) {
 
 }

@@ -132,6 +132,8 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 
 import {ChercheurModule} from './module/chercheur/chercheur.module';
 import {ChercheurRoutingModule} from './module/chercheur/chercheur-routing.module';
+import {AdminModule} from './module/admin/admin.module';
+import {AdminRoutingModule} from './module/admin/admin-routing.module';
 @NgModule({
   imports: [
     ButtonModule,
@@ -157,6 +159,8 @@ import {ChercheurRoutingModule} from './module/chercheur/chercheur-routing.modul
     CardModule,
     ChercheurModule,
     ChercheurRoutingModule,
+    AdminModule,
+    AdminRoutingModule,
   ],
   declarations: [
     AppComponent,
