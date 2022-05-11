@@ -7,6 +7,8 @@ import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
 
 
 @Component({
@@ -18,9 +20,10 @@ export class KeyWordViewChercheurComponent implements OnInit {
 
 
 constructor(private datePipe: DatePipe, private keyWordService: KeyWordService
-,private roleService:RoleService
-,private messageService: MessageService
-, private router: Router
+    ,       private roleService: RoleService
+    ,       private messageService: MessageService
+    ,       private router: Router
+    ,       private chercheurService: ChercheurService
 ) {
 }
 
