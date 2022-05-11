@@ -101,9 +101,6 @@ this.errorMessages = new Array<string>();
 
 
 
-
-
-
 //openPopup
               public async openCreatekeyWord(keyWord: string) {
                       const isPermistted = await this.roleService.isPermitted('KeyWord', 'add');

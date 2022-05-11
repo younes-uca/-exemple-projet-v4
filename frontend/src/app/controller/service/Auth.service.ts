@@ -38,21 +38,6 @@ export class AuthService {
             }
         );
     }
-       public loginAdmin(username: string, password: string) {
-       this.http.post<any>(this.API + 'login', { username, password }, { observe: 'response' }).subscribe(
-            resp => {
-                this.error = null;
-                const jwt = resp.headers.get('Authorization');
-                jwt != null ? this.tokenService.saveToken(jwt) : false;
-                this.loadInfos();
-                console.log('you are logged in successfully');
-                this.router.navigate(['/' + environment.rootAppUrl + '/admin']);
-            }, (error: HttpErrorResponse) => {
-                this.error = error.error;
-                console.log(error);
-            }
-        );
-    }
 
        public loadInfos() {
         const tokenDecoded = this.tokenService.decode();
@@ -80,17 +65,6 @@ export class AuthService {
     }
     lolo
     public registerChercheur() {
-        console.log(this.user)
-        this.http.post<any>(this.API+'api/users/save', this.user, {observe: 'response'}).subscribe(
-            resp => {
-                this.router.navigate(['/login']);
-
-            }, (error:HttpErrorResponse) => {
-               console.log(error.error)
-            }
-        );
-    }
-    public registerAdmin() {
         console.log(this.user)
         this.http.post<any>(this.API+'api/users/save', this.user, {observe: 'response'}).subscribe(
             resp => {

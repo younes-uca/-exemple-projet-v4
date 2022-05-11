@@ -129,9 +129,6 @@ private validateDisciplineScientifiqueErcCode(){
 
 
 
-
-
-
 //openPopup
               public async openCreatedisciplineScientifiqueErcParent(disciplineScientifiqueErcParent: string) {
                       const isPermistted = await this.roleService.isPermitted('DisciplineScientifiqueErcParent', 'add');

@@ -10,14 +10,14 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {DisciplineScientifiqueParentVo} from '../../../../../../controller/model/DisciplineScientifiqueParent.model';
-import {DisciplineScientifiqueParentService} from '../../../../../../controller/service/DisciplineScientifiqueParent.service';
 import {DisciplineScientifiqueErcAssociationVo} from '../../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
 import {DisciplineScientifiqueErcAssociationService} from '../../../../../../controller/service/DisciplineScientifiqueErcAssociation.service';
-import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
 import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
+import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
+import {DisciplineScientifiqueParentVo} from '../../../../../../controller/model/DisciplineScientifiqueParent.model';
+import {DisciplineScientifiqueParentService} from '../../../../../../controller/service/DisciplineScientifiqueParent.service';
 @Component({
   selector: 'app-discipline-scientifique-create-chercheur',
   templateUrl: './discipline-scientifique-create-chercheur.component.html',
@@ -45,10 +45,10 @@ constructor(private datePipe: DatePipe, private disciplineScientifiqueService: D
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private disciplineScientifiqueParentService: DisciplineScientifiqueParentService
 ,       private disciplineScientifiqueErcAssociationService: DisciplineScientifiqueErcAssociationService
-,       private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
 ,       private semanticRelationshipService: SemanticRelationshipService
+,       private disciplineScientifiqueErcService: DisciplineScientifiqueErcService
+,       private disciplineScientifiqueParentService: DisciplineScientifiqueParentService
 ) {
 
 }
@@ -159,15 +159,6 @@ private validateDisciplineScientifiqueCode(){
             this.validDisciplineScientifiqueCode = true;
         }
     }
-
-
-
-
-
-
-
-
-
 
 
 

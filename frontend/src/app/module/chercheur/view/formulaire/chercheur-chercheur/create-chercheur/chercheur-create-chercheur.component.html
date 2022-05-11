@@ -43,6 +43,10 @@
 
 
 
+                                    <div class="p-field p-col-12  p-md-3">
+                                        <label>Enjeux ird</label>
+                                        <p-multiSelect [options]="enjeuxIrdChercheursVo" [(ngModel)]="selectedChercheur.enjeuxIrdChercheursVo" defaultLabel="Select un enjeuxIrd" optionLabel="enjeuxIrdVo.libelle"  display="chip"></p-multiSelect>
+                                    </div>
                                         <div class="p-field p-col-12 p-md-3">
                                             <label for="6">Resume</label>
                                             <textarea id="6" pInputTextarea rows="5" cols="30"
@@ -226,133 +230,6 @@
 
                         </div>
                     </p-tabPanel>
-                    <p-tabPanel header="Enjeux ird chercheurs">
-                                   <p-tabView>
-                                    <p-tabPanel header="Création">
-                                <div class="p-grid">
-                                                    <div class="p-field p-col-11 p-md-3">
-                                                        <label>Enjeux ird</label>
-                                                        <p-dropdown [options]="enjeuxIrds" [(ngModel)]="selectedEnjeuxIrdChercheurs.enjeuxIrdVo"
-                                                                id="1"  [filter]="true"
-                                                                filterMatchMode="contains" [showClear]="true"
-                                                                optionLabel="libelle"
-                                                                placeholder="Enjeux ird"  
-                                                        >
-                                                        </p-dropdown>
-                                                        
-                                                    </div>
-                                                    <div class="p-col-1">
-                                                        <label></label>
-                                                        <button pButton pRipple type="button"
-                                                                icon="pi pi-plus"   (click)="openCreateenjeuxIrd('enjeuxIrd')"
-                                                                class="p-button-success one-colonne-btn-success-align"></button>
-                                                    </div>
-
-                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
-                                                    <div  class="label-inputswitch">
-                                                        <label for="3">Archive</label>
-                                                    </div>
-                                                    <div class="input-switch">
-                                                        <p-inputSwitch id="3"  [(ngModel)]="selectedEnjeuxIrdChercheurs.archive"></p-inputSwitch>
-                                                    </div>
-                                                </div>
-                                                 <div class="p-field p-col-12 p-md-4">
-                                                    <label for="4">Date archivage</label>
-                                                    <p-calendar id="4"
-                                                                placeholder="Date archivage"
-                                                            [(ngModel)]="selectedEnjeuxIrdChercheurs.dateArchivage"
-                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
-                                                    
-                                                </div>
-                                                 <div class="p-field p-col-12 p-md-4">
-                                                    <label for="5">Date creation</label>
-                                                    <p-calendar id="5"
-                                                                placeholder="Date creation"
-                                                            [(ngModel)]="selectedEnjeuxIrdChercheurs.dateCreation"
-                                                            dateFormat="{{dateFormat}}" [showIcon]="true"  ></p-calendar>
-                                                    
-                                                </div>
-                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
-                                                    <div  class="label-inputswitch">
-                                                        <label for="6">Admin</label>
-                                                    </div>
-                                                    <div class="input-switch">
-                                                        <p-inputSwitch id="6"  [(ngModel)]="selectedEnjeuxIrdChercheurs.admin"></p-inputSwitch>
-                                                    </div>
-                                                </div>
-                                                <div class="p-field  align-inputswitch p-col-12 p-md-4">
-                                                    <div  class="label-inputswitch">
-                                                        <label for="7">Visible</label>
-                                                    </div>
-                                                    <div class="input-switch">
-                                                        <p-inputSwitch id="7"  [(ngModel)]="selectedEnjeuxIrdChercheurs.visible"></p-inputSwitch>
-                                                    </div>
-                                                </div>
-                                                 <div class="p-field p-col-12 p-md-4">
-                                                    <label for="8">Username</label>
-                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
-                                                           placeholder="Username"
-                                                           id="8" [(ngModel)]="selectedEnjeuxIrdChercheurs.username"
-                                                           autofocus   >
-                                                    
-                                                </div>
-                                          <div class="p-field p-col-12 p-md-1">
-                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
-                                                    label="OK" (click)="addEnjeuxIrdChercheurs()">
-                                              </button>
-                                          </div>
-                                </div>
-                                </p-tabPanel>
-                                <p-tabPanel header="Liste">
-                                    <div class="card">
-                                        <p-table [value]="selectedChercheur.enjeuxIrdChercheursVo" [scrollable]="true"
-                                                scrollHeight="200px">
-                                            <ng-template pTemplate="header">
-                                                <tr>
-                                                                <th>Enjeux ird</th>
-                                                                <th>Archive</th>
-                                                                <th>Date archivage</th>
-                                                                <th>Date creation</th>
-                                                                <th>Admin</th>
-                                                                <th>Visible</th>
-                                                                <th>Username</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </ng-template>
-                                            <ng-template pTemplate="body" let-p>
-                                                <tr>
-                                                            <td>{{p.enjeuxIrdVo?.libelle}}</td>
-                                                                <td><i *ngIf="p.archive" class="pi pi-check checked-toogle"></i>
-                                                                    <i *ngIf="!p.archive" class="pi pi-times unchecked-toogle"></i>
-                                                                </td>
-
-                                                                <td>{{p.dateArchivage | date: dateFormatColumn}}</td>
-
-                                                                <td>{{p.dateCreation | date: dateFormatColumn}}</td>
-
-                                                                <td><i *ngIf="p.admin" class="pi pi-check checked-toogle"></i>
-                                                                    <i *ngIf="!p.admin" class="pi pi-times unchecked-toogle"></i>
-                                                                </td>
-
-                                                                <td><i *ngIf="p.visible" class="pi pi-check checked-toogle"></i>
-                                                                    <i *ngIf="!p.visible" class="pi pi-times unchecked-toogle"></i>
-                                                                </td>
-
-                                                                <td>{{p.username}}</td>
-
-                                                    <td>
-                                                        <button (click)="deleteEnjeuxIrdChercheurs(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </ng-template>
-                                        </p-table>
-                                    </div>
-
-                                </p-tabPanel>
-                                </p-tabView>
-                            </p-tabPanel>
-
                     <p-tabPanel header="Identifiant auteur experts">
                                 <div class="p-grid">
                                       <div class="p-col">

@@ -13,9 +13,6 @@ export class DisciplineScientifiqueErcVo {
     public archive: null | boolean;
     public dateArchivage: Date;
     public dateCreation: Date;
-    public admin: null | boolean;
-    public visible: null | boolean;
-    public username: string;
                 public niveauMax: string ;
                 public niveauMin: string ;
                 public dateArchivageMax: string ;

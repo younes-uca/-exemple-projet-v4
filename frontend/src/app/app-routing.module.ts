@@ -6,8 +6,6 @@ import { AccessDeniedComponent } from './auth/access-denied/access-denied.compon
 import { HomeComponent } from './demo/view/home/home.component';
 import {LoginChercheurComponent} from './module/chercheur/login-chercheur/login-chercheur.component';
 import {RegisterChercheurComponent} from './module/chercheur/register-chercheur/register-chercheur.component';
-import {LoginAdminComponent} from './module/admin/login-admin/login-admin.component';
-import {RegisterAdminComponent} from './module/admin/register-admin/register-admin.component';
 @NgModule({
   imports: [
     RouterModule.forRoot(
@@ -15,8 +13,6 @@ import {RegisterAdminComponent} from './module/admin/register-admin/register-adm
           { path: '', component: HomeComponent },
         {path: 'chercheur/login', component: LoginChercheurComponent },
         {path: 'chercheur/register', component: RegisterChercheurComponent },
-        {path: 'admin/login', component: LoginAdminComponent },
-        {path: 'admin/register', component: RegisterAdminComponent },
          {
           path: 'app', // '\'' + root + '\'',
           component: AppMainComponent,
@@ -24,11 +20,6 @@ import {RegisterAdminComponent} from './module/admin/register-admin/register-adm
             {
               path: 'chercheur',
               loadChildren: './module/chercheur/chercheur-routing.module#ChercheurRoutingModule',
-              canActivate: [AuthGuard],
-            },
-            {
-              path: 'admin',
-              loadChildren: './module/admin/admin-routing.module#AdminRoutingModule',
               canActivate: [AuthGuard],
             },
             { path: 'denied', component: AccessDeniedComponent },

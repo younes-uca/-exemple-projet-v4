@@ -12,8 +12,8 @@ export class EnjeuxIrdVo {
     public dateArchivage: Date;
     public dateCreation: Date;
     public admin: null | boolean;
-    public visible: null | boolean;
     public username: string;
+    public visible: null | boolean;
                 public dateArchivageMax: string ;
                 public dateArchivageMin: string ;
                 public dateCreationMax: string ;

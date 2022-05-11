@@ -10,14 +10,14 @@ import {DatePipe} from '@angular/common';
 import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
 
 
-import {IdentifiantRechercheVo} from '../../../../../../controller/model/IdentifiantRecherche.model';
-import {IdentifiantRechercheService} from '../../../../../../controller/service/IdentifiantRecherche.service';
 import {EnjeuxIrdChercheurVo} from '../../../../../../controller/model/EnjeuxIrdChercheur.model';
 import {EnjeuxIrdChercheurService} from '../../../../../../controller/service/EnjeuxIrdChercheur.service';
-import {EnjeuxIrdVo} from '../../../../../../controller/model/EnjeuxIrd.model';
-import {EnjeuxIrdService} from '../../../../../../controller/service/EnjeuxIrd.service';
 import {IdentifiantAuteurExpertVo} from '../../../../../../controller/model/IdentifiantAuteurExpert.model';
 import {IdentifiantAuteurExpertService} from '../../../../../../controller/service/IdentifiantAuteurExpert.service';
+import {EnjeuxIrdVo} from '../../../../../../controller/model/EnjeuxIrd.model';
+import {EnjeuxIrdService} from '../../../../../../controller/service/EnjeuxIrd.service';
+import {IdentifiantRechercheVo} from '../../../../../../controller/model/IdentifiantRecherche.model';
+import {IdentifiantRechercheService} from '../../../../../../controller/service/IdentifiantRecherche.service';
 @Component({
   selector: 'app-chercheur-create-chercheur',
   templateUrl: './chercheur-create-chercheur.component.html',
@@ -33,6 +33,7 @@ export class ChercheurCreateChercheurComponent implements OnInit {
 
 
 
+private _enjeuxIrdChercheursVo: Array<EnjeuxIrdChercheurVo> = [];
 
 constructor(private datePipe: DatePipe, private chercheurService: ChercheurService
  ,       private stringUtilService: StringUtilService
@@ -40,10 +41,10 @@ constructor(private datePipe: DatePipe, private chercheurService: ChercheurServi
  ,       private messageService: MessageService
  ,       private router: Router
  
-,       private identifiantRechercheService: IdentifiantRechercheService
 ,       private enjeuxIrdChercheurService: EnjeuxIrdChercheurService
-,       private enjeuxIrdService: EnjeuxIrdService
 ,       private identifiantAuteurExpertService: IdentifiantAuteurExpertService
+,       private enjeuxIrdService: EnjeuxIrdService
+,       private identifiantRechercheService: IdentifiantRechercheService
 ) {
 
 }
@@ -52,6 +53,7 @@ constructor(private datePipe: DatePipe, private chercheurService: ChercheurServi
 // methods
 ngOnInit(): void {
 
+            this.enjeuxIrdService.findAll().subscribe(data => this.prepareEnjeuxIrdChercheurs(data));
 
                 this.selectedEnjeuxIrdChercheurs.enjeuxIrdVo = new EnjeuxIrdVo();
                 this.enjeuxIrdService.findAll().subscribe((data) => this.enjeuxIrds = data);
@@ -64,10 +66,16 @@ ngOnInit(): void {
 
 }
 
-
-    validateEnjeuxIrdChercheurs(){
-    this.errorMessages = new Array();
+         prepareEnjeuxIrdChercheurs(enjeuxIrds: Array<EnjeuxIrdVo>): void{
+        if( enjeuxIrds != null){
+        enjeuxIrds.forEach(e => {
+        const enjeuxIrdChercheur = new EnjeuxIrdChercheurVo();
+        enjeuxIrdChercheur.enjeuxIrdVo = e;
+        this.enjeuxIrdChercheursVo.push(enjeuxIrdChercheur);
+        });
+        }
     }
+
     validateIdentifiantAuteurExperts(){
     this.errorMessages = new Array();
     }
@@ -76,28 +84,6 @@ ngOnInit(): void {
 private setValidation(value : boolean){
     }
 
-        addEnjeuxIrdChercheurs() {
-        if( this.selectedChercheur.enjeuxIrdChercheursVo == null ){
-            this.selectedChercheur.enjeuxIrdChercheursVo = new Array<EnjeuxIrdChercheurVo>();
-        }
-       this.validateEnjeuxIrdChercheurs();
-       if (this.errorMessages.length === 0) {
-              this.selectedChercheur.enjeuxIrdChercheursVo.push(this.selectedEnjeuxIrdChercheurs);
-              this.selectedEnjeuxIrdChercheurs = new EnjeuxIrdChercheurVo();
-           }else{
-            this.messageService.add({
-                severity: 'error',
-                summary: 'Erreurs',
-                detail: 'Merci de corrigé les erreurs suivant : ' + this.errorMessages
-            });
-        }
-       }
-
-        deleteEnjeuxIrdChercheurs(p: EnjeuxIrdChercheurVo) {
-        this.selectedChercheur.enjeuxIrdChercheursVo.forEach((element, index) => {
-            if (element === p) { this.selectedChercheur.enjeuxIrdChercheursVo.splice(index, 1); }
-        });
-    }
         addIdentifiantAuteurExperts() {
         if( this.selectedChercheur.identifiantAuteurExpertsVo == null ){
             this.selectedChercheur.identifiantAuteurExpertsVo = new Array<IdentifiantAuteurExpertVo>();
@@ -149,12 +135,6 @@ private validateForm(): void{
 this.errorMessages = new Array<string>();
 
     }
-
-
-
-
-
-
 
 
 
@@ -298,6 +278,15 @@ set chercheurs(value: Array<ChercheurVo>) {
     }
 
 
+    get enjeuxIrdChercheursVo(): Array<EnjeuxIrdChercheurVo> {
+    if( this._enjeuxIrdChercheursVo == null )
+    this._enjeuxIrdChercheursVo = new Array();
+    return this._enjeuxIrdChercheursVo;
+    }
+
+    set enjeuxIrdChercheursVo(value: Array<EnjeuxIrdChercheurVo>) {
+    this._enjeuxIrdChercheursVo = value;
+    }
 
 
     get errorMessages(): string[] {

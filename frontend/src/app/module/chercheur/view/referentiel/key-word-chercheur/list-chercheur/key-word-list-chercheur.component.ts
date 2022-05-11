@@ -10,7 +10,9 @@ import { saveAs } from 'file-saver';
 import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
-    import { RoleService } from '../../../../../../controller/service/ChercheurService.service';
+
+import { ChercheurService } from '../../../../../../controller/service/Chercheur.service';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
 
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
 import {AuthService} from '../../../../../../controller/service/Auth.service';
@@ -35,7 +37,7 @@ export class KeyWordListChercheurComponent implements OnInit {
 
 
     constructor(private datePipe: DatePipe, private keyWordService: KeyWordService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-    private chercheurService: ChercheurService
+    ,           private chercheurService: ChercheurService
 ) { }
 
     ngOnInit() : void {
@@ -73,8 +75,8 @@ export class KeyWordListChercheurComponent implements OnInit {
                             {field: 'dateArchivage', header: 'Date archivage'},
                             {field: 'dateCreation', header: 'Date creation'},
                             {field: 'admin', header: 'Admin'},
-                            {field: 'visible', header: 'Visible'},
                             {field: 'username', header: 'Username'},
+                            {field: 'visible', header: 'Visible'},
         ];
     }
     
@@ -107,7 +109,7 @@ export class KeyWordListChercheurComponent implements OnInit {
             this.viewKeyWordDialog = true;
           });
      if(keyWord.username != null)
-     this.chercheurService.findByUsername(tag.username).subscribe(data => {this.selectedChercheur = data;});
+     this.chercheurService.findByUsername(keyWord.username).subscribe(data => {this.selectedChercheur = data;});
         }else{
              this.messageService.add({
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
@@ -198,8 +200,8 @@ public async duplicateKeyWord(keyWord: KeyWordVo) {
                     'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
                     'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
                     'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
                     'Username': e.username ,
+                    'Visible': e.visible? 'Vrai' : 'Faux' ,
      }
       });
 
@@ -213,8 +215,8 @@ public async duplicateKeyWord(keyWord: KeyWordVo) {
             'Date creation Min': this.searchKeyWord.dateCreationMin ? this.datePipe.transform(this.searchKeyWord.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
             'Date creation Max': this.searchKeyWord.dateCreationMax ? this.datePipe.transform(this.searchKeyWord.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
             'Admin': this.searchKeyWord.admin ? (this.searchKeyWord.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchKeyWord.visible ? (this.searchKeyWord.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
             'Username': this.searchKeyWord.username ? this.searchKeyWord.username : environment.emptyForExport ,
+            'Visible': this.searchKeyWord.visible ? (this.searchKeyWord.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
      }];
 
       }

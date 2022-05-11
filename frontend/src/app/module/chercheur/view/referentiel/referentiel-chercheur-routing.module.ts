@@ -7,6 +7,10 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
+    import { EnjeuxIrdChercheurChercheurComponent } from './enjeux-ird-chercheur-chercheur/enjeux-ird-chercheur-chercheur.component';
+
+
+
     import { SemanticRelationshipChercheurComponent } from './semantic-relationship-chercheur/semantic-relationship-chercheur.component';
 
 
@@ -15,15 +19,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
+    import { EnjeuxIrdChercheurComponent } from './enjeux-ird-chercheur/enjeux-ird-chercheur.component';
+
+
+
     import { DisciplineScientifiqueChercheurChercheurComponent } from './discipline-scientifique-chercheur-chercheur/discipline-scientifique-chercheur-chercheur.component';
-
-
-
-    import { DisciplineScientifiqueErcAssociationChercheurComponent } from './discipline-scientifique-erc-association-chercheur/discipline-scientifique-erc-association-chercheur.component';
-
-
-
-    import { EnjeuxIrdChercheurChercheurComponent } from './enjeux-ird-chercheur-chercheur/enjeux-ird-chercheur-chercheur.component';
 
 
 
@@ -39,7 +39,7 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
 
 
-    import { EnjeuxIrdChercheurComponent } from './enjeux-ird-chercheur/enjeux-ird-chercheur.component';
+    import { DisciplineScientifiqueErcAssociationChercheurComponent } from './discipline-scientifique-erc-association-chercheur/discipline-scientifique-erc-association-chercheur.component';
 
 
 
@@ -62,6 +62,18 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
                     path: '',
                     children: [
 
+
+                        {
+
+                            path: 'enjeux-ird-chercheur',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: EnjeuxIrdChercheurChercheurComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
 
                         {
 
@@ -89,35 +101,23 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
+                            path: 'enjeux-ird',
+                            children: [
+                                {
+                                    path: 'list',
+                                    component: EnjeuxIrdChercheurComponent ,
+                                    canActivate: [AuthGuard]
+                                }
+                            ]
+                        },
+
+                        {
+
                             path: 'discipline-scientifique-chercheur',
                             children: [
                                 {
                                     path: 'list',
                                     component: DisciplineScientifiqueChercheurChercheurComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
-                        {
-
-                            path: 'discipline-scientifique-erc-association',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: DisciplineScientifiqueErcAssociationChercheurComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-
-                        {
-
-                            path: 'enjeux-ird-chercheur',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: EnjeuxIrdChercheurChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]
@@ -161,11 +161,11 @@ import { AuthGuard } from 'src/app/controller/guards/auth.guard';
 
                         {
 
-                            path: 'enjeux-ird',
+                            path: 'discipline-scientifique-erc-association',
                             children: [
                                 {
                                     path: 'list',
-                                    component: EnjeuxIrdChercheurComponent ,
+                                    component: DisciplineScientifiqueErcAssociationChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
                             ]

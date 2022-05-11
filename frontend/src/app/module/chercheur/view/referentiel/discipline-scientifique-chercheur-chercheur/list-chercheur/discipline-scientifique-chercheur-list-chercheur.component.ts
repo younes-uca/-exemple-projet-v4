@@ -10,6 +10,7 @@ import { saveAs } from 'file-saver';
 import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
+
 import { DisciplineScientifiqueService } from '../../../../../../controller/service/DisciplineScientifique.service';
 import { DisciplineScientifiqueErcService } from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
 import { ChercheurService } from '../../../../../../controller/service/Chercheur.service';
@@ -34,9 +35,6 @@ export class DisciplineScientifiqueChercheurListChercheurComponent implements On
     exportData: any[] = [];
     criteriaData: any[] = [];
     fileName = 'DisciplineScientifiqueChercheur';
-     yesOrNoArchive :any[] =[];
-     yesOrNoAdmin :any[] =[];
-     yesOrNoVisible :any[] =[];
     disciplineScientifiques :Array<DisciplineScientifiqueVo>;
     disciplineScientifiqueErcs :Array<DisciplineScientifiqueErcVo>;
     chercheurs :Array<ChercheurVo>;
@@ -55,9 +53,6 @@ export class DisciplineScientifiqueChercheurListChercheurComponent implements On
       this.loadDisciplineScientifique();
       this.loadDisciplineScientifiqueErc();
       this.loadChercheur();
-    this.yesOrNoArchive =  [{label: 'Archive', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoAdmin =  [{label: 'Admin', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoVisible =  [{label: 'Visible', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
     }
     
     // methods
@@ -82,12 +77,6 @@ export class DisciplineScientifiqueChercheurListChercheurComponent implements On
                         {field: 'disciplineScientifique?.libelleEng', header: 'Discipline scientifique'},
                         {field: 'disciplineScientifiqueErc?.libelleEng', header: 'Discipline scientifique erc'},
                         {field: 'chercheur?.numeroMatricule', header: 'Chercheur'},
-                            {field: 'archive', header: 'Archive'},
-                            {field: 'dateArchivage', header: 'Date archivage'},
-                            {field: 'dateCreation', header: 'Date creation'},
-                            {field: 'admin', header: 'Admin'},
-                            {field: 'visible', header: 'Visible'},
-                            {field: 'username', header: 'Username'},
         ];
     }
     
@@ -96,8 +85,6 @@ export class DisciplineScientifiqueChercheurListChercheurComponent implements On
          if(isPermistted){
           this.disciplineScientifiqueChercheurService.findByIdWithAssociatedList(disciplineScientifiqueChercheur).subscribe(res => {
            this.selectedDisciplineScientifiqueChercheur = res;
-            this.selectedDisciplineScientifiqueChercheur.dateArchivage = new Date(disciplineScientifiqueChercheur.dateArchivage);
-            this.selectedDisciplineScientifiqueChercheur.dateCreation = new Date(disciplineScientifiqueChercheur.dateCreation);
             this.editDisciplineScientifiqueChercheurDialog = true;
           });
         }else{
@@ -115,8 +102,6 @@ export class DisciplineScientifiqueChercheurListChercheurComponent implements On
         if(isPermistted){
            this.disciplineScientifiqueChercheurService.findByIdWithAssociatedList(disciplineScientifiqueChercheur).subscribe(res => {
            this.selectedDisciplineScientifiqueChercheur = res;
-            this.selectedDisciplineScientifiqueChercheur.dateArchivage = new Date(disciplineScientifiqueChercheur.dateArchivage);
-            this.selectedDisciplineScientifiqueChercheur.dateCreation = new Date(disciplineScientifiqueChercheur.dateCreation);
             this.viewDisciplineScientifiqueChercheurDialog = true;
           });
         }else{
@@ -226,12 +211,6 @@ public async duplicateDisciplineScientifiqueChercheur(disciplineScientifiqueCher
             'Discipline scientifique': e.disciplineScientifiqueVo?.libelleEng ,
             'Discipline scientifique erc': e.disciplineScientifiqueErcVo?.libelleEng ,
             'Chercheur': e.chercheurVo?.numeroMatricule ,
-                    'Archive': e.archive? 'Vrai' : 'Faux' ,
-                    'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
-                    'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
-                    'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
-                    'Username': e.username ,
      }
       });
 
@@ -239,14 +218,6 @@ public async duplicateDisciplineScientifiqueChercheur(disciplineScientifiqueCher
         'Discipline scientifique': this.searchDisciplineScientifiqueChercheur.disciplineScientifiqueVo?.libelleEng ? this.searchDisciplineScientifiqueChercheur.disciplineScientifiqueVo?.libelleEng : environment.emptyForExport ,
         'Discipline scientifique erc': this.searchDisciplineScientifiqueChercheur.disciplineScientifiqueErcVo?.libelleEng ? this.searchDisciplineScientifiqueChercheur.disciplineScientifiqueErcVo?.libelleEng : environment.emptyForExport ,
         'Chercheur': this.searchDisciplineScientifiqueChercheur.chercheurVo?.numeroMatricule ? this.searchDisciplineScientifiqueChercheur.chercheurVo?.numeroMatricule : environment.emptyForExport ,
-            'Archive': this.searchDisciplineScientifiqueChercheur.archive ? (this.searchDisciplineScientifiqueChercheur.archive ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Date archivage Min': this.searchDisciplineScientifiqueChercheur.dateArchivageMin ? this.datePipe.transform(this.searchDisciplineScientifiqueChercheur.dateArchivageMin , this.dateFormat) : environment.emptyForExport ,
-            'Date archivage Max': this.searchDisciplineScientifiqueChercheur.dateArchivageMax ? this.datePipe.transform(this.searchDisciplineScientifiqueChercheur.dateArchivageMax , this.dateFormat) : environment.emptyForExport ,
-            'Date creation Min': this.searchDisciplineScientifiqueChercheur.dateCreationMin ? this.datePipe.transform(this.searchDisciplineScientifiqueChercheur.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
-            'Date creation Max': this.searchDisciplineScientifiqueChercheur.dateCreationMax ? this.datePipe.transform(this.searchDisciplineScientifiqueChercheur.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
-            'Admin': this.searchDisciplineScientifiqueChercheur.admin ? (this.searchDisciplineScientifiqueChercheur.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchDisciplineScientifiqueChercheur.visible ? (this.searchDisciplineScientifiqueChercheur.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Username': this.searchDisciplineScientifiqueChercheur.username ? this.searchDisciplineScientifiqueChercheur.username : environment.emptyForExport ,
      }];
 
       }

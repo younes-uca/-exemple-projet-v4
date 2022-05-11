@@ -34,19 +34,13 @@ export class DisciplineScientifiqueChercheurService {
      private _searchDisciplineScientifiqueChercheur: DisciplineScientifiqueChercheurVo ;
 
     // methods
-    public archiver(disciplineScientifiqueChercheur: DisciplineScientifiqueChercheurVo): Observable<DisciplineScientifiqueChercheurVo> {
-        return this.http.put<DisciplineScientifiqueChercheurVo>(this.API + 'archiver/' ,disciplineScientifiqueChercheur);
-    }
-    public desarchiver(disciplineScientifiqueChercheur: DisciplineScientifiqueChercheurVo): Observable<DisciplineScientifiqueChercheurVo> {
-    return this.http.put<DisciplineScientifiqueChercheurVo>(this.API + 'desarchiver/' ,disciplineScientifiqueChercheur);
-    }
 
     public findAll(){
      return this.http.get<Array<DisciplineScientifiqueChercheurVo>>(this.API);
     }
 
     public save(): Observable<DisciplineScientifiqueChercheurVo> {
-           return this.http.post<DisciplineScientifiqueChercheurVo>(this.API, {...this.selectedDisciplineScientifiqueChercheur,dateCreation: moment(this.selectedDisciplineScientifiqueChercheur.dateCreation).format("YYYY-MM-DD")});
+         return this.http.post<DisciplineScientifiqueChercheurVo>(this.API, this.selectedDisciplineScientifiqueChercheur);
     }
 
     delete(disciplineScientifiqueChercheur: DisciplineScientifiqueChercheurVo) {

@@ -33,19 +33,13 @@ export class EnjeuxIrdChercheurService {
      private _searchEnjeuxIrdChercheur: EnjeuxIrdChercheurVo ;
 
     // methods
-    public archiver(enjeuxIrdChercheur: EnjeuxIrdChercheurVo): Observable<EnjeuxIrdChercheurVo> {
-        return this.http.put<EnjeuxIrdChercheurVo>(this.API + 'archiver/' ,enjeuxIrdChercheur);
-    }
-    public desarchiver(enjeuxIrdChercheur: EnjeuxIrdChercheurVo): Observable<EnjeuxIrdChercheurVo> {
-    return this.http.put<EnjeuxIrdChercheurVo>(this.API + 'desarchiver/' ,enjeuxIrdChercheur);
-    }
 
     public findAll(){
      return this.http.get<Array<EnjeuxIrdChercheurVo>>(this.API);
     }
 
     public save(): Observable<EnjeuxIrdChercheurVo> {
-           return this.http.post<EnjeuxIrdChercheurVo>(this.API, {...this.selectedEnjeuxIrdChercheur,dateCreation: moment(this.selectedEnjeuxIrdChercheur.dateCreation).format("YYYY-MM-DD")});
+         return this.http.post<EnjeuxIrdChercheurVo>(this.API, this.selectedEnjeuxIrdChercheur);
     }
 
     delete(enjeuxIrdChercheur: EnjeuxIrdChercheurVo) {

@@ -94,12 +94,6 @@ this.errorMessages = new Array<string>();
 
 
 
-
-
-
-
-
-
 //openPopup
               public async openCreateenjeuxIrd(enjeuxIrd: string) {
                       const isPermistted = await this.roleService.isPermitted('EnjeuxIrd', 'add');

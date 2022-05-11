@@ -108,9 +108,6 @@ private validateIdentifiantRechercheCode(){
 
 
 
-
-
-
 //openPopup
 // methods
 

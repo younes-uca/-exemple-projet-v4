@@ -90,23 +90,6 @@
                             <label for="7-2">Date creation Max</label>
                         </span>
 
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <p-dropdown  id="8" [options]="yesOrNoAdmin" [(ngModel)]="searchDisciplineScientifiqueErcParent.admin"
-                                            [filter]="false" [showClear]="true"  placeholder="Admin"
-                                                 optionLabel="label" optionValue="value">
-                                    </p-dropdown>
-                                </span>
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <p-dropdown  id="9" [options]="yesOrNoVisible" [(ngModel)]="searchDisciplineScientifiqueErcParent.visible"
-                                            [filter]="false" [showClear]="true"  placeholder="Visible"
-                                                 optionLabel="label" optionValue="value">
-                                    </p-dropdown>
-                                </span>
-                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
-                                    <input class="p-mr-2" pInputText id="10"
-                                           type="text"  [(ngModel)]="searchDisciplineScientifiqueErcParent.username">
-                                    <label for="10">Username</label>
-                                </span>
                 </div>
 
                 <div class="align-search-button">
@@ -117,7 +100,7 @@
 
 
             <p-table #dt [value]="disciplineScientifiqueErcParents" [columns]="cols" [rows]="4" [paginator]="true"
-                    [globalFilterFields]="['libelleFr', 'libelleEng', 'code', 'niveau', 'archive', 'dateArchivage', 'dateCreation', 'admin', 'visible', 'username']" [(selection)]="selectedDisciplineScientifiqueErcParent"
+                    [globalFilterFields]="['libelleFr', 'libelleEng', 'code', 'niveau', 'archive', 'dateArchivage', 'dateCreation']" [(selection)]="selectedDisciplineScientifiqueErcParent"
                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
                                       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [showCurrentPageReport]="true">
@@ -206,36 +189,6 @@
                                 
 
 
-                                
-                                <th pSortableColumn="admin">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Admin</span>
-                                        <p-sortIcon field="admin"></p-sortIcon>
-                                    </div>
-                                </th>
-                                
-
-
-                                <!-- 
-                                <th pSortableColumn="visible">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Visible</span>
-                                        <p-sortIcon field="visible"></p-sortIcon>
-                                    </div>
-                                </th>
-                                --> 
-
-
-                                <!-- 
-                                <th pSortableColumn="username">
-                                    <div class="p-d-flex p-jc-between p-ai-center">
-                                        <span>Username</span>
-                                        <p-sortIcon field="username"></p-sortIcon>
-                                    </div>
-                                </th>
-                                --> 
-
-
                         <th>Actions</th>
                     </tr>
                 </ng-template>
@@ -273,22 +226,6 @@
                             
                                 <td>{{disciplineScientifiqueErcParent.dateCreation | date:'dd-M-yyyy' }}</td>
                             
-
-                            
-                                <td><i *ngIf="disciplineScientifiqueErcParent.admin" class="pi pi-check checked-toogle"></i>
-                                    <i *ngIf="!disciplineScientifiqueErcParent.admin" class="pi pi-times unchecked-toogle"></i>
-                                </td>
-                            
-
-                             <!-- 
-                                <td><i *ngIf="disciplineScientifiqueErcParent.visible" class="pi pi-check checked-toogle"></i>
-                                    <i *ngIf="!disciplineScientifiqueErcParent.visible" class="pi pi-times unchecked-toogle"></i>
-                                </td>
-                             --> 
-
-                             <!-- 
-                                 <td>{{disciplineScientifiqueErcParent.username}}</td>
-                             --> 
 
 
                         <td>

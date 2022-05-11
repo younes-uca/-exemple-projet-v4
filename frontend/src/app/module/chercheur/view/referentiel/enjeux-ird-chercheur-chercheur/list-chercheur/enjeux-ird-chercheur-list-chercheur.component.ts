@@ -10,6 +10,7 @@ import { saveAs } from 'file-saver';
 import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
+
 import { EnjeuxIrdService } from '../../../../../../controller/service/EnjeuxIrd.service';
 import { ChercheurService } from '../../../../../../controller/service/Chercheur.service';
 
@@ -32,9 +33,6 @@ export class EnjeuxIrdChercheurListChercheurComponent implements OnInit {
     exportData: any[] = [];
     criteriaData: any[] = [];
     fileName = 'EnjeuxIrdChercheur';
-     yesOrNoArchive :any[] =[];
-     yesOrNoAdmin :any[] =[];
-     yesOrNoVisible :any[] =[];
     enjeuxIrds :Array<EnjeuxIrdVo>;
     chercheurs :Array<ChercheurVo>;
 
@@ -50,9 +48,6 @@ export class EnjeuxIrdChercheurListChercheurComponent implements OnInit {
       this.initCol();
       this.loadEnjeuxIrd();
       this.loadChercheur();
-    this.yesOrNoArchive =  [{label: 'Archive', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoAdmin =  [{label: 'Admin', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoVisible =  [{label: 'Visible', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
     }
     
     // methods
@@ -76,12 +71,6 @@ export class EnjeuxIrdChercheurListChercheurComponent implements OnInit {
         this.cols = [
                         {field: 'enjeuxIrd?.libelle', header: 'Enjeux ird'},
                         {field: 'chercheur?.numeroMatricule', header: 'Chercheur'},
-                            {field: 'archive', header: 'Archive'},
-                            {field: 'dateArchivage', header: 'Date archivage'},
-                            {field: 'dateCreation', header: 'Date creation'},
-                            {field: 'admin', header: 'Admin'},
-                            {field: 'visible', header: 'Visible'},
-                            {field: 'username', header: 'Username'},
         ];
     }
     
@@ -90,8 +79,6 @@ export class EnjeuxIrdChercheurListChercheurComponent implements OnInit {
          if(isPermistted){
           this.enjeuxIrdChercheurService.findByIdWithAssociatedList(enjeuxIrdChercheur).subscribe(res => {
            this.selectedEnjeuxIrdChercheur = res;
-            this.selectedEnjeuxIrdChercheur.dateArchivage = new Date(enjeuxIrdChercheur.dateArchivage);
-            this.selectedEnjeuxIrdChercheur.dateCreation = new Date(enjeuxIrdChercheur.dateCreation);
             this.editEnjeuxIrdChercheurDialog = true;
           });
         }else{
@@ -109,8 +96,6 @@ export class EnjeuxIrdChercheurListChercheurComponent implements OnInit {
         if(isPermistted){
            this.enjeuxIrdChercheurService.findByIdWithAssociatedList(enjeuxIrdChercheur).subscribe(res => {
            this.selectedEnjeuxIrdChercheur = res;
-            this.selectedEnjeuxIrdChercheur.dateArchivage = new Date(enjeuxIrdChercheur.dateArchivage);
-            this.selectedEnjeuxIrdChercheur.dateCreation = new Date(enjeuxIrdChercheur.dateCreation);
             this.viewEnjeuxIrdChercheurDialog = true;
           });
         }else{
@@ -212,26 +197,12 @@ public async duplicateEnjeuxIrdChercheur(enjeuxIrdChercheur: EnjeuxIrdChercheurV
     return {
             'Enjeux ird': e.enjeuxIrdVo?.libelle ,
             'Chercheur': e.chercheurVo?.numeroMatricule ,
-                    'Archive': e.archive? 'Vrai' : 'Faux' ,
-                    'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
-                    'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
-                    'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
-                    'Username': e.username ,
      }
       });
 
       this.criteriaData = [{
         'Enjeux ird': this.searchEnjeuxIrdChercheur.enjeuxIrdVo?.libelle ? this.searchEnjeuxIrdChercheur.enjeuxIrdVo?.libelle : environment.emptyForExport ,
         'Chercheur': this.searchEnjeuxIrdChercheur.chercheurVo?.numeroMatricule ? this.searchEnjeuxIrdChercheur.chercheurVo?.numeroMatricule : environment.emptyForExport ,
-            'Archive': this.searchEnjeuxIrdChercheur.archive ? (this.searchEnjeuxIrdChercheur.archive ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Date archivage Min': this.searchEnjeuxIrdChercheur.dateArchivageMin ? this.datePipe.transform(this.searchEnjeuxIrdChercheur.dateArchivageMin , this.dateFormat) : environment.emptyForExport ,
-            'Date archivage Max': this.searchEnjeuxIrdChercheur.dateArchivageMax ? this.datePipe.transform(this.searchEnjeuxIrdChercheur.dateArchivageMax , this.dateFormat) : environment.emptyForExport ,
-            'Date creation Min': this.searchEnjeuxIrdChercheur.dateCreationMin ? this.datePipe.transform(this.searchEnjeuxIrdChercheur.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
-            'Date creation Max': this.searchEnjeuxIrdChercheur.dateCreationMax ? this.datePipe.transform(this.searchEnjeuxIrdChercheur.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
-            'Admin': this.searchEnjeuxIrdChercheur.admin ? (this.searchEnjeuxIrdChercheur.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchEnjeuxIrdChercheur.visible ? (this.searchEnjeuxIrdChercheur.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Username': this.searchEnjeuxIrdChercheur.username ? this.searchEnjeuxIrdChercheur.username : environment.emptyForExport ,
      }];
 
       }

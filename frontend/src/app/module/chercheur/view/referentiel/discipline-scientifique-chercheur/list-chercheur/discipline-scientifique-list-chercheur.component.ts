@@ -10,6 +10,7 @@ import { saveAs } from 'file-saver';
 import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
+
 import { DisciplineScientifiqueParentService } from '../../../../../../controller/service/DisciplineScientifiqueParent.service';
 
 import {DisciplineScientifiqueParentVo} from '../../../../../../controller/model/DisciplineScientifiqueParent.model';
@@ -32,8 +33,6 @@ export class DisciplineScientifiqueListChercheurComponent implements OnInit {
     criteriaData: any[] = [];
     fileName = 'DisciplineScientifique';
      yesOrNoArchive :any[] =[];
-     yesOrNoAdmin :any[] =[];
-     yesOrNoVisible :any[] =[];
     disciplineScientifiqueParents :Array<DisciplineScientifiqueParentVo>;
 
 
@@ -47,8 +46,6 @@ export class DisciplineScientifiqueListChercheurComponent implements OnInit {
       this.initCol();
       this.loadDisciplineScientifiqueParent();
     this.yesOrNoArchive =  [{label: 'Archive', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoAdmin =  [{label: 'Admin', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
-    this.yesOrNoVisible =  [{label: 'Visible', value: null},{label: 'Oui', value: 1},{label: 'Non', value: 0}];
     }
     
     // methods
@@ -78,9 +75,6 @@ export class DisciplineScientifiqueListChercheurComponent implements OnInit {
                             {field: 'archive', header: 'Archive'},
                             {field: 'dateArchivage', header: 'Date archivage'},
                             {field: 'dateCreation', header: 'Date creation'},
-                            {field: 'admin', header: 'Admin'},
-                            {field: 'visible', header: 'Visible'},
-                            {field: 'username', header: 'Username'},
         ];
     }
     
@@ -213,9 +207,6 @@ public async duplicateDisciplineScientifique(disciplineScientifique: DisciplineS
                     'Archive': e.archive? 'Vrai' : 'Faux' ,
                     'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
                     'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
-                    'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
-                    'Username': e.username ,
      }
       });
 
@@ -231,9 +222,6 @@ public async duplicateDisciplineScientifique(disciplineScientifique: DisciplineS
             'Date archivage Max': this.searchDisciplineScientifique.dateArchivageMax ? this.datePipe.transform(this.searchDisciplineScientifique.dateArchivageMax , this.dateFormat) : environment.emptyForExport ,
             'Date creation Min': this.searchDisciplineScientifique.dateCreationMin ? this.datePipe.transform(this.searchDisciplineScientifique.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
             'Date creation Max': this.searchDisciplineScientifique.dateCreationMax ? this.datePipe.transform(this.searchDisciplineScientifique.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
-            'Admin': this.searchDisciplineScientifique.admin ? (this.searchDisciplineScientifique.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchDisciplineScientifique.visible ? (this.searchDisciplineScientifique.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Username': this.searchDisciplineScientifique.username ? this.searchDisciplineScientifique.username : environment.emptyForExport ,
      }];
 
       }

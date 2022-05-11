@@ -10,7 +10,9 @@ import { saveAs } from 'file-saver';
 import { RoleService } from '../../../../../../controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
-    import { RoleService } from '../../../../../../controller/service/ChercheurService.service';
+
+import { ChercheurService } from '../../../../../../controller/service/Chercheur.service';
+import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
 
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
 import {AuthService} from '../../../../../../controller/service/Auth.service';
@@ -35,7 +37,7 @@ export class EnjeuxIrdListChercheurComponent implements OnInit {
 
 
     constructor(private datePipe: DatePipe, private enjeuxIrdService: EnjeuxIrdService,private messageService: MessageService,private confirmationService: ConfirmationService,private roleService:RoleService, private router: Router , private authService: AuthService , private exportService: ExportService
-    private chercheurService: ChercheurService
+    ,           private chercheurService: ChercheurService
 ) { }
 
     ngOnInit() : void {
@@ -72,8 +74,8 @@ export class EnjeuxIrdListChercheurComponent implements OnInit {
                             {field: 'dateArchivage', header: 'Date archivage'},
                             {field: 'dateCreation', header: 'Date creation'},
                             {field: 'admin', header: 'Admin'},
-                            {field: 'visible', header: 'Visible'},
                             {field: 'username', header: 'Username'},
+                            {field: 'visible', header: 'Visible'},
         ];
     }
     
@@ -106,7 +108,7 @@ export class EnjeuxIrdListChercheurComponent implements OnInit {
             this.viewEnjeuxIrdDialog = true;
           });
      if(enjeuxIrd.username != null)
-     this.chercheurService.findByUsername(tag.username).subscribe(data => {this.selectedChercheur = data;});
+     this.chercheurService.findByUsername(enjeuxIrd.username).subscribe(data => {this.selectedChercheur = data;});
         }else{
              this.messageService.add({
                 severity: 'error', summary: 'erreur', detail: 'problème d\'autorisation'
@@ -197,8 +199,8 @@ public async duplicateEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo) {
                     'Date archivage': this.datePipe.transform(e.dateArchivage , 'dd-MM-yyyy'),
                     'Date creation': this.datePipe.transform(e.dateCreation , 'dd-MM-yyyy'),
                     'Admin': e.admin? 'Vrai' : 'Faux' ,
-                    'Visible': e.visible? 'Vrai' : 'Faux' ,
                     'Username': e.username ,
+                    'Visible': e.visible? 'Vrai' : 'Faux' ,
      }
       });
 
@@ -212,8 +214,8 @@ public async duplicateEnjeuxIrd(enjeuxIrd: EnjeuxIrdVo) {
             'Date creation Min': this.searchEnjeuxIrd.dateCreationMin ? this.datePipe.transform(this.searchEnjeuxIrd.dateCreationMin , this.dateFormat) : environment.emptyForExport ,
             'Date creation Max': this.searchEnjeuxIrd.dateCreationMax ? this.datePipe.transform(this.searchEnjeuxIrd.dateCreationMax , this.dateFormat) : environment.emptyForExport ,
             'Admin': this.searchEnjeuxIrd.admin ? (this.searchEnjeuxIrd.admin ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
-            'Visible': this.searchEnjeuxIrd.visible ? (this.searchEnjeuxIrd.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
             'Username': this.searchEnjeuxIrd.username ? this.searchEnjeuxIrd.username : environment.emptyForExport ,
+            'Visible': this.searchEnjeuxIrd.visible ? (this.searchEnjeuxIrd.visible ? environment.trueValue : environment.falseValue) : environment.emptyForExport ,
      }];
 
       }

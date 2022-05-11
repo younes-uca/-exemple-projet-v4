@@ -34,19 +34,13 @@ export class DisciplineScientifiqueErcAssociationService {
      private _searchDisciplineScientifiqueErcAssociation: DisciplineScientifiqueErcAssociationVo ;
 
     // methods
-    public archiver(disciplineScientifiqueErcAssociation: DisciplineScientifiqueErcAssociationVo): Observable<DisciplineScientifiqueErcAssociationVo> {
-        return this.http.put<DisciplineScientifiqueErcAssociationVo>(this.API + 'archiver/' ,disciplineScientifiqueErcAssociation);
-    }
-    public desarchiver(disciplineScientifiqueErcAssociation: DisciplineScientifiqueErcAssociationVo): Observable<DisciplineScientifiqueErcAssociationVo> {
-    return this.http.put<DisciplineScientifiqueErcAssociationVo>(this.API + 'desarchiver/' ,disciplineScientifiqueErcAssociation);
-    }
 
     public findAll(){
      return this.http.get<Array<DisciplineScientifiqueErcAssociationVo>>(this.API);
     }
 
     public save(): Observable<DisciplineScientifiqueErcAssociationVo> {
-           return this.http.post<DisciplineScientifiqueErcAssociationVo>(this.API, {...this.selectedDisciplineScientifiqueErcAssociation,dateCreation: moment(this.selectedDisciplineScientifiqueErcAssociation.dateCreation).format("YYYY-MM-DD")});
+         return this.http.post<DisciplineScientifiqueErcAssociationVo>(this.API, this.selectedDisciplineScientifiqueErcAssociation);
     }
 
     delete(disciplineScientifiqueErcAssociation: DisciplineScientifiqueErcAssociationVo) {
