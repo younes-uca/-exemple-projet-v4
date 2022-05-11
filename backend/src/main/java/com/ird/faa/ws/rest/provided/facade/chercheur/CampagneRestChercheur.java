@@ -83,6 +83,8 @@ private CampagneConverter campagneConverter;
             public int deleteById(@PathVariable Long id){
             return campagneService.deleteById(id);
             }
+
+
         @ApiOperation("Search campagneChercheur by a specific chercheur and code ")
         @GetMapping("/searchByChercheurUsername/{username}")
         public CampagneVo findProgressCampagneByChercheurUsername(@PathVariable String username){

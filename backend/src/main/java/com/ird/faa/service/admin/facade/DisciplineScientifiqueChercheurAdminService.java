@@ -46,7 +46,5 @@ public interface DisciplineScientifiqueChercheurAdminService extends AbstractSer
 
 
 
-    DisciplineScientifiqueChercheur archiver(DisciplineScientifiqueChercheur disciplineScientifiqueChercheur) ;
-    DisciplineScientifiqueChercheur desarchiver(DisciplineScientifiqueChercheur disciplineScientifiqueChercheur);
 
 }

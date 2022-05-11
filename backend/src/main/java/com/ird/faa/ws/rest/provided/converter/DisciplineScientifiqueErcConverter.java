@@ -41,12 +41,6 @@ DisciplineScientifiqueErc item = new DisciplineScientifiqueErc();
         item.setDateArchivage(DateUtil.parse(vo.getDateArchivage()));
         if(StringUtil.isNotEmpty(vo.getDateCreation()))
         item.setDateCreation(DateUtil.parse(vo.getDateCreation()));
-            if(vo.getAdmin() != null)
-            item.setAdmin(vo.getAdmin());
-            if(vo.getVisible() != null)
-            item.setVisible(vo.getVisible());
-        if(StringUtil.isNotEmpty(vo.getUsername()))
-        item.setUsername(vo.getUsername());
     if(vo.getDisciplineScientifiqueErcParentVo()!=null && this.disciplineScientifiqueErcParent)
         item.setDisciplineScientifiqueErcParent(disciplineScientifiqueErcParentConverter.toItem(vo.getDisciplineScientifiqueErcParentVo())) ;
 
@@ -82,13 +76,6 @@ DisciplineScientifiqueErcVo vo = new DisciplineScientifiqueErcVo();
         vo.setDateArchivage(DateUtil.formateDate(item.getDateArchivage()));
         if(item.getDateCreation()!=null)
         vo.setDateCreation(DateUtil.formateDate(item.getDateCreation()));
-        if(item.getAdmin()!=null)
-        vo.setAdmin(item.getAdmin());
-        if(item.getVisible()!=null)
-        vo.setVisible(item.getVisible());
-        if(StringUtil.isNotEmpty(item.getUsername()))
-        vo.setUsername(item.getUsername());
-
     if(item.getDisciplineScientifiqueErcParent()!=null && this.disciplineScientifiqueErcParent) {
         vo.setDisciplineScientifiqueErcParentVo(disciplineScientifiqueErcParentConverter.toVo(item.getDisciplineScientifiqueErcParent())) ;
     }
@@ -115,12 +102,6 @@ public void init(Boolean value) {
     public void  setDisciplineScientifiqueErcParent(boolean disciplineScientifiqueErcParent){
     this.disciplineScientifiqueErcParent = disciplineScientifiqueErcParent;
     }
-
-
-
-
-
-
 
 
 

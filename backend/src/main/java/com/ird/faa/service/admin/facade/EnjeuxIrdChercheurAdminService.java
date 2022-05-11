@@ -39,7 +39,5 @@ public interface EnjeuxIrdChercheurAdminService extends AbstractService<EnjeuxIr
 
 
 
-    EnjeuxIrdChercheur archiver(EnjeuxIrdChercheur enjeuxIrdChercheur) ;
-    EnjeuxIrdChercheur desarchiver(EnjeuxIrdChercheur enjeuxIrdChercheur);
 
 }

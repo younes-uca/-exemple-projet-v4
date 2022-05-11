@@ -45,9 +45,9 @@ private EntityManager entityManager;
 
 @Override
 public List<KeyWordDisciplineScientifiqueErc> findAll(){
-    List<KeyWordDisciplineScientifiqueErc> resultat= new ArrayList();
-    resultat.addAll(findAllNonArchive());
-    resultat.addAll(findAllByOwner());
+    List<KeyWordDisciplineScientifiqueErc> result= new ArrayList();
+    result.addAll(findAllNonArchive());
+    result.addAll(findAllByOwner());
     return result;
 }
 
@@ -134,17 +134,8 @@ return  keyWordDisciplineScientifiqueErcDao.save(keyWordDisciplineScientifiqueEr
         keyWordDisciplineScientifiqueErc.setDateCreation(new Date());
                     if(keyWordDisciplineScientifiqueErc.getArchive() == null)
                 keyWordDisciplineScientifiqueErc.setArchive(false);
-                    if(keyWordDisciplineScientifiqueErc.getAdmin() == null)
-                keyWordDisciplineScientifiqueErc.setAdmin(false);
-                    if(keyWordDisciplineScientifiqueErc.getVisible() == null)
-                keyWordDisciplineScientifiqueErc.setVisible(false);
 
-            keyWordDisciplineScientifiqueErc.setAdmin(false);
-            keyWordDisciplineScientifiqueErc.setVisible(false);
-            User currentUser = SecurityUtil.getCurrentUser();
-            if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
-            keyWordDisciplineScientifiqueErc.setUsername(currentUser.getUsername());
-            }
+
 
 
     }
@@ -193,9 +184,6 @@ String query = "SELECT o FROM KeyWordDisciplineScientifiqueErc o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "archive","=",keyWordDisciplineScientifiqueErcVo.getArchive());
         query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",keyWordDisciplineScientifiqueErcVo.getDateArchivage());
         query += SearchUtil.addConstraintDate( "o", "dateCreation","=",keyWordDisciplineScientifiqueErcVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",keyWordDisciplineScientifiqueErcVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",keyWordDisciplineScientifiqueErcVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",keyWordDisciplineScientifiqueErcVo.getUsername());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",keyWordDisciplineScientifiqueErcVo.getDateArchivageMin(),keyWordDisciplineScientifiqueErcVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",keyWordDisciplineScientifiqueErcVo.getDateCreationMin(),keyWordDisciplineScientifiqueErcVo.getDateCreationMax());
     if(keyWordDisciplineScientifiqueErcVo.getKeyWordVo()!=null){

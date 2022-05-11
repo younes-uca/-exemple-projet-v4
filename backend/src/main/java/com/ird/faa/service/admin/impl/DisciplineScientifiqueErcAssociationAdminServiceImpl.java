@@ -21,7 +21,6 @@ import com.ird.faa.service.admin.facade.DisciplineScientifiqueErcAssociationAdmi
 import com.ird.faa.ws.rest.provided.vo.DisciplineScientifiqueErcAssociationVo;
 import com.ird.faa.service.util.*;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -30,8 +29,6 @@ public class DisciplineScientifiqueErcAssociationAdminServiceImpl extends Abstra
 @Autowired
 private DisciplineScientifiqueErcAssociationDao disciplineScientifiqueErcAssociationDao;
 
-    @Autowired
-    private ArchivableService<DisciplineScientifiqueErcAssociation> archivableService;
         @Autowired
         private DisciplineScientifiqueAdminService disciplineScientifiqueService ;
         @Autowired
@@ -128,29 +125,6 @@ return disciplineScientifiqueErcAssociationDao.getOne(id);
 public DisciplineScientifiqueErcAssociation findByIdWithAssociatedList(Long id){
     return findById(id);
 }
-    @Override
-    public DisciplineScientifiqueErcAssociation archiver(DisciplineScientifiqueErcAssociation disciplineScientifiqueErcAssociation) {
-    if (disciplineScientifiqueErcAssociation.getArchive() == null) {
-    disciplineScientifiqueErcAssociation.setArchive(false);
-    }
-    disciplineScientifiqueErcAssociation.setArchive(true);
-    disciplineScientifiqueErcAssociation.setDateArchivage(new Date());
-    disciplineScientifiqueErcAssociationDao.save(disciplineScientifiqueErcAssociation);
-    return disciplineScientifiqueErcAssociation;
-
-    }
-
-    @Override
-    public DisciplineScientifiqueErcAssociation desarchiver(DisciplineScientifiqueErcAssociation disciplineScientifiqueErcAssociation) {
-    if (disciplineScientifiqueErcAssociation.getArchive() == null) {
-    disciplineScientifiqueErcAssociation.setArchive(false);
-    }
-    disciplineScientifiqueErcAssociation.setArchive(false);
-    disciplineScientifiqueErcAssociation.setDateArchivage(null);
-    disciplineScientifiqueErcAssociationDao.save(disciplineScientifiqueErcAssociation);
-    return disciplineScientifiqueErcAssociation;
-    }
-
 
 
 
@@ -170,26 +144,12 @@ public DisciplineScientifiqueErcAssociation update(DisciplineScientifiqueErcAsso
 DisciplineScientifiqueErcAssociation foundedDisciplineScientifiqueErcAssociation = findById(disciplineScientifiqueErcAssociation.getId());
 if(foundedDisciplineScientifiqueErcAssociation==null) return null;
 else{
-    archivableService.prepare(disciplineScientifiqueErcAssociation);
 return  disciplineScientifiqueErcAssociationDao.save(disciplineScientifiqueErcAssociation);
 }
 }
-    private void prepareSave(DisciplineScientifiqueErcAssociation disciplineScientifiqueErcAssociation){
-        disciplineScientifiqueErcAssociation.setDateCreation(new Date());
-                    if(disciplineScientifiqueErcAssociation.getArchive() == null)
-                disciplineScientifiqueErcAssociation.setArchive(false);
-                    if(disciplineScientifiqueErcAssociation.getAdmin() == null)
-                disciplineScientifiqueErcAssociation.setAdmin(false);
-                    if(disciplineScientifiqueErcAssociation.getVisible() == null)
-                disciplineScientifiqueErcAssociation.setVisible(false);
-
-
-
-    }
 
 @Override
 public DisciplineScientifiqueErcAssociation save (DisciplineScientifiqueErcAssociation disciplineScientifiqueErcAssociation){
-    prepareSave(disciplineScientifiqueErcAssociation);
 
 
 
@@ -229,14 +189,6 @@ public List<DisciplineScientifiqueErcAssociation> findByCriteria(DisciplineScien
 String query = "SELECT o FROM DisciplineScientifiqueErcAssociation o where 1=1 ";
 
             query += SearchUtil.addConstraint( "o", "id","=",disciplineScientifiqueErcAssociationVo.getId());
-            query += SearchUtil.addConstraint( "o", "archive","=",disciplineScientifiqueErcAssociationVo.getArchive());
-        query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",disciplineScientifiqueErcAssociationVo.getDateArchivage());
-        query += SearchUtil.addConstraintDate( "o", "dateCreation","=",disciplineScientifiqueErcAssociationVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",disciplineScientifiqueErcAssociationVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",disciplineScientifiqueErcAssociationVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",disciplineScientifiqueErcAssociationVo.getUsername());
-            query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",disciplineScientifiqueErcAssociationVo.getDateArchivageMin(),disciplineScientifiqueErcAssociationVo.getDateArchivageMax());
-            query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",disciplineScientifiqueErcAssociationVo.getDateCreationMin(),disciplineScientifiqueErcAssociationVo.getDateCreationMax());
     if(disciplineScientifiqueErcAssociationVo.getDisciplineScientifiqueErcVo()!=null){
         query += SearchUtil.addConstraint( "o", "disciplineScientifiqueErc.id","=",disciplineScientifiqueErcAssociationVo.getDisciplineScientifiqueErcVo().getId());
             query += SearchUtil.addConstraint( "o", "disciplineScientifiqueErc.code","LIKE",disciplineScientifiqueErcAssociationVo.getDisciplineScientifiqueErcVo().getCode());

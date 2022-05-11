@@ -122,10 +122,7 @@ return  semanticRelationshipDao.save(semanticRelationship);
         semanticRelationship.setDateCreation(new Date());
                     if(semanticRelationship.getArchive() == null)
                 semanticRelationship.setArchive(false);
-                    if(semanticRelationship.getAdmin() == null)
-                semanticRelationship.setAdmin(false);
-                    if(semanticRelationship.getVisible() == null)
-                semanticRelationship.setVisible(false);
+
 
 
 
@@ -184,9 +181,6 @@ String query = "SELECT o FROM SemanticRelationship o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "archive","=",semanticRelationshipVo.getArchive());
         query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",semanticRelationshipVo.getDateArchivage());
         query += SearchUtil.addConstraintDate( "o", "dateCreation","=",semanticRelationshipVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",semanticRelationshipVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",semanticRelationshipVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",semanticRelationshipVo.getUsername());
             query += SearchUtil.addConstraintMinMax("o","niveauExactitude",semanticRelationshipVo.getNiveauExactitudeMin(),semanticRelationshipVo.getNiveauExactitudeMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",semanticRelationshipVo.getDateArchivageMin(),semanticRelationshipVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",semanticRelationshipVo.getDateCreationMin(),semanticRelationshipVo.getDateCreationMax());

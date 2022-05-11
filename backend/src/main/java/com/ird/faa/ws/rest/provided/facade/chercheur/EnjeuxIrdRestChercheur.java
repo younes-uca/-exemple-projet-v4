@@ -84,5 +84,12 @@ private EnjeuxIrdConverter enjeuxIrdConverter;
             return enjeuxIrdService.deleteById(id);
             }
 
+        @ApiOperation("Search campagneChercheur by a specific chercheur and code ")
+        @GetMapping("/username/{username}")
+        public List<EnjeuxIrdVo> findByUsername(@PathVariable String username){
+        return enjeuxIrdConverter.toVo(enjeuxIrdService.findByUsername(username));
+        }
+
+
 
             }

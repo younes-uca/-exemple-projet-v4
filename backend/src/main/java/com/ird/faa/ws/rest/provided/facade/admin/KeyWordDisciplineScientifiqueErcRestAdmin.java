@@ -133,4 +133,16 @@ private KeyWordDisciplineScientifiqueErcConverter keyWordDisciplineScientifiqueE
 
 
 
+
+
+            @PutMapping("/archiver/")
+            public KeyWordDisciplineScientifiqueErcVo archiver(@RequestBody KeyWordDisciplineScientifiqueErcVo keyWordDisciplineScientifiqueErcVo){
+                KeyWordDisciplineScientifiqueErc keyWordDisciplineScientifiqueErc = keyWordDisciplineScientifiqueErcService.archiver(keyWordDisciplineScientifiqueErcConverter.toItem(keyWordDisciplineScientifiqueErcVo));
+                return keyWordDisciplineScientifiqueErcConverter.toVo(keyWordDisciplineScientifiqueErc);
+                }
+
+            @PutMapping("/desarchiver/")
+            public KeyWordDisciplineScientifiqueErcVo desarchiver(@RequestBody KeyWordDisciplineScientifiqueErcVo keyWordDisciplineScientifiqueErcVo){
+                KeyWordDisciplineScientifiqueErc keyWordDisciplineScientifiqueErc = keyWordDisciplineScientifiqueErcService.desarchiver(keyWordDisciplineScientifiqueErcConverter.toItem(keyWordDisciplineScientifiqueErcVo));
+                return keyWordDisciplineScientifiqueErcConverter.toVo(keyWordDisciplineScientifiqueErc);}
             }

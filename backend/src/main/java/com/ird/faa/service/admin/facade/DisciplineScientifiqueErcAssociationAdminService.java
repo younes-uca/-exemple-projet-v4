@@ -46,7 +46,5 @@ public interface DisciplineScientifiqueErcAssociationAdminService extends Abstra
 
 
 
-    DisciplineScientifiqueErcAssociation archiver(DisciplineScientifiqueErcAssociation disciplineScientifiqueErcAssociation) ;
-    DisciplineScientifiqueErcAssociation desarchiver(DisciplineScientifiqueErcAssociation disciplineScientifiqueErcAssociation);
 
 }

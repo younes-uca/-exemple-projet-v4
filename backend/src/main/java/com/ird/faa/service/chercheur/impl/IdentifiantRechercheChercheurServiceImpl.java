@@ -37,9 +37,9 @@ private EntityManager entityManager;
 
 @Override
 public List<IdentifiantRecherche> findAll(){
-    List<IdentifiantRecherche> resultat= new ArrayList();
-    resultat.addAll(findAllNonArchive());
-    resultat.addAll(findAllByOwner());
+    List<IdentifiantRecherche> result= new ArrayList();
+    result.addAll(findAllNonArchive());
+    result.addAll(findAllByOwner());
     return result;
 }
     @Override
@@ -103,17 +103,8 @@ return  identifiantRechercheDao.save(identifiantRecherche);
         identifiantRecherche.setDateCreation(new Date());
                     if(identifiantRecherche.getArchive() == null)
                 identifiantRecherche.setArchive(false);
-                    if(identifiantRecherche.getAdmin() == null)
-                identifiantRecherche.setAdmin(false);
-                    if(identifiantRecherche.getVisible() == null)
-                identifiantRecherche.setVisible(false);
 
-            identifiantRecherche.setAdmin(false);
-            identifiantRecherche.setVisible(false);
-            User currentUser = SecurityUtil.getCurrentUser();
-            if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
-            identifiantRecherche.setUsername(currentUser.getUsername());
-            }
+
 
 
     }
@@ -171,9 +162,6 @@ String query = "SELECT o FROM IdentifiantRecherche o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "archive","=",identifiantRechercheVo.getArchive());
         query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",identifiantRechercheVo.getDateArchivage());
         query += SearchUtil.addConstraintDate( "o", "dateCreation","=",identifiantRechercheVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",identifiantRechercheVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",identifiantRechercheVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",identifiantRechercheVo.getUsername());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",identifiantRechercheVo.getDateArchivageMin(),identifiantRechercheVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",identifiantRechercheVo.getDateCreationMin(),identifiantRechercheVo.getDateCreationMax());
     query+= " ORDER BY o.code";

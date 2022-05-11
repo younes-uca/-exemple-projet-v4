@@ -85,4 +85,16 @@ private KeyWordConverter keyWordConverter;
             }
 
 
+
+
+            @PutMapping("/archiver/")
+            public KeyWordVo archiver(@RequestBody KeyWordVo keyWordVo){
+                KeyWord keyWord = keyWordService.archiver(keyWordConverter.toItem(keyWordVo));
+                return keyWordConverter.toVo(keyWord);
+                }
+
+            @PutMapping("/desarchiver/")
+            public KeyWordVo desarchiver(@RequestBody KeyWordVo keyWordVo){
+                KeyWord keyWord = keyWordService.desarchiver(keyWordConverter.toItem(keyWordVo));
+                return keyWordConverter.toVo(keyWord);}
             }

@@ -15,9 +15,6 @@ public class DisciplineScientifiqueParentVo {
     private Boolean archive ;
     private String dateArchivage ;
     private String dateCreation ;
-    private Boolean admin ;
-    private Boolean visible ;
-    private String username ;
 
 
             private String niveauMax ;
@@ -88,27 +85,6 @@ public class DisciplineScientifiqueParentVo {
 
         public void setDateCreation(String dateCreation){
         this.dateCreation = dateCreation;
-        }
-        public Boolean getAdmin(){
-        return this.admin;
-        }
-
-        public void setAdmin(Boolean admin){
-        this.admin = admin;
-        }
-        public Boolean getVisible(){
-        return this.visible;
-        }
-
-        public void setVisible(Boolean visible){
-        this.visible = visible;
-        }
-        public String getUsername(){
-        return this.username;
-        }
-
-        public void setUsername(String username){
-        this.username = username;
         }
 
 

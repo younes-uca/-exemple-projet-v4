@@ -122,10 +122,7 @@ return  disciplineScientifiqueErcParentDao.save(disciplineScientifiqueErcParent)
         disciplineScientifiqueErcParent.setDateCreation(new Date());
                     if(disciplineScientifiqueErcParent.getArchive() == null)
                 disciplineScientifiqueErcParent.setArchive(false);
-                    if(disciplineScientifiqueErcParent.getAdmin() == null)
-                disciplineScientifiqueErcParent.setAdmin(false);
-                    if(disciplineScientifiqueErcParent.getVisible() == null)
-                disciplineScientifiqueErcParent.setVisible(false);
+
 
 
 
@@ -185,9 +182,6 @@ String query = "SELECT o FROM DisciplineScientifiqueErcParent o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "archive","=",disciplineScientifiqueErcParentVo.getArchive());
         query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",disciplineScientifiqueErcParentVo.getDateArchivage());
         query += SearchUtil.addConstraintDate( "o", "dateCreation","=",disciplineScientifiqueErcParentVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",disciplineScientifiqueErcParentVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",disciplineScientifiqueErcParentVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",disciplineScientifiqueErcParentVo.getUsername());
             query += SearchUtil.addConstraintMinMax("o","niveau",disciplineScientifiqueErcParentVo.getNiveauMin(),disciplineScientifiqueErcParentVo.getNiveauMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",disciplineScientifiqueErcParentVo.getDateArchivageMin(),disciplineScientifiqueErcParentVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",disciplineScientifiqueErcParentVo.getDateCreationMin(),disciplineScientifiqueErcParentVo.getDateCreationMax());

@@ -37,9 +37,9 @@ private EntityManager entityManager;
 
 @Override
 public List<DisciplineScientifiqueParent> findAll(){
-    List<DisciplineScientifiqueParent> resultat= new ArrayList();
-    resultat.addAll(findAllNonArchive());
-    resultat.addAll(findAllByOwner());
+    List<DisciplineScientifiqueParent> result= new ArrayList();
+    result.addAll(findAllNonArchive());
+    result.addAll(findAllByOwner());
     return result;
 }
     @Override
@@ -103,17 +103,8 @@ return  disciplineScientifiqueParentDao.save(disciplineScientifiqueParent);
         disciplineScientifiqueParent.setDateCreation(new Date());
                     if(disciplineScientifiqueParent.getArchive() == null)
                 disciplineScientifiqueParent.setArchive(false);
-                    if(disciplineScientifiqueParent.getAdmin() == null)
-                disciplineScientifiqueParent.setAdmin(false);
-                    if(disciplineScientifiqueParent.getVisible() == null)
-                disciplineScientifiqueParent.setVisible(false);
 
-            disciplineScientifiqueParent.setAdmin(false);
-            disciplineScientifiqueParent.setVisible(false);
-            User currentUser = SecurityUtil.getCurrentUser();
-            if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
-            disciplineScientifiqueParent.setUsername(currentUser.getUsername());
-            }
+
 
 
     }
@@ -172,9 +163,6 @@ String query = "SELECT o FROM DisciplineScientifiqueParent o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "archive","=",disciplineScientifiqueParentVo.getArchive());
         query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",disciplineScientifiqueParentVo.getDateArchivage());
         query += SearchUtil.addConstraintDate( "o", "dateCreation","=",disciplineScientifiqueParentVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",disciplineScientifiqueParentVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",disciplineScientifiqueParentVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",disciplineScientifiqueParentVo.getUsername());
             query += SearchUtil.addConstraintMinMax("o","niveau",disciplineScientifiqueParentVo.getNiveauMin(),disciplineScientifiqueParentVo.getNiveauMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",disciplineScientifiqueParentVo.getDateArchivageMin(),disciplineScientifiqueParentVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",disciplineScientifiqueParentVo.getDateCreationMin(),disciplineScientifiqueParentVo.getDateCreationMax());

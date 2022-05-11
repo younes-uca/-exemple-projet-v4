@@ -1,14 +1,10 @@
 package com.ird.faa.service.chercheur.impl;
 
 import java.util.List;
-    import java.util.Date;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-    import com.ird.faa.service.util.StringUtil;
-    import com.ird.faa.security.common.SecurityUtil;
-    import com.ird.faa.security.bean.User;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import com.ird.faa.bean.DisciplineScientifiqueChercheur;
@@ -24,7 +20,6 @@ import com.ird.faa.service.chercheur.facade.DisciplineScientifiqueChercheurCherc
 import com.ird.faa.ws.rest.provided.vo.DisciplineScientifiqueChercheurVo;
 import com.ird.faa.service.util.*;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -33,8 +28,6 @@ public class DisciplineScientifiqueChercheurChercheurServiceImpl extends Abstrac
 @Autowired
 private DisciplineScientifiqueChercheurDao disciplineScientifiqueChercheurDao;
 
-    @Autowired
-    private ArchivableService<DisciplineScientifiqueChercheur> archivableService;
         @Autowired
         private DisciplineScientifiqueChercheurService disciplineScientifiqueService ;
         @Autowired
@@ -49,10 +42,7 @@ private EntityManager entityManager;
 
 @Override
 public List<DisciplineScientifiqueChercheur> findAll(){
-    List<DisciplineScientifiqueChercheur> resultat= new ArrayList();
-    resultat.addAll(findAllNonArchive());
-    resultat.addAll(findAllByOwner());
-    return result;
+        return disciplineScientifiqueChercheurDao.findAll();
 }
 
         @Override
@@ -153,32 +143,12 @@ public DisciplineScientifiqueChercheur update(DisciplineScientifiqueChercheur di
 DisciplineScientifiqueChercheur foundedDisciplineScientifiqueChercheur = findById(disciplineScientifiqueChercheur.getId());
 if(foundedDisciplineScientifiqueChercheur==null) return null;
 else{
-    archivableService.prepare(disciplineScientifiqueChercheur);
 return  disciplineScientifiqueChercheurDao.save(disciplineScientifiqueChercheur);
 }
 }
-    private void prepareSave(DisciplineScientifiqueChercheur disciplineScientifiqueChercheur){
-        disciplineScientifiqueChercheur.setDateCreation(new Date());
-                    if(disciplineScientifiqueChercheur.getArchive() == null)
-                disciplineScientifiqueChercheur.setArchive(false);
-                    if(disciplineScientifiqueChercheur.getAdmin() == null)
-                disciplineScientifiqueChercheur.setAdmin(false);
-                    if(disciplineScientifiqueChercheur.getVisible() == null)
-                disciplineScientifiqueChercheur.setVisible(false);
-
-            disciplineScientifiqueChercheur.setAdmin(false);
-            disciplineScientifiqueChercheur.setVisible(false);
-            User currentUser = SecurityUtil.getCurrentUser();
-            if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
-            disciplineScientifiqueChercheur.setUsername(currentUser.getUsername());
-            }
-
-
-    }
 
 @Override
 public DisciplineScientifiqueChercheur save (DisciplineScientifiqueChercheur disciplineScientifiqueChercheur){
-    prepareSave(disciplineScientifiqueChercheur);
 
 
 
@@ -218,14 +188,6 @@ public List<DisciplineScientifiqueChercheur> findByCriteria(DisciplineScientifiq
 String query = "SELECT o FROM DisciplineScientifiqueChercheur o where 1=1 ";
 
             query += SearchUtil.addConstraint( "o", "id","=",disciplineScientifiqueChercheurVo.getId());
-            query += SearchUtil.addConstraint( "o", "archive","=",disciplineScientifiqueChercheurVo.getArchive());
-        query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",disciplineScientifiqueChercheurVo.getDateArchivage());
-        query += SearchUtil.addConstraintDate( "o", "dateCreation","=",disciplineScientifiqueChercheurVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",disciplineScientifiqueChercheurVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",disciplineScientifiqueChercheurVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",disciplineScientifiqueChercheurVo.getUsername());
-            query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",disciplineScientifiqueChercheurVo.getDateArchivageMin(),disciplineScientifiqueChercheurVo.getDateArchivageMax());
-            query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",disciplineScientifiqueChercheurVo.getDateCreationMin(),disciplineScientifiqueChercheurVo.getDateCreationMax());
     if(disciplineScientifiqueChercheurVo.getDisciplineScientifiqueVo()!=null){
         query += SearchUtil.addConstraint( "o", "disciplineScientifique.id","=",disciplineScientifiqueChercheurVo.getDisciplineScientifiqueVo().getId());
             query += SearchUtil.addConstraint( "o", "disciplineScientifique.code","LIKE",disciplineScientifiqueChercheurVo.getDisciplineScientifiqueVo().getCode());
@@ -284,22 +246,6 @@ disciplineScientifiqueChercheurs.forEach(e->disciplineScientifiqueChercheurDao.s
 }
 
 
-
-
-        public List<DisciplineScientifiqueChercheur> findAllNonArchive(){
-        String query = "SELECT o FROM DisciplineScientifiqueChercheur o  WHERE o.archive != true AND o.visible = true";
-        return entityManager.createQuery(query).getResultList();
-        }
-
-        public List<DisciplineScientifiqueChercheur> findAllByOwner(){
-        List<DisciplineScientifiqueChercheur> result= new ArrayList();
-        User currentUser = SecurityUtil.getCurrentUser();
-        if (currentUser != null && StringUtil.isNotEmpty(currentUser.getUsername())){
-        String query = "SELECT o FROM DisciplineScientifiqueChercheur o  WHERE o.archive != true AND o.visible = false AND o.username = '"+ currentUser.getUsername()+"'";
-        result = entityManager.createQuery(query).getResultList();
-        }
-        return result;
-        }
 
 
 

@@ -156,6 +156,8 @@ private DistinctionConverter distinctionConverter;
         }
 
 
+
+
             @GetMapping("/username/{username}/id/{compagneId}")
             public List<DistinctionVo> findByChercheurUsernameAndCampagneId(@PathVariable String username,@PathVariable Long compagneId){
             return distinctionConverter.toVo(distinctionService.findByChercheurUsernameAndCampagneId(username,compagneId));

@@ -38,12 +38,6 @@ DisciplineScientifiqueParent item = new DisciplineScientifiqueParent();
         item.setDateArchivage(DateUtil.parse(vo.getDateArchivage()));
         if(StringUtil.isNotEmpty(vo.getDateCreation()))
         item.setDateCreation(DateUtil.parse(vo.getDateCreation()));
-            if(vo.getAdmin() != null)
-            item.setAdmin(vo.getAdmin());
-            if(vo.getVisible() != null)
-            item.setVisible(vo.getVisible());
-        if(StringUtil.isNotEmpty(vo.getUsername()))
-        item.setUsername(vo.getUsername());
 
 
 return item;
@@ -77,13 +71,6 @@ DisciplineScientifiqueParentVo vo = new DisciplineScientifiqueParentVo();
         vo.setDateArchivage(DateUtil.formateDate(item.getDateArchivage()));
         if(item.getDateCreation()!=null)
         vo.setDateCreation(DateUtil.formateDate(item.getDateCreation()));
-        if(item.getAdmin()!=null)
-        vo.setAdmin(item.getAdmin());
-        if(item.getVisible()!=null)
-        vo.setVisible(item.getVisible());
-        if(StringUtil.isNotEmpty(item.getUsername()))
-        vo.setUsername(item.getUsername());
-
 
 return vo;
 }
@@ -91,12 +78,6 @@ return vo;
 
 public void init(Boolean value) {
 }
-
-
-
-
-
-
 
 
 

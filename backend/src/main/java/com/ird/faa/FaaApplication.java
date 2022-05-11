@@ -77,6 +77,11 @@ if(true){
 
         private static void addPermissionForChercheur(List
         <Permission> permissions){
+                permissions.add(new Permission("EnjeuxIrdChercheur.edit"));
+                permissions.add(new Permission("EnjeuxIrdChercheur.list"));
+                permissions.add(new Permission("EnjeuxIrdChercheur.view"));
+                permissions.add(new Permission("EnjeuxIrdChercheur.add"));
+                permissions.add(new Permission("EnjeuxIrdChercheur.delete"));
                 permissions.add(new Permission("Chercheur.edit"));
                 permissions.add(new Permission("Chercheur.list"));
                 permissions.add(new Permission("Chercheur.view"));
@@ -97,26 +102,21 @@ if(true){
                 permissions.add(new Permission("Campagne.view"));
                 permissions.add(new Permission("Campagne.add"));
                 permissions.add(new Permission("Campagne.delete"));
+                permissions.add(new Permission("EnjeuxIrd.edit"));
+                permissions.add(new Permission("EnjeuxIrd.list"));
+                permissions.add(new Permission("EnjeuxIrd.view"));
+                permissions.add(new Permission("EnjeuxIrd.add"));
+                permissions.add(new Permission("EnjeuxIrd.delete"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.edit"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.list"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.view"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.add"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.delete"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.edit"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.list"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.view"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.add"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.delete"));
                 permissions.add(new Permission("Distinction.edit"));
                 permissions.add(new Permission("Distinction.list"));
                 permissions.add(new Permission("Distinction.view"));
                 permissions.add(new Permission("Distinction.add"));
                 permissions.add(new Permission("Distinction.delete"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.edit"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.list"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.view"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.add"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.delete"));
                 permissions.add(new Permission("DisciplineScientifiqueParent.edit"));
                 permissions.add(new Permission("DisciplineScientifiqueParent.list"));
                 permissions.add(new Permission("DisciplineScientifiqueParent.view"));
@@ -142,11 +142,11 @@ if(true){
                 permissions.add(new Permission("KeyWordDisciplineScientifiqueErc.view"));
                 permissions.add(new Permission("KeyWordDisciplineScientifiqueErc.add"));
                 permissions.add(new Permission("KeyWordDisciplineScientifiqueErc.delete"));
-                permissions.add(new Permission("EnjeuxIrd.edit"));
-                permissions.add(new Permission("EnjeuxIrd.list"));
-                permissions.add(new Permission("EnjeuxIrd.view"));
-                permissions.add(new Permission("EnjeuxIrd.add"));
-                permissions.add(new Permission("EnjeuxIrd.delete"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.edit"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.list"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.view"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.add"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.delete"));
                 permissions.add(new Permission("DisciplineScientifiqueErc.edit"));
                 permissions.add(new Permission("DisciplineScientifiqueErc.list"));
                 permissions.add(new Permission("DisciplineScientifiqueErc.view"));
@@ -170,6 +170,11 @@ if(true){
             }
         private static void addPermissionForAdmin(List
         <Permission> permissions){
+                permissions.add(new Permission("EnjeuxIrdChercheur.edit"));
+                permissions.add(new Permission("EnjeuxIrdChercheur.list"));
+                permissions.add(new Permission("EnjeuxIrdChercheur.view"));
+                permissions.add(new Permission("EnjeuxIrdChercheur.add"));
+                permissions.add(new Permission("EnjeuxIrdChercheur.delete"));
                 permissions.add(new Permission("Chercheur.edit"));
                 permissions.add(new Permission("Chercheur.list"));
                 permissions.add(new Permission("Chercheur.view"));
@@ -190,26 +195,21 @@ if(true){
                 permissions.add(new Permission("Campagne.view"));
                 permissions.add(new Permission("Campagne.add"));
                 permissions.add(new Permission("Campagne.delete"));
+                permissions.add(new Permission("EnjeuxIrd.edit"));
+                permissions.add(new Permission("EnjeuxIrd.list"));
+                permissions.add(new Permission("EnjeuxIrd.view"));
+                permissions.add(new Permission("EnjeuxIrd.add"));
+                permissions.add(new Permission("EnjeuxIrd.delete"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.edit"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.list"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.view"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.add"));
                 permissions.add(new Permission("DisciplineScientifiqueChercheur.delete"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.edit"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.list"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.view"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.add"));
-                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.delete"));
                 permissions.add(new Permission("Distinction.edit"));
                 permissions.add(new Permission("Distinction.list"));
                 permissions.add(new Permission("Distinction.view"));
                 permissions.add(new Permission("Distinction.add"));
                 permissions.add(new Permission("Distinction.delete"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.edit"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.list"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.view"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.add"));
-                permissions.add(new Permission("EnjeuxIrdChercheur.delete"));
                 permissions.add(new Permission("DisciplineScientifiqueParent.edit"));
                 permissions.add(new Permission("DisciplineScientifiqueParent.list"));
                 permissions.add(new Permission("DisciplineScientifiqueParent.view"));
@@ -235,11 +235,11 @@ if(true){
                 permissions.add(new Permission("KeyWordDisciplineScientifiqueErc.view"));
                 permissions.add(new Permission("KeyWordDisciplineScientifiqueErc.add"));
                 permissions.add(new Permission("KeyWordDisciplineScientifiqueErc.delete"));
-                permissions.add(new Permission("EnjeuxIrd.edit"));
-                permissions.add(new Permission("EnjeuxIrd.list"));
-                permissions.add(new Permission("EnjeuxIrd.view"));
-                permissions.add(new Permission("EnjeuxIrd.add"));
-                permissions.add(new Permission("EnjeuxIrd.delete"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.edit"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.list"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.view"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.add"));
+                permissions.add(new Permission("DisciplineScientifiqueErcAssociation.delete"));
                 permissions.add(new Permission("DisciplineScientifiqueErc.edit"));
                 permissions.add(new Permission("DisciplineScientifiqueErc.list"));
                 permissions.add(new Permission("DisciplineScientifiqueErc.view"));

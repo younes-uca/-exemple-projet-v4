@@ -129,6 +129,7 @@ return  keyWordDao.save(keyWord);
 
 
 
+
     }
 
 @Override
@@ -185,8 +186,8 @@ String query = "SELECT o FROM KeyWord o where 1=1 ";
         query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",keyWordVo.getDateArchivage());
         query += SearchUtil.addConstraintDate( "o", "dateCreation","=",keyWordVo.getDateCreation());
             query += SearchUtil.addConstraint( "o", "admin","=",keyWordVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",keyWordVo.getVisible());
             query += SearchUtil.addConstraint( "o", "username","LIKE",keyWordVo.getUsername());
+            query += SearchUtil.addConstraint( "o", "visible","=",keyWordVo.getVisible());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",keyWordVo.getDateArchivageMin(),keyWordVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",keyWordVo.getDateCreationMin(),keyWordVo.getDateCreationMax());
     query+= " ORDER BY o.code";

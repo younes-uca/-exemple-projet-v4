@@ -35,12 +35,6 @@ private Long id;
             @JsonFormat(pattern="yyyy-MM-dd")
             @Temporal(TemporalType.DATE)
             private Date dateCreation ;
-            @Column(columnDefinition = "boolean default false")
-                 private Boolean admin = false;
-            @Column(columnDefinition = "boolean default false")
-                 private Boolean visible = false;
-            @Column(length = 500)
-            private String username;
 
     @ManyToOne
     private DisciplineScientifiqueErcParent disciplineScientifiqueErcParent ;
@@ -104,24 +98,6 @@ super();
             }
             public void setDateCreation(Date dateCreation){
             this.dateCreation = dateCreation;
-            }
-        public Boolean  getAdmin(){
-        return this.admin;
-        }
-        public void setAdmin(Boolean admin){
-        this.admin = admin;
-        }
-        public Boolean  getVisible(){
-        return this.visible;
-        }
-        public void setVisible(Boolean visible){
-        this.visible = visible;
-        }
-            public String getUsername(){
-            return this.username;
-            }
-            public void setUsername(String username){
-            this.username = username;
             }
 
         @Override

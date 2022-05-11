@@ -85,4 +85,16 @@ private SemanticRelationshipConverter semanticRelationshipConverter;
             }
 
 
+
+
+            @PutMapping("/archiver/")
+            public SemanticRelationshipVo archiver(@RequestBody SemanticRelationshipVo semanticRelationshipVo){
+                SemanticRelationship semanticRelationship = semanticRelationshipService.archiver(semanticRelationshipConverter.toItem(semanticRelationshipVo));
+                return semanticRelationshipConverter.toVo(semanticRelationship);
+                }
+
+            @PutMapping("/desarchiver/")
+            public SemanticRelationshipVo desarchiver(@RequestBody SemanticRelationshipVo semanticRelationshipVo){
+                SemanticRelationship semanticRelationship = semanticRelationshipService.desarchiver(semanticRelationshipConverter.toItem(semanticRelationshipVo));
+                return semanticRelationshipConverter.toVo(semanticRelationship);}
             }

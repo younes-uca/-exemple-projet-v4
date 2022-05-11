@@ -122,10 +122,7 @@ return  identifiantRechercheDao.save(identifiantRecherche);
         identifiantRecherche.setDateCreation(new Date());
                     if(identifiantRecherche.getArchive() == null)
                 identifiantRecherche.setArchive(false);
-                    if(identifiantRecherche.getAdmin() == null)
-                identifiantRecherche.setAdmin(false);
-                    if(identifiantRecherche.getVisible() == null)
-                identifiantRecherche.setVisible(false);
+
 
 
 
@@ -184,9 +181,6 @@ String query = "SELECT o FROM IdentifiantRecherche o where 1=1 ";
             query += SearchUtil.addConstraint( "o", "archive","=",identifiantRechercheVo.getArchive());
         query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",identifiantRechercheVo.getDateArchivage());
         query += SearchUtil.addConstraintDate( "o", "dateCreation","=",identifiantRechercheVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",identifiantRechercheVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",identifiantRechercheVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",identifiantRechercheVo.getUsername());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",identifiantRechercheVo.getDateArchivageMin(),identifiantRechercheVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",identifiantRechercheVo.getDateCreationMin(),identifiantRechercheVo.getDateCreationMax());
     query+= " ORDER BY o.code";

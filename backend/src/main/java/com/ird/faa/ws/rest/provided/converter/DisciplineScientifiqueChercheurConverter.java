@@ -33,18 +33,6 @@ return null;
 DisciplineScientifiqueChercheur item = new DisciplineScientifiqueChercheur();
         if(StringUtil.isNotEmpty(vo.getId()))
         item.setId(NumberUtil.toLong(vo.getId()));
-            if(vo.getArchive() != null)
-            item.setArchive(vo.getArchive());
-        if(StringUtil.isNotEmpty(vo.getDateArchivage()))
-        item.setDateArchivage(DateUtil.parse(vo.getDateArchivage()));
-        if(StringUtil.isNotEmpty(vo.getDateCreation()))
-        item.setDateCreation(DateUtil.parse(vo.getDateCreation()));
-            if(vo.getAdmin() != null)
-            item.setAdmin(vo.getAdmin());
-            if(vo.getVisible() != null)
-            item.setVisible(vo.getVisible());
-        if(StringUtil.isNotEmpty(vo.getUsername()))
-        item.setUsername(vo.getUsername());
     if(vo.getDisciplineScientifiqueVo()!=null && this.disciplineScientifique)
         item.setDisciplineScientifique(disciplineScientifiqueConverter.toItem(vo.getDisciplineScientifiqueVo())) ;
     if(vo.getDisciplineScientifiqueErcVo()!=null && this.disciplineScientifiqueErc)
@@ -65,19 +53,6 @@ return null;
 DisciplineScientifiqueChercheurVo vo = new DisciplineScientifiqueChercheurVo();
         if(item.getId()!=null)
         vo.setId(NumberUtil.toString(item.getId()));
-
-        if(item.getArchive()!=null)
-        vo.setArchive(item.getArchive());
-        if(item.getDateArchivage()!=null)
-        vo.setDateArchivage(DateUtil.formateDate(item.getDateArchivage()));
-        if(item.getDateCreation()!=null)
-        vo.setDateCreation(DateUtil.formateDate(item.getDateCreation()));
-        if(item.getAdmin()!=null)
-        vo.setAdmin(item.getAdmin());
-        if(item.getVisible()!=null)
-        vo.setVisible(item.getVisible());
-        if(StringUtil.isNotEmpty(item.getUsername()))
-        vo.setUsername(item.getUsername());
 
     if(item.getDisciplineScientifique()!=null && this.disciplineScientifique) {
         vo.setDisciplineScientifiqueVo(disciplineScientifiqueConverter.toVo(item.getDisciplineScientifique())) ;
@@ -137,18 +112,6 @@ public void init(Boolean value) {
     public void  setChercheur(boolean chercheur){
     this.chercheur = chercheur;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

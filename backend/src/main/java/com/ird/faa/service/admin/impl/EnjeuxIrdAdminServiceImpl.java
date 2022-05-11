@@ -129,6 +129,7 @@ return  enjeuxIrdDao.save(enjeuxIrd);
 
 
 
+
     }
 
 @Override
@@ -185,8 +186,8 @@ String query = "SELECT o FROM EnjeuxIrd o where 1=1 ";
         query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",enjeuxIrdVo.getDateArchivage());
         query += SearchUtil.addConstraintDate( "o", "dateCreation","=",enjeuxIrdVo.getDateCreation());
             query += SearchUtil.addConstraint( "o", "admin","=",enjeuxIrdVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",enjeuxIrdVo.getVisible());
             query += SearchUtil.addConstraint( "o", "username","LIKE",enjeuxIrdVo.getUsername());
+            query += SearchUtil.addConstraint( "o", "visible","=",enjeuxIrdVo.getVisible());
             query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",enjeuxIrdVo.getDateArchivageMin(),enjeuxIrdVo.getDateArchivageMax());
             query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",enjeuxIrdVo.getDateCreationMin(),enjeuxIrdVo.getDateCreationMax());
     query+= " ORDER BY o.code";

@@ -38,10 +38,10 @@ KeyWord item = new KeyWord();
         item.setDateCreation(DateUtil.parse(vo.getDateCreation()));
             if(vo.getAdmin() != null)
             item.setAdmin(vo.getAdmin());
-            if(vo.getVisible() != null)
-            item.setVisible(vo.getVisible());
         if(StringUtil.isNotEmpty(vo.getUsername()))
         item.setUsername(vo.getUsername());
+            if(vo.getVisible() != null)
+            item.setVisible(vo.getVisible());
 
 
 return item;
@@ -74,11 +74,11 @@ KeyWordVo vo = new KeyWordVo();
         vo.setDateCreation(DateUtil.formateDate(item.getDateCreation()));
         if(item.getAdmin()!=null)
         vo.setAdmin(item.getAdmin());
-        if(item.getVisible()!=null)
-        vo.setVisible(item.getVisible());
         if(StringUtil.isNotEmpty(item.getUsername()))
         vo.setUsername(item.getUsername());
 
+        if(item.getVisible()!=null)
+        vo.setVisible(item.getVisible());
 
 return vo;
 }

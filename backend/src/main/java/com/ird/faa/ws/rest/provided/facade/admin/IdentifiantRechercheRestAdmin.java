@@ -85,6 +85,8 @@ private IdentifiantRechercheConverter identifiantRechercheConverter;
             }
 
 
+
+
             @PutMapping("/archiver/")
             public IdentifiantRechercheVo archiver(@RequestBody IdentifiantRechercheVo identifiantRechercheVo){
                 IdentifiantRecherche identifiantRecherche = identifiantRechercheService.archiver(identifiantRechercheConverter.toItem(identifiantRechercheVo));

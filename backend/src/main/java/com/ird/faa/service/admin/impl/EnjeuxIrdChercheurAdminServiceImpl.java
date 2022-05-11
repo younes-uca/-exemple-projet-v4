@@ -19,7 +19,6 @@ import com.ird.faa.service.admin.facade.EnjeuxIrdChercheurAdminService;
 import com.ird.faa.ws.rest.provided.vo.EnjeuxIrdChercheurVo;
 import com.ird.faa.service.util.*;
 
-    import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
 
 @Service
@@ -28,8 +27,6 @@ public class EnjeuxIrdChercheurAdminServiceImpl extends AbstractServiceImpl<Enje
 @Autowired
 private EnjeuxIrdChercheurDao enjeuxIrdChercheurDao;
 
-    @Autowired
-    private ArchivableService<EnjeuxIrdChercheur> archivableService;
         @Autowired
         private EnjeuxIrdAdminService enjeuxIrdService ;
         @Autowired
@@ -101,29 +98,6 @@ return enjeuxIrdChercheurDao.getOne(id);
 public EnjeuxIrdChercheur findByIdWithAssociatedList(Long id){
     return findById(id);
 }
-    @Override
-    public EnjeuxIrdChercheur archiver(EnjeuxIrdChercheur enjeuxIrdChercheur) {
-    if (enjeuxIrdChercheur.getArchive() == null) {
-    enjeuxIrdChercheur.setArchive(false);
-    }
-    enjeuxIrdChercheur.setArchive(true);
-    enjeuxIrdChercheur.setDateArchivage(new Date());
-    enjeuxIrdChercheurDao.save(enjeuxIrdChercheur);
-    return enjeuxIrdChercheur;
-
-    }
-
-    @Override
-    public EnjeuxIrdChercheur desarchiver(EnjeuxIrdChercheur enjeuxIrdChercheur) {
-    if (enjeuxIrdChercheur.getArchive() == null) {
-    enjeuxIrdChercheur.setArchive(false);
-    }
-    enjeuxIrdChercheur.setArchive(false);
-    enjeuxIrdChercheur.setDateArchivage(null);
-    enjeuxIrdChercheurDao.save(enjeuxIrdChercheur);
-    return enjeuxIrdChercheur;
-    }
-
 
 
 
@@ -143,26 +117,12 @@ public EnjeuxIrdChercheur update(EnjeuxIrdChercheur enjeuxIrdChercheur){
 EnjeuxIrdChercheur foundedEnjeuxIrdChercheur = findById(enjeuxIrdChercheur.getId());
 if(foundedEnjeuxIrdChercheur==null) return null;
 else{
-    archivableService.prepare(enjeuxIrdChercheur);
 return  enjeuxIrdChercheurDao.save(enjeuxIrdChercheur);
 }
 }
-    private void prepareSave(EnjeuxIrdChercheur enjeuxIrdChercheur){
-        enjeuxIrdChercheur.setDateCreation(new Date());
-                    if(enjeuxIrdChercheur.getArchive() == null)
-                enjeuxIrdChercheur.setArchive(false);
-                    if(enjeuxIrdChercheur.getAdmin() == null)
-                enjeuxIrdChercheur.setAdmin(false);
-                    if(enjeuxIrdChercheur.getVisible() == null)
-                enjeuxIrdChercheur.setVisible(false);
-
-
-
-    }
 
 @Override
 public EnjeuxIrdChercheur save (EnjeuxIrdChercheur enjeuxIrdChercheur){
-    prepareSave(enjeuxIrdChercheur);
 
 
 
@@ -201,14 +161,6 @@ public List<EnjeuxIrdChercheur> findByCriteria(EnjeuxIrdChercheurVo enjeuxIrdChe
 String query = "SELECT o FROM EnjeuxIrdChercheur o where 1=1 ";
 
             query += SearchUtil.addConstraint( "o", "id","=",enjeuxIrdChercheurVo.getId());
-            query += SearchUtil.addConstraint( "o", "archive","=",enjeuxIrdChercheurVo.getArchive());
-        query += SearchUtil.addConstraintDate( "o", "dateArchivage","=",enjeuxIrdChercheurVo.getDateArchivage());
-        query += SearchUtil.addConstraintDate( "o", "dateCreation","=",enjeuxIrdChercheurVo.getDateCreation());
-            query += SearchUtil.addConstraint( "o", "admin","=",enjeuxIrdChercheurVo.getAdmin());
-            query += SearchUtil.addConstraint( "o", "visible","=",enjeuxIrdChercheurVo.getVisible());
-            query += SearchUtil.addConstraint( "o", "username","LIKE",enjeuxIrdChercheurVo.getUsername());
-            query += SearchUtil.addConstraintMinMaxDate("o","dateArchivage",enjeuxIrdChercheurVo.getDateArchivageMin(),enjeuxIrdChercheurVo.getDateArchivageMax());
-            query += SearchUtil.addConstraintMinMaxDate("o","dateCreation",enjeuxIrdChercheurVo.getDateCreationMin(),enjeuxIrdChercheurVo.getDateCreationMax());
     if(enjeuxIrdChercheurVo.getEnjeuxIrdVo()!=null){
         query += SearchUtil.addConstraint( "o", "enjeuxIrd.id","=",enjeuxIrdChercheurVo.getEnjeuxIrdVo().getId());
             query += SearchUtil.addConstraint( "o", "enjeuxIrd.code","LIKE",enjeuxIrdChercheurVo.getEnjeuxIrdVo().getCode());
