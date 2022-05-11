@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {KeyWordService} from '../../../../../../controller/service/KeyWord.service';
-import {KeyWordVo} from '../../../../../../controller/model/KeyWord.model';
-import {RoleService} from '../../../../../../controller/service/role.service';
+import {KeyWordService} from 'src/app/controller/service/KeyWord.service';
+import {KeyWordVo} from 'src/app/controller/model/KeyWord.model';
+import {RoleService} from 'src/app/controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
-import {ChercheurService} from '../../../../../../controller/service/Chercheur.service';
+import {ChercheurVo} from 'src/app/controller/model/Chercheur.model';
+import {ChercheurService} from 'src/app/controller/service/Chercheur.service';
 
 
 @Component({

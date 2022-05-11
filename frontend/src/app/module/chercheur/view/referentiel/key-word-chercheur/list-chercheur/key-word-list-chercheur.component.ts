@@ -1,22 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {KeyWordService} from '../../../../../../controller/service/KeyWord.service';
-import {KeyWordVo} from '../../../../../../controller/model/KeyWord.model';
+import {KeyWordService} from 'src/app/controller/service/KeyWord.service';
+import {KeyWordVo} from 'src/app/controller/model/KeyWord.model';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import jsPDF from 'jspdf';
 import autoTable, { RowInput } from 'jspdf-autotable';
 import { saveAs } from 'file-saver';
-import { RoleService } from '../../../../../../controller/service/role.service';
+import { RoleService } from 'src/app/controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
 
-import { ChercheurService } from '../../../../../../controller/service/Chercheur.service';
-import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import { ChercheurService } from 'src/app/controller/service/Chercheur.service';
+import {ChercheurVo} from 'src/app/controller/model/Chercheur.model';
 
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
-import {AuthService} from '../../../../../../controller/service/Auth.service';
-import { ExportService } from '../../../../../../controller/service/Export.service';
+import {AuthService} from 'src/app/controller/service/Auth.service';
+import { ExportService } from 'src/app/controller/service/Export.service';
 
 @Component({
   selector: 'app-key-word-list-chercheur',

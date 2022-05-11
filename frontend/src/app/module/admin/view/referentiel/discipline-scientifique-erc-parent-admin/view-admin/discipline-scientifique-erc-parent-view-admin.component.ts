@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DisciplineScientifiqueErcParentService} from '../../../../../../controller/service/DisciplineScientifiqueErcParent.service';
-import {DisciplineScientifiqueErcParentVo} from '../../../../../../controller/model/DisciplineScientifiqueErcParent.model';
-import {RoleService} from '../../../../../../controller/service/role.service';
+import {DisciplineScientifiqueErcParentService} from 'src/app/controller/service/DisciplineScientifiqueErcParent.service';
+import {DisciplineScientifiqueErcParentVo} from 'src/app/controller/model/DisciplineScientifiqueErcParent.model';
+import {RoleService} from 'src/app/controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';

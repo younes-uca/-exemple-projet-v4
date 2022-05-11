@@ -1,25 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {DisciplineScientifiqueChercheurService} from '../../../../../../controller/service/DisciplineScientifiqueChercheur.service';
-import {DisciplineScientifiqueChercheurVo} from '../../../../../../controller/model/DisciplineScientifiqueChercheur.model';
+import {DisciplineScientifiqueChercheurService} from 'src/app/controller/service/DisciplineScientifiqueChercheur.service';
+import {DisciplineScientifiqueChercheurVo} from 'src/app/controller/model/DisciplineScientifiqueChercheur.model';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import jsPDF from 'jspdf';
 import autoTable, { RowInput } from 'jspdf-autotable';
 import { saveAs } from 'file-saver';
-import { RoleService } from '../../../../../../controller/service/role.service';
+import { RoleService } from 'src/app/controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
-import { DisciplineScientifiqueService } from '../../../../../../controller/service/DisciplineScientifique.service';
-import { DisciplineScientifiqueErcService } from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
-import { ChercheurService } from '../../../../../../controller/service/Chercheur.service';
+import { DisciplineScientifiqueService } from 'src/app/controller/service/DisciplineScientifique.service';
+import { DisciplineScientifiqueErcService } from 'src/app/controller/service/DisciplineScientifiqueErc.service';
+import { ChercheurService } from 'src/app/controller/service/Chercheur.service';
 
-import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import {DisciplineScientifiqueVo} from 'src/app/controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueErcVo} from 'src/app/controller/model/DisciplineScientifiqueErc.model';
+import {ChercheurVo} from 'src/app/controller/model/Chercheur.model';
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
-import {AuthService} from '../../../../../../controller/service/Auth.service';
-import { ExportService } from '../../../../../../controller/service/Export.service';
+import {AuthService} from 'src/app/controller/service/Auth.service';
+import { ExportService } from 'src/app/controller/service/Export.service';
 
 @Component({
   selector: 'app-discipline-scientifique-chercheur-list-admin',

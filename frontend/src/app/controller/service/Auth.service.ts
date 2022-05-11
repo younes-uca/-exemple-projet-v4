@@ -83,7 +83,7 @@ export class AuthService {
         console.log(this.user)
         this.http.post<any>(this.API+'api/users/save', this.user, {observe: 'response'}).subscribe(
             resp => {
-                this.router.navigate(['/login']);
+                this.router.navigate(['chercheur/login']);
 
             }, (error:HttpErrorResponse) => {
                console.log(error.error)
@@ -94,7 +94,7 @@ export class AuthService {
         console.log(this.user)
         this.http.post<any>(this.API+'api/users/save', this.user, {observe: 'response'}).subscribe(
             resp => {
-                this.router.navigate(['/login']);
+                this.router.navigate(['admin/login']);
 
             }, (error:HttpErrorResponse) => {
                console.log(error.error)

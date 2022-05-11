@@ -1,21 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
-import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
-import {RoleService} from '../../../../../../controller/service/role.service';
+import {DisciplineScientifiqueService} from 'src/app/controller/service/DisciplineScientifique.service';
+import {DisciplineScientifiqueVo} from 'src/app/controller/model/DisciplineScientifique.model';
+import {RoleService} from 'src/app/controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
 
-import {DisciplineScientifiqueParentVo} from '../../../../../../controller/model/DisciplineScientifiqueParent.model';
-import {DisciplineScientifiqueParentService} from '../../../../../../controller/service/DisciplineScientifiqueParent.service';
-import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
-import {DisciplineScientifiqueErcAssociationVo} from '../../../../../../controller/model/DisciplineScientifiqueErcAssociation.model';
-import {DisciplineScientifiqueErcAssociationService} from '../../../../../../controller/service/DisciplineScientifiqueErcAssociation.service';
-import {SemanticRelationshipVo} from '../../../../../../controller/model/SemanticRelationship.model';
-import {SemanticRelationshipService} from '../../../../../../controller/service/SemanticRelationship.service';
+import {DisciplineScientifiqueParentVo} from 'src/app/controller/model/DisciplineScientifiqueParent.model';
+import {DisciplineScientifiqueParentService} from 'src/app/controller/service/DisciplineScientifiqueParent.service';
+import {DisciplineScientifiqueErcVo} from 'src/app/controller/model/DisciplineScientifiqueErc.model';
+import {DisciplineScientifiqueErcService} from 'src/app/controller/service/DisciplineScientifiqueErc.service';
+import {DisciplineScientifiqueErcAssociationVo} from 'src/app/controller/model/DisciplineScientifiqueErcAssociation.model';
+import {DisciplineScientifiqueErcAssociationService} from 'src/app/controller/service/DisciplineScientifiqueErcAssociation.service';
+import {SemanticRelationshipVo} from 'src/app/controller/model/SemanticRelationship.model';
+import {SemanticRelationshipService} from 'src/app/controller/service/SemanticRelationship.service';
 
 @Component({
   selector: 'app-discipline-scientifique-view-admin',

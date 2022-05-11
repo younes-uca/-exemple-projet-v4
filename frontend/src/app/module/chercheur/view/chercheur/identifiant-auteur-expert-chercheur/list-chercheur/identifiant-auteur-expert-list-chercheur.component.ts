@@ -1,23 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-import {IdentifiantAuteurExpertService} from '../../../../../../controller/service/IdentifiantAuteurExpert.service';
-import {IdentifiantAuteurExpertVo} from '../../../../../../controller/model/IdentifiantAuteurExpert.model';
+import {IdentifiantAuteurExpertService} from 'src/app/controller/service/IdentifiantAuteurExpert.service';
+import {IdentifiantAuteurExpertVo} from 'src/app/controller/model/IdentifiantAuteurExpert.model';
 import * as moment from 'moment';
 import {Router} from '@angular/router';
 import { environment } from 'src/environments/environment';
 import jsPDF from 'jspdf';
 import autoTable, { RowInput } from 'jspdf-autotable';
 import { saveAs } from 'file-saver';
-import { RoleService } from '../../../../../../controller/service/role.service';
+import { RoleService } from 'src/app/controller/service/role.service';
 import {DatePipe} from '@angular/common';
 
-import { IdentifiantRechercheService } from '../../../../../../controller/service/IdentifiantRecherche.service';
-import { ChercheurService } from '../../../../../../controller/service/Chercheur.service';
+import { IdentifiantRechercheService } from 'src/app/controller/service/IdentifiantRecherche.service';
+import { ChercheurService } from 'src/app/controller/service/Chercheur.service';
 
-import {IdentifiantRechercheVo} from '../../../../../../controller/model/IdentifiantRecherche.model';
-import {ChercheurVo} from '../../../../../../controller/model/Chercheur.model';
+import {IdentifiantRechercheVo} from 'src/app/controller/model/IdentifiantRecherche.model';
+import {ChercheurVo} from 'src/app/controller/model/Chercheur.model';
 import { MessageService, ConfirmationService, MenuItem } from 'primeng/api';
-import {AuthService} from '../../../../../../controller/service/Auth.service';
-import { ExportService } from '../../../../../../controller/service/Export.service';
+import {AuthService} from 'src/app/controller/service/Auth.service';
+import { ExportService } from 'src/app/controller/service/Export.service';
 
 @Component({
   selector: 'app-identifiant-auteur-expert-list-chercheur',

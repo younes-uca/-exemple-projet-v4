@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {KeyWordDisciplineScientifiqueErcService} from '../../../../../../controller/service/KeyWordDisciplineScientifiqueErc.service';
-import {KeyWordDisciplineScientifiqueErcVo} from '../../../../../../controller/model/KeyWordDisciplineScientifiqueErc.model';
-import {RoleService} from '../../../../../../controller/service/role.service';
+import {KeyWordDisciplineScientifiqueErcService} from 'src/app/controller/service/KeyWordDisciplineScientifiqueErc.service';
+import {KeyWordDisciplineScientifiqueErcVo} from 'src/app/controller/model/KeyWordDisciplineScientifiqueErc.model';
+import {RoleService} from 'src/app/controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
@@ -9,10 +9,10 @@ import { environment } from 'src/environments/environment';
 import {DateUtils} from '../../../../../../utils/DateUtils';
 import {DatePipe} from '@angular/common';
 
-import {KeyWordVo} from '../../../../../../controller/model/KeyWord.model';
-import {KeyWordService} from '../../../../../../controller/service/KeyWord.service';
-import {DisciplineScientifiqueVo} from '../../../../../../controller/model/DisciplineScientifique.model';
-import {DisciplineScientifiqueService} from '../../../../../../controller/service/DisciplineScientifique.service';
+import {KeyWordVo} from 'src/app/controller/model/KeyWord.model';
+import {KeyWordService} from 'src/app/controller/service/KeyWord.service';
+import {DisciplineScientifiqueVo} from 'src/app/controller/model/DisciplineScientifique.model';
+import {DisciplineScientifiqueService} from 'src/app/controller/service/DisciplineScientifique.service';
 
 @Component({
   selector: 'app-key-word-discipline-scientifique-erc-edit-chercheur',

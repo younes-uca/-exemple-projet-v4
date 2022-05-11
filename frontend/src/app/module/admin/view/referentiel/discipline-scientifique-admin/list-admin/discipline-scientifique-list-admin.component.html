@@ -109,14 +109,14 @@
             <p-table #dt [value]="disciplineScientifiques" [columns]="cols" [rows]="4" [paginator]="true"
                     [globalFilterFields]="['libelleFr', 'libelleEng', 'code', 'niveau', 'libelleEng', 'archive', 'dateArchivage', 'dateCreation']" [(selection)]="selectedDisciplineScientifique"
                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
-                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                      currentPageReportTemplate="Les elementd de {first} à {last} sur {totalRecords}"
                     [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Liste des Discipline scientifiques</h5>
                         <span class="p-input-icon-left">
                             <i class="pi pi-search"></i>
-                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                            <input pInputText type="text" placeholder="Chercher..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
                         </span>
                     </div>
                 </ng-template>
