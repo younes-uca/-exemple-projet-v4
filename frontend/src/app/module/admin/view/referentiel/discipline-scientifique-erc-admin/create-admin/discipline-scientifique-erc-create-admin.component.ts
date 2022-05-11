@@ -1,17 +1,17 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {DisciplineScientifiqueErcService} from '../../../../../../controller/service/DisciplineScientifiqueErc.service';
-import {DisciplineScientifiqueErcVo} from '../../../../../../controller/model/DisciplineScientifiqueErc.model';
-import {RoleService} from '../../../../../../controller/service/role.service';
+import {DisciplineScientifiqueErcService} from 'src/app/controller/service/DisciplineScientifiqueErc.service';
+import {DisciplineScientifiqueErcVo} from 'src/app/controller/model/DisciplineScientifiqueErc.model';
+import {RoleService} from 'src/app/controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
-import {StringUtilService} from '../../../../../../controller/service/StringUtil.service';
+import {StringUtilService} from 'src/app/controller/service/StringUtil.service';
 
 
-import {DisciplineScientifiqueErcParentVo} from '../../../../../../controller/model/DisciplineScientifiqueErcParent.model';
-import {DisciplineScientifiqueErcParentService} from '../../../../../../controller/service/DisciplineScientifiqueErcParent.service';
+import {DisciplineScientifiqueErcParentVo} from 'src/app/controller/model/DisciplineScientifiqueErcParent.model';
+import {DisciplineScientifiqueErcParentService} from 'src/app/controller/service/DisciplineScientifiqueErcParent.service';
 @Component({
   selector: 'app-discipline-scientifique-erc-create-admin',
   templateUrl: './discipline-scientifique-erc-create-admin.component.html',

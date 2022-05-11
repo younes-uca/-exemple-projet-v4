@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {EnjeuxIrdService} from '../../../../../../controller/service/EnjeuxIrd.service';
-import {EnjeuxIrdVo} from '../../../../../../controller/model/EnjeuxIrd.model';
-import {RoleService} from '../../../../../../controller/service/role.service';
+import {EnjeuxIrdService} from 'src/app/controller/service/EnjeuxIrd.service';
+import {EnjeuxIrdVo} from 'src/app/controller/model/EnjeuxIrd.model';
+import {RoleService} from 'src/app/controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
+import {ChercheurService} from 'src/app/controller/service/Chercheur.service';
+import {ChercheurVo} from 'src/app/controller/model/Chercheur.model';
 
 
 @Component({
@@ -18,9 +20,11 @@ export class EnjeuxIrdViewChercheurComponent implements OnInit {
 
 
 constructor(private datePipe: DatePipe, private enjeuxIrdService: EnjeuxIrdService
-,private roleService:RoleService
-,private messageService: MessageService
-, private router: Router
+,           private roleService: RoleService
+,           private messageService: MessageService
+,           private router: Router
+,           private chercheurService: ChercheurService
+
 ) {
 }
 

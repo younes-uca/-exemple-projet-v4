@@ -45,7 +45,7 @@ import { DistinctionCreateChercheurComponent } from './distinction-chercheur/cre
                                     component: DistinctionChercheurComponent ,
                                     canActivate: [AuthGuard]
                                 }
-                                 ,{
+                                 , {
                                     path: 'create',
                                     component: DistinctionCreateChercheurComponent ,
                                     canActivate: [AuthGuard]

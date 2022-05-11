@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CampagneService} from '../../../../../../controller/service/Campagne.service';
-import {CampagneVo} from '../../../../../../controller/model/Campagne.model';
-import {RoleService} from '../../../../../../controller/service/role.service';
+import {CampagneService} from 'src/app/controller/service/Campagne.service';
+import {CampagneVo} from 'src/app/controller/model/Campagne.model';
+import {RoleService} from 'src/app/controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';

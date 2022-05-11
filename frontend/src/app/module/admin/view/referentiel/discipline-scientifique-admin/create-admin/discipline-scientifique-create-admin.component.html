@@ -92,8 +92,7 @@
                     </p-tabPanel>
                     <p-tabPanel header="Discipline scientifique erc associations">
                                 <div class="p-grid">
-                                      <div class="p-col">
-                                                    <div class="p-field p-col-11 p-md-5">
+                                                    <div class="p-field p-col-11 p-md-4">
                                                         <label>Discipline scientifique erc</label>
                                                         <p-dropdown [options]="disciplineScientifiqueErcs" [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.disciplineScientifiqueErcVo"
                                                                 id="1"  [filter]="true"
@@ -111,7 +110,7 @@
                                                                 class="p-button-success one-colonne-btn-success-align"></button>
                                                     </div>
 
-                                                    <div class="p-field p-col-11 p-md-5">
+                                                    <div class="p-field p-col-11 p-md-4">
                                                         <label>Semantic relationship</label>
                                                         <p-dropdown [options]="semanticRelationships" [(ngModel)]="selectedDisciplineScientifiqueErcAssociations.semanticRelationshipVo"
                                                                 id="3"  [filter]="true"
@@ -129,14 +128,13 @@
                                                                 class="p-button-success one-colonne-btn-success-align"></button>
                                                     </div>
 
-                                          <div class="p-field p-col-12 p-md-1">
+                                          <div class="p-field p-col-12 p-md-2">
                                               <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
                                                     label="OK" (click)="addDisciplineScientifiqueErcAssociations()">
                                               </button>
                                           </div>
                                         </div>
-                                </div>
-                                  <div class="p-col">
+                                  <div class="p-col-12">
                                     <div class="card">
                                         <p-table [value]="selectedDisciplineScientifique.disciplineScientifiqueErcAssociationsVo" [scrollable]="true"
                                                 scrollHeight="200px">
